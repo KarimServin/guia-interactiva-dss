@@ -1,0 +1,6 @@
+{
+  "name": "Guía Interactiva DSS - CPCE Santa Fe",
+  "description": "Guía interactiva para afiliados del Departamento de Servicios Sociales del CPCE Santa Fe - Cámara I. Consulta de beneficios, trámites y descarga de formularios.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

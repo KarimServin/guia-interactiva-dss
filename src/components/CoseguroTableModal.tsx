@@ -1,0 +1,87 @@
+import React from 'react';
+import { COSEGUROS_TABLE } from '../data/dssData';
+import { X, DollarSign, ShieldCheck, CheckCircle2, AlertCircle } from 'lucide-react';
+
+interface CoseguroTableModalProps {
+  onClose: () => void;
+}
+
+export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ onClose }) => {
+  return (
+    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+      <div className="bg-white rounded-3xl shadow-2xl border border-slate-100 w-full max-w-3xl overflow-hidden my-8">
+        
+        {/* Header */}
+        <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-950 text-white p-6 flex items-start justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-sky-400/20 text-sky-200 border border-sky-300/30">
+                Valores Oficiales DSS
+              </span>
+            </div>
+            <h3 className="font-heading text-xl font-bold text-white">
+              Tabla Informativa de Coseguros
+            </h3>
+            <p className="text-xs text-sky-200 mt-0.5">
+              CPCE Santa Fe • Cámara I • Sistema Solidario de Salud
+            </p>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all shrink-0"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
+          <div className="p-5 bg-sky-50/80 rounded-2xl border border-sky-100 text-xs text-blue-950 leading-relaxed space-y-2">
+            <p className="font-bold flex items-center gap-2 text-blue-900 text-sm">
+              <ShieldCheck className="w-5 h-5 text-sky-600 shrink-0" />
+              ¿Cómo funcionan los coseguros del DSS?
+            </p>
+            <p className="font-medium text-slate-700">
+              Los coseguros son aranceles moderadores que permiten sostener el fondo solidario de salud con cuotas mensuales muy competitivas. <strong>No debés abonar efectivo al profesional en el consultorio</strong>; los importes se debitan de manera transparente en tu resumen mensual del Consejo.
+            </p>
+          </div>
+
+          <div className="border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-slate-900 text-white text-xs font-bold uppercase tracking-wider">
+                  <th className="p-3.5">Práctica / Atención</th>
+                  <th className="p-3.5">Valor Coseguro</th>
+                  <th className="p-3.5">Modalidad de Cobro</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 text-xs text-slate-800 font-normal">
+                {COSEGUROS_TABLE.map((row, idx) => (
+                  <tr key={idx} className={row.coseguro.includes('$0') ? 'bg-sky-50/60 font-semibold' : 'hover:bg-slate-50/80'}>
+                    <td className="p-3.5 font-semibold text-slate-900">{row.practica}</td>
+                    <td className="p-3.5 font-bold text-blue-600">{row.coseguro}</td>
+                    <td className="p-3.5 text-slate-600">
+                      <div>{row.cobro}</div>
+                      <span className="text-[11px] text-slate-400">{row.nota}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="p-5 bg-slate-50 border-t border-slate-200 text-right">
+          <button
+            onClick={onClose}
+            className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full text-xs font-bold transition-all shadow-md"
+          >
+            Entendido
+          </button>
+        </div>
+
+      </div>
+    </div>
+  );
+};
