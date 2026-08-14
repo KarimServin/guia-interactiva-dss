@@ -1,5 +1,20 @@
 import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
 import "./globals.css";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-heading",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "DSS CPCE Santa Fe Cámara I - Guía Interactiva de Autogestión y Cobertura Médica",
@@ -19,6 +34,11 @@ export const metadata: Metadata = {
   creator: "Consejo Profesional de Ciencias Económicas de Santa Fe Cámara I",
   publisher: "CPCE Santa Fe Cámara I",
   metadataBase: new URL("https://cpcesfe1.org.ar"),
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "DSS CPCE Santa Fe",
+  },
   openGraph: {
     title: "DSS CPCE Santa Fe Cámara I - Guía Interactiva de Cobertura Médica",
     description: "Autogestión de servicios sociales, cartilla médica, credencial digital y trámites para profesionales matriculados.",
@@ -60,9 +80,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f172a",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -71,15 +92,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="es" className={`${plusJakartaSans.variable} ${outfit.variable} scroll-smooth`}>
       <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white">
         {children}
       </body>
