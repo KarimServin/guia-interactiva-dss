@@ -93,7 +93,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${plusJakartaSans.variable} ${outfit.variable} scroll-smooth`}>
-      <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white">
+      <body className="bg-white text-slate-900 min-h-dvh flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white">
         {children}
       </body>
     </html>

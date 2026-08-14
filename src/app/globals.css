@@ -7,12 +7,21 @@
 
 :root {
   font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color-scheme: light;
 }
 
+/* 
+  iOS Safari floating island / status bar fix:
+  - html MUST be white so Safari's translucent toolbar blurs over white
+  - body is also white (the background of sections handles the visual design)
+  - overscroll-behavior: none prevents elastic gray canvas flashing
+*/
 html {
-  background-color: #ffffff !important;
-  overscroll-behavior-y: none;
+  background-color: #ffffff;
+  overscroll-behavior: none;
   -webkit-text-size-adjust: 100%;
+  /* Force iOS safe area to always render over white */
+  padding-top: env(safe-area-inset-top);
 }
 
 body {
@@ -20,14 +29,35 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.011em;
-  background-color: #f1f5f9;
+  background-color: #ffffff;
   min-height: 100dvh;
-  overscroll-behavior-y: none;
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
+  overscroll-behavior: none;
+  /* Momentum scrolling on iOS for smooth feel */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* GPU acceleration for sticky header — prevents jank on iOS scroll */
+header[class*="sticky"] {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .font-heading {
   font-family: var(--font-heading), 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   letter-spacing: -0.025em;
+}
+
+/* 
+  White safe-area padding BELOW the page content.
+  This is what iOS Safari blurs behind the floating toolbar.
+  Without this, it picks up whatever bg-color is last rendered.
+*/
+body::after {
+  content: '';
+  display: block;
+  height: env(safe-area-inset-bottom);
+  background-color: #ffffff;
 }
