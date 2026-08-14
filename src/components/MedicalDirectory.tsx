@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { MEDICAL_PROVIDERS } from '../data/dssData';
 import { Search, MapPin, Phone, Shield, Stethoscope, AlertTriangle, Filter, CheckCircle2 } from 'lucide-react';

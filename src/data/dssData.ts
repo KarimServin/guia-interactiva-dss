@@ -10,21 +10,21 @@ export const INSTITUTIONAL_INFO = {
       id: "que-es",
       title: "¿QUÉ ES EL DSS?",
       icon: "ShieldUtils",
-      content: "El Departamento de Servicios Sociales (DSS) es un sistema solidario de cobertura de salud creado y sostenido por los profesionales matriculados del Consejo Profesional de Ciencias Económicas de Santa Fe – Cámara I.",
-      note: "La afiliación es automática al momento de la matriculación del profesional (hasta los 50 años de edad)."
+      content: "El Departamento de Servicios Sociales (DSS) brinda cobertura de salud a los profesionales matriculados en el Consejo Profesional de Ciencias Económicas de Santa Fe – Cámara I.\n\nEs un sistema solidario, sostenido por sus afiliados, al que se accede automáticamente al momento de la matriculación, hasta los 50 años.",
+      note: "Acceso automático al matricularte (hasta los 50 años)."
     },
     {
       id: "soy-afiliado",
       title: "SOY AFILIADO",
       icon: "UserCheck",
-      content: "Tu número de matrícula funciona como identificación dentro del DSS. No es obligatorio contar con credencial física. También podés acceder a una credencial digital desde la App Institucional del Consejo o esta misma Guía.",
+      content: "Tu número de matrícula es tu identificación dentro del DSS.\n\nNo necesitás contar con una credencial física.\n\nTambién podés acceder a tu credencial digital desde la app institucional del Consejo.",
       note: "Alternativas: Mi número de afiliado / ¿Cuál es mi número de afiliado?"
     },
     {
       id: "grupo-familiar",
       title: "MI GRUPO FAMILIAR",
       icon: "Users",
-      content: "Cada integrante posee una extensión vinculada a la matrícula titular:\n• Cónyuge: Matrícula + 01\n• Hijos: Matrícula + 11, 12, 13, etc., según el orden de incorporación.",
+      content: "Cada integrante del grupo familiar tiene una extensión vinculada a la matrícula del titular:\n\n• Cónyuge: matrícula + 01\n• Hijos: matrícula + 11, 12, 13, etc., según el orden de incorporación.",
       note: "Hijos cubiertos hasta 21 años (o 25 con certificado regular universitario)."
     }
   ]
@@ -32,11 +32,136 @@ export const INSTITUTIONAL_INFO = {
 
 export const ACTION_MODULES: ActionModule[] = [
   {
-    id: 'medicos',
+    id: 'afiliacion',
     buttonNumber: 1,
+    title: 'Afiliación',
+    verbTitle: '¿Cómo afiliarme?',
+    shortDesc: 'Información sobre la incorporación al sistema solidario de cobertura médica.',
+    iconName: 'UserCheck',
+    colorClass: {
+      bg: 'bg-white',
+      border: 'border-blue-100',
+      text: 'text-blue-900',
+      hover: 'hover:border-blue-400 hover:shadow-xl',
+      iconBg: 'bg-blue-600 text-white'
+    },
+    details: {
+      summary: 'El Departamento de Servicios Sociales (DSS) es un sistema solidario de cobertura de salud creado y sostenido por los profesionales matriculados en el Consejo Profesional de Ciencias Económicas de Santa Fe – Cámara I.\n\nAl matricularse en el Consejo Profesional de Ciencias Económicas, el profesional debe contar de forma obligatoria con la obra social, excepto si realiza la declaración jurada de no ejercicio profesional. La afiliación es automática al momento de la matriculación, para profesionales de hasta 50 años.',
+      highlights: [
+        'Sistema Solidario: Creado y sostenido por los profesionales matriculados en el CPCE Santa Fe - Cámara I.',
+        'Afiliación Automática: Se genera sin trámites adicionales al matricularte (para profesionales de hasta 50 años).',
+        'Sin Credenciales Físicas: Tu número de Matrícula Titular te identifica ante médicos, sanatorios y farmacias.',
+        'Extensión Familiar: Posibilidad de agregar cónyuge e hijos con códigos vinculados a tu matrícula.'
+      ],
+      steps: [
+        { step: 1, title: 'Matriculación en CPCE', desc: 'Al matricularte en la Cámara I del CPCE Santa Fe, el alta en el DSS es automática si tenés hasta 50 años.' },
+        { step: 2, title: 'Atención Inmediata', desc: 'Con tu N° de Matrícula podés atenderte en cartilla o comprar medicamentos con descuento.' },
+        { step: 3, title: 'Incorporar Familiares', desc: 'Podés dar de alta a tu grupo familiar descargando y presentando el Formulario de Alta.' }
+      ],
+      faqs: [
+        { q: '¿Qué sucede si tengo más de 50 años al momento de matricularme?', a: 'En ese caso, podés consultar en la secretaría del DSS para evaluar la incorporación conforme a las reglamentaciones vigentes.' },
+        { q: '¿Debo realizar algún trámite presencial para mi afiliación titular?', a: 'No, la afiliación del titular es 100% automática al concretar el trámite de matriculación profesional.' }
+      ],
+      relatedFormIds: ['FORM-01', 'FORM-02'],
+      quickActionLabel: 'Ver Formulario de Afiliación Directa',
+      quickActionTarget: 'formularios'
+    }
+  },
+  {
+    id: 'grupofamiliar',
+    buttonNumber: 2,
+    title: 'Grupo Familiar',
+    verbTitle: 'Adhesión y cobertura del grupo familiar',
+    shortDesc: 'Inclusión de cónyuge e hijos. Cobertura inmediata para titular y carencias para grupo familiar.',
+    iconName: 'Users',
+    colorClass: {
+      bg: 'bg-white',
+      border: 'border-slate-200',
+      text: 'text-blue-900',
+      hover: 'hover:border-sky-500 hover:shadow-md',
+      iconBg: 'bg-sky-600 text-white'
+    },
+    details: {
+      summary: 'El profesional matriculado puede adherir a la obra social a su grupo familiar, es decir, cónyuge e hijos.\n\nEl titular como tal no posee período de carencia ni restricciones por preexistencias y la cobertura es inmediata desde el alta. Sin embargo, los integrantes del grupo familiar pueden tener período de carencia de entre 3 y 12 meses.',
+      highlights: [
+        'Titular sin carencias: Cobertura inmediata sin restricciones por preexistencias.',
+        'Períodos de Carencia (Grupo Familiar): Aplicables entre 3 y 12 meses según la prestación.',
+        'Códigos de Extensión: Cónyuge (+01), Hijos (+11, +12, +13, etc.).',
+        'Edad límite de Hijos: Cubiertos hasta los 21 años (o 25 con certificado regular universitario).'
+      ],
+      carenciasTable: [
+        { prestacion: "Consultas", carencia: "3 meses" },
+        { prestacion: "Diagnóstico y Tratamiento de Baja Complejidad", carencia: "3 meses" },
+        { prestacion: "Diagnóstico y Tratamiento de Alta Complejidad", carencia: "6 meses" },
+        { prestacion: "Alergia", carencia: "3 meses" },
+        { prestacion: "Psiquiatría", carencia: "3 meses" },
+        { prestacion: "Psicología y Psicopedagogía", carencia: "3 meses" },
+        { prestacion: "Foniatría", carencia: "3 meses" },
+        { prestacion: "Medicamentos", carencia: "3 meses" },
+        { prestacion: "Asistencia Sanatorial", carencia: "3 meses" },
+        { prestacion: "Intervenciones Quirúrgicas", carencia: "6/12 meses" },
+        { prestacion: "Nutrición", carencia: "3 meses" },
+        { prestacion: "Prótesis y Ortesis", carencia: "" },
+        { prestacion: "Audífonos", carencia: "6 meses" },
+        { prestacion: "Ambulancia", carencia: "" },
+        { prestacion: "Odontología", carencia: "6 meses" },
+        { prestacion: "Óptica", carencia: "3 meses" },
+        { prestacion: "Tratamiento Oncológico", carencia: "12 meses" },
+        { prestacion: "Subsidios", carencia: "12 meses" },
+        { prestacion: "Guarderías", carencia: "10 meses" },
+        { prestacion: "Servicio de Sepelio", carencia: "" },
+        { prestacion: "Seguro de Vida", carencia: "" },
+        { prestacion: "Coseguro Otra Obra Social", carencia: "" }
+      ],
+      steps: [
+        { step: 1, title: 'Completá el Formulario de Alta', desc: 'Descargá el Formulario de Incorporación de Grupo Familiar (FORM-02).' },
+        { step: 2, title: 'Adjuntá la documentación', desc: 'Certificado de matrimonio/convivencia o partida de nacimiento del hijo/a.' },
+        { step: 3, title: 'Presentá en el DSS', desc: 'Enviar vía e-mail a dss@cpcesfe1.org.ar o en la sede de San Lorenzo 1849 – Santa Fe – Cámara I.' }
+      ],
+      faqs: [
+        { q: '¿Cómo mantengo la cobertura de mi hijo estudiante mayor de 21 años?', a: 'Debés presentar anualmente en el mes de Abril el Certificado de Alumno Regular emitido por la institución universitaria o terciaria reconocida.' }
+      ],
+      relatedFormIds: ['FORM-02', 'FORM-07'],
+      quickActionLabel: 'Descargar Formulario Alta Familiar',
+      quickActionTarget: 'formularios'
+    }
+  },
+  {
+    id: 'identificacion',
+    buttonNumber: 3,
+    title: 'Identificación del Afiliado',
+    verbTitle: '¿Cómo identificarme en las consultas?',
+    shortDesc: 'No es obligatorio contar con credencial física. Accedé a la credencial digital desde la App institucional.',
+    iconName: 'UserCheck',
+    colorClass: {
+      bg: 'bg-white',
+      border: 'border-slate-200',
+      text: 'text-blue-900',
+      hover: 'hover:border-sky-500 hover:shadow-md',
+      iconBg: 'bg-blue-900 text-white'
+    },
+    details: {
+      summary: 'No necesitás presentar una credencial física en la consulta médica ni para solicitar servicios de salud.\n\nAl momento de la atención, únicamente debes informar tu número de matrícula titular (o la extensión correspondiente a tu grupo familiar) junto a tu DNI.\n\nAdemás, podés acceder a tu credencial digital en cualquier momento desde la App institucional del Consejo.',
+      highlights: [
+        'Sin Credencial Física: No es obligatorio contar ni presentar plástico o carnet físico en la consulta médica.',
+        'Identificación Sencilla: Solo indicás tu N° de Matrícula Titular o Extensión Familiar (+01, +11, etc.) y DNI.',
+        'Credencial Digital en tu Móvil: Disponible las 24 hs a través de la aplicación oficial del CPCE Santa Fe.'
+      ],
+      appLinks: {
+        android: 'https://play.google.com/store/apps/details?id=com.cpcesantafe.app&hl=es_AR',
+        ios: 'https://apps.apple.com/ne/app/cpce-santa-fe-cra-i/id1661334681'
+      },
+      faqs: [
+        { q: '¿Qué hago si el prestador me pide credencial física?', a: 'Podés informar que el DSS opera sin credencial física obligatoria mediante N° de Matrícula, o mostrar tu Credencial Digital desde la App institucional.' }
+      ]
+    }
+  },
+  {
+    id: 'medicos',
+    buttonNumber: 4,
     title: 'Consultas médicas',
-    verbTitle: 'Necesito atenderme con un médico',
-    shortDesc: 'Atención médica con tu matrícula, profesionales en cartilla, guardias y consultas sin orden física.',
+    verbTitle: '¿Cómo solicitar atención con un profesional?',
+    shortDesc: 'Pasos para buscar prestadores en cartilla, emitir la orden de consulta y asistir al turno.',
     iconName: 'Stethoscope',
     colorClass: {
       bg: 'bg-white',
@@ -46,21 +171,28 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-600 text-white'
     },
     details: {
-      summary: 'Para consultas médicas con profesionales o centros adheridos, solo necesitás informar tu número de matrícula titular o la extensión correspondiente a tu grupo familiar.',
-      highlights: [
-        'Atención directa en consultorio o sanatorio adherido presentando DNI y N° de Matrícula.',
-        'No requiere la presentación de bono físico previa para consultas generales.',
-        'Acceso a cartilla médica actualizada de la Cámara I (Santa Fe, Santo Tomé, Rafaela, Reconquista, etc.).',
-        'Atención de Guardia y Urgencias las 24 horas en sanatorios contratados.'
-      ],
+      summary: 'Para solicitar atención médica con un profesional o centro en cartilla, seguí el procedimiento indicado a continuación: búsqueda del prestador, emisión previa de la orden de consulta y presentación con tu DNI.',
+      highlights: [],
       steps: [
-        { step: 1, title: 'Buscá el profesional', desc: 'Consultá nuestra Cartilla Médica filtrando por especialidad y ciudad.' },
-        { step: 2, title: 'Agendá el turno', desc: 'Comunicate directamente con el consultorio o sanatorio seleccionado.' },
-        { step: 3, title: 'Presentate con tu Matrícula', desc: 'Al momento de ser atendido, indicá tu N° de Matrícula (y extensión si es familiar). El profesional registrará la consulta en el sistema.' }
+        { 
+          step: 1, 
+          title: 'Buscar un prestador', 
+          desc: 'Consultá la [Cartilla de Prestadores Online](https://cpcesfe1.org.ar/cartilla-de-prestadores/)\n\nTambién podés solicitar información por [WhatsApp: 3425 10-5675](https://wa.me/5493425105675).' 
+        },
+        { 
+          step: 2, 
+          title: 'Emitir la orden de consulta', 
+          desc: 'Ingresá al [Software de Gestión](http://www.contadores.org.ar/php/login.php) y generá la orden de consulta (el monto de la misma se generará en la factura del próximo mes).' 
+        },
+        { 
+          step: 3, 
+          title: 'Asistir al turno', 
+          desc: 'Presentate con:\n• DNI\n• Orden de consulta emitida' 
+        }
       ],
       faqs: [
-        { q: '¿Necesito comprar un bono en el Consejo antes de ir al médico?', a: 'No, no es necesario comprar bonos previa consulta. El profesional factura directamente al DSS y el valor del coseguro correspondiente se liquida en tu resumen mensual.' },
-        { q: '¿Cómo me identifico si no tengo credencial física?', a: 'Únicamente mencionando tu número de Matrícula e indicando que pertenecés al DSS CPCE Santa Fe Cámara I. Si lo preferís, podés mostrar la Credencial Digital desde el teléfono.' }
+        { q: '¿Cuándo se factura el valor de la orden de consulta?', a: 'El importe correspondiente a la orden de consulta emitida se liquidará en tu factura del mes siguiente.' },
+        { q: '¿Qué documentación debo presentar en el consultorio?', a: 'Debés concurrir con tu DNI y la Orden de consulta emitida previamente desde el software.' }
       ],
       relatedFormIds: ['FORM-01', 'FORM-05'],
       quickActionLabel: 'Ver Cartilla Médica',
@@ -69,10 +201,10 @@ export const ACTION_MODULES: ActionModule[] = [
   },
   {
     id: 'medicamentos',
-    buttonNumber: 2,
+    buttonNumber: 5,
     title: 'Farmacia y medicamentos',
-    verbTitle: 'Quiero comprar medicamentos',
-    shortDesc: '40% de descuento en medicamentos de venta con receta y planes de cobertura al 70% o 100%.',
+    verbTitle: 'Cobertura en farmacias',
+    shortDesc: 'Farmacia, medicamentos, receta electrónica',
     iconName: 'Pill',
     colorClass: {
       bg: 'bg-white',
@@ -82,30 +214,72 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-sky-600 text-white'
     },
     details: {
-      summary: 'El DSS ofrece un 40% de descuento automático en medicamentos del Vademécum institucional en la red de farmacias adheridas del Colegio de Farmacéuticos de Santa Fe.',
-      highlights: [
-        'Descuento directo del 40% en mostrador de farmacias presentando receta médica y N° de Matrícula.',
-        'Plan Cronicidad (70% o 100% de cobertura) para patologías crónicas de tratamiento prolongado.',
-        'Plan Materno Infantil (PMI): 100% en medicamentos para la embarazada y el bebé hasta el año de vida.',
-        'Aceptación de Receta Médica Digital o Impresa con firma profesional.'
-      ],
+      summary: 'Cobertura general del 60% en medicamentos del vademécum para todos los planes en farmacias adheridas de la red del Colegio de Farmacéuticos, presentando tu matrícula. Las pastillas anticonceptivas también tienen cobertura del 60% (con ficha de tratamiento previa).',
+      highlights: [],
       steps: [
-        { step: 1, title: 'Pedí la receta a tu médico', desc: 'Asegurate de que la receta consigne tu N° de Matrícula, fecha, diagnóstico y firma.' },
-        { step: 2, title: 'Dirigite a una farmacia adherida', desc: 'Presentá la receta en cualquier farmacia integrada a la red FASAFE / Colegio de Farmacéuticos.' },
-        { step: 3, title: 'Recibí el descuento en el acto', desc: 'La farmacia aplicará el 40% de descuento directo en el importe abonado.' }
+        { 
+          step: 1, 
+          title: 'Pedí la receta a tu médico', 
+          desc: 'Si el médico utiliza receta electrónica, la farmacia la puede visualizar directamente en el sistema con tu N° de Matrícula (no necesitas llevarla impresa).' 
+        },
+        { 
+          step: 2, 
+          title: 'Comprá en una farmacia adherida', 
+          desc: 'Presentá tu matrícula para obtener el 60% de descuento directo en el acto (100% para Plan Materno Infantil).' 
+        }
       ],
       faqs: [
-        { q: '¿Cómo tramito la cobertura al 70% por medicamento crónico?', a: 'Debés presentar el Formulario de Solicitud de Cobertura Especial firmado por tu médico tratante en el DSS. Una vez auditado y aprobado, el descuento mayor se aplica directamente en la farmacia.' },
-        { q: '¿Qué cubre el Plan Materno Infantil?', a: 'Cubre el 100% de los medicamentos prescriptos para la madre durante el embarazo y hasta 30 días posteriores al parto, y para el bebé hasta el primer año de vida.' }
+        { q: '¿Qué cubre el Plan Materno Infantil?', a: 'Cubre el 100% de los medicamentos prescriptos para la madre durante el embarazo (hasta 30 días post-parto) y para el bebé hasta el primer año.' }
       ],
-      relatedFormIds: ['FORM-03'],
+      relatedFormIds: [],
       quickActionLabel: 'Buscador de Farmacias y Cobertura',
       quickActionTarget: 'vademecum'
     }
   },
   {
+    id: 'anticonceptivas',
+    buttonNumber: 6,
+    title: 'Pastillas anticonceptivas',
+    verbTitle: 'Cobertura de pastillas anticonceptivas',
+    shortDesc: 'Reconocimiento del 60% para ambos planes con descuento directo en Farmacia.',
+    iconName: 'HeartPulse',
+    colorClass: {
+      bg: 'bg-white',
+      border: 'border-rose-100',
+      text: 'text-rose-900',
+      hover: 'hover:border-rose-400 hover:shadow-xl',
+      iconBg: 'bg-rose-600 text-white'
+    },
+    details: {
+      summary: 'Cobertura del 60% en pastillas anticonceptivas para ambos planes con descuento directo en Farmacia. Requiere presentar previamente en el DSS una ficha de tratamiento prolongado (se renueva cada 6 meses) indicando una marca del vademécum.',
+      highlights: [],
+      steps: [
+        { 
+          step: 1, 
+          title: 'Descargá el Vademécum y Ficha', 
+          desc: 'Descargá el [Vademécum de Anticonceptivos](https://www.cpcesfe1.org.ar/aplicativos/Documentos/VDM202608.xlsx) (Excel). Solicitá la ficha de tratamiento o hacé tus consultas a dss@cpn.org.ar.' 
+        },
+        { 
+          step: 2, 
+          title: 'Presentá la Ficha de Tratamiento', 
+          desc: 'Hacé completar la ficha por tu médico tratante indicando una de las marcas del vademécum y presentala en el DSS (se renueva cada 6 meses).' 
+        },
+        { 
+          step: 3, 
+          title: 'Comprá en Farmacia', 
+          desc: 'Una vez autorizada, comprá directamente en cualquier farmacia adherida presentando tu número de matrícula para obtener el 60% de descuento.' 
+        }
+      ],
+      faqs: [
+        { q: '¿Cada cuánto tiempo se debe renovar la ficha?', a: 'La ficha de tratamiento prolongado de anticonceptivos debe renovarse obligatoriamente cada 6 meses.' }
+      ],
+      quickActionLabel: 'Descargar Vademécum (Excel)',
+      quickActionTarget: 'https://www.cpcesfe1.org.ar/aplicativos/Documentos/VDM202608.xlsx'
+    }
+  },
+  {
     id: 'autorizaciones',
-    buttonNumber: 3,
+    buttonNumber: 7,
     title: 'Estudios, prácticas y odontología',
     verbTitle: 'Necesito autorizar una práctica',
     shortDesc: 'Requisito obligatorio para estudios de alta complejidad, cirugías u odontología especial.',
@@ -118,17 +292,84 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-900 text-white'
     },
     details: {
-      summary: 'Ciertas prácticas médicas y odontológicas de mediana o alta complejidad requieren autorización previa de la Auditoría Médica del DSS para garantizar tu cobertura.',
-      highlights: [
-        'Prácticas SIMPLES (análisis clínicos básicos, Rx simple, ecografías estándar) NO requieren autorización previa.',
-        'Prácticas COMPLEJAS (RMN, TAC, Endoscopías, Cirugías, Kinesiología >10 sesiones) SÍ requieren autorización previa.',
-        'Trámite 100% digital: podés adjuntar la orden médica desde esta misma web o por WhatsApp institucional.',
-        'Respuesta habitual en 24 a 48 horas hábiles.'
-      ],
-      steps: [
-        { step: 1, title: 'Tomá foto de la orden médica', desc: 'Verificá que se lea claramente el diagnóstico, solicitud y datos del profesional prescriptor.' },
-        { step: 2, title: 'Enviá la solicitud digital', desc: 'Ingresá al módulo de Solicitud de Autorización Online en esta guía o por correo a dss@cpcesfe1.org.ar.' },
-        { step: 3, title: 'Recibí la orden autorizada', desc: 'Te notificaremos por e-mail o WhatsApp con el comprobante de autorización para presentar en el centro médico.' }
+      summary: 'Necesitan autorización previa los estudios, prácticas, imágenes, odontología, análisis, etc.\n\n**¿Cómo se autoriza?**\nEnviando la indicación médica por WhatsApp al [3425 10-5675](https://wa.me/5493425105675).\n\n**Horario de atención:** Lunes a viernes | 7 a 15 hs',
+      highlights: [],
+      steps: [],
+      coberturaTable: [
+        { prestacion: 'CONSULTAS', isHeader: true },
+        { prestacion: 'Consultorio', descripcion: 'Coseguro', general: 'V. Modulado', basico: 'V. Modulado' },
+        { prestacion: 'DIAGNÓSTICO Y TRATAMIENTO DE BAJA COMPLEJIDAD', isHeader: true },
+        { prestacion: 'Laboratorio', descripcion: 'Autorización previa / Coseguro', general: '70%', basico: '60%' },
+        { prestacion: 'Radiología', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Electrocardiograma', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Ergometría', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Colposcopia / PAP / Mamografía', descripcion: 'Autorización. 100% cobertura 1.ª del año', general: '', basico: '' },
+        { prestacion: 'Ecografías', descripcion: 'Autorización previa / Coseguro', general: '', basico: '' },
+        { prestacion: 'Kinesiología / Fisiatría', descripcion: 'Tope: 20 sesiones anuales', general: '', basico: '' },
+        { prestacion: 'Electroencefalograma', descripcion: 'Autorización previa / Coseguro', general: '', basico: '' },
+        { prestacion: 'Electromiografía', descripcion: 'Autorización previa / Coseguro', general: '', basico: '' },
+        { prestacion: 'DIAGNÓSTICO Y TRATAMIENTO DE ALTA COMPLEJIDAD', isHeader: true },
+        { prestacion: 'Tomografía Axial Computada', descripcion: 'Autorización previa / Coseguro', general: '70%', basico: '60%' },
+        { prestacion: 'Resonancia Magnética Nuclear', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Cámara Gamma', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Densitometría Ósea', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Ecocardiograma', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Eco-Doppler', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Holter', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Presurometría', descripcion: '', general: '', basico: '' },
+        { prestacion: 'ALERGIA', isHeader: true },
+        { prestacion: 'Testificación', descripcion: 'Reintegro / Determinado por reglamento', general: '70%', basico: '–' },
+        { prestacion: 'Tratamiento hasta 1 año', descripcion: '', general: '60%', basico: '–' },
+        { prestacion: 'Los años siguientes', descripcion: '', general: '30%', basico: '–' },
+        { prestacion: 'PSIQUIATRÍA', isHeader: true },
+        { prestacion: 'Consulta', descripcion: 'Reintegro valor consulta', general: 'Tope 20 anuales + 10 HC', basico: 'Tope 20 anuales' },
+        { prestacion: 'PSICOLOGÍA Y PSICOPEDAGOGÍA', isHeader: true },
+        { prestacion: 'Sesiones', descripcion: 'Autorización / Tope: 20 anuales', general: '50%', basico: '40%' },
+        { prestacion: 'FONIATRÍA', isHeader: true },
+        { prestacion: 'Sesiones de reeducación', descripcion: '', general: '', basico: '' },
+        { prestacion: 'MEDICAMENTOS', isHeader: true },
+        { prestacion: 'Ambulatorios', descripcion: 'Farmacéuticos', general: '60%', basico: '60% s/ vademécum' },
+        { prestacion: 'Internación', descripcion: '', general: '100%', basico: '80%' },
+        { prestacion: 'Material de contraste', descripcion: 'Autorización / Coseguro', general: '50%', basico: '30%' },
+        { prestacion: 'Material radioactivo', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Vacunas', descripcion: 'Reintegro. Límite según reglamento', general: '–', basico: '' },
+        { prestacion: 'ASISTENCIA SANATORIAL', isHeader: true },
+        { prestacion: 'Honorarios, pensión y gastos', descripcion: 'Autorización previa / Coseguro', general: '100%', basico: '80%' },
+        { prestacion: 'INTERVENCIONES QUIRÚRGICAS', isHeader: true },
+        { prestacion: 'Nomencladas', descripcion: 'Ambulatorio / Internación', general: '70% y 100%', basico: '60% y 80%' },
+        { prestacion: 'No nomencladas', descripcion: 'Ambulatorio / Internación – Reintegro', general: 'V. Modulado', basico: '' },
+        { prestacion: 'NUTRICIÓN', isHeader: true },
+        { prestacion: 'Consulta', descripcion: 'Reintegro', general: '6 x año', basico: '' },
+        { prestacion: 'PRÓTESIS Y ÓRTESIS', isHeader: true },
+        { prestacion: 'Marcapasos', descripcion: 'Autorización / Menor de 3 presupuestos', general: '60%', basico: '40%' },
+        { prestacion: 'Válvulas cardíacas', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Catéteres', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Prótesis', descripcion: '', general: '', basico: '' },
+        { prestacion: 'Alquiler', descripcion: 'Reintegro', general: '', basico: '' },
+        { prestacion: 'AUDÍFONOS', isHeader: true },
+        { prestacion: 'Audífonos', descripcion: 'Reintegros. Menor de tres presupuestos', general: '40%', basico: '–' },
+        { prestacion: 'AMBULANCIA', isHeader: true },
+        { prestacion: 'Urgencias', descripcion: 'Reintegro – Dentro de la ciudad', general: '100%', basico: '100%' },
+        { prestacion: 'Traslados', descripcion: 'Reintegros', general: '30%', basico: '–' },
+        { prestacion: 'ODONTOLOGÍA', isHeader: true },
+        { prestacion: 'Dentistería', descripcion: 'Reintegros – Padrón por autorización / Coseguro', general: '70%', basico: '' },
+        { prestacion: 'Prótesis', descripcion: 'Reintegros', general: '50%', basico: '–' },
+        { prestacion: 'Ortodoncia', descripcion: 'Reintegros – Según reglamento', general: '70%', basico: '–' },
+        { prestacion: 'ÓPTICA', isHeader: true },
+        { prestacion: 'Cristales blancos comunes, bifocales + armazón', descripcion: 'Cada 2 años por reintegro', general: '100%', basico: '60%' },
+        { prestacion: 'Excímer Láser', descripcion: 'Por reintegro', general: 'Por reintegro, valor de referencia: 2,5 a 4 dioptrías: 50%; 4 a 6 dioptrías: 60%; más de 6 dioptrías: 100%', basico: 'Sin cobertura' },
+        { prestacion: 'TRATAMIENTO ONCOLÓGICO', isHeader: true },
+        { prestacion: 'Pensión, honorarios y gastos', descripcion: 'Módulo fijo por auditoría', general: '100%', basico: '' },
+        { prestacion: 'Terapia radiante', descripcion: 'Autorización previa / Coseguro', general: '', basico: '' },
+        { prestacion: 'SUBSIDIOS', isHeader: true },
+        { prestacion: 'Asignación por Matrimonio / Nacimiento / Adopción', descripcion: '', general: '100%', basico: '–' },
+        { prestacion: 'Guarderías', descripcion: '', general: '–', basico: '' },
+        { prestacion: 'SERVICIO DE SEPELIO', isHeader: true },
+        { prestacion: 'Servicio de sepelio', descripcion: 'Cobertura directa', general: '100%', basico: '' },
+        { prestacion: 'SEGURO DE VIDA', isHeader: true },
+        { prestacion: 'Obligatorio', descripcion: 'Según módulo', general: '', basico: '' },
+        { prestacion: 'COSEGURO OTRA OBRA SOCIAL', isHeader: true },
+        { prestacion: 'Prácticas reconocidas por DSS', descripcion: '', general: '', basico: '' }
       ],
       faqs: [
         { q: '¿Tiene vencimiento la orden médica autorizada?', a: 'Sí, la autorización tiene una validez de 30 días corridos a partir de la fecha de aprobación.' },
@@ -141,7 +382,7 @@ export const ACTION_MODULES: ActionModule[] = [
   },
   {
     id: 'coseguros',
-    buttonNumber: 4,
+    buttonNumber: 8,
     title: 'Coseguros',
     verbTitle: 'Acerca de los coseguros',
     shortDesc: 'Información sobre el sistema solidario, tabla de coseguros y modo de liquidación.',
@@ -177,7 +418,7 @@ export const ACTION_MODULES: ActionModule[] = [
   },
   {
     id: 'cobertura',
-    buttonNumber: 5,
+    buttonNumber: 9,
     title: 'Prácticas y medicamentos',
     verbTitle: 'Consultas sobre mi cobertura',
     shortDesc: 'Aclará todas tus dudas sobre planes, alcance del PMO, prótesis, internación y reciprocidad nacional.',
@@ -207,43 +448,8 @@ export const ACTION_MODULES: ActionModule[] = [
     }
   },
   {
-    id: 'grupofamiliar',
-    buttonNumber: 6,
-    title: 'Cobertura del grupo familiar',
-    verbTitle: 'Mi grupo familiar',
-    shortDesc: 'Inclusión de cónyuge, convivencia, hijos e hijas. Extensiones +01, +11, +12...',
-    iconName: 'Users',
-    colorClass: {
-      bg: 'bg-white',
-      border: 'border-slate-200',
-      text: 'text-blue-900',
-      hover: 'hover:border-sky-500 hover:shadow-md',
-      iconBg: 'bg-sky-600 text-white'
-    },
-    details: {
-      summary: 'Permite incorporar a tu cónyuge o conviviente e hijos con una extensión vinculada a tu número de matrícula titular.',
-      highlights: [
-        'Cónyuge / Conviviente: Código de extensión Matrícula + 01.',
-        'Hijos e hijas: Código de extensión Matrícula + 11 (primer hijo), +12 (segundo hijo), +13 (tercer hijo), etc.',
-        'Cobertura de hijos hasta los 21 años de edad.',
-        'Prórroga hasta los 25 años inclusive si cursan estudios superiores/universitarios de forma regular.'
-      ],
-      steps: [
-        { step: 1, title: 'Completá el Formulario de Alta', desc: 'Descargá el Formulario de Incorporación de Grupo Familiar (FORM-02).' },
-        { step: 2, title: 'Adjuntá la documentación', desc: 'Certificado de matrimonio/convivencia o partida de nacimiento del hijo/a.' },
-        { step: 3, title: 'Presentá en el DSS', desc: 'Enviar vía e-mail a dss@cpcesfe1.org.ar o en la sede de San Lorenzo 1849 – Santa Fe – Cámara I.' }
-      ],
-      faqs: [
-        { q: '¿Cómo mantengo la cobertura de mi hijo estudiante mayor de 21 años?', a: 'Debés presentar anualmente en el mes de Abril el Certificado de Alumno Regular emitido por la institución universitaria o terciaria reconocida.' }
-      ],
-      relatedFormIds: ['FORM-02', 'FORM-07'],
-      quickActionLabel: 'Descargar Formulario Alta Familiar',
-      quickActionTarget: 'formularios'
-    }
-  },
-  {
     id: 'pagos',
-    buttonNumber: 7,
+    buttonNumber: 10,
     title: 'Medios de pago',
     verbTitle: 'Quiero saber cómo pagar mi cuota',
     shortDesc: 'Información sobre cuotas, débito automático, homebanking, botón de pago y deducción impositiva.',
@@ -278,7 +484,7 @@ export const ACTION_MODULES: ActionModule[] = [
   },
   {
     id: 'contacto',
-    buttonNumber: 8,
+    buttonNumber: 11,
     title: 'Canales de contacto',
     verbTitle: 'Contacto y ayuda',
     shortDesc: 'Atención personalizada, WhatsApp de urgencias, dirección de la sede y horarios de atención.',

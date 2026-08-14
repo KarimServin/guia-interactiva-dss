@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { jsPDF } from 'jspdf';
 import { CreditCard, QrCode, Download, Shield, CheckCircle, User, RefreshCw, Smartphone, X } from 'lucide-react';

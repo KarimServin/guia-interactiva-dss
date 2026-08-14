@@ -1,102 +1,136 @@
-import React from 'react';
-import { Shield, Phone, MapPin, CreditCard, Sparkles, Globe, HeartPulse } from 'lucide-react';
+"use client";
+
+import React, { useState } from 'react';
+import { 
+  MapPin, 
+  Globe, 
+  MessageCircle, 
+  Menu, 
+  X, 
+  ChevronRight,
+  Users,
+  Pill,
+  FileText,
+  CreditCard
+} from 'lucide-react';
 
 interface HeaderProps {
   onOpenCredential?: () => void;
   onOpenAssistant?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  onOpenCredential,
-  onOpenAssistant,
-}) => {
+const NAV_ITEMS = [
+  { label: 'Cartilla Prestadores', icon: Users, href: '#' },
+  { label: 'Vademecum', icon: Pill, href: '#' },
+  { label: 'Formularios', icon: FileText, href: '#' },
+  { label: 'Cuotas y Valores', icon: CreditCard, href: '#' }
+];
+
+export const Header: React.FC<HeaderProps> = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md text-slate-900 border-b border-slate-200/80 shadow-xs">
+    <header className="sticky top-0 z-40 bg-gradient-to-r from-sky-50 via-blue-50 to-orange-100 text-slate-900 border-b border-sky-200/80 shadow-sm">
       {/* Top Thin Institutional Bar */}
-      <div className="bg-blue-950 text-slate-200 text-xs py-1.5 px-4 sm:px-8 flex flex-wrap items-center justify-between gap-2 border-b border-blue-900/60">
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 bg-blue-900/90 text-sky-100 border border-blue-800/80 font-semibold px-2.5 py-0.5 rounded-md text-[11px] shadow-2xs">
-            <Shield className="w-3.5 h-3.5 text-sky-400" />
-            CPCE Santa Fe • Cámara I
-          </span>
-          <span className="hidden md:inline text-slate-300 text-xs font-normal">
-            Departamento de Servicios Sociales (DSS) | Sistema Solidario de Salud
-          </span>
-        </div>
-        <div className="flex items-center gap-4 text-xs font-normal text-slate-300">
+      <div className="bg-gradient-to-r from-blue-950 via-blue-900 to-amber-950/90 text-slate-100 text-sm py-2 px-4 sm:px-8 flex items-center justify-end gap-6 border-b border-blue-900/40 shadow-inner">
+        <div className="flex items-center gap-6 text-sm font-medium text-slate-200">
           <a 
             href="https://wa.me/5493425105675" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="hover:text-emerald-300 flex items-center gap-1.5 transition-colors"
+            className="hover:text-emerald-300 flex items-center gap-1.5 transition-colors font-semibold leading-none"
           >
-            <Phone className="w-3.5 h-3.5 text-emerald-400" />
-            <span>WA 3425 10-5675</span>
+            <div className="w-5 h-5 rounded-md bg-emerald-500/20 flex items-center justify-center shrink-0">
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+            </div>
+            <span>3425 10-5675</span>
           </a>
-          <span className="hidden sm:flex items-center gap-1.5 text-slate-300">
-            <MapPin className="w-3.5 h-3.5 text-sky-400" />
+          <span className="hidden sm:flex items-center gap-2 text-slate-200">
+            <MapPin className="w-4 h-4 text-sky-400" />
             <span>San Lorenzo 1849 – Santa Fe</span>
           </span>
           <a 
             href="https://cpcesfe1.org.ar" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="hidden lg:flex items-center gap-1.5 text-sky-300 hover:text-white transition-colors font-medium"
+            className="hidden lg:flex items-center gap-2 text-sky-300 hover:text-white transition-colors font-medium"
           >
-            <Globe className="w-3.5 h-3.5 text-sky-400" />
+            <Globe className="w-4 h-4 text-sky-400" />
             <span>cpcesfe1.org.ar</span>
           </a>
         </div>
       </div>
 
       {/* Main Navbar Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-6">
         {/* Brand & Identity */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-blue-900 rounded-xl flex items-center justify-center shrink-0 shadow-2xs text-white">
-            <HeartPulse className="w-5 h-5 text-sky-200" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="font-heading font-extrabold text-slate-900 text-lg tracking-tight leading-none">
-                DSS Santa Fe
-              </h1>
-              <span className="bg-sky-50 text-sky-800 border border-sky-200/80 text-[10px] font-bold px-2.5 py-0.5 rounded-full">
-                Cámara I
-              </span>
-            </div>
-            <p className="text-[11px] text-slate-500 font-medium mt-0.5">
-              Servicios Sociales y Cobertura Médica
-            </p>
-          </div>
+        <div className="flex items-center gap-4 sm:gap-6">
+          <a href="#" className="flex items-center shrink-0">
+            <img 
+              src="/dss-logo.png" 
+              alt="DSS - Departamento de Servicios Sociales - CPCE Santa Fe" 
+              className="h-11 sm:h-12 w-auto object-contain block" 
+            />
+          </a>
+          <div className="h-8 sm:h-10 w-px bg-slate-300/80 shrink-0"></div>
+          <a href="https://cpcesfe1.org.ar" target="_blank" rel="noopener noreferrer" className="flex items-center shrink-0">
+            <img 
+              src="/cpce-logo-header.png" 
+              alt="Consejo Profesional de Ciencias Económicas - Cámara I" 
+              className="h-9 sm:h-[40px] w-auto object-contain block" 
+            />
+          </a>
         </div>
 
-        {/* Quick Institutional Action Badges */}
-        <div className="flex items-center gap-2.5">
-          {onOpenCredential && (
-            <button
-              onClick={onOpenCredential}
-              className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200/80 text-slate-800 font-semibold text-xs px-3.5 py-2 rounded-xl border border-slate-200 transition-colors shadow-2xs"
-            >
-              <CreditCard className="w-3.5 h-3.5 text-blue-700" />
-              <span className="hidden sm:inline">Credencial Digital</span>
-            </button>
-          )}
+        {/* Desktop Transparent Nav Buttons with Hover Fill */}
+        <nav className="hidden md:flex items-center gap-1.5">
+          {NAV_ITEMS.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.label}
+                className="flex items-center gap-2 px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 bg-transparent hover:bg-blue-600 hover:text-white rounded-full transition-all duration-200 active:scale-95 group cursor-pointer"
+              >
+                <Icon className="w-4.5 h-4.5 text-blue-600 group-hover:text-white transition-colors duration-200 shrink-0" />
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
+        </nav>
 
-          {onOpenAssistant && (
-            <button
-              onClick={onOpenAssistant}
-              className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold text-xs px-4 py-2 rounded-xl transition-all shadow-xs active:scale-95"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span className="hidden sm:inline">Asistente AI</span>
-            </button>
-          )}
+        {/* Hamburger Menu Button */}
+        <div className="flex md:hidden">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2.5 rounded-xl hover:bg-slate-100 text-slate-700 transition-colors"
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-1 shadow-lg">
+          {NAV_ITEMS.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.label}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full flex items-center justify-between px-4 py-3 text-[13px] font-bold text-slate-800 bg-transparent active:bg-blue-50/50 rounded-full transition-all group"
+              >
+                <div className="flex items-center gap-3">
+                  <Icon className="w-4.5 h-4.5 text-blue-600 shrink-0" />
+                  <span>{item.label}</span>
+                </div>
+                <ChevronRight className="w-4 h-4 text-slate-400 group-active:text-blue-600 transition-colors" />
+              </button>
+            );
+          })}
+        </div>
+      )}
     </header>
   );
 };
-
-
-

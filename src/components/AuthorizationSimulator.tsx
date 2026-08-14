@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { jsPDF } from 'jspdf';
 import { ClipboardCheck, Upload, CheckCircle2, Clock, FileText, Download, ArrowRight, ShieldAlert, Sparkles, X } from 'lucide-react';

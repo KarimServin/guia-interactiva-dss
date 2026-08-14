@@ -1,10 +1,13 @@
 export type ModuleCategory = 
+  | 'afiliacion'
+  | 'grupofamiliar'
+  | 'identificacion'
   | 'medicos'
   | 'medicamentos'
+  | 'anticonceptivas'
   | 'autorizaciones'
   | 'coseguros'
   | 'cobertura'
-  | 'grupofamiliar'
   | 'pagos'
   | 'contacto';
 
@@ -26,6 +29,18 @@ export interface ActionModule {
   details: {
     summary: string;
     highlights: string[];
+    carenciasTable?: { prestacion: string; carencia: string }[];
+    coberturaTable?: {
+      prestacion: string;
+      descripcion?: string;
+      general?: string;
+      basico?: string;
+      isHeader?: boolean;
+    }[];
+    appLinks?: {
+      android?: string;
+      ios?: string;
+    };
     steps?: { step: number; title: string; desc: string }[];
     faqs?: { q: string; a: string }[];
     relatedFormIds?: string[];

@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { ActionModule } from '../types';
 import { 
@@ -10,7 +12,8 @@ import {
   Users, 
   CreditCard, 
   ChevronRight,
-  Sparkles
+  Sparkles,
+  UserCheck
 } from 'lucide-react';
 
 interface ActionGridProps {
@@ -21,6 +24,7 @@ interface ActionGridProps {
 
 const getIconComponent = (iconName: string) => {
   switch (iconName) {
+    case 'UserCheck': return UserCheck;
     case 'Stethoscope': return Stethoscope;
     case 'Pill': return Pill;
     case 'ClipboardCheck': return ClipboardCheck;
@@ -51,7 +55,7 @@ export const ActionGrid: React.FC<ActionGridProps> = ({
   filteredModuleId,
 }) => {
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="servicios" className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       {/* Central Separator Section */}
       <div className="text-center mb-10">
         <span className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 uppercase tracking-wider bg-blue-50 border border-blue-100 px-3 py-1 rounded-full">
@@ -67,7 +71,7 @@ export const ActionGrid: React.FC<ActionGridProps> = ({
       </div>
 
       {/* The 8 Interactive Action Buttons Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div id="action-cards-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {modules.map((mod) => {
           const Icon = getIconComponent(mod.iconName);
           const isHighlighted = filteredModuleId === mod.id;
@@ -82,14 +86,11 @@ export const ActionGrid: React.FC<ActionGridProps> = ({
               }`}
             >
               <div>
-                {/* Header Row with Icon & Badge */}
+                {/* Header Row with Icon */}
                 <div className="flex items-center justify-between mb-3.5">
                   <div className={`w-11 h-11 rounded-2xl ${badgeStyle.iconBg} flex items-center justify-center shrink-0 shadow-2xs group-hover:bg-blue-600 group-hover:text-white transition-colors duration-200`}>
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${badgeStyle.bg}`}>
-                    Módulo {mod.buttonNumber}
-                  </span>
                 </div>
 
                 {/* Verb Title */}

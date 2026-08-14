@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { FORMS_DATA } from '../data/dssData';
 import { FormItem } from '../types';

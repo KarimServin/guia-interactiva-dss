@@ -1,5 +1,7 @@
-import React from 'react';
-import { ShieldCheck, UserCheck, Users, Search, CreditCard, Sparkles, ArrowRight, HeartPulse, Stethoscope, Pill, FileText } from 'lucide-react';
+"use client";
+
+import React, { useState } from 'react';
+import { ShieldCheck, UserCheck, Users, Search, CreditCard, Sparkles, ArrowRight, ChevronDown, ChevronsDown, HeartPulse, Stethoscope, Pill, FileText } from 'lucide-react';
 
 interface HeroSectionProps {
   searchQuery: string;
@@ -14,6 +16,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenCredential,
   onSelectCard,
 }) => {
+  const [openCard, setOpenCard] = useState<string | null>(null);
+
+  const toggleCard = (cardId: string) => {
+    setOpenCard(prev => prev === cardId ? null : cardId);
+  };
+
   const quickFilters = [
     { label: 'Cartilla Médica', query: 'cartilla' },
     { label: 'Autorizaciones', query: 'autorizar' },
@@ -23,8 +31,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   ];
 
   return (
-    <div className="py-10 px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="max-w-7xl mx-auto">
+    <div className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Subtle Background Image with Fade-Out Mask */}
+      <div 
+        className="absolute inset-0 z-0 opacity-[0.35] bg-cover bg-center bg-no-repeat pointer-events-none"
+        style={{ 
+          backgroundImage: "url('/hero-bg.webp')", 
+          backgroundPosition: "center 30%",
+          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0) 100%)",
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0) 100%)"
+        }}
+      ></div>
+      {/* Extra subtle base overlay to ensure text remains readable */}
+      <div className="absolute inset-0 z-0 bg-slate-50/25 pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Main Title & Subtitle */}
         <div className="text-center max-w-3xl mx-auto mb-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-sky-50 border border-sky-200/80 text-sky-800 text-xs font-semibold mb-4 rounded-full shadow-2xs">
@@ -35,7 +56,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             Guía Interactiva para Afiliados
           </h1>
           <p className="text-slate-600 text-base sm:text-lg font-normal max-w-2xl mx-auto leading-relaxed">
-            Consejo Profesional de Ciencias Económicas de Santa Fe – Cámara I. Respuestas inmediatas, autogestión de trámites y atención integral.
+            Todo lo que necesitás saber, en un solo lugar
           </p>
         </div>
 
@@ -67,7 +88,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* Quick Suggestion Chips */}
-          <div className="flex flex-wrap items-center justify-center gap-2 text-xs">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-xs mb-6">
             <span className="text-slate-400 font-medium text-[11px] mr-1">Consultas sugeridas:</span>
             {quickFilters.map((chip) => (
               <button
@@ -83,104 +104,38 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </button>
             ))}
           </div>
-        </div>
 
-        {/* Top 3 Institutional Information Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {/* Card 1: ¿QUÉ ES EL DSS? */}
-          <div 
-            onClick={() => onSelectCard('que-es')}
-            className="bg-white border border-slate-200/80 p-6 rounded-2xl shadow-2xs hover:shadow-md hover:border-sky-300 transition-all duration-200 cursor-pointer flex flex-col justify-between group"
-          >
-            <div>
-              <div className="flex justify-between items-start mb-3.5">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 border border-sky-100 flex items-center justify-center shrink-0 group-hover:bg-sky-600 group-hover:text-white transition-colors">
-                    <ShieldCheck className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-semibold text-sky-700 uppercase tracking-wider">Sistema Solidario</span>
-                    <h2 className="font-heading text-lg font-bold text-slate-900 leading-snug">
-                      ¿Qué es el DSS?
-                    </h2>
-                  </div>
-                </div>
-              </div>
-              <p className="text-slate-600 text-xs leading-relaxed mb-4 font-normal">
-                Sistema de salud creado por y para profesionales matriculados en la Cámara I del CPCE.
-              </p>
-            </div>
-            <div className="pt-3 border-t border-slate-100 text-xs text-sky-800 font-semibold flex items-center justify-between">
-              <span>Afiliación automática al matricularte</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-sky-600" />
-            </div>
+          {/* Discreet Affiliate Tip Banner */}
+          <div className="bg-sky-50/80 backdrop-blur-sm border border-sky-200/60 rounded-xl px-4 py-2.5 flex items-center justify-center gap-2.5 text-center text-xs text-sky-900 shadow-2xs max-w-xl mx-auto mb-8">
+            <ShieldCheck className="w-4 h-4 text-sky-600 shrink-0" />
+            <span className="font-medium text-[11.5px] leading-tight">
+              <strong className="font-semibold text-sky-950">Tip de acceso:</strong> Tu número de Matrícula es tu única identificación requerida para la atención médica y farmacias.
+            </span>
           </div>
 
-          {/* Card 2: SOY AFILIADO */}
-          <div 
-            onClick={() => onSelectCard('soy-afiliado')}
-            className="bg-white border border-slate-200/80 p-6 rounded-2xl shadow-2xs hover:shadow-md hover:border-blue-300 transition-all duration-200 cursor-pointer flex flex-col justify-between group"
-          >
-            <div>
-              <div className="flex justify-between items-start mb-3.5">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <UserCheck className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-semibold text-blue-700 uppercase tracking-wider">Identificación</span>
-                    <h2 className="font-heading text-lg font-bold text-slate-900 leading-snug">
-                      Soy Afiliado
-                    </h2>
-                  </div>
-                </div>
-              </div>
-              <p className="text-slate-600 text-xs leading-relaxed mb-4 font-normal">
-                Identificate con tu número de matrícula o generá tu credencial digital para presentar en prestadores.
-              </p>
-            </div>
-            <div className="pt-3 border-t border-slate-100">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onOpenCredential();
-                }}
-                className="w-full py-2 px-3.5 bg-blue-700 hover:bg-blue-800 text-white font-semibold text-xs rounded-xl flex items-center justify-center gap-2 transition-colors shadow-2xs"
+          {/* Minimalist Wide-Angle Double Scroll Down Arrow */}
+          <div className="flex justify-center pt-3">
+            <button
+              onClick={() => {
+                const el = document.getElementById('servicios');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="p-2 text-slate-400 hover:text-blue-600 opacity-60 hover:opacity-100 transition-all focus:outline-none cursor-pointer animate-bounce"
+              title="Desplazarse hacia abajo"
+            >
+              <svg 
+                className="w-12 h-6" 
+                fill="none" 
+                viewBox="0 0 36 18" 
+                stroke="currentColor" 
+                strokeWidth="2.2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
               >
-                <CreditCard className="w-3.5 h-3.5 text-blue-200" />
-                <span>Ver Credencial Digital</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
-
-          {/* Card 3: MI GRUPO FAMILIAR */}
-          <div 
-            onClick={() => onSelectCard('grupo-familiar')}
-            className="bg-white border border-slate-200/80 p-6 rounded-2xl shadow-2xs hover:shadow-md hover:border-teal-300 transition-all duration-200 cursor-pointer flex flex-col justify-between group"
-          >
-            <div>
-              <div className="flex justify-between items-start mb-3.5">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 border border-teal-100 flex items-center justify-center shrink-0 group-hover:bg-teal-600 group-hover:text-white transition-colors">
-                    <Users className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-semibold text-teal-700 uppercase tracking-wider">Familia</span>
-                    <h2 className="font-heading text-lg font-bold text-slate-900 leading-snug">
-                      Grupo Familiar
-                    </h2>
-                  </div>
-                </div>
-              </div>
-              <p className="text-slate-600 text-xs leading-relaxed mb-4 font-normal">
-                Integrá a tu cónyuge e hijos. Mantené la cobertura de estudiantes universitarios hasta los 25 años.
-              </p>
-            </div>
-            <div className="pt-3 border-t border-slate-100 text-xs text-teal-800 font-semibold flex items-center justify-between">
-              <span>Incorporación y Requisitos</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-teal-600" />
-            </div>
+                <path d="M4 3l14 7L32 3" />
+                <path d="M4 9l14 7L32 9" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

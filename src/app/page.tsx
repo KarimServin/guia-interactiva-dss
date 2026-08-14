@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
-import { Header } from './components/Header';
-import { HeroSection } from './components/HeroSection';
-import { ActionGrid } from './components/ActionGrid';
-import { ModuleDetailModal } from './components/ModuleDetailModal';
-import { DigitalCredential } from './components/DigitalCredential';
-import { MedicalDirectory } from './components/MedicalDirectory';
-import { PharmacyDirectory } from './components/PharmacyDirectory';
-import { FormsCenter } from './components/FormsCenter';
-import { CoseguroTableModal } from './components/CoseguroTableModal';
-import { AuthorizationSimulator } from './components/AuthorizationSimulator';
-import { AiAssistantDrawer } from './components/AiAssistantDrawer';
-import { Footer } from './components/Footer';
+"use client";
 
-import { ACTION_MODULES, FORMS_DATA } from './data/dssData';
-import { ActionModule } from './types';
-import { Search, Sparkles, FileText, CreditCard, Stethoscope, Pill, ClipboardCheck, ArrowRight, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Header } from '@/components/Header';
+import { HeroSection } from '@/components/HeroSection';
+import { ActionGrid } from '@/components/ActionGrid';
+import { ModuleDetailModal } from '@/components/ModuleDetailModal';
+import { DigitalCredential } from '@/components/DigitalCredential';
+import { MedicalDirectory } from '@/components/MedicalDirectory';
+import { PharmacyDirectory } from '@/components/PharmacyDirectory';
+import { FormsCenter } from '@/components/FormsCenter';
+import { CoseguroTableModal } from '@/components/CoseguroTableModal';
+import { AuthorizationSimulator } from '@/components/AuthorizationSimulator';
+import { Footer } from '@/components/Footer';
 
-export default function App() {
+import { ACTION_MODULES, FORMS_DATA } from '@/data/dssData';
+import { ActionModule } from '@/types';
+import { Search, FileText, ClipboardCheck, ArrowRight, X } from 'lucide-react';
+
+export default function HomePage() {
   const [activeTab, setActiveTab] = useState<string>('guia');
   const [searchQuery, setSearchQuery] = useState<string>('');
   
@@ -25,11 +26,48 @@ export default function App() {
   const [showCredentialModal, setShowCredentialModal] = useState<boolean>(false);
   const [showCoseguroModal, setShowCoseguroModal] = useState<boolean>(false);
   const [showAutorizadorModal, setShowAutorizadorModal] = useState<boolean>(false);
-  const [showAssistantDrawer, setShowAssistantDrawer] = useState<boolean>(false);
   const [targetFormForCenter, setTargetFormForCenter] = useState<string | null>(null);
+
+  // Auto-scroll to services grid on first scroll attempt
+  useEffect(() => {
+    let hasScrolledDown = false;
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Reset if user goes back to the very top
+      if (currentScrollY <= 10) {
+        hasScrolledDown = false;
+      }
+      
+      // If user scrolls down slightly from the top, immediately scroll to services
+      if (!hasScrolledDown && currentScrollY > lastScrollY && currentScrollY > 15) {
+        hasScrolledDown = true;
+        const sectionTarget = document.getElementById('servicios');
+        if (sectionTarget) {
+          const offset = 20; 
+          const targetPosition = sectionTarget.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+      
+      lastScrollY = currentScrollY;
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Quick Action Handler inside Module Modal
   const handleQuickAction = (target: string) => {
+    if (target.startsWith('http')) {
+      window.open(target, '_blank', 'noopener,noreferrer');
+      return;
+    }
     if (target === 'cartilla') {
       setActiveTab('cartilla');
     } else if (target === 'vademecum') {
@@ -40,8 +78,6 @@ export default function App() {
       setShowAutorizadorModal(true);
     } else if (target === 'coseguro-tabla') {
       setShowCoseguroModal(true);
-    } else if (target === 'asistente') {
-      setShowAssistantDrawer(true);
     }
   };
 
@@ -74,31 +110,39 @@ export default function App() {
 
   return (
     <div 
-      className="min-h-screen text-slate-900 font-sans flex flex-col antialiased selection:bg-blue-600 selection:text-white relative overflow-hidden bg-slate-50"
+      className="min-h-screen text-slate-900 font-sans flex flex-col antialiased selection:bg-blue-600 selection:text-white relative overflow-hidden bg-gradient-to-b from-slate-50 via-sky-50/20 to-orange-50/30"
     >
-      {/* Luces Ambientales de Fondo Suaves */}
+      {/* Ambient background glow */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
-        {/* Esfera Superior Izquierda: Azul Suave */}
         <div 
-          className="absolute -top-20 -left-20 w-[600px] h-[600px] rounded-full blur-[70px] opacity-70"
+          className="absolute -top-20 -left-20 w-[600px] h-[600px] rounded-full blur-[80px] opacity-60"
           style={{
-            background: 'radial-gradient(circle, rgba(186, 230, 253, 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(186, 230, 253, 0.45) 0%, transparent 70%)',
           }}
         />
-
-        {/* Esfera Superior Derecha: Indigo Suave */}
         <div 
-          className="absolute top-10 -right-20 w-[500px] h-[500px] rounded-full blur-[80px] opacity-50"
+          className="absolute top-0 -right-20 w-[550px] h-[550px] rounded-full blur-[90px] opacity-45"
           style={{
-            background: 'radial-gradient(circle, rgba(224, 231, 255, 0.5) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(254, 215, 170, 0.5) 0%, transparent 70%)',
+          }}
+        />
+        <div 
+          className="absolute top-1/2 -right-32 w-[600px] h-[600px] rounded-full blur-[100px] opacity-35"
+          style={{
+            background: 'radial-gradient(circle, rgba(253, 186, 116, 0.35) 0%, transparent 70%)',
+          }}
+        />
+        <div 
+          className="absolute bottom-20 left-10 w-[500px] h-[500px] rounded-full blur-[80px] opacity-40"
+          style={{
+            background: 'radial-gradient(circle, rgba(224, 231, 255, 0.45) 0%, transparent 70%)',
           }}
         />
       </div>
 
-      {/* Navbar Sin Opciones */}
+      {/* Header */}
       <Header
         onOpenCredential={() => setShowCredentialModal(true)}
-        onOpenAssistant={() => setShowAssistantDrawer(true)}
       />
 
       {/* Main Body Content */}
@@ -107,7 +151,7 @@ export default function App() {
         {/* VIEW 1: GUÍA INTERACTIVA (Default) */}
         {activeTab === 'guia' && (
           <div>
-            {/* Hero Banner with Glassmorphic Institutional Cards */}
+            {/* Hero Banner */}
             <HeroSection
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
@@ -121,7 +165,7 @@ export default function App() {
                 <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
                   <h3 className="font-extrabold text-slate-900 text-lg flex items-center gap-2">
                     <Search className="w-5 h-5 text-orange-500" />
-                    Resultados de búsqueda para "{searchQuery}"
+                    Resultados de búsqueda para &quot;{searchQuery}&quot;
                   </h3>
                   <button
                     onClick={() => setSearchQuery('')}
@@ -146,7 +190,7 @@ export default function App() {
                         >
                           <div>
                             <span className="text-[10px] font-bold text-blue-700 uppercase bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-md">
-                              Módulo {m.buttonNumber} • {m.title}
+                              {m.title}
                             </span>
                             <h5 className="font-bold text-slate-900 text-sm mt-1">{m.verbTitle}</h5>
                             <p className="text-xs text-slate-600 line-clamp-1">{m.shortDesc}</p>
@@ -188,17 +232,10 @@ export default function App() {
                 )}
 
                 {searchResultsModules.length === 0 && searchResultsForms.length === 0 && (
-                  <div className="p-8 bg-white rounded-2xl text-center border border-slate-200/80 shadow-2xs space-y-3">
+                  <div className="p-8 bg-white rounded-2xl text-center border border-slate-200/80 shadow-2xs">
                     <p className="text-slate-600 text-xs font-medium">
-                      No encontramos coincidencias exactas para "{searchQuery}".
+                      No encontramos coincidencias exactas para &quot;{searchQuery}&quot;.
                     </p>
-                    <button
-                      onClick={() => setShowAssistantDrawer(true)}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-semibold shadow-2xs hover:bg-slate-800 transition-all"
-                    >
-                      <Sparkles className="w-3.5 h-3.5 text-blue-300" />
-                      Consultar al Asistente AI en vivo
-                    </button>
                   </div>
                 )}
               </section>
@@ -257,7 +294,7 @@ export default function App() {
       <Footer />
 
       {/* MODALS */}
-      {/* 1. Module Detail Modal (The 8 buttons detail view) */}
+      {/* 1. Module Detail Modal */}
       <ModuleDetailModal
         module={selectedModule}
         onClose={() => setSelectedModule(null)}
@@ -291,14 +328,6 @@ export default function App() {
         </div>
       )}
 
-      {/* 5. AI Assistant Drawer */}
-      <AiAssistantDrawer
-        isOpen={showAssistantDrawer}
-        onClose={() => setShowAssistantDrawer(false)}
-        onNavigateToTab={(tab) => setActiveTab(tab)}
-      />
-
     </div>
   );
 }
-

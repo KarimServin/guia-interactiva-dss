@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+"use client";
+
+import React, { useState, useRef, useEffect } from 'react';
 import { ChatMessage } from '../types';
 import { Sparkles, Send, X, Bot, User, RefreshCw, HelpCircle, Shield, ArrowRight } from 'lucide-react';
 

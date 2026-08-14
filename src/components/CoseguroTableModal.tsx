@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { COSEGUROS_TABLE } from '../data/dssData';
 import { X, DollarSign, ShieldCheck, CheckCircle2, AlertCircle } from 'lucide-react';

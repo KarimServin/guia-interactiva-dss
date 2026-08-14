@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { PHARMACIES_DATA } from '../data/dssData';
 import { Pill, Search, MapPin, Phone, Calculator, CheckCircle, Percent, Info } from 'lucide-react';
