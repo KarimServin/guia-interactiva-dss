@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
 import { ActionGrid } from '@/components/ActionGrid';
@@ -28,39 +28,7 @@ export default function HomePage() {
   const [showAutorizadorModal, setShowAutorizadorModal] = useState<boolean>(false);
   const [targetFormForCenter, setTargetFormForCenter] = useState<string | null>(null);
 
-  // Auto-scroll to services grid on first scroll attempt
-  useEffect(() => {
-    let hasScrolledDown = false;
-    let lastScrollY = window.scrollY;
 
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Reset if user goes back to the very top
-      if (currentScrollY <= 10) {
-        hasScrolledDown = false;
-      }
-      
-      // If user scrolls down slightly from the top, immediately scroll to services
-      if (!hasScrolledDown && currentScrollY > lastScrollY && currentScrollY > 15) {
-        hasScrolledDown = true;
-        const sectionTarget = document.getElementById('servicios');
-        if (sectionTarget) {
-          const offset = 20; 
-          const targetPosition = sectionTarget.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }
-      
-      lastScrollY = currentScrollY;
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Quick Action Handler inside Module Modal
   const handleQuickAction = (target: string) => {
@@ -110,35 +78,8 @@ export default function HomePage() {
 
   return (
     <div 
-      className="min-h-screen text-slate-900 font-sans flex flex-col antialiased selection:bg-blue-600 selection:text-white relative overflow-hidden bg-gradient-to-b from-slate-50 via-sky-50/20 to-orange-50/30"
+      className="min-h-screen text-slate-900 font-sans flex flex-col antialiased selection:bg-blue-600 selection:text-white relative bg-white"
     >
-      {/* Ambient background glow */}
-      <div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
-        <div 
-          className="absolute -top-20 -left-20 w-[600px] h-[600px] rounded-full blur-[80px] opacity-60"
-          style={{
-            background: 'radial-gradient(circle, rgba(186, 230, 253, 0.45) 0%, transparent 70%)',
-          }}
-        />
-        <div 
-          className="absolute top-0 -right-20 w-[550px] h-[550px] rounded-full blur-[90px] opacity-45"
-          style={{
-            background: 'radial-gradient(circle, rgba(254, 215, 170, 0.5) 0%, transparent 70%)',
-          }}
-        />
-        <div 
-          className="absolute top-1/2 -right-32 w-[600px] h-[600px] rounded-full blur-[100px] opacity-35"
-          style={{
-            background: 'radial-gradient(circle, rgba(253, 186, 116, 0.35) 0%, transparent 70%)',
-          }}
-        />
-        <div 
-          className="absolute bottom-20 left-10 w-[500px] h-[500px] rounded-full blur-[80px] opacity-40"
-          style={{
-            background: 'radial-gradient(circle, rgba(224, 231, 255, 0.45) 0%, transparent 70%)',
-          }}
-        />
-      </div>
 
       {/* Header */}
       <Header
