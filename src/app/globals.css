@@ -9,28 +9,22 @@
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
 
+html {
+  background-color: #ffffff !important;
+  overscroll-behavior-y: none;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.011em;
+  background-color: #f1f5f9;
+  min-height: 100dvh;
+  overscroll-behavior-y: none;
 }
 
 .font-heading {
   font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   letter-spacing: -0.025em;
-}
-
-/* Custom subtle gradient hover for navbar buttons matching the top ribbon */
-.nav-btn-hover {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.nav-btn-hover:hover {
-  background: linear-gradient(
-    to right, 
-    rgba(3, 7, 18, 0.12), 
-    rgba(30, 58, 138, 0.12), 
-    rgba(69, 26, 3, 0.12)
-  ) !important;
 }

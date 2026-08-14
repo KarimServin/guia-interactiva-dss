@@ -89,10 +89,10 @@ export const Header: React.FC<HeaderProps> = () => {
             return (
               <button
                 key={item.label}
-                className="flex items-center gap-2 px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 bg-transparent nav-btn-hover rounded-full active:scale-95 group cursor-pointer"
+                className="flex items-center gap-2 px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 bg-transparent hover:bg-blue-600 hover:text-white rounded-full transition-all duration-200 active:scale-95 group cursor-pointer"
               >
-                <Icon className="w-4.5 h-4.5 text-blue-600 group-hover:text-blue-900 transition-colors duration-200 shrink-0" />
-                <span className="group-hover:text-blue-950">{item.label}</span>
+                <Icon className="w-4.5 h-4.5 text-blue-600 group-hover:text-white transition-colors duration-200 shrink-0" />
+                <span>{item.label}</span>
               </button>
             );
           })}
