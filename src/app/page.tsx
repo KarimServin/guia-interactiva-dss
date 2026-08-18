@@ -76,6 +76,26 @@ export default function HomePage() {
     f.description.toLowerCase().includes(searchQuery.toLowerCase())
   ) : [];
 
+  const handleNavSelect = (navId: string) => {
+    if (navId === 'guia') {
+      setActiveTab('guia');
+    } else if (navId === 'afiliacion') {
+      setActiveTab('guia');
+      const mod = ACTION_MODULES.find(m => m.id === 'afiliacion');
+      if (mod) setSelectedModule(mod);
+    } else if (navId === 'cartilla') {
+      setActiveTab('cartilla');
+    } else if (navId === 'vademecum') {
+      setActiveTab('vademecum');
+    } else if (navId === 'formularios') {
+      setActiveTab('formularios');
+    } else if (navId === 'cuotas') {
+      setActiveTab('guia');
+      const mod = ACTION_MODULES.find(m => m.id === 'pagos');
+      if (mod) setSelectedModule(mod);
+    }
+  };
+
   return (
     <div 
       className="min-h-screen text-slate-900 font-sans flex flex-col antialiased selection:bg-blue-600 selection:text-white relative bg-white"
@@ -83,6 +103,8 @@ export default function HomePage() {
 
       {/* Header */}
       <Header
+        activeTab={activeTab}
+        onSelectNav={handleNavSelect}
         onOpenCredential={() => setShowCredentialModal(true)}
       />
 
@@ -182,9 +204,9 @@ export default function HomePage() {
               </section>
             )}
 
-            {/* Interactive Action Buttons Grid (excluding banner items) */}
+            {/* Interactive Action Buttons Grid (excluding banner & nav items) */}
             <ActionGrid
-              modules={ACTION_MODULES.filter(m => m.id !== 'contacto')}
+              modules={ACTION_MODULES.filter(m => m.id !== 'contacto' && m.id !== 'afiliacion')}
               onSelectModule={(mod) => setSelectedModule(mod)}
             />
             {/* Quick Access Floating Banners */}

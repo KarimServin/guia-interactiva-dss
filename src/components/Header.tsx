@@ -8,6 +8,7 @@ import {
   Menu, 
   X, 
   ChevronRight,
+  UserCheck,
   Users,
   Pill,
   FileText,
@@ -15,19 +16,29 @@ import {
 } from 'lucide-react';
 
 interface HeaderProps {
+  activeTab?: string;
+  onSelectNav?: (navId: string) => void;
   onOpenCredential?: () => void;
   onOpenAssistant?: () => void;
 }
 
 const NAV_ITEMS = [
-  { label: 'Cartilla Prestadores', icon: Users, href: '#' },
-  { label: 'Vademecum', icon: Pill, href: '#' },
-  { label: 'Formularios', icon: FileText, href: '#' },
-  { label: 'Cuotas y Valores', icon: CreditCard, href: '#' }
+  { id: 'afiliacion', label: '¿Cómo afiliarme?', icon: UserCheck },
+  { id: 'cartilla', label: 'Cartilla Prestadores', icon: Users },
+  { id: 'vademecum', label: 'Vademecum', icon: Pill },
+  { id: 'formularios', label: 'Formularios', icon: FileText },
+  { id: 'cuotas', label: 'Cuotas y Valores', icon: CreditCard }
 ];
 
-export const Header: React.FC<HeaderProps> = () => {
+export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleNavClick = (id: string) => {
+    if (onSelectNav) {
+      onSelectNav(id);
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-40 bg-gradient-to-r from-sky-50 via-blue-50 to-orange-100 text-slate-900 border-b border-sky-200/80 shadow-sm">
@@ -65,13 +76,16 @@ export const Header: React.FC<HeaderProps> = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-6">
         {/* Brand & Identity */}
         <div className="flex items-center gap-4 sm:gap-6">
-          <a href="#" className="flex items-center shrink-0">
+          <button 
+            onClick={() => handleNavClick('guia')} 
+            className="flex items-center shrink-0 cursor-pointer focus:outline-none"
+          >
             <img 
               src="/dss-logo.png" 
               alt="DSS - Departamento de Servicios Sociales - CPCE Santa Fe" 
               className="h-11 sm:h-12 w-auto object-contain block" 
             />
-          </a>
+          </button>
           <div className="h-8 sm:h-10 w-px bg-slate-300/80 shrink-0"></div>
           <a href="https://cpcesfe1.org.ar" target="_blank" rel="noopener noreferrer" className="flex items-center shrink-0">
             <img 
@@ -86,12 +100,20 @@ export const Header: React.FC<HeaderProps> = () => {
         <nav className="hidden md:flex items-center gap-1.5">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
+            const isActive = activeTab === item.id;
             return (
               <button
-                key={item.label}
-                className="flex items-center gap-2 px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 bg-transparent hover:bg-blue-600 hover:text-white rounded-full transition-all duration-200 active:scale-95 group cursor-pointer"
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                className={`flex items-center gap-2 px-3.5 py-2 text-xs lg:text-[13px] font-bold rounded-full transition-all duration-200 active:scale-95 group cursor-pointer ${
+                  isActive 
+                    ? 'bg-blue-600 text-white shadow-xs' 
+                    : 'text-slate-800 bg-transparent hover:bg-blue-600 hover:text-white'
+                }`}
               >
-                <Icon className="w-4.5 h-4.5 text-blue-600 group-hover:text-white transition-colors duration-200 shrink-0" />
+                <Icon className={`w-4 h-4 shrink-0 transition-colors duration-200 ${
+                  isActive ? 'text-white' : 'text-blue-600 group-hover:text-white'
+                }`} />
                 <span>{item.label}</span>
               </button>
             );
@@ -115,11 +137,14 @@ export const Header: React.FC<HeaderProps> = () => {
         <div className="md:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-1 shadow-lg">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
+            const isActive = activeTab === item.id;
             return (
               <button
-                key={item.label}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full flex items-center justify-between px-4 py-3 text-[13px] font-bold text-slate-800 bg-transparent active:bg-blue-50/50 rounded-full transition-all group"
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                className={`w-full flex items-center justify-between px-4 py-3 text-[13px] font-bold rounded-full transition-all group ${
+                  isActive ? 'bg-blue-50 text-blue-700 font-extrabold' : 'text-slate-800 bg-transparent active:bg-blue-50/50'
+                }`}
               >
                 <div className="flex items-center gap-3">
                   <Icon className="w-4.5 h-4.5 text-blue-600 shrink-0" />
