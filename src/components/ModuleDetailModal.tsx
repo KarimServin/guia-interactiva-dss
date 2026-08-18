@@ -62,32 +62,6 @@ const parsePlainUrls = (text: string): (string | React.ReactNode)[] => {
   });
 };
 
-const parsePlainUrlsAndBold = (text: string): (string | React.ReactNode)[] => {
-  // First handle bold syntax **text**
-  const boldRegex = /\*\*([^*]+)\*\*/g;
-  const parts: (string | React.ReactNode)[] = [];
-  let lastIdx = 0;
-  let match: RegExpExecArray | null;
-
-  while ((match = boldRegex.exec(text)) !== null) {
-    if (match.index > lastIdx) {
-      parts.push(...parsePlainUrls(text.substring(lastIdx, match.index)));
-    }
-    parts.push(
-      <strong key={`bold-${match.index}`} className="font-bold text-slate-900">
-        {match[1]}
-      </strong>
-    );
-    lastIdx = match.index + match[0].length;
-  }
-
-  if (lastIdx < text.length) {
-    parts.push(...parsePlainUrls(text.substring(lastIdx)));
-  }
-
-  return parts;
-};
-
 const renderTextWithLinks = (text: string) => {
   if (!text) return null;
 
@@ -102,7 +76,7 @@ const renderTextWithLinks = (text: string) => {
 
     if (matchIndex > lastIndex) {
       const plainText = text.substring(lastIndex, matchIndex);
-      parts.push(...parsePlainUrlsAndBold(plainText));
+      parts.push(...parsePlainUrls(plainText));
     }
 
     const isWa = url.includes('wa.me');
@@ -129,7 +103,7 @@ const renderTextWithLinks = (text: string) => {
 
   if (lastIndex < text.length) {
     const remainingText = text.substring(lastIndex);
-    parts.push(...parsePlainUrlsAndBold(remainingText));
+    parts.push(...parsePlainUrls(remainingText));
   }
 
   return parts;
