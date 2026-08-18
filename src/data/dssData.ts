@@ -459,7 +459,7 @@ export const ACTION_MODULES: ActionModule[] = [
     buttonNumber: 9,
     title: 'Prácticas y medicamentos',
     verbTitle: 'Consultas sobre mi cobertura',
-    shortDesc: 'Aclará todas tus dudas sobre planes, alcance del PMO, prótesis, internación y reciprocidad nacional.',
+    shortDesc: 'Planes General (70% prácticas / 100% internación) y Básico (60% prácticas / 80% internación), Vademécum 60%.',
     iconName: 'ShieldCheck',
     colorClass: {
       bg: 'bg-white',
@@ -469,16 +469,33 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-900 text-white'
     },
     details: {
-      summary: 'Resolver inmediatamente cualquier duda sobre los límites, porcentajes de cobertura y prestadores disponibles para garantizar tu tranquilidad médica.',
+      summary: 'El DSS ofrece dos planes de cobertura: un Plan General y un Plan Básico.\n\n• Prácticas médicas: El Plan General cubre hasta un 70% y el Plan Básico el 60% del valor de las prácticas.\n\n• Internación: El Plan Básico cubre el 80% y el Plan General el 100% en caso de internación.\n\n• Medicamentos: En medicamentos, ambos cubren el 60% si se encuentra en el vademécum.',
       highlights: [
-        'Internación Sanatorial: Cobertura del 100% en sanatorios en convenio en habitación compartida o individual según indicación auditada.',
-        'Salud Mental y Psicología: Sesiones con profesionales en cartilla con coseguro reducido.',
-        'Prótesis y Órtesis: 100% de cobertura en prótesis de origen nacional requeridas por indicación médica.',
-        'Reciprocidad Nacional: Cobertura médica mediante convenios con Consejos de Ciencias Económicas de todo el país durante viajes o traslados.'
+        'Plan General: Cobertura de hasta un 70% en prácticas y 100% en internación.',
+        'Plan Básico: Cobertura del 60% en prácticas y 80% en internación.',
+        'Medicamentos: Cobertura del 60% en ambos planes para medicamentos del vademécum.'
+      ],
+      steps: [
+        { 
+          step: 1, 
+          title: 'Consultá tu Plan', 
+          desc: 'Verificá si estás adherido al Plan General o al Plan Básico.' 
+        },
+        { 
+          step: 2, 
+          title: 'Cobertura en Prácticas', 
+          desc: 'Obtené hasta el 70% de cobertura en Plan General o 60% en Plan Básico.' 
+        },
+        { 
+          step: 3, 
+          title: 'Internación y Medicamentos', 
+          desc: '100% internación en Plan General (80% Básico) y 60% en medicamentos del vademécum para ambos planes.' 
+        }
       ],
       faqs: [
-        { q: '¿Qué debo hacer si viajo a otra provincia argentina?', a: 'Solicitá en la secretaría del DSS la Carta de Reciprocidad Nacional antes de viajar. Ante cualquier eventualidad médica, serás atendido por la obra social del Consejo local.' },
-        { q: '¿Cómo funciona la cobertura en Odontología?', a: 'Incluye consultas, arreglos, extracciones y odontopediatría con prestadores del Colegio de Odontólogos. Prácticas complejas como prótesis u ortodoncia tienen aranceles diferenciados en convenio.' }
+        { q: '¿Qué porcentaje de cobertura ofrecen los planes en prácticas médicas?', a: 'El Plan General cubre hasta un 70% y el Plan Básico el 60% del valor de las prácticas.' },
+        { q: '¿Cuál es la cobertura en caso de internación?', a: 'El Plan General cubre el 100% en internación y el Plan Básico cubre el 80%.' },
+        { q: '¿Cuánto cubren en medicamentos?', a: 'En medicamentos, ambos planes cubren el 60% siempre que el producto se encuentre en el vademécum.' }
       ],
       relatedFormIds: ['FORM-01', 'FORM-04'],
       quickActionLabel: 'Preguntar al Asistente Virtual',
