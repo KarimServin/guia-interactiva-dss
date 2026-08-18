@@ -182,9 +182,9 @@ export default function HomePage() {
               </section>
             )}
 
-            {/* The 8 Interactive Buttons Grid */}
+            {/* Interactive Action Buttons Grid (excluding banner items) */}
             <ActionGrid
-              modules={ACTION_MODULES}
+              modules={ACTION_MODULES.filter(m => m.id !== 'contacto')}
               onSelectModule={(mod) => setSelectedModule(mod)}
             />
             {/* Quick Access Floating Banners */}
