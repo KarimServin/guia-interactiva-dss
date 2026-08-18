@@ -11,16 +11,14 @@
 }
 
 /* 
-  iOS Safari floating island / status bar fix:
-  - html MUST be white so Safari's translucent toolbar blurs over white
-  - body is also white (the background of sections handles the visual design)
-  - overscroll-behavior: none prevents elastic gray canvas flashing
+  iOS Safari floating island / status bar & native bounce:
+  - html and body set to white so bounce and translucent bars render cleanly over white
+  - overscroll-behavior set to auto to enable native bounce & pull-to-refresh
 */
 html {
   background-color: #ffffff;
-  overscroll-behavior: none;
+  overscroll-behavior-y: auto;
   -webkit-text-size-adjust: 100%;
-  /* Force iOS safe area to always render over white */
   padding-top: env(safe-area-inset-top);
 }
 
@@ -31,7 +29,7 @@ body {
   letter-spacing: -0.011em;
   background-color: #ffffff;
   min-height: 100dvh;
-  overscroll-behavior: none;
+  overscroll-behavior-y: auto;
   /* Momentum scrolling on iOS for smooth feel */
   -webkit-overflow-scrolling: touch;
 }
@@ -53,7 +51,6 @@ header[class*="sticky"] {
 /* 
   White safe-area padding BELOW the page content.
   This is what iOS Safari blurs behind the floating toolbar.
-  Without this, it picks up whatever bg-color is last rendered.
 */
 body::after {
   content: '';
