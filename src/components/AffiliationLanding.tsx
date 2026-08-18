@@ -3,20 +3,15 @@
 import React, { useState } from 'react';
 import { 
   UserCheck, 
-  Users, 
-  ShieldCheck, 
-  CheckCircle2, 
   FileText, 
-  HelpCircle, 
-  ArrowRight, 
   Download, 
   MessageCircle, 
   ChevronDown, 
   ChevronUp, 
   Building2, 
-  Clock, 
-  BadgeCheck,
-  AlertCircle
+  Shield, 
+  Info,
+  CheckCircle2
 } from 'lucide-react';
 import { FORMS_DATA } from '@/data/dssData';
 
@@ -36,213 +31,169 @@ export const AffiliationLanding: React.FC<AffiliationLandingProps> = ({ onGoToFo
   const faqs = [
     {
       q: '¿La afiliación al DSS es obligatoria al matricularme?',
-      a: 'Al matricularse en el CPCE Santa Fe - Cámara I, el profesional debe contar obligatoriamente con la obra social DSS, salvo que realice la declaración jurada formal de no ejercicio profesional.'
+      a: 'Al matricularse en el CPCE Santa Fe - Cámara I, el profesional debe contar obligatoriamente con la cobertura del DSS, salvo que formalice la declaración jurada de no ejercicio profesional.'
     },
     {
       q: '¿Qué sucede si tengo más de 50 años al matricularme?',
-      a: 'Para profesionales de hasta 50 años la afiliación es automática al concretar la matriculación. Si tenés más de 50 años, se evalúa tu incorporación en la secretaría del DSS conforme a las reglamentaciones institucionales vigentes.'
+      a: 'Para profesionales de hasta 50 años la afiliación se genera automáticamente al concretar la matriculación. Si superás los 50 años, la incorporación se evalúa en la secretaría del DSS conforme a la normativa vigente.'
     },
     {
-      q: '¿El titular posee períodos de carencia?',
-      a: 'No. El profesional titular cuenta con cobertura médica inmediata desde el primer día de alta, sin períodos de carencia ni restricciones por enfermedades preexistentes.'
+      q: '¿El profesional titular posee período de carencia?',
+      a: 'No. El titular cuenta con cobertura médica inmediata desde el día de alta en la matrícula, sin períodos de carencia ni restricciones por preexistencias.'
     },
     {
-      q: '¿Cómo funciona el período de carencia para el grupo familiar?',
-      a: 'Los integrantes del grupo familiar adheridos (cónyuge e hijos) pueden presentar períodos de carencia progresivos que van entre 3 y 12 meses según la complejidad de la prestación requerida.'
+      q: '¿Cómo funcionan las carencias para el grupo familiar adherido?',
+      a: 'Los integrantes del grupo familiar (cónyuge e hijos) poseen períodos de carencia escalonados de entre 3 y 12 meses según el tipo de prestación.'
     },
     {
       q: '¿Hasta qué edad están cubiertos los hijos en el grupo familiar?',
-      a: 'Los hijos están cubiertos automáticamente hasta los 21 años de edad. Es posible extender la cobertura hasta los 25 años inclusive presentando anualmente el certificado de alumno regular de nivel universitario o terciario.'
+      a: 'La cobertura de los hijos es automática hasta los 21 años. Puede extenderse hasta los 25 años inclusive presentando anualmente el certificado de alumno regular universitario o terciario.'
     }
   ];
 
   return (
-    <div className="bg-slate-50 min-h-screen py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto space-y-10">
+    <div className="bg-white min-h-screen py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto space-y-8">
 
-        {/* Hero Banner Header */}
-        <div className="bg-gradient-to-br from-blue-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden border border-blue-800/40">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="relative z-10 max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-bold uppercase tracking-wider rounded-full backdrop-blur-md">
-              <UserCheck className="w-4 h-4 text-blue-400" />
-              <span>Guía de Afiliación Oficial</span>
+        {/* Soft Institutional Header */}
+        <div className="bg-gradient-to-r from-sky-50/90 via-blue-50/70 to-slate-50 rounded-2xl p-6 sm:p-10 border border-sky-200/80 shadow-2xs space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-sky-200 text-sky-800 text-xs font-semibold rounded-md shadow-2xs">
+            <UserCheck className="w-3.5 h-3.5 text-sky-600" />
+            <span>Departamento de Servicios Sociales • CPCE Cámara I</span>
+          </div>
+          <h1 className="font-heading text-2xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+            Afiliación e Incorporación al DSS
+          </h1>
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl font-normal">
+            El Departamento de Servicios Sociales (DSS) es el sistema solidario de cobertura médica creado y sostenido por los profesionales matriculados en el Consejo Profesional de Ciencias Económicas de Santa Fe – Cámara I.
+          </p>
+        </div>
+
+        {/* Institutional Framework Details */}
+        <div className="bg-slate-50/60 rounded-2xl p-6 sm:p-8 border border-slate-200/80 space-y-6">
+          <h2 className="font-heading text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-3">
+            <Info className="w-5 h-5 text-blue-600" />
+            Normativa y Aspectos Generales del Alta
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-slate-700 leading-relaxed">
+            <div className="space-y-3 bg-white p-5 rounded-xl border border-slate-200/90">
+              <h3 className="font-bold text-slate-900 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                Afiliación Titular
+              </h3>
+              <ul className="space-y-2 text-slate-600 text-xs">
+                <li>• <strong>Alta Automática:</strong> Se formaliza junto con el trámite de matriculación en la Cámara I para profesionales de hasta 50 años.</li>
+                <li>• <strong>Cobertura Inmediata:</strong> El titular no requiere cumplimentar carencias ni presenta restricciones por enfermedades preexistentes.</li>
+                <li>• <strong>Identificación:</strong> Se efectúa mediante el número de Matrícula Profesional, sin necesidad de credencial física.</li>
+              </ul>
             </div>
-            <h1 className="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-              ¿Cómo afiliarme al DSS?
-            </h1>
-            <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-normal">
-              Información clara y transparente sobre el sistema solidario de cobertura médica para profesionales matriculados del CPCE Santa Fe • Cámara I y su grupo familiar.
-            </p>
+
+            <div className="space-y-3 bg-white p-5 rounded-xl border border-slate-200/90">
+              <h3 className="font-bold text-slate-900 flex items-center gap-2">
+                <Shield className="w-4 h-4 text-sky-600" />
+                Adhesión del Grupo Familiar
+              </h3>
+              <ul className="space-y-2 text-slate-600 text-xs">
+                <li>• <strong>Integrantes Elegibles:</strong> Cónyuge/Conviviente e Hijos.</li>
+                <li>• <strong>Códigos de Extensión:</strong> Cónyuge (Matrícula + 01), Hijos (Matrícula + 11, 12, 13, etc.).</li>
+                <li>• <strong>Carencias Progresivas:</strong> Los integrantes adheridos cuentan con carencias de entre 3 y 12 meses según la prestación.</li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* Key Features / Highlights Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:border-blue-300 transition-all space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
-              <BadgeCheck className="w-5 h-5" />
-            </div>
-            <h3 className="font-bold text-slate-900 text-base">Afiliación Automática</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Alta inmediata al matricularte en el CPCE Cámara I para profesionales de hasta 50 años.
-            </p>
-          </div>
+        {/* Step-by-Step Administrative Procedure */}
+        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-2xs space-y-6">
+          <h2 className="font-heading text-lg sm:text-xl font-bold text-slate-900">
+            Procedimiento de Gestión
+          </h2>
 
-          <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:border-emerald-300 transition-all space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
-              <ShieldCheck className="w-5 h-5" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+              <span className="text-xs font-bold text-blue-700 bg-blue-100/80 px-2.5 py-0.5 rounded-md inline-block">Paso 1</span>
+              <h4 className="font-bold text-slate-900 text-sm">Matriculación Institucional</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Al matricularte en la Cámara I del CPCE Santa Fe, la cobertura del titular queda habilitada en el sistema.
+              </p>
             </div>
-            <h3 className="font-bold text-slate-900 text-base">Titular Sin Carencias</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              El profesional titular accede a cobertura médica integral sin esperas ni restricciones preexistentes.
-            </p>
-          </div>
 
-          <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:border-sky-300 transition-all space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center font-bold">
-              <Users className="w-5 h-5" />
+            <div className="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+              <span className="text-xs font-bold text-blue-700 bg-blue-100/80 px-2.5 py-0.5 rounded-md inline-block">Paso 2</span>
+              <h4 className="font-bold text-slate-900 text-sm">Presentación de Formularios</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Para adhesión de grupo familiar o declaración de no ejercicio, completá los formularios requeridos.
+              </p>
             </div>
-            <h3 className="font-bold text-slate-900 text-base">Extensión Familiar</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Posibilidad de adherir a tu cónyuge e hijos con códigos de extensión vinculados a tu matrícula.
-            </p>
-          </div>
 
-          <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:border-amber-300 transition-all space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
-              <Building2 className="w-5 h-5" />
+            <div className="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+              <span className="text-xs font-bold text-blue-700 bg-blue-100/80 px-2.5 py-0.5 rounded-md inline-block">Paso 3</span>
+              <h4 className="font-bold text-slate-900 text-sm">Acceso a la Red de Atención</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Presentá tu número de matrícula en médicos de cartilla, sanatorios y farmacias adheridas.
+              </p>
             </div>
-            <h3 className="font-bold text-slate-900 text-base">Sin Credencial Física</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Presentando únicamente tu número de matrícula titular te identificás en sanatorios y farmacias.
-            </p>
           </div>
         </div>
 
-        {/* Step-by-Step Instructions */}
-        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-sm space-y-8">
-          <div>
-            <h2 className="font-heading text-2xl font-extrabold text-slate-900 tracking-tight mb-2">
-              Pasos para la Afiliación y Alta de Cobertura
+        {/* Related Official Forms */}
+        <div className="bg-slate-50/60 rounded-2xl p-6 sm:p-8 border border-slate-200/80 space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+            <h2 className="font-heading text-lg font-bold text-slate-900">
+              Formularios Oficiales
             </h2>
-            <p className="text-sm text-slate-600">
-              Conocé el procedimiento administrativo según tu situación profesional y familiar.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-            <div className="bg-slate-50/90 p-6 rounded-2xl border border-slate-200 relative space-y-3">
-              <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-extrabold text-xs flex items-center justify-center">
-                1
-              </div>
-              <h3 className="font-bold text-slate-900 text-sm">Matriculación Profesional</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Al matricularte en la Cámara I del CPCE Santa Fe, el alta como titular del DSS se activa automáticamente para menores de 50 años.
-              </p>
-            </div>
-
-            <div className="bg-slate-50/90 p-6 rounded-2xl border border-slate-200 relative space-y-3">
-              <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-extrabold text-xs flex items-center justify-center">
-                2
-              </div>
-              <h3 className="font-bold text-slate-900 text-sm">Uso Inmediato del Servicio</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Podés hacer uso inmediato de la cartilla médica y farmacias adhiriendo con tu número de matrícula sin necesidad de carnets plásticos.
-              </p>
-            </div>
-
-            <div className="bg-slate-50/90 p-6 rounded-2xl border border-slate-200 relative space-y-3">
-              <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-extrabold text-xs flex items-center justify-center">
-                3
-              </div>
-              <h3 className="font-bold text-slate-900 text-sm">Incorporación del Grupo Familiar</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Completá el formulario correspondiente, adjuntá la documentación requerida (DNI, actas) y enviá la solicitud al DSS.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Action / Download Section for Forms */}
-        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-sm space-y-6">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
-            <div>
-              <h2 className="font-heading text-xl font-bold text-slate-900">
-                Formularios Relacionados de Afiliación
-              </h2>
-              <p className="text-xs text-slate-600">
-                Descargá los formularios oficiales listos para presentar.
-              </p>
-            </div>
             {onGoToFormularios && (
               <button
                 onClick={() => onGoToFormularios()}
-                className="px-4 py-2 bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-bold rounded-xl transition-colors flex items-center gap-2 shrink-0"
+                className="text-xs text-blue-700 font-bold hover:underline flex items-center gap-1 cursor-pointer"
               >
-                <FileText className="w-4 h-4" />
-                Ver Centro de Formularios
+                Ver todos en Centro de Formularios →
               </button>
             )}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {affiliationForms.map((form) => (
-              <div 
-                key={form.id} 
-                className="p-5 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col justify-between space-y-4 hover:border-blue-300 transition-colors"
-              >
-                <div className="space-y-2">
-                  <span className="text-[10px] font-bold text-slate-700 uppercase bg-white border border-slate-200 px-2 py-0.5 rounded-md">
+              <div key={form.id} className="p-4 bg-white rounded-xl border border-slate-200 space-y-3 flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md">
                     {form.code}
                   </span>
-                  <h4 className="font-bold text-slate-900 text-sm leading-snug">{form.title}</h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">{form.description}</p>
+                  <h4 className="font-bold text-slate-900 text-sm mt-2">{form.title}</h4>
+                  <p className="text-xs text-slate-500 mt-1 line-clamp-2">{form.description}</p>
                 </div>
                 <button
                   onClick={() => onGoToFormularios && onGoToFormularios(form.id)}
-                  className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                  className="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  <Download className="w-3.5 h-3.5" />
-                  Descargar Formulario
+                  <Download className="w-3.5 h-3.5 text-slate-600" />
+                  Descargar PDF
                 </button>
               </div>
             ))}
           </div>
         </div>
 
-        {/* FAQs Accordion Section */}
-        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-sm space-y-6">
-          <div>
-            <h2 className="font-heading text-xl font-bold text-slate-900 mb-1">
-              Preguntas Frecuentes sobre Afiliación
-            </h2>
-            <p className="text-xs text-slate-600">
-              Respuestas rápidas a las consultas normativas más habituales.
-            </p>
-          </div>
+        {/* FAQs */}
+        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-2xs space-y-4">
+          <h2 className="font-heading text-lg font-bold text-slate-900 mb-2">
+            Preguntas Frecuentes
+          </h2>
 
-          <div className="space-y-3">
+          <div className="space-y-2">
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
-                <div 
-                  key={idx}
-                  className="border border-slate-200/90 rounded-2xl overflow-hidden bg-slate-50/50 transition-colors"
-                >
+                <div key={idx} className="border border-slate-200 rounded-xl overflow-hidden">
                   <button
                     onClick={() => toggleFaq(idx)}
-                    className="w-full p-4 text-left flex items-center justify-between gap-4 font-bold text-slate-900 text-sm hover:bg-slate-100/70 transition-colors cursor-pointer"
+                    className="w-full p-4 text-left flex items-center justify-between gap-4 font-bold text-slate-800 text-xs sm:text-sm hover:bg-slate-50 transition-colors cursor-pointer"
                   >
                     <span>{faq.q}</span>
-                    {isOpen ? (
-                      <ChevronUp className="w-4 h-4 text-blue-600 shrink-0" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4 text-slate-400 shrink-0" />
-                    )}
+                    {isOpen ? <ChevronUp className="w-4 h-4 text-blue-600 shrink-0" /> : <ChevronDown className="w-4 h-4 text-slate-400 shrink-0" />}
                   </button>
                   {isOpen && (
-                    <div className="p-4 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-200/60 bg-white">
+                    <div className="p-4 pt-0 text-xs text-slate-600 leading-relaxed bg-slate-50/50 border-t border-slate-100">
                       {faq.a}
                     </div>
                   )}
@@ -252,27 +203,24 @@ export const AffiliationLanding: React.FC<AffiliationLandingProps> = ({ onGoToFo
           </div>
         </div>
 
-        {/* Direct WhatsApp Contact CTA */}
-        <div className="bg-gradient-to-r from-orange-50 via-amber-50 to-orange-100 rounded-3xl p-8 border border-orange-200/80 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-          <div className="space-y-1 text-center md:text-left">
-            <span className="text-xs font-bold text-orange-600 uppercase tracking-wider bg-orange-100 px-2.5 py-0.5 rounded-md border border-orange-200">
-              ¿Tenés dudas adicionales?
-            </span>
-            <h3 className="font-heading text-lg font-bold text-slate-900">
-              Nuestro equipo de atención al afiliado responde tus consultas en forma directa
+        {/* Direct Institutional Contact */}
+        <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="space-y-1 text-center sm:text-left">
+            <h3 className="font-heading font-bold text-base text-white">
+              ¿Tenés dudas sobre el trámite de afiliación?
             </h3>
-            <p className="text-xs text-slate-600">
-              Sede Central: San Lorenzo 1849 – Santa Fe | Horario: Lunes a viernes de 7 a 15 hs.
+            <p className="text-xs text-slate-300">
+              Secretaría del DSS • San Lorenzo 1849 – Santa Fe • Lunes a viernes de 7 a 15 hs.
             </p>
           </div>
           <a
             href="https://wa.me/5493425105675"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-bold text-xs rounded-xl shadow-md hover:shadow-lg transition-all flex items-center gap-2 shrink-0 cursor-pointer active:scale-95"
+            className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs rounded-xl transition-colors shrink-0 flex items-center gap-2 cursor-pointer active:scale-95"
           >
             <MessageCircle className="w-4 h-4" />
-            Contactar por WhatsApp
+            Consulta por WhatsApp
           </a>
         </div>
 
