@@ -212,12 +212,13 @@ export default function HomePage() {
               </div>
 
               {/* Banner 2: Contacto y ayuda */}
-              <div className="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 text-white rounded-2xl p-6 sm:p-8 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 border border-slate-800">
-                <div className="space-y-1 text-center md:text-left">
-                  <span className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
+              <div className="bg-white/80 backdrop-blur-md bg-gradient-to-r from-white via-orange-50/60 to-amber-50/80 rounded-2xl p-6 sm:p-8 shadow-sm border border-orange-200/70 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+                <div className="absolute -top-12 -right-12 w-40 h-40 bg-orange-400/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="space-y-1.5 text-center md:text-left z-10">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-orange-600 uppercase tracking-wider bg-orange-100/70 border border-orange-200/80 px-2.5 py-0.5 rounded-md">
                     Contacto y ayuda
                   </span>
-                  <h3 className="font-heading text-lg sm:text-xl font-bold text-white max-w-2xl">
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-slate-900 max-w-2xl leading-snug">
                     Si aún no pudiste resolver tu duda o requerís una gestión asistida, nuestro equipo está a tu disposición.
                   </h3>
                 </div>
@@ -225,7 +226,7 @@ export default function HomePage() {
                   href="https://wa.me/5493425105675"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors shrink-0 flex items-center gap-2 active:scale-95 cursor-pointer"
+                  className="z-10 px-5 py-2.5 bg-gradient-to-r from-orange-500 via-orange-600 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-semibold text-xs rounded-xl shadow-md hover:shadow-lg transition-all shrink-0 flex items-center gap-2 active:scale-95 cursor-pointer"
                 >
                   <Headphones className="w-4 h-4" />
                   Contactar por WhatsApp
