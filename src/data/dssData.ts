@@ -540,9 +540,9 @@ export const ACTION_MODULES: ActionModule[] = [
   {
     id: 'contacto',
     buttonNumber: 11,
-    title: 'Canales de contacto',
+    title: 'Guía de autogestión para afiliados del DSS CPCE Santa Fe • Cámara I',
     verbTitle: 'Contacto y ayuda',
-    shortDesc: 'Atención personalizada, WhatsApp de urgencias, dirección de la sede y horarios de atención.',
+    shortDesc: 'Si aún no pudiste resolver tu duda o requerís una gestión asistida, nuestro equipo está a tu disposición por múltiples vías.',
     iconName: 'Headphones',
     colorClass: {
       bg: 'bg-white',
@@ -552,20 +552,19 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-sky-600 text-white'
     },
     details: {
-      summary: 'Si aún no pudiste resolver tu duda o requerís una gestión asistida, nuestro equipo está a tu disposición por múltiples vías.',
+      summary: 'Guía de autogestión para afiliados del DSS CPCE Santa Fe • Cámara I\n\nSi aún no pudiste resolver tu duda o requerís una gestión asistida, nuestro equipo está a tu disposición por múltiples vías.\n\nAspectos Clave de la Cobertura:\n• Sede Central: San Lorenzo 1849 – Santa Fe – Cámara I\n• Horario de Atención: Lunes a viernes | 7 a 15 hs\n• Contacto WhatsApp: WA 3425 10-5675 (https://wa.me/5493425105675)\n• Web: cpcesfe1.org.ar\n• Correo Electrónico: dss@cpcesfe1.org.ar',
       highlights: [
         'Sede Central: San Lorenzo 1849 – Santa Fe – Cámara I',
         'Horario de Atención: Lunes a viernes | 7 a 15 hs',
-        'Contacto WhatsApp: WA 3425 10-5675',
+        'Contacto WhatsApp: WA 3425 10-5675 (https://wa.me/5493425105675)',
         'Web: cpcesfe1.org.ar',
-        'Más información en: cpcesfe1.org.ar',
         'Correo Electrónico: dss@cpcesfe1.org.ar'
       ],
       faqs: [
         { q: '¿Adónde llamo en caso de una urgencia médica fuera del horario administrativo?', a: 'Comunicate directamente con la guardia del sanatorio contratado indicando tu número de matrícula DSS, o al servicio de emergencias médicas contratado.' }
       ],
-      quickActionLabel: 'Enviar Mensaje Directo',
-      quickActionTarget: 'contacto-directo'
+      quickActionLabel: 'Enviar WhatsApp de Contacto',
+      quickActionTarget: 'https://wa.me/5493425105675'
     }
   }
 ];

@@ -15,7 +15,7 @@ import { Footer } from '@/components/Footer';
 
 import { ACTION_MODULES, FORMS_DATA } from '@/data/dssData';
 import { ActionModule } from '@/types';
-import { Search, FileText, ClipboardCheck, ArrowRight, X } from 'lucide-react';
+import { Search, FileText, ClipboardCheck, ArrowRight, X, Headphones } from 'lucide-react';
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<string>('guia');
@@ -187,9 +187,9 @@ export default function HomePage() {
               modules={ACTION_MODULES}
               onSelectModule={(mod) => setSelectedModule(mod)}
             />
-
-            {/* Quick Access Floating Banner */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+            {/* Quick Access Floating Banners */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 space-y-4">
+              {/* Banner 1: Autorización de Prácticas */}
               <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 border border-slate-800">
                 <div className="space-y-1 text-center md:text-left">
                   <span className="text-blue-400 text-xs font-semibold uppercase tracking-wider">
@@ -208,6 +208,31 @@ export default function HomePage() {
                 >
                   <ClipboardCheck className="w-4 h-4" />
                   Ver Información de Autorizaciones
+                </button>
+              </div>
+
+              {/* Banner 2: Contacto y ayuda */}
+              <div className="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 text-white rounded-2xl p-6 sm:p-8 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 border border-slate-800">
+                <div className="space-y-1 text-center md:text-left">
+                  <span className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
+                    Contacto y ayuda
+                  </span>
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-white">
+                    Guía de autogestión para afiliados del DSS CPCE Santa Fe • Cámara I
+                  </h3>
+                  <p className="text-xs text-slate-300 max-w-2xl font-normal leading-relaxed">
+                    Si aún no pudiste resolver tu duda o requerís una gestión asistida, nuestro equipo está a tu disposición por múltiples vías.
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    const contactoMod = ACTION_MODULES.find(m => m.id === 'contacto');
+                    if (contactoMod) setSelectedModule(contactoMod);
+                  }}
+                  className="px-5 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors shrink-0 flex items-center gap-2 active:scale-95"
+                >
+                  <Headphones className="w-4 h-4" />
+                  Ver Canales de Contacto
                 </button>
               </div>
             </div>
