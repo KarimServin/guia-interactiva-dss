@@ -193,13 +193,13 @@ export default function HomePage() {
               <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 border border-slate-800">
                 <div className="space-y-1 text-center md:text-left">
                   <span className="text-blue-400 text-xs font-semibold uppercase tracking-wider">
-                    Herramienta de Autogestión Rápida
+                    Autorización de Prácticas
                   </span>
                   <h3 className="font-heading text-lg sm:text-xl font-bold text-white">
                     ¿Necesitás autorizar un estudio o práctica médica?
                   </h3>
                   <p className="text-xs text-slate-300 max-w-xl font-normal leading-relaxed">
-                    Ingresá tus datos y la foto de la orden prescripta para recibir tu código de seguimiento en minutos.
+                    Consultá cuáles prácticas requieren autorización previa y la vía directa de WhatsApp para enviar tu indicación médica.
                   </p>
                 </div>
                 <button
@@ -207,7 +207,7 @@ export default function HomePage() {
                   className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors shrink-0 flex items-center gap-2 active:scale-95"
                 >
                   <ClipboardCheck className="w-4 h-4" />
-                  Iniciar Solicitud de Autorización Online
+                  Ver Información de Autorizaciones
                 </button>
               </div>
             </div>
