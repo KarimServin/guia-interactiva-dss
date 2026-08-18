@@ -11,6 +11,7 @@ import { PharmacyDirectory } from '@/components/PharmacyDirectory';
 import { FormsCenter } from '@/components/FormsCenter';
 import { CoseguroTableModal } from '@/components/CoseguroTableModal';
 import { AuthorizationSimulator } from '@/components/AuthorizationSimulator';
+import { AffiliationLanding } from '@/components/AffiliationLanding';
 import { Footer } from '@/components/Footer';
 
 import { ACTION_MODULES, FORMS_DATA } from '@/data/dssData';
@@ -80,9 +81,7 @@ export default function HomePage() {
     if (navId === 'guia') {
       setActiveTab('guia');
     } else if (navId === 'afiliacion') {
-      setActiveTab('guia');
-      const mod = ACTION_MODULES.find(m => m.id === 'afiliacion');
-      if (mod) setSelectedModule(mod);
+      setActiveTab('afiliacion');
     } else if (navId === 'cartilla') {
       setActiveTab('cartilla');
     } else if (navId === 'vademecum') {
@@ -258,7 +257,17 @@ export default function HomePage() {
           </div>
         )}
 
-        {/* VIEW 2: CARTILLA MÉDICA */}
+        {/* VIEW 2: ¿CÓMO AFILIARME? LANDING VIEW */}
+        {activeTab === 'afiliacion' && (
+          <AffiliationLanding 
+            onGoToFormularios={(formId) => {
+              if (formId) setTargetFormForCenter(formId);
+              setActiveTab('formularios');
+            }}
+          />
+        )}
+
+        {/* VIEW 3: CARTILLA MÉDICA */}
         {activeTab === 'cartilla' && (
           <MedicalDirectory />
         )}
