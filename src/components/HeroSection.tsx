@@ -34,16 +34,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <div className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative z-10">
       {/* Subtle Background Image with Fade-Out Mask */}
       <div 
-        className="absolute inset-0 z-0 opacity-[0.35] bg-cover bg-center bg-no-repeat pointer-events-none"
+        className="absolute inset-0 z-0 opacity-15 bg-cover bg-center bg-no-repeat pointer-events-none"
         style={{ 
           backgroundImage: "url('/hero-bg.webp')", 
           backgroundPosition: "center 30%",
-          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0) 100%)",
-          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0) 100%)"
+          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%)",
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%)"
         }}
       ></div>
-      {/* Extra subtle base overlay to ensure text remains readable */}
-      <div className="absolute inset-0 z-0 bg-slate-50/25 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Main Title & Subtitle */}
