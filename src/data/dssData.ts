@@ -203,8 +203,8 @@ export const ACTION_MODULES: ActionModule[] = [
     id: 'medicamentos',
     buttonNumber: 5,
     title: 'Farmacia y medicamentos',
-    verbTitle: 'Cobertura en farmacias',
-    shortDesc: 'Farmacia, medicamentos, receta electrónica',
+    verbTitle: 'Cobertura en farmacias y medicamentos',
+    shortDesc: 'Cobertura del 60%, doble cobertura complementaria, cantidades reconocidas y tratamientos prolongados.',
     iconName: 'Pill',
     colorClass: {
       bg: 'bg-white',
@@ -214,22 +214,36 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-sky-600 text-white'
     },
     details: {
-      summary: 'Cobertura general del 60% en medicamentos del vademécum para todos los planes en farmacias adheridas de la red del Colegio de Farmacéuticos, presentando tu matrícula. Las pastillas anticonceptivas también tienen cobertura del 60% (con ficha de tratamiento previa).',
-      highlights: [],
+      summary: 'Se debe adquirir los medicamentos mediante la presentación del carnet y la prescripción médica sólo en las Farmacias adheridas en el Colegio de Farmacéuticos de la Provincia de Santa Fe – 1ª Circunscripción (ver cartilla), donde se obtendrá la cobertura del 60% del valor.\n\n**Si posee cobertura por otra obra social:**\nPodrá comprar los medicamentos beneficiándose de ambos descuentos sin la necesidad de hacer ningún trámite adicional. Sólo deberá confeccionar la orden con los datos de su otro sistema de salud (según requerimientos de la misma) y presentar en la farmacia ambas credenciales, de esta manera el DSS actuará como complementaria. Recuerde que las Farmacias deben operar con las dos obras sociales.\n\n**Cantidades reconocidas:**\n• Hasta 2 productos distintos por receta\n• Hasta 2 envases chicos o 1 grande\n• Hasta 6 antibióticos inyectables monodosis (2 o más considerar tamaño grande)\n• Hasta 1 antibiótico inyectable multidosis (se considera tamaño grande)\n\n*No se realizan reintegros por compras de medicamentos dentro de la 1ra. Circunscripción de la Provincia.*\n\n**Tratamientos Prolongados:**\nEl Departamento realiza en forma conjunta con el Colegio de Farmacéuticos la auditoría de medicamentos verificando el consumo de drogas y/o productos de uso prolongado, la discontinuidad de tratamientos asociados a patologías crónicas y el cambio recurrente de prescriptores. Cuando el afiliado se encuentre en esta situación, deberá presentar una Historia Clínica del médico tratante al DSS (con validez por 180 días) para análisis de Auditoría Médica y posterior autorización.',
+      highlights: [
+        'Cobertura del 60%: Adquisición en farmacias adheridas al Colegio de Farmacéuticos de Santa Fe (1ª Circunscripción) con carnet y prescripción médica.',
+        'Doble Cobertura Complementaria: Beneficio de ambos descuentos presentando ambas credenciales en la farmacia sin trámites adicionales.',
+        'Cantidades Reconocidas: Hasta 2 productos distintos por receta, hasta 2 envases chicos o 1 grande, antibióticos monodosis (hasta 6) y multidosis (hasta 1).',
+        'Sin Reintegros: No se realizan reintegros por compras de medicamentos dentro de la 1.ª Circunscripción de la Provincia.',
+        'Tratamientos Prolongados: Presentación de Historia Clínica del médico tratante en el DSS (validez por 180 días) para autorización.'
+      ],
       steps: [
         { 
           step: 1, 
-          title: 'Pedí la receta a tu médico', 
-          desc: 'Si el médico utiliza receta electrónica, la farmacia la puede visualizar directamente en el sistema con tu N° de Matrícula (no necesitas llevarla impresa).' 
+          title: 'Prescripción Médica', 
+          desc: 'Pedí a tu médico la receta (física o electrónica en sistema).' 
         },
         { 
           step: 2, 
-          title: 'Comprá en una farmacia adherida', 
-          desc: 'Presentá tu matrícula para obtener el 60% de descuento directo en el acto (100% para Plan Materno Infantil).' 
+          title: 'Farmacia Adherida (1.ª Circunscripción)', 
+          desc: 'Presentá tu credencial y prescripción en una farmacia adherida para obtener el 60% de descuento directo.' 
+        },
+        { 
+          step: 3, 
+          title: 'Doble Cobertura (Obra Social Complementaria)', 
+          desc: 'Si contás con otra obra social, presentá ambas credenciales para sumar ambos descuentos en el acto.' 
         }
       ],
       faqs: [
-        { q: '¿Qué cubre el Plan Materno Infantil?', a: 'Cubre el 100% de los medicamentos prescriptos para la madre durante el embarazo (hasta 30 días post-parto) y para el bebé hasta el primer año.' }
+        { q: '¿Cómo opera la doble cobertura con otra obra social?', a: 'Podés comprar beneficiándote de ambos descuentos. Confeccionás la orden según requerimientos de tu otra obra social y presentás ambas credenciales en la farmacia para que el DSS actúe como complementaria.' },
+        { q: '¿Qué cantidades de medicamentos se reconocen por receta?', a: 'Hasta 2 productos distintos por receta, hasta 2 envases chicos o 1 grande, hasta 6 antibióticos inyectables monodosis o 1 multidosis.' },
+        { q: '¿Cómo es la gestión de Tratamientos Prolongados?', a: 'Requiere presentar en la administración del DSS una Historia Clínica del médico tratante para evaluación de Auditoría Médica. La validez es de 180 días.' },
+        { q: '¿Hay reintegros por medicamentos?', a: 'No, no se realizan reintegros por compras de medicamentos dentro de la 1.ª Circunscripción de la Provincia.' }
       ],
       relatedFormIds: [],
       quickActionLabel: 'Buscador de Farmacias y Cobertura',
@@ -241,7 +255,7 @@ export const ACTION_MODULES: ActionModule[] = [
     buttonNumber: 6,
     title: 'Pastillas anticonceptivas',
     verbTitle: 'Cobertura de pastillas anticonceptivas',
-    shortDesc: 'Reconocimiento del 60% para ambos planes con descuento directo en Farmacia.',
+    shortDesc: 'Cobertura total (100%) para anticonceptivos orales del vademécum con ficha de vigencia anual, sin necesidad de receta.',
     iconName: 'HeartPulse',
     colorClass: {
       bg: 'bg-white',
@@ -251,30 +265,36 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-rose-600 text-white'
     },
     details: {
-      summary: 'Cobertura del 60% en pastillas anticonceptivas para ambos planes con descuento directo en Farmacia. Requiere presentar previamente en el DSS una ficha de tratamiento prolongado (se renueva cada 6 meses) indicando una marca del vademécum.',
-      highlights: [],
+      summary: 'Cobertura total de anticonceptivos orales incluidos en el vademécum, tanto para el Plan Básico como para el Ampliado, sin necesidad de presentar receta médica.\n\nEl único requisito es completar la ficha de tratamiento prolongado, que tiene vigencia anual. Una vez cargada en el sistema del Colegio de Farmacéuticos, la afiliada puede retirar la medicación directamente en la farmacia.\n\n*Este beneficio aplica exclusivamente a los productos listados en el vademécum; otras presentaciones o casos sin ficha registrada no acceden a esta cobertura.*',
+      highlights: [
+        'Cobertura Total (100%): Cobertura total de anticonceptivos orales incluidos en el vademécum para Plan Básico y Ampliado.',
+        'Sin Receta Médica: No requiere receta médica para retirar en la farmacia adherida.',
+        'Ficha de Tratamiento Prolongado: Único requisito con vigencia anual cargada en el sistema del Colegio de Farmacéuticos.',
+        'Exclusivo Vademécum: Aplica exclusivamente a los productos listados en el vademécum institucional.'
+      ],
       steps: [
         { 
           step: 1, 
-          title: 'Descargá el Vademécum y Ficha', 
-          desc: 'Descargá el [Vademécum de Anticonceptivos](https://www.cpcesfe1.org.ar/aplicativos/Documentos/VDM202608.xlsx) (Excel). Solicitá la ficha de tratamiento o hacé tus consultas a dss@cpn.org.ar.' 
+          title: 'Completá la Ficha de Tratamiento', 
+          desc: 'Solicitá y completá la ficha de tratamiento prolongado (vigencia anual).' 
         },
         { 
           step: 2, 
-          title: 'Presentá la Ficha de Tratamiento', 
-          desc: 'Hacé completar la ficha por tu médico tratante indicando una de las marcas del vademécum y presentala en el DSS (se renueva cada 6 meses).' 
+          title: 'Carga en Sistema', 
+          desc: 'Una vez cargada en el sistema del Colegio de Farmacéuticos, se habilita la cobertura total.' 
         },
         { 
           step: 3, 
-          title: 'Comprá en Farmacia', 
-          desc: 'Una vez autorizada, comprá directamente en cualquier farmacia adherida presentando tu número de matrícula para obtener el 60% de descuento.' 
+          title: 'Retiro Directo', 
+          desc: 'Retirá las pastillas anticonceptivas del vademécum directamente en la farmacia con tu credencial, sin necesidad de receta médica.' 
         }
       ],
       faqs: [
-        { q: '¿Cada cuánto tiempo se debe renovar la ficha?', a: 'La ficha de tratamiento prolongado de anticonceptivos debe renovarse obligatoriamente cada 6 meses.' }
+        { q: '¿Es necesario presentar receta médica en la farmacia?', a: 'No, no se necesita receta médica. Solo se requiere completar la ficha de tratamiento prolongado con vigencia anual.' },
+        { q: '¿Cuál es el porcentaje de cobertura?', a: 'Cobertura total (100%) tanto para el Plan Básico como para el Ampliado en anticonceptivos orales listados en el vademécum.' }
       ],
-      quickActionLabel: 'Descargar Vademécum (Excel)',
-      quickActionTarget: 'https://www.cpcesfe1.org.ar/aplicativos/Documentos/VDM202608.xlsx'
+      quickActionLabel: 'Ver Vademécum y Farmacias Adheridas',
+      quickActionTarget: 'vademecum'
     }
   },
   {
