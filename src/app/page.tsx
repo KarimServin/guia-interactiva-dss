@@ -217,23 +217,19 @@ export default function HomePage() {
                   <span className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
                     Contacto y ayuda
                   </span>
-                  <h3 className="font-heading text-lg sm:text-xl font-bold text-white">
-                    Guía de autogestión para afiliados del DSS CPCE Santa Fe • Cámara I
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-white max-w-2xl">
+                    Si aún no pudiste resolver tu duda o requerís una gestión asistida, nuestro equipo está a tu disposición.
                   </h3>
-                  <p className="text-xs text-slate-300 max-w-2xl font-normal leading-relaxed">
-                    Si aún no pudiste resolver tu duda o requerís una gestión asistida, nuestro equipo está a tu disposición por múltiples vías.
-                  </p>
                 </div>
-                <button
-                  onClick={() => {
-                    const contactoMod = ACTION_MODULES.find(m => m.id === 'contacto');
-                    if (contactoMod) setSelectedModule(contactoMod);
-                  }}
-                  className="px-5 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors shrink-0 flex items-center gap-2 active:scale-95"
+                <a
+                  href="https://wa.me/5493425105675"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs rounded-xl shadow-xs transition-colors shrink-0 flex items-center gap-2 active:scale-95 cursor-pointer"
                 >
                   <Headphones className="w-4 h-4" />
-                  Ver Canales de Contacto
-                </button>
+                  Contactar por WhatsApp
+                </a>
               </div>
             </div>
           </div>
