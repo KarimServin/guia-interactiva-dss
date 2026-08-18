@@ -280,9 +280,9 @@ export const ACTION_MODULES: ActionModule[] = [
   {
     id: 'autorizaciones',
     buttonNumber: 7,
-    title: 'Estudios, prácticas y odontología',
-    verbTitle: 'Necesito autorizar una práctica',
-    shortDesc: 'Requisito obligatorio para estudios de alta complejidad, cirugías u odontología especial.',
+    title: 'Autorizaciones',
+    verbTitle: 'Autorizaciones de Prácticas y Estudios',
+    shortDesc: 'Necesitan autorización previa: estudios, prácticas, imágenes, odontología, análisis, etc.',
     iconName: 'ClipboardCheck',
     colorClass: {
       bg: 'bg-white',
@@ -292,9 +292,32 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-900 text-white'
     },
     details: {
-      summary: 'Necesitan autorización previa los estudios, prácticas, imágenes, odontología, análisis, etc.\n\n**¿Cómo se autoriza?**\nEnviando la indicación médica por WhatsApp al [3425 10-5675](https://wa.me/5493425105675).\n\n**Horario de atención:** Lunes a viernes | 7 a 15 hs',
-      highlights: [],
-      steps: [],
+      summary: 'Necesitan autorización previa:\n• Estudios\n• Prácticas\n• Imágenes\n• Odontología\n• Análisis, etc.\n\n**¿Cómo se autoriza?**\nEnviando la indicación médica por WhatsApp al [3425 10-5675](https://wa.me/5493425105675).\n\n**Atención:** Lunes a viernes | 7 a 15 hs',
+      highlights: [
+        'Prácticas que requieren autorización: Estudios, prácticas, imágenes, odontología, análisis, etc.',
+        '¿Cómo se autoriza?: Enviando la indicación médica por WhatsApp al 3425 10-5675.',
+        'Atención: Lunes a viernes | 7 a 15 hs'
+      ],
+      steps: [
+        {
+          step: 1,
+          title: 'Indicación Médica',
+          desc: 'Obtené la orden o receta prescrita por el profesional médico.'
+        },
+        {
+          step: 2,
+          title: 'Envío por WhatsApp',
+          desc: 'Enviá la foto legible de la orden al [WhatsApp 3425 10-5675](https://wa.me/5493425105675).'
+        },
+        {
+          step: 3,
+          title: 'Procesamiento',
+          desc: 'El equipo de Auditoría Médica procesará la solicitud en horario de atención (Lunes a viernes de 7 a 15 hs).'
+        }
+      ],
+      faqs: [
+        { q: '¿Cuál es el canal oficial para enviar la indicación médica?', a: 'El único canal habilitado es el WhatsApp 3425 10-5675 en el horario de Lunes a viernes de 7 a 15 hs.' }
+      ],
       coberturaTable: [
         { prestacion: 'CONSULTAS', isHeader: true },
         { prestacion: 'Consultorio', descripcion: 'Coseguro', general: 'V. Modulado', basico: 'V. Modulado' },
@@ -371,13 +394,8 @@ export const ACTION_MODULES: ActionModule[] = [
         { prestacion: 'COSEGURO OTRA OBRA SOCIAL', isHeader: true },
         { prestacion: 'Prácticas reconocidas por DSS', descripcion: '', general: '', basico: '' }
       ],
-      faqs: [
-        { q: '¿Tiene vencimiento la orden médica autorizada?', a: 'Sí, la autorización tiene una validez de 30 días corridos a partir de la fecha de aprobación.' },
-        { q: '¿Qué hago si la práctica es de urgencia?', a: 'En urgencias sanatoriales, la autorización es gestionada internamente por la oficina de admisión del sanatorio contratado.' }
-      ],
-      relatedFormIds: ['FORM-04', 'FORM-05'],
-      quickActionLabel: 'Simulador de Autorización Online',
-      quickActionTarget: 'autorizador'
+      quickActionLabel: 'Enviar indicación médica por WhatsApp',
+      quickActionTarget: 'https://wa.me/5493425105675'
     }
   },
   {
