@@ -47,14 +47,3 @@ header[class*="sticky"] {
   font-family: var(--font-heading), 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   letter-spacing: -0.025em;
 }
-
-/* 
-  White safe-area padding BELOW the page content.
-  This is what iOS Safari blurs behind the floating toolbar.
-*/
-body::after {
-  content: '';
-  display: block;
-  height: env(safe-area-inset-bottom);
-  background-color: #ffffff;
-}

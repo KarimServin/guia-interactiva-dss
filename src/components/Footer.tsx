@@ -5,7 +5,7 @@ import { Mail, MapPin, Clock, ExternalLink, MessageCircle } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="relative bg-gradient-to-br from-slate-50 via-sky-50/60 to-orange-100/40 text-slate-700 pt-14 border-t border-sky-200/70 shadow-inner overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-slate-50 via-sky-50/60 to-orange-100/40 text-slate-700 pt-14 pb-10 border-t border-sky-200/70 shadow-inner overflow-hidden">
       {/* Avant-garde Gradient Top Border Accent */}
       <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-900 via-sky-500 to-orange-500"></div>
       
@@ -103,16 +103,13 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 border-t border-sky-200/80 text-center text-xs text-slate-500 flex flex-col items-center justify-center gap-1.5 font-normal pb-6">
+        <div className="pt-6 border-t border-sky-200/80 text-center text-xs text-slate-500 flex flex-col items-center justify-center gap-1.5 font-normal">
           <p>© 2026 Departamento de Servicios Sociales - CPCE Santa Fe Cámara I. Todos los derechos reservados.</p>
           <p className="text-[11px] text-slate-400 font-medium">
             Desarrollado por el Área de Sistemas del Consejo Profesional de Ciencias Económicas de Santa Fe - Cámara I
           </p>
         </div>
       </div>
-
-      {/* iOS Safari floating toolbar fix: white canvas so translucent toolbar blurs over white */}
-      <div className="bg-white" style={{ height: 'env(safe-area-inset-bottom, 24px)', minHeight: '24px' }} />
     </footer>
   );
 };
