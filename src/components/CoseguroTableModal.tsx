@@ -41,11 +41,20 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ onClose 
           <div className="p-5 bg-sky-50/80 rounded-2xl border border-sky-100 text-xs text-blue-950 leading-relaxed space-y-2">
             <p className="font-bold flex items-center gap-2 text-blue-900 text-sm">
               <ShieldCheck className="w-5 h-5 text-sky-600 shrink-0" />
-              ¿Cómo funcionan los coseguros del DSS?
+              ¿Cómo funciona el coseguro?
             </p>
-            <p className="font-medium text-slate-700">
-              Los coseguros son aranceles moderadores que permiten sostener el fondo solidario de salud con cuotas mensuales muy competitivas. <strong>No debés abonar efectivo al profesional en el consultorio</strong>; los importes se debitan de manera transparente en tu resumen mensual del Consejo.
+            <p className="text-slate-700">
+              Cuando una práctica es autorizada, el DSS cubre el porcentaje correspondiente según el plan y el saldo restante se incorpora automáticamente a la cuenta corriente del afiliado.
             </p>
+            <p className="text-blue-900 font-semibold bg-white/90 p-3 rounded-xl border border-sky-200/80">
+              Importante: no es necesario abonar importes en clínicas, sanatorios o centros médicos al momento de realizar la prestación. El coseguro se liquida junto con la cuota mensual siguiente.
+            </p>
+            <div className="text-slate-600 text-[11px] pt-1">
+              <span className="font-bold text-slate-800">Ejemplo: una ecografía</span><br />
+              • Plan General - cobertura del 70%<br />
+              • Plan Básico - cobertura del 60%<br />
+              La diferencia restante se registra como coseguro.
+            </div>
           </div>
 
           <div className="border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs">

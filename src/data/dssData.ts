@@ -422,8 +422,8 @@ export const ACTION_MODULES: ActionModule[] = [
     id: 'coseguros',
     buttonNumber: 8,
     title: 'Coseguros',
-    verbTitle: 'Acerca de los coseguros',
-    shortDesc: 'Información sobre el sistema solidario, tabla de coseguros y modo de liquidación.',
+    verbTitle: '¿Cómo funciona el coseguro?',
+    shortDesc: 'Información sobre la incorporación automática a cuenta corriente y liquidación en cuota mensual.',
     iconName: 'DollarSign',
     colorClass: {
       bg: 'bg-white',
@@ -433,23 +433,23 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-sky-600 text-white'
     },
     details: {
-      summary: 'El coseguro es un arancel moderador del sistema solidario de salud. Permite mantener aportes accesibles y evitar el sobreuso de prestaciones.',
+      summary: '¿Cómo funciona el coseguro?\nCuando una práctica es autorizada, el DSS cubre el porcentaje correspondiente según el plan y el saldo restante se incorpora automáticamente a la cuenta corriente del afiliado.\n\nImportante: no es necesario abonar importes en clínicas, sanatorios o centros médicos al momento de realizar la prestación. El coseguro se liquida junto con la cuota mensual siguiente.\n\nEjemplo: una ecografía\n• Plan General - cobertura del 70%\n• Plan Básico - cobertura del 60%\nLa diferencia restante se registra como coseguro.',
       highlights: [
-        'Los coseguros no se abonan al médico en efectivo salvo excepciones informadas expresamente.',
-        'Se incluyen en la liquidación mensual de gastos de matrícula emitida por el Consejo.',
-        'Los montos están fijados según la arancelaria oficial del DSS y se actualizan periódicamente.',
-        'Coseguro $0 para programas especiales como Control del Niño Sano, Embarazo y Enfermedades Crónicas en programa.'
+        'Funcionamiento del coseguro: Al autorizar una práctica, el DSS cubre el porcentaje correspondiente según el plan y el saldo restante se incorpora automáticamente a la cuenta corriente del afiliado.',
+        'Sin cobro en el acto: Importante: no es necesario abonar importes en clínicas, sanatorios o centros médicos al momento de realizar la prestación.',
+        'Liquidación en cuota mensual: El coseguro se liquida junto con la cuota mensual siguiente.',
+        'Ejemplo (ecografía): Plan General cobertura del 70% / Plan Básico cobertura del 60%. La diferencia restante se registra como coseguro.'
       ],
       steps: [
-        { step: 1, title: 'Realizás la atención', desc: 'El prestador registra la consulta o estudio con tu número de matrícula.' },
-        { step: 2, title: 'Procesamiento en DSS', desc: 'Auditoría registra el coseguro reglamentario asignado a la práctica.' },
-        { step: 3, title: 'Abonás en tu resumen', desc: 'Verificás el detalle en tu resumen mensual del Consejo y pagás por tu medio habitual.' }
+        { step: 1, title: 'Práctica Autorizada', desc: 'El DSS cubre el porcentaje correspondiente según tu plan (Ejemplo: 70% Plan General / 60% Plan Básico).' },
+        { step: 2, title: 'Atención Sin Abono Directo', desc: 'No es necesario abonar importes en clínicas, sanatorios o centros médicos al momento de realizar la prestación.' },
+        { step: 3, title: 'Liquidación Mensual', desc: 'El saldo restante se incorpora automáticamente a la cuenta corriente y se liquida en tu cuota mensual siguiente.' }
       ],
       faqs: [
-        { q: '¿El médico puede cobrarme un plus o adicional en el consultorio?', a: 'No. Ningún prestador en cartilla está autorizado a cobrar montos adicionales no estipulados por el DSS. Si ocurre, podés realizar el reclamo en el Departamento.' },
-        { q: '¿Dónde consulto el detalle de los coseguros liquidados?', a: 'En el Portal de Autogestión del Consejo o descargando el detalle de facturación mensual.' }
+        { q: '¿Debo abonar algo en la clínica o centro médico al momento de la prestación?', a: 'No. Importante: no es necesario abonar importes en clínicas, sanatorios o centros médicos al momento de realizar la prestación. El coseguro se liquida junto con la cuota mensual siguiente.' },
+        { q: '¿Cómo se registra el coseguro de una ecografía?', a: 'El DSS cubre el 70% en Plan General o 60% en Plan Básico. La diferencia restante se incorpora automáticamente a la cuenta corriente del afiliado como coseguro.' }
       ],
-      relatedFormIds: ['FORM-05'],
+      relatedFormIds: [],
       quickActionLabel: 'Ver Tabla de Coseguros',
       quickActionTarget: 'coseguro-tabla'
     }
