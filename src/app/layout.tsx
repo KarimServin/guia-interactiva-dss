@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Área de Sistemas - CPCE Santa Fe Cámara I" }],
   creator: "Consejo Profesional de Ciencias Económicas de Santa Fe Cámara I",
   publisher: "CPCE Santa Fe Cámara I",
-  metadataBase: new URL("https://cpcesfe1.org.ar"),
+  metadataBase: new URL("https://dss.contadores.org.ar"),
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -42,16 +42,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DSS CPCE Santa Fe Cámara I - Guía Interactiva de Cobertura Médica",
     description: "Autogestión de servicios sociales, cartilla médica, credencial digital y trámites para profesionales matriculados.",
-    url: "https://cpcesfe1.org.ar",
+    url: "https://dss.contadores.org.ar",
     siteName: "DSS CPCE Santa Fe - Cámara I",
     locale: "es_AR",
     type: "website",
     images: [
       {
-        url: "/dss-logo.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "DSS Santa Fe - Departamento de Servicios Sociales",
+        alt: "DSS CPCE Santa Fe Cámara I - Guía Interactiva de Autogestión y Cobertura Médica",
+        type: "image/png",
       },
     ],
   },
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "DSS CPCE Santa Fe Cámara I - Guía Interactiva",
     description: "Servicios sociales y sistema solidario de salud para profesionales matriculados.",
-    images: ["/dss-logo.png"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
