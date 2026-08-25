@@ -13,6 +13,39 @@ import {
   ChevronDown 
 } from 'lucide-react';
 
+// Suffix/Stem extraction helper for Spanish medical specialties
+const getMedicalStem = (word: string): string => {
+  let clean = word
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+
+  // Suffix mappings for medical terms
+  if (clean.endsWith('ologia') || clean.endsWith('ologias') ||
+      clean.endsWith('ologo') || clean.endsWith('ologos') ||
+      clean.endsWith('ologa') || clean.endsWith('ologas')) {
+    clean = clean.replace(/olog(ia|ias|o|os|a|as)$/, 'olog');
+  } else if (clean.endsWith('atria') || clean.endsWith('atrias') ||
+             clean.endsWith('atra') || clean.endsWith('atras')) {
+    clean = clean.replace(/atr(ia|ias|a|as)$/, 'iatr');
+  } else if (clean.endsWith('etricia') || clean.endsWith('etricias') ||
+             clean.endsWith('etra') || clean.endsWith('etras')) {
+    clean = clean.replace(/(etricia|etricias|etra|etras)$/, 'etr');
+  } else if (clean.endsWith('ista') || clean.endsWith('istas')) {
+    clean = clean.replace(/ist(a|as)$/, '');
+  } else if (clean.endsWith('ico') || clean.endsWith('ica') ||
+             clean.endsWith('icos') || clean.endsWith('icas')) {
+    clean = clean.replace(/ic(o|a|os|as)$/, 'ic');
+  } else if (clean.length > 4 && (clean.endsWith('ia') || clean.endsWith('ias') || clean.endsWith('io') || clean.endsWith('ios'))) {
+    clean = clean.replace(/(ia|ias|io|ios)$/, '');
+  } else if (clean.length > 3 && (clean.endsWith('o') || clean.endsWith('a') || clean.endsWith('os') || clean.endsWith('as') || clean.endsWith('e') || clean.endsWith('es'))) {
+    clean = clean.replace(/(o|a|os|as|e|es)$/, '');
+  }
+
+  return clean;
+};
+
 export const MedicalDirectory: React.FC = () => {
   const [providers, setProviders] = useState<MedicalProvider[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -97,17 +130,19 @@ export const MedicalDirectory: React.FC = () => {
     setVisibleCount(60);
   };
 
-  // Normalized accent-insensitive substring & regex checking
-  const matchesQuery = (field: string, query: string) => {
+  // Normalized accent-insensitive substring & regex/stem checking
+  const matchesQuery = (field: string, query: string, isSpecialty: boolean = false) => {
     if (!field) return false;
     if (!query) return true;
 
-    // 1. Try regex check (smart regex)
+    // 1. Try regex check (smart regex) if user uses special regex characters
     try {
-      const regex = new RegExp(query, 'i');
-      if (regex.test(field)) return true;
+      if (/[\x7c\x2a\x2b\x3f\x28\x29\x5b\x5d]/.test(query)) {
+        const regex = new RegExp(query, 'i');
+        if (regex.test(field)) return true;
+      }
     } catch (e) {
-      // Ignore regex compilation error, fallback to string includes
+      // Ignore regex compilation error
     }
 
     // 2. Normal text comparison (accent/case insensitive)
@@ -115,7 +150,28 @@ export const MedicalDirectory: React.FC = () => {
       return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
     };
 
-    return normalize(field).includes(normalize(query));
+    const normField = normalize(field);
+    const normQuery = normalize(query);
+
+    if (normField.includes(normQuery)) return true;
+
+    // 3. For specialties, apply advanced medical stemming rules
+    if (isSpecialty) {
+      const queryWords = normQuery.split(/\s+/).filter(w => w.length > 0);
+      const fieldWords = normField.split(/[\s,/-]+/).filter(w => w.length > 0);
+
+      const queryStems = queryWords.map(w => getMedicalStem(w));
+      const fieldStems = fieldWords.map(w => getMedicalStem(w));
+
+      // Every word in the query must match at least one word in the field (by stem)
+      const allQueryWordsMatch = queryStems.every(qStem => {
+        return fieldStems.some(fStem => fStem.includes(qStem) || qStem.includes(fStem));
+      });
+
+      if (allQueryWordsMatch) return true;
+    }
+
+    return false;
   };
 
   // Filtered providers list based on active searches
@@ -128,7 +184,7 @@ export const MedicalDirectory: React.FC = () => {
 
       // 2. Specialty search
       if (searchSpecialty.trim() !== '') {
-        if (!matchesQuery(p.specialty, searchSpecialty)) return false;
+        if (!matchesQuery(p.specialty, searchSpecialty, true)) return false;
       }
 
       // 3. Locality search
@@ -153,13 +209,22 @@ export const MedicalDirectory: React.FC = () => {
     return filteredProviders.slice(0, visibleCount);
   }, [filteredProviders, visibleCount, searchName, searchSpecialty, searchLocality]);
 
-  // Text highlighting helper
-  const highlightText = (text: string, search: string) => {
+  // Text highlighting helper with stem-highlighting for specialties
+  const highlightText = (text: string, search: string, isSpecialty: boolean = false) => {
     if (!text) return '';
     if (!search.trim()) return <span>{text}</span>;
 
+    let pattern = search;
+    if (isSpecialty) {
+      const stem = getMedicalStem(search);
+      if (stem && stem.length >= 3) {
+        pattern = stem;
+      }
+    }
+
     try {
-      const regex = new RegExp(`(${search})`, 'gi');
+      const escapedPattern = pattern.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+      const regex = new RegExp(`(${escapedPattern})`, 'gi');
       const parts = text.split(regex);
       return (
         <span>
@@ -173,7 +238,7 @@ export const MedicalDirectory: React.FC = () => {
         </span>
       );
     } catch (e) {
-      // Regex failed, use standard split
+      // Fallback
       const escaped = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
       const parts = text.split(new RegExp(`(${escaped})`, 'gi'));
       return (
@@ -402,7 +467,7 @@ export const MedicalDirectory: React.FC = () => {
                   {/* Specialty */}
                   <p className="text-xs font-bold text-sky-700 mb-4 flex items-center gap-1.5">
                     <Stethoscope className="w-4 h-4 text-sky-500 shrink-0" />
-                    <span>{highlightText(p.specialty, searchSpecialty)}</span>
+                    <span>{highlightText(p.specialty, searchSpecialty, true)}</span>
                   </p>
 
                   {/* Contact details */}
