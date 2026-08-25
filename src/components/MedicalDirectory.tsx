@@ -62,6 +62,32 @@ export const MedicalDirectory: React.FC = () => {
   const [searchLocality, setSearchLocality] = useState('');
 
   const [visibleCount, setVisibleCount] = useState<number>(60);
+  const [showSpecialtySuggestions, setShowSpecialtySuggestions] = useState(false);
+
+  // Extract all unique specialties sorted alphabetically
+  const allSpecialties = useMemo(() => {
+    const set = new Set<string>();
+    providers.forEach(p => {
+      if (p.specialty) {
+        set.add(p.specialty.trim());
+      }
+    });
+    return Array.from(set).sort((a, b) => a.localeCompare(b));
+  }, [providers]);
+
+  // Filtered specialty suggestions
+  const specialtySuggestions = useMemo(() => {
+    const query = inputSpecialty.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    if (!query) {
+      // First 10 alphabetically
+      return allSpecialties.slice(0, 10);
+    }
+    
+    return allSpecialties.filter(spec => {
+      const normSpec = spec.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      return normSpec.includes(query) || getMedicalStem(spec).includes(getMedicalStem(query));
+    }).slice(0, 15);
+  }, [allSpecialties, inputSpecialty]);
 
   // Fetch providers from local API on mount
   const fetchProviders = async (silent = false) => {
@@ -321,10 +347,34 @@ export const MedicalDirectory: React.FC = () => {
                   type="text"
                   value={inputSpecialty}
                   onChange={(e) => setInputSpecialty(e.target.value)}
+                  onFocus={() => setShowSpecialtySuggestions(true)}
+                  onBlur={() => setTimeout(() => setShowSpecialtySuggestions(false), 250)}
                   onKeyDown={handleKeyDown}
                   placeholder="Ej: Odontologo, Pediatra..."
                   className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200/85 rounded-2xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all shadow-inner"
                 />
+
+                {/* Suggestions Dropdown */}
+                {showSpecialtySuggestions && specialtySuggestions.length > 0 && (
+                  <div className="absolute z-50 left-0 right-0 mt-1.5 bg-white border border-slate-200/80 rounded-2xl shadow-xl max-h-60 overflow-y-auto font-sans text-xs divide-y divide-slate-100/60 animate-fadeIn">
+                    {specialtySuggestions.map(spec => (
+                      <button
+                        key={spec}
+                        type="button"
+                        onClick={() => {
+                          setInputSpecialty(spec);
+                          setSearchSpecialty(spec);
+                          setVisibleCount(60);
+                          setShowSpecialtySuggestions(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 hover:bg-blue-50/80 text-slate-700 hover:text-blue-900 transition-colors font-semibold flex items-center gap-2 cursor-pointer"
+                      >
+                        <Stethoscope className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                        <span>{highlightText(spec, inputSpecialty, true)}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
