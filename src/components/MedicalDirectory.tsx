@@ -206,97 +206,98 @@ export const MedicalDirectory: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 animate-fadeIn">
-      {/* Header Banner */}
-      <div className="bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden border border-blue-900/50">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -left-10 -bottom-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="max-w-3xl relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-3">
-            <h2 className="text-2xl sm:text-3.5xl font-extrabold tracking-tight text-white mb-2 leading-tight">
+      {/* Unified Search Panel */}
+      <div className="bg-white rounded-3xl shadow-lg border border-slate-200/80 overflow-hidden">
+        {/* Header Section (Dark Blue Gradient) */}
+        <div className="bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 text-white p-6 sm:p-8 relative overflow-hidden">
+          <div className="absolute right-0 top-0 w-96 h-96 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -left-10 -bottom-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="relative z-10 space-y-2">
+            <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white leading-tight">
               Padrón de Profesionales y Centros Médicos
             </h2>
-            <p className="text-sky-100/90 text-xs sm:text-sm leading-relaxed font-normal max-w-2xl">
+            <p className="text-sky-200/95 text-xs sm:text-sm max-w-3xl leading-relaxed">
               Accedé en tiempo real a la cartilla completa de profesionales del DSS. Identificate en la consulta presentando únicamente tu número de Matrícula y DNI.
             </p>
           </div>
         </div>
-      </div>
 
-      {/* Three Filters Form & Search Button */}
-      <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-5 sm:p-6 shadow-md border border-slate-100 space-y-4">
-        {/* Form Inputs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* 1. Name Input */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-extrabold text-slate-700 block pl-1">
-              Nombre del Médico / Centro
-            </label>
-            <div className="relative">
-              <Search className="w-4 h-4 text-slate-400 absolute left-4 top-3.5" />
-              <input
-                type="text"
-                value={inputName}
-                onChange={(e) => setInputName(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Ej: ABBET, Fernandez..."
-                className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200/85 rounded-2xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all shadow-inner"
-              />
+        {/* Filter Form Section */}
+        <div className="p-5 sm:p-6 space-y-4">
+          {/* Form Inputs Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* 1. Name Input */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-extrabold text-slate-700 block pl-1">
+                Nombre del Médico / Centro
+              </label>
+              <div className="relative">
+                <Search className="w-4 h-4 text-slate-400 absolute left-4 top-3.5" />
+                <input
+                  type="text"
+                  value={inputName}
+                  onChange={(e) => setInputName(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Ej: ABBET, Fernandez..."
+                  className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200/85 rounded-2xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all shadow-inner"
+                />
+              </div>
+            </div>
+
+            {/* 2. Specialty Input */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-extrabold text-slate-700 block pl-1">
+                Especialidad
+              </label>
+              <div className="relative">
+                <Stethoscope className="w-4 h-4 text-slate-400 absolute left-4 top-3.5" />
+                <input
+                  type="text"
+                  value={inputSpecialty}
+                  onChange={(e) => setInputSpecialty(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Ej: Odontologo, Pediatra..."
+                  className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200/85 rounded-2xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all shadow-inner"
+                />
+              </div>
+            </div>
+
+            {/* 3. Locality Input */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-extrabold text-slate-700 block pl-1">
+                Localidad
+              </label>
+              <div className="relative">
+                <MapPin className="w-4 h-4 text-slate-400 absolute left-4 top-3.5" />
+                <input
+                  type="text"
+                  value={inputLocality}
+                  onChange={(e) => setInputLocality(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Ej: Santa Fe, Avellaneda, Rafaela..."
+                  className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200/85 rounded-2xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all shadow-inner"
+                />
+              </div>
             </div>
           </div>
 
-          {/* 2. Specialty Input */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-extrabold text-slate-700 block pl-1">
-              Especialidad
-            </label>
-            <div className="relative">
-              <Stethoscope className="w-4 h-4 text-slate-400 absolute left-4 top-3.5" />
-              <input
-                type="text"
-                value={inputSpecialty}
-                onChange={(e) => setInputSpecialty(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Ej: Odontologo, Pediatra..."
-                className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200/85 rounded-2xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all shadow-inner"
-              />
+          {/* Clarification Note */}
+          <p className="text-xs text-slate-500 font-medium pl-1 leading-relaxed">
+            Puedes buscar por nombre del prestador, por localidad o especialidad.
+          </p>
+
+          {/* Buttons Action Bar */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-100">
+            <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+              <button
+                onClick={handleSearch}
+                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-2xl text-xs font-extrabold transition-all shadow-md shadow-blue-100 flex items-center justify-center gap-2 active:scale-95 cursor-pointer w-full sm:w-auto"
+              >
+                <Search className="w-4 h-4" />
+                Buscar Profesionales
+              </button>
             </div>
-          </div>
-
-          {/* 3. Locality Input */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-extrabold text-slate-700 block pl-1">
-              Localidad
-            </label>
-            <div className="relative">
-              <MapPin className="w-4 h-4 text-slate-400 absolute left-4 top-3.5" />
-              <input
-                type="text"
-                value={inputLocality}
-                onChange={(e) => setInputLocality(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Ej: Santa Fe, Avellaneda, Rafaela..."
-                className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200/85 rounded-2xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all shadow-inner"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Clarification Note */}
-        <p className="text-xs text-slate-500 font-medium pl-1 leading-relaxed">
-          Puedes buscar por nombre del prestador, por localidad o especialidad.
-        </p>
-
-        {/* Buttons Action Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-100">
-          <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
-            <button
-              onClick={handleSearch}
-              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-2xl text-xs font-extrabold transition-all shadow-md shadow-blue-100 flex items-center justify-center gap-2 active:scale-95 cursor-pointer w-full sm:w-auto"
-            >
-              <Search className="w-4 h-4" />
-              Buscar Profesionales
-            </button>
           </div>
         </div>
       </div>
