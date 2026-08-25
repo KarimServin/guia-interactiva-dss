@@ -2,10 +2,12 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+export const dynamic = 'force-dynamic';
+
 // Memory cache
 let cachedData: any[] | null = null;
 let lastFetched = 0;
-const CACHE_TTL = 1000 * 60 * 60; // 1 hour
+const CACHE_TTL = 1000 * 60 * 5; // 5 minutes (short TTL to ensure auto-updating from Google Sheets)
 
 const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vfq5HlAMR0R-hZymeFdXCZTsZAPGO20v/export?format=csv&gid=579795149';
 const FALLBACK_FILE_PATH = path.join(process.cwd(), 'src/data/medicos_fallback.json');
@@ -55,7 +57,7 @@ export async function GET() {
 
   try {
     const res = await fetch(SHEET_CSV_URL, {
-      next: { revalidate: 3600 } // ISR cache option (Next.js)
+      cache: 'no-store'
     });
     
     if (!res.ok) {
