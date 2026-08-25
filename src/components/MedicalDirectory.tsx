@@ -9,7 +9,6 @@ import {
   Stethoscope, 
   AlertTriangle, 
   CheckCircle2, 
-  RefreshCw, 
   Hash, 
   ChevronDown 
 } from 'lucide-react';
@@ -28,10 +27,8 @@ export const MedicalDirectory: React.FC = () => {
   const [searchName, setSearchName] = useState('');
   const [searchSpecialty, setSearchSpecialty] = useState('');
   const [searchLocality, setSearchLocality] = useState('');
-  const [emergencyOnly, setEmergencyOnly] = useState<boolean>(false);
 
   const [visibleCount, setVisibleCount] = useState<number>(60);
-  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
 
   // Fetch providers from local API on mount
   const fetchProviders = async (silent = false) => {
@@ -49,7 +46,6 @@ export const MedicalDirectory: React.FC = () => {
       setError('Hubo un error al cargar la cartilla médica. Por favor, intente de nuevo.');
     } finally {
       setLoading(false);
-      setIsRefreshing(false);
     }
   };
 
@@ -98,7 +94,6 @@ export const MedicalDirectory: React.FC = () => {
     setSearchName('');
     setSearchSpecialty('');
     setSearchLocality('');
-    setEmergencyOnly(false);
     setVisibleCount(60);
   };
 
@@ -126,20 +121,17 @@ export const MedicalDirectory: React.FC = () => {
   // Filtered providers list based on active searches
   const filteredProviders = useMemo(() => {
     return providers.filter(p => {
-      // 1. Emergency only filter
-      if (emergencyOnly && !p.isEmergencyGuard) return false;
-      
-      // 2. Name search
+      // 1. Name search
       if (searchName.trim() !== '') {
         if (!matchesQuery(p.name, searchName)) return false;
       }
 
-      // 3. Specialty search
+      // 2. Specialty search
       if (searchSpecialty.trim() !== '') {
         if (!matchesQuery(p.specialty, searchSpecialty)) return false;
       }
 
-      // 4. Locality search
+      // 3. Locality search
       if (searchLocality.trim() !== '') {
         const matchesLoc = p.city || p.locality || '';
         if (!matchesQuery(matchesLoc, searchLocality)) return false;
@@ -147,7 +139,7 @@ export const MedicalDirectory: React.FC = () => {
 
       return true;
     });
-  }, [providers, searchName, searchSpecialty, searchLocality, emergencyOnly]);
+  }, [providers, searchName, searchSpecialty, searchLocality]);
 
   // Paginated/deferred providers to actually render
   const renderedProviders = useMemo(() => {
@@ -160,11 +152,6 @@ export const MedicalDirectory: React.FC = () => {
     }
     return filteredProviders.slice(0, visibleCount);
   }, [filteredProviders, visibleCount, searchName, searchSpecialty, searchLocality]);
-
-  const handleRefresh = () => {
-    setIsRefreshing(true);
-    fetchProviders(true);
-  };
 
   // Text highlighting helper
   const highlightText = (text: string, search: string) => {
@@ -214,8 +201,8 @@ export const MedicalDirectory: React.FC = () => {
 
   // Check if any filter is active
   const isFilterActive = useMemo(() => {
-    return searchName.trim() !== '' || searchSpecialty.trim() !== '' || searchLocality.trim() !== '' || emergencyOnly;
-  }, [searchName, searchSpecialty, searchLocality, emergencyOnly]);
+    return searchName.trim() !== '' || searchSpecialty.trim() !== '' || searchLocality.trim() !== '';
+  }, [searchName, searchSpecialty, searchLocality]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 animate-fadeIn">
@@ -234,18 +221,9 @@ export const MedicalDirectory: React.FC = () => {
               Padrón de Profesionales y Centros Médicos
             </h2>
             <p className="text-sky-100/90 text-xs sm:text-sm leading-relaxed font-normal max-w-2xl">
-              Accedé en tiempo real a la cartilla completa de profesionales del DSS. Identificate en la consulta presentando únicamente tu número de Matrícula y DNI. Se aplica carga diferida para optimizar la velocidad.
+              Accedé en tiempo real a la cartilla completa de profesionales del DSS. Identificate en la consulta presentando únicamente tu número de Matrícula y DNI.
             </p>
           </div>
-          
-          <button
-            onClick={handleRefresh}
-            disabled={loading || isRefreshing}
-            className="self-start md:self-center px-4.5 py-2.5 bg-white/10 hover:bg-white/20 disabled:bg-white/5 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition-all border border-white/10 flex items-center gap-2 active:scale-95 shadow-sm cursor-pointer shrink-0"
-          >
-            <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
-            Sincronizar Planilla
-          </button>
         </div>
       </div>
 
@@ -283,7 +261,7 @@ export const MedicalDirectory: React.FC = () => {
                 value={inputSpecialty}
                 onChange={(e) => setInputSpecialty(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Ej: Odontologo, Pediatra, Guardia..."
+                placeholder="Ej: Odontologo, Pediatra..."
                 className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200/85 rounded-2xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all shadow-inner"
               />
             </div>
@@ -308,9 +286,9 @@ export const MedicalDirectory: React.FC = () => {
           </div>
         </div>
 
-        {/* Info Tip about Regex */}
-        <p className="text-[10px] text-slate-400 font-medium pl-1 leading-relaxed">
-          💡 <b>Tip:</b> Podés usar expresiones regulares (Regex) en cualquiera de los campos. Ejemplo: <code className="bg-slate-100 px-1 py-0.5 rounded-sm">santa fe|esperanza</code> en el campo Localidad para ver médicos de ambas, o <code className="bg-slate-100 px-1 py-0.5 rounded-sm">pediatr|ginec</code> en Especialidad.
+        {/* Clarification Note */}
+        <p className="text-xs text-slate-500 font-medium pl-1 leading-relaxed">
+          Puedes buscar por nombre del prestador, por localidad o especialidad.
         </p>
 
         {/* Buttons Action Bar */}
@@ -323,26 +301,7 @@ export const MedicalDirectory: React.FC = () => {
               <Search className="w-4 h-4" />
               Buscar Profesionales
             </button>
-            
-            <button
-              onClick={handleClear}
-              className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl text-xs font-extrabold transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer w-full sm:w-auto"
-            >
-              Limpiar Filtros
-            </button>
           </div>
-
-          <button
-            onClick={() => setEmergencyOnly(!emergencyOnly)}
-            className={`px-5 py-3 rounded-2xl font-bold text-xs flex items-center justify-center gap-2.5 transition-all cursor-pointer w-full sm:w-auto ${
-              emergencyOnly
-                ? 'bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-200'
-                : 'bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100'
-            }`}
-          >
-            <AlertTriangle className="w-4 h-4 shrink-0" />
-            <span>Ver Guardias y Urgencias 24hs</span>
-          </button>
         </div>
       </div>
 
@@ -354,14 +313,6 @@ export const MedicalDirectory: React.FC = () => {
             <strong className="text-blue-900">{filteredProviders.length}</strong>{' '}
             profesionales encontrados (total padrón: {providers.length})
           </span>
-          {isFilterActive && (
-            <button
-              onClick={handleClear}
-              className="text-blue-600 hover:underline hover:text-blue-800"
-            >
-              Limpiar filtros
-            </button>
-          )}
         </div>
       )}
 
