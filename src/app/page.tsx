@@ -39,6 +39,8 @@ export default function HomePage() {
       if (tab) {
         if (tab === 'cartilla') {
           router.replace('/cartilla');
+        } else if (tab === 'vademecum') {
+          router.replace('/vademecum/farmacias');
         } else {
           setActiveTab(tab);
         }
@@ -55,8 +57,7 @@ export default function HomePage() {
     if (target === 'cartilla') {
       router.push('/cartilla');
     } else if (target === 'vademecum') {
-      setActiveTab('vademecum');
-      router.push('/?tab=vademecum');
+      router.push('/vademecum/farmacias');
     } else if (target === 'formularios') {
       setActiveTab('formularios');
       router.push('/?tab=formularios');

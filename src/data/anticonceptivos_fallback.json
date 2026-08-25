@@ -1,0 +1,387 @@
+[
+  {
+    "producto": "DIANE 35 GRA x   21",
+    "laboratorio": "Bayer (PH)",
+    "troquel": "3036601",
+    "drogas": "Etinilestradiol + Ciproterona",
+    "acciones": "Estrogenoterapia + Androgenoterapia"
+  },
+  {
+    "producto": "MICROGYNON GRA x   21",
+    "laboratorio": "Raffo",
+    "troquel": "2365721",
+    "drogas": "Levonorgestrel + Etinilestradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "TRIQUILAR GRA x   21",
+    "laboratorio": "Raffo",
+    "troquel": "2718911",
+    "drogas": "Levonorgestrel + Etinilestradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "MICROVLAR COM x   21",
+    "laboratorio": "Raffo",
+    "troquel": "3741321",
+    "drogas": "Levonorgestrel + Etinilestradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "GINELEA COM x   21",
+    "laboratorio": "Elea",
+    "troquel": "3681431",
+    "drogas": "Etinilestradiol + Gestodeno",
+    "acciones": "Estrogenoterapia + Progestagenoterapia"
+  },
+  {
+    "producto": "GINELEA MD COM x   21",
+    "laboratorio": "Elea",
+    "troquel": "4120491",
+    "drogas": "Etinilestradiol + Gestodeno",
+    "acciones": "Estrogenoterapia + Progestagenoterapia"
+  },
+  {
+    "producto": "FEMIANE COM x   21",
+    "laboratorio": "Raffo",
+    "troquel": "4174111",
+    "drogas": "Etinilestradiol + Gestodeno",
+    "acciones": "Estrogenoterapia + Progestagenoterapia"
+  },
+  {
+    "producto": "APRIL COM x   21",
+    "laboratorio": "Gador",
+    "troquel": "4184191",
+    "drogas": "Levonorgestrel + Etinilestradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "MIRANOVA GRA x   21",
+    "laboratorio": "Bayer (PH)",
+    "troquel": "4458841",
+    "drogas": "Levonorgestrel + Etinilestradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "NORGESTREL PLUS GRA x   21",
+    "laboratorio": "Biotenk",
+    "troquel": "3742811",
+    "drogas": "Levonorgestrel + Etinilestradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "SECRET 28 COM x   28",
+    "laboratorio": "Elea",
+    "troquel": "4744291",
+    "drogas": "Etinilestradiol + Gestodeno",
+    "acciones": "Estrogenoterapia + Progestagenoterapia"
+  },
+  {
+    "producto": "FEMEXIN COM x   21",
+    "laboratorio": "Elea",
+    "troquel": "4744371",
+    "drogas": "Levonorgestrel + Etinilestradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "YASMIN COM x   28",
+    "laboratorio": "Bayer (PH)",
+    "troquel": "4928011",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "EVRA TRANSDERM. PAR x    3",
+    "laboratorio": "Elea",
+    "troquel": "5111011",
+    "drogas": "Norelgestromin + Etinilestradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "MILEVA 35 mg COM x   21",
+    "laboratorio": "Elea",
+    "troquel": "5146091",
+    "drogas": "Etinilestradiol + Ciproterona",
+    "acciones": "Estrogenoterapia + Androgenoterapia"
+  },
+  {
+    "producto": "FEMEXIN 28 COM x   28",
+    "laboratorio": "Elea",
+    "troquel": "4744372",
+    "drogas": "Levonorgestrel + Etinilestradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "DIVINA COM x   28",
+    "laboratorio": "Elea",
+    "troquel": "5261821",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "DAMSEL Rec. COM x   28",
+    "laboratorio": "Gador",
+    "troquel": "5348842",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "GINELEA MD 28 COM x   28",
+    "laboratorio": "Elea",
+    "troquel": "5376001",
+    "drogas": "Etinilestradiol + Gestodeno",
+    "acciones": "Estrogenoterapia + Progestagenoterapia"
+  },
+  {
+    "producto": "KIRUM COM x   28",
+    "laboratorio": "Raffo",
+    "troquel": "5446261",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "ALELI (24 + 4) COM x   28",
+    "laboratorio": "Bernabo",
+    "troquel": "5416001",
+    "drogas": "Etinilestradiol + Gestodeno",
+    "acciones": "Estrogenoterapia + Progestagenoterapia"
+  },
+  {
+    "producto": "CUIDAFEM COM x   21",
+    "laboratorio": "Bernabo",
+    "troquel": "5432421",
+    "drogas": "Etinilestradiol + Gestodeno",
+    "acciones": "Estrogenoterapia + Progestagenoterapia"
+  },
+  {
+    "producto": "CARMIN COM x   28",
+    "laboratorio": "Elea",
+    "troquel": "5282061",
+    "drogas": "Desogestrel",
+    "acciones": "Progestagenoterapia"
+  },
+  {
+    "producto": "DIVA COM x   28",
+    "laboratorio": "Elea",
+    "troquel": "5510711",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "KALA COM x   28",
+    "laboratorio": "Bernabo",
+    "troquel": "5469681",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "DIVA TOTAL (24 + 4) COM x   28",
+    "laboratorio": "Elea",
+    "troquel": "5510712",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "KALA MD COM x   28",
+    "laboratorio": "Bernabo",
+    "troquel": "5601421",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "DAMSELLA + PLACEBO X 4 COM x   24",
+    "laboratorio": "Gador",
+    "troquel": "5574261",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "OVULOL UD 1.5 mg COM x    1",
+    "laboratorio": "Microsules Argentina",
+    "troquel": "5573261",
+    "drogas": "Levonorgestrel",
+    "acciones": "Progestagenoterapia"
+  },
+  {
+    "producto": "FLORENCE COM x   21",
+    "laboratorio": "Elea",
+    "troquel": "5171411",
+    "drogas": "Etinilestradiol + Dienogest",
+    "acciones": "Estrogenoterapia + Progestagenoterapia"
+  },
+  {
+    "producto": "UMMA (21+7) COM x   28",
+    "laboratorio": "Biotenk",
+    "troquel": "5559711",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "APRIL 28 (21+ 7) COM x   28",
+    "laboratorio": "Gador",
+    "troquel": "4184192",
+    "drogas": "Levonorgestrel + Etinilestradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "CAMELIA COM x   28",
+    "laboratorio": "Bernabo",
+    "troquel": "5722001",
+    "drogas": "Desogestrel",
+    "acciones": "Progestagenoterapia"
+  },
+  {
+    "producto": "YAZ COM x   28",
+    "laboratorio": "Bayer (PH)",
+    "troquel": "5670551",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "KALA MD 24 COM x   28",
+    "laboratorio": "Bernabo",
+    "troquel": "5618971",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "ZINNIA COM x   21",
+    "laboratorio": "Bernabo",
+    "troquel": "5780551",
+    "drogas": "Etinilestradiol + Ciproterona",
+    "acciones": "Estrogenoterapia + Androgenoterapia"
+  },
+  {
+    "producto": "KIR 28 COM x   28",
+    "laboratorio": "Raffo",
+    "troquel": "5664001",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "RUBI Rec. COM x   28",
+    "laboratorio": "Gador",
+    "troquel": "5961681",
+    "drogas": "Estradiol Valerianato + Dienogest",
+    "acciones": "Estrogenoterapia + Progestagenoterapia"
+  },
+  {
+    "producto": "QLAIRA COM x   28",
+    "laboratorio": "Bayer (PH)",
+    "troquel": "5987681",
+    "drogas": "Estradiol Valerianato + Dienogest",
+    "acciones": "Estrogenoterapia + Progestagenoterapia"
+  },
+  {
+    "producto": "PINK COM x   28",
+    "laboratorio": "Craveri",
+    "troquel": "6127131",
+    "drogas": "Desogestrel",
+    "acciones": "Progestagenoterapia"
+  },
+  {
+    "producto": "AZUCENA COM x   28",
+    "laboratorio": "Bernabo",
+    "troquel": "6145391",
+    "drogas": "Estradiol Valerianato + Dienogest",
+    "acciones": "Estrogenoterapia + Progestagenoterapia"
+  },
+  {
+    "producto": "DIVINA  COM x   84",
+    "laboratorio": "Elea",
+    "troquel": "5261822",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "MIRANDA comp.x 28 (24+4) COM x   28",
+    "laboratorio": "Elea",
+    "troquel": "6222421",
+    "drogas": "Nomegestrol + Estradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "FEMIDEN COM x   28",
+    "laboratorio": "Gador",
+    "troquel": "6240841",
+    "drogas": "Nomegestrol + Estradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "YASMINELLE COM x   28",
+    "laboratorio": "Bayer (PH)",
+    "troquel": "5499682",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "AMAPOLI  COM x   28",
+    "laboratorio": "Bernabo",
+    "troquel": "6301001",
+    "drogas": "Nomegestrol + Estradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "DIVA COM x   56",
+    "laboratorio": "Elea",
+    "troquel": "5510714",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "DIVA TOTAL COM x   56",
+    "laboratorio": "Elea",
+    "troquel": "5510715",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "KIRUMELLE  COM x   28",
+    "laboratorio": "Raffo",
+    "troquel": "5678132",
+    "drogas": "Drospirenona + Etinilestradiol",
+    "acciones": "Hormonoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "ELLERING Anillo Vaginal ENV x    1",
+    "laboratorio": "Elea",
+    "troquel": "6529711",
+    "drogas": "Etinilestradiol + Etonogestrel",
+    "acciones": "Estrogenoterapia + Hormonoterapia"
+  },
+  {
+    "producto": "SLINDA SIN ESTROGENOS  COM x   28",
+    "laboratorio": "Elea",
+    "troquel": "6573001",
+    "drogas": "Drospirenona",
+    "acciones": "Hormonoterapia"
+  },
+  {
+    "producto": "FEMALVI  (24+4) COM x   28",
+    "laboratorio": "Raffo",
+    "troquel": "6577261",
+    "drogas": "Nomegestrol + Estradiol",
+    "acciones": "Progestagenoterapia + Estrogenoterapia"
+  },
+  {
+    "producto": "KALI SIN ESTROGENOS COM x   28",
+    "laboratorio": "Bernabo",
+    "troquel": "6683551",
+    "drogas": "Drospirenona",
+    "acciones": "Hormonoterapia"
+  },
+  {
+    "producto": "FUCSIA SIN ESTROGENOS  COM x   28",
+    "laboratorio": "Gador",
+    "troquel": "6690841",
+    "drogas": "Drospirenona",
+    "acciones": "Hormonoterapia"
+  },
+  {
+    "producto": "DESTELLE Rec. COM x   28",
+    "laboratorio": "Gador",
+    "troquel": "6775971",
+    "drogas": "Drospirenona + Estetrol",
+    "acciones": "Hormonoterapia + Anticonceptivo"
+  }
+]
