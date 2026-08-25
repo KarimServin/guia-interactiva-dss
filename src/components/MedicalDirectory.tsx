@@ -99,13 +99,17 @@ export const MedicalDirectory: React.FC = () => {
     }).slice(0, 15);
   }, [allSpecialties, inputSpecialty]);
 
-  // Extract all unique localities sorted alphabetically
+  // Extract all unique localities sorted alphabetically (excluding compound items with delimiters or digits)
   const allLocalities = useMemo(() => {
     const set = new Set<string>();
     providers.forEach(p => {
       const loc = p.city || p.locality;
       if (loc) {
-        set.add(formatLocality(loc));
+        const formatted = formatLocality(loc);
+        // Exclude if it contains comma, slash, hyphen/dash, or digits
+        if (!/[,\/\-\u2013\u2014\d]/.test(formatted)) {
+          set.add(formatted);
+        }
       }
     });
     return Array.from(set).sort((a, b) => a.localeCompare(b));
