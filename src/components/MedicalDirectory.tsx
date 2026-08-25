@@ -298,9 +298,9 @@ export const MedicalDirectory: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 animate-fadeIn">
       {/* Unified Search Panel */}
-      <div className="bg-white rounded-3xl shadow-lg border border-slate-200/80 overflow-hidden">
+      <div className="bg-white rounded-3xl shadow-lg border border-slate-200/80">
         {/* Header Section (Dark Blue Gradient) */}
-        <div className="bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 text-white p-6 sm:p-8 relative overflow-hidden">
+        <div className="bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 text-white p-6 sm:p-8 relative overflow-hidden rounded-t-[22px]">
           <div className="absolute right-0 top-0 w-96 h-96 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -left-10 -bottom-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
           
