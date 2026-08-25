@@ -13,6 +13,9 @@ import {
   ChevronDown 
 } from 'lucide-react';
 
+// Spanish search stop words to exclude from semantic matching
+const STOP_WORDS = new Set(['de', 'el', 'la', 'los', 'las', 'o', 'y', 'en', 'un', 'una', 'del', 'al', 'con', 'para', 'por', 'a', 'e', 'u']);
+
 // Suffix/Stem extraction helper for Spanish medical specialties
 const getMedicalStem = (word: string): string => {
   let clean = word
@@ -223,15 +226,21 @@ export const MedicalDirectory: React.FC = () => {
 
     // 3. For specialties, apply advanced medical stemming rules
     if (isSpecialty) {
-      const queryWords = normQuery.split(/\s+/).filter(w => w.length > 0);
-      const fieldWords = normField.split(/[\s,/-]+/).filter(w => w.length > 0);
+      const queryWords = normQuery.split(/\s+/).filter(w => w.length > 0 && !STOP_WORDS.has(w));
+      const fieldWords = normField.split(/[\s,/-]+/).filter(w => w.length > 0 && !STOP_WORDS.has(w));
 
       const queryStems = queryWords.map(w => getMedicalStem(w));
       const fieldStems = fieldWords.map(w => getMedicalStem(w));
 
       // Every word in the query must match at least one word in the field (by stem)
       const allQueryWordsMatch = queryStems.every(qStem => {
-        return fieldStems.some(fStem => fStem.includes(qStem) || qStem.includes(fStem));
+        return fieldStems.some(fStem => {
+          // If either stem is very short, require exact match to prevent false positives
+          if (qStem.length < 3 || fStem.length < 3) {
+            return qStem === fStem;
+          }
+          return fStem.includes(qStem) || qStem.includes(fStem);
+        });
       });
 
       if (allQueryWordsMatch) return true;
