@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { 
   MapPin, 
   Globe, 
@@ -32,8 +33,17 @@ const NAV_ITEMS = [
 
 export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   const handleNavClick = (id: string) => {
+    if (id === 'cartilla') {
+      router.push('/cartilla');
+    } else if (id === 'guia') {
+      router.push('/');
+    } else {
+      router.push(`/?tab=${id}`);
+    }
+
     if (onSelectNav) {
       onSelectNav(id);
     }

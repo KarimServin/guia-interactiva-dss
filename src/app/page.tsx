@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
 import { ActionGrid } from '@/components/ActionGrid';
@@ -21,6 +22,7 @@ import { Search, FileText, ClipboardCheck, ArrowRight, X, Headphones } from 'luc
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<string>('guia');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const router = useRouter();
   
   // Modals state
   const [selectedModule, setSelectedModule] = useState<ActionModule | null>(null);
@@ -29,7 +31,20 @@ export default function HomePage() {
   const [showAutorizadorModal, setShowAutorizadorModal] = useState<boolean>(false);
   const [targetFormForCenter, setTargetFormForCenter] = useState<string | null>(null);
 
-
+  // Sync tab state from query parameter on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const tab = params.get('tab');
+      if (tab) {
+        if (tab === 'cartilla') {
+          router.replace('/cartilla');
+        } else {
+          setActiveTab(tab);
+        }
+      }
+    }
+  }, [router]);
 
   // Quick Action Handler inside Module Modal
   const handleQuickAction = (target: string) => {
@@ -38,11 +53,13 @@ export default function HomePage() {
       return;
     }
     if (target === 'cartilla') {
-      setActiveTab('cartilla');
+      router.push('/cartilla');
     } else if (target === 'vademecum') {
       setActiveTab('vademecum');
+      router.push('/?tab=vademecum');
     } else if (target === 'formularios') {
       setActiveTab('formularios');
+      router.push('/?tab=formularios');
     } else if (target === 'autorizador') {
       setShowAutorizadorModal(true);
     } else if (target === 'coseguro-tabla') {

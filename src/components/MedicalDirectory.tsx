@@ -213,10 +213,6 @@ export const MedicalDirectory: React.FC = () => {
         
         <div className="max-w-3xl relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-3">
-            <span className="inline-flex items-center gap-1.5 bg-sky-400/20 text-sky-200 border border-sky-300/30 text-xs font-semibold px-3.5 py-1 rounded-full shadow-xs">
-              <CheckCircle2 className="w-3.5 h-3.5 text-sky-400" />
-              Cartilla Médica Online (Google Sheets Sync)
-            </span>
             <h2 className="text-2xl sm:text-3.5xl font-extrabold tracking-tight text-white mb-2 leading-tight">
               Padrón de Profesionales y Centros Médicos
             </h2>
