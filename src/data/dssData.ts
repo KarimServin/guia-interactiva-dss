@@ -314,8 +314,8 @@ export const ACTION_MODULES: ActionModule[] = [
     details: {
       summary: 'Necesitan autorización previa:\n• Estudios\n• Prácticas\n• Imágenes\n• Odontología\n• Análisis, etc.\n\n¿Cómo se autoriza?\nEnviando la indicación médica por WhatsApp al [3425 10-5675](https://wa.me/5493425105675).\n\nAtención: Lunes a viernes | 7 a 15 hs',
       highlights: [
-        'Prácticas que requieren autorización: Estudios, prácticas, imágenes, odontología, análisis, etc.',
-        '¿Cómo se autoriza?: Enviando la indicación médica por WhatsApp al 3425 10-5675.',
+        'Necesitan autorización previa:\n• Estudios\n• Prácticas\n• Imágenes\n• Odontología\n• Análisis, etc.',
+        '¿Cómo se autoriza?\nEnviando la indicación médica por WhatsApp al [3425 10-5675](https://wa.me/5493425105675).',
         'Atención: Lunes a viernes | 7 a 15 hs'
       ],
       steps: [
