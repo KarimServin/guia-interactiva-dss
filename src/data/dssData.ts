@@ -171,7 +171,7 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-600 text-white'
     },
     details: {
-      summary: 'Para solicitar atención médica con un profesional o centro en cartilla, seguí el procedimiento indicado a continuación: búsqueda del prestador, emisión previa de la orden de consulta y presentación con tu DNI.',
+      summary: '',
       highlights: [],
       steps: [
         { 
@@ -194,7 +194,7 @@ export const ACTION_MODULES: ActionModule[] = [
         { q: '¿Cuándo se factura el valor de la orden de consulta?', a: 'El importe correspondiente a la orden de consulta emitida se liquidará en tu factura del mes siguiente.' },
         { q: '¿Qué documentación debo presentar en el consultorio?', a: 'Debés concurrir con tu DNI y la Orden de consulta emitida previamente desde el software.' }
       ],
-      relatedFormIds: ['FORM-01', 'FORM-05'],
+      relatedFormIds: [],
       quickActionLabel: 'Ver Cartilla Médica',
       quickActionTarget: 'cartilla'
     }

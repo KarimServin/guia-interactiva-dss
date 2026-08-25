@@ -152,11 +152,13 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
         <div className="p-6 overflow-y-auto space-y-6 flex-1">
           
           {/* Summary Box */}
-          <div className="bg-blue-50/60 p-5 rounded-2xl border border-blue-100">
-            <p className="text-sm text-slate-800 leading-relaxed font-medium whitespace-pre-line">
-              {renderTextWithLinks(module.details.summary)}
-            </p>
-          </div>
+          {module.details.summary && (
+            <div className="bg-blue-50/60 p-5 rounded-2xl border border-blue-100">
+              <p className="text-sm text-slate-800 leading-relaxed font-medium whitespace-pre-line">
+                {renderTextWithLinks(module.details.summary)}
+              </p>
+            </div>
+          )}
 
           {/* Highlights */}
           {module.details.highlights && module.details.highlights.length > 0 && (
