@@ -72,11 +72,14 @@ export interface MedicalProvider {
   id: string;
   name: string;
   specialty: string;
-  city: 'Santa Fe' | 'Santo Tomé' | 'Rafaela' | 'Reconquista' | 'Esperanza' | 'San Justo' | 'Otras Localidades';
+  city: string;
   address: string;
   phone: string;
-  isEmergencyGuard: boolean;
+  isEmergencyGuard?: boolean;
   notes?: string;
+  matricula?: string;
+  cp?: string;
+  locality?: string;
 }
 
 export interface Pharmacy {

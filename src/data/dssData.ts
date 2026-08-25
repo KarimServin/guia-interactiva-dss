@@ -715,19 +715,7 @@ export const FORMS_DATA: FormItem[] = [
   }
 ];
 
-export const MEDICAL_PROVIDERS: MedicalProvider[] = [
-  { id: 'p1', name: 'Sanatorio Garay', specialty: 'Sanatorio e Internación / Guardia 24hs', city: 'Santa Fe', address: 'Rivadavia 3100, Santa Fe', phone: '0342-450-5000', isEmergencyGuard: true, notes: 'Guardia activa adultos y pediatría 24hs. Consultorios externos con turno previo.' },
-  { id: 'p2', name: 'Sanatorio de Mayo', specialty: 'Sanatorio e Internación / Guardia 24hs', city: 'Santa Fe', address: 'Suipacha 2650, Santa Fe', phone: '0342-450-2000', isEmergencyGuard: true, notes: 'Servicio de urgencia permanente. Maternidad y Neonatología.' },
-  { id: 'p3', name: 'Sanatorio Santa Fe', specialty: 'Sanatorio General / Cirugías / Guardia', city: 'Santa Fe', address: 'Bv. Gálvez 2040, Santa Fe', phone: '0342-450-8000', isEmergencyGuard: true, notes: 'Diagnóstico por imágenes y traumatología de urgencia.' },
-  { id: 'p4', name: 'Clínica de la Ciudad', specialty: 'Clínica e Internación', city: 'Santo Tomé', address: 'Av. 7 de Marzo 1850, Santo Tomé', phone: '0342-474-1234', isEmergencyGuard: true, notes: 'Guardia médica y consultorios con matrícula DSS.' },
-  { id: 'p5', name: 'Sanatorio Nosti', specialty: 'Sanatorio General / Urgencias', city: 'Rafaela', address: 'Pueyrredón 82, Rafaela', phone: '03492-50-3000', isEmergencyGuard: true, notes: 'Atención médica integral departamento Castellanos.' },
-  { id: 'p6', name: 'Sanatorio Reconquista', specialty: 'Sanatorio General / Guardia', city: 'Reconquista', address: 'Rivadavia 540, Reconquista', phone: '03482-42-1000', isEmergencyGuard: true, notes: 'Atención de alta complejidad en el norte provincial.' },
-  { id: 'p7', name: 'Dr. Roberto Fernández', specialty: 'Cardiología Adultos', city: 'Santa Fe', address: 'San Martín 2850, Piso 3', phone: '0342-455-1122', isEmergencyGuard: false, notes: 'Atención directa por matrícula.' },
-  { id: 'p8', name: 'Dra. Silvina Rossi', specialty: 'Pediatría y Neonatología', city: 'Santa Fe', address: 'Crespo 2430', phone: '0342-456-7890', isEmergencyGuard: false, notes: 'Control de niño sano (coseguro $0).' },
-  { id: 'p9', name: 'Centro Odontológico del Consejo', specialty: 'Odontología General y Cirugía Oral', city: 'Santa Fe', address: 'San Lorenzo 1849, Anexo', phone: 'WA 3425 10-5675', isEmergencyGuard: false, notes: 'Atención prioritaria matriculados y familiares.' },
-  { id: 'p10', name: 'Centro de Diagnóstico por Imágenes', specialty: 'Radiología, TAC, Resonancia', city: 'Santa Fe', address: 'La Rioja 2340', phone: '0342-452-9999', isEmergencyGuard: false, notes: 'Estudios de alta complejidad con orden autorizada.' },
-  { id: 'p11', name: 'Dra. Gabriela Castro', specialty: 'Ginecología y Obstetricia', city: 'Esperanza', address: 'Aarón Castellanos 1250, Esperanza', phone: '03496-42-5566', isEmergencyGuard: false, notes: 'Atención en departamento Las Colonias.' }
-];
+export const MEDICAL_PROVIDERS: MedicalProvider[] = [];
 
 export const PHARMACIES_DATA: Pharmacy[] = [
   { id: 'ph1', name: 'Farmacia del Consejo (Sede)', city: 'Santa Fe', address: 'San Lorenzo 1849', phone: 'WA 3425 10-5675', discount: '40% Directo / 70% Crónicos', hasRecetaDigital: true },

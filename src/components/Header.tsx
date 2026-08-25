@@ -24,7 +24,7 @@ interface HeaderProps {
 
 const NAV_ITEMS = [
   { id: 'afiliacion', label: '¿Cómo afiliarme?', icon: UserCheck },
-  { id: 'cartilla', label: 'Cartilla Prestadores', icon: Users },
+  { id: 'cartilla', label: 'Cartilla Médica', icon: Users },
   { id: 'vademecum', label: 'Vademecum', icon: Pill },
   { id: 'formularios', label: 'Formularios', icon: FileText },
   { id: 'cuotas', label: 'Cuotas y Valores', icon: CreditCard }
