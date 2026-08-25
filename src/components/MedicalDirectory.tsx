@@ -46,6 +46,15 @@ const getMedicalStem = (word: string): string => {
   return clean;
 };
 
+// Format localities to Title Case
+const formatLocality = (loc?: string) => {
+  if (!loc) return '';
+  return loc
+    .trim()
+    .toLowerCase()
+    .replace(/\b\w/g, c => c.toUpperCase());
+};
+
 export const MedicalDirectory: React.FC = () => {
   const [providers, setProviders] = useState<MedicalProvider[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -63,6 +72,7 @@ export const MedicalDirectory: React.FC = () => {
 
   const [visibleCount, setVisibleCount] = useState<number>(60);
   const [showSpecialtySuggestions, setShowSpecialtySuggestions] = useState(false);
+  const [showLocalitySuggestions, setShowLocalitySuggestions] = useState(false);
 
   // Extract all unique specialties sorted alphabetically
   const allSpecialties = useMemo(() => {
@@ -88,6 +98,32 @@ export const MedicalDirectory: React.FC = () => {
       return normSpec.includes(query) || getMedicalStem(spec).includes(getMedicalStem(query));
     }).slice(0, 15);
   }, [allSpecialties, inputSpecialty]);
+
+  // Extract all unique localities sorted alphabetically
+  const allLocalities = useMemo(() => {
+    const set = new Set<string>();
+    providers.forEach(p => {
+      const loc = p.city || p.locality;
+      if (loc) {
+        set.add(formatLocality(loc));
+      }
+    });
+    return Array.from(set).sort((a, b) => a.localeCompare(b));
+  }, [providers]);
+
+  // Filtered locality suggestions
+  const localitySuggestions = useMemo(() => {
+    const query = inputLocality.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    if (!query) {
+      // First 10 alphabetically
+      return allLocalities.slice(0, 10);
+    }
+    
+    return allLocalities.filter(loc => {
+      const normLoc = loc.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      return normLoc.includes(query);
+    }).slice(0, 15);
+  }, [allLocalities, inputLocality]);
 
   // Fetch providers from local API on mount
   const fetchProviders = async (silent = false) => {
@@ -281,14 +317,7 @@ export const MedicalDirectory: React.FC = () => {
     }
   };
 
-  // Format localities to Title Case
-  const formatLocality = (loc?: string) => {
-    if (!loc) return '';
-    return loc
-      .trim()
-      .toLowerCase()
-      .replace(/\b\w/g, c => c.toUpperCase());
-  };
+  // Check if any filter is active
 
   // Check if any filter is active
   const isFilterActive = useMemo(() => {
@@ -389,10 +418,34 @@ export const MedicalDirectory: React.FC = () => {
                   type="text"
                   value={inputLocality}
                   onChange={(e) => setInputLocality(e.target.value)}
+                  onFocus={() => setShowLocalitySuggestions(true)}
+                  onBlur={() => setTimeout(() => setShowLocalitySuggestions(false), 250)}
                   onKeyDown={handleKeyDown}
                   placeholder="Ej: Santa Fe, Avellaneda, Rafaela..."
                   className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200/85 rounded-2xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all shadow-inner"
                 />
+
+                {/* Suggestions Dropdown */}
+                {showLocalitySuggestions && localitySuggestions.length > 0 && (
+                  <div className="absolute z-50 left-0 right-0 mt-1.5 bg-white border border-slate-200/80 rounded-2xl shadow-xl max-h-60 overflow-y-auto font-sans text-xs divide-y divide-slate-100/60 animate-fadeIn">
+                    {localitySuggestions.map(loc => (
+                      <button
+                        key={loc}
+                        type="button"
+                        onClick={() => {
+                          setInputLocality(loc);
+                          setSearchLocality(loc);
+                          setVisibleCount(60);
+                          setShowLocalitySuggestions(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 hover:bg-blue-50/80 text-slate-700 hover:text-blue-900 transition-colors font-semibold flex items-center gap-2 cursor-pointer"
+                      >
+                        <MapPin className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                        <span>{highlightText(loc, inputLocality)}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
