@@ -141,11 +141,10 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-900 text-white'
     },
     details: {
-      summary: 'No necesitás presentar una credencial física en la consulta médica ni para solicitar servicios de salud.\n\nAl momento de la atención, únicamente debes informar tu número de matrícula titular (o la extensión correspondiente a tu grupo familiar) junto a tu DNI.\n\nAdemás, podés acceder a tu credencial digital en cualquier momento desde la App institucional del Consejo.',
+      summary: '',
       highlights: [
-        'Sin Credencial Física: No es obligatorio contar ni presentar plástico o carnet físico en la consulta médica.',
-        'Identificación Sencilla: Solo indicás tu N° de Matrícula Titular o Extensión Familiar (+01, +11, etc.) y DNI.',
-        'Credencial Digital en tu Móvil: Disponible las 24 hs a través de la aplicación oficial del CPCE Santa Fe.'
+        'Identificación en consulta: No necesitás credencial física. Presentate únicamente indicando tu número de matrícula titular (o extensión de grupo familiar) y tu DNI.',
+        'Credencial digital: Llevá tu credencial y la de tu familia en el celular descargando la App oficial del Consejo.'
       ],
       appLinks: {
         android: 'https://play.google.com/store/apps/details?id=com.cpcesantafe.app&hl=es_AR',
