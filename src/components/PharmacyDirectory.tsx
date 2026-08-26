@@ -1,25 +1,17 @@
 "use client";
 
 import React, { useState } from 'react';
-import { PHARMACIES_DATA } from '../data/dssData';
-import { Pill, Search, MapPin, Phone, Calculator, CheckCircle, Percent, Info } from 'lucide-react';
+import { Pill, Calculator, CheckCircle, Info } from 'lucide-react';
 
 export const PharmacyDirectory: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState('');
   const [calcPrice, setCalcPrice] = useState<number>(12500);
   const [coverageType, setCoverageType] = useState<number>(60); // 60, 70, 100
-
-  const filteredPharmacies = PHARMACIES_DATA.filter(p => 
-    p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    p.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    p.address.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   const discountAmount = Math.round((calcPrice * coverageType) / 100);
   const affiliatePays = calcPrice - discountAmount;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-in fade-in duration-300">
       {/* Banner */}
       <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-950 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
         <div className="absolute right-0 top-0 w-80 h-80 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
@@ -134,65 +126,6 @@ export const PharmacyDirectory: React.FC = () => {
               </p>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Search & Pharmacy Network */}
-      <div className="space-y-4">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <h3 className="font-extrabold text-slate-900 text-lg flex items-center gap-2">
-            <Pill className="w-5 h-5 text-sky-600" />
-            Farmacias Adheridas de la Red
-          </h3>
-
-          <div className="relative w-full sm:w-80">
-            <Search className="w-4 h-4 text-slate-400 absolute left-4 top-3" />
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Buscar por localidad o farmacia..."
-              className="w-full pl-11 pr-4 py-2 bg-white/80 border border-slate-200/80 rounded-full text-xs font-medium focus:ring-2 focus:ring-sky-400 focus:outline-none transition-all shadow-2xs"
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filteredPharmacies.map(ph => (
-            <div key={ph.id} className="bg-white/70 backdrop-blur-xl rounded-3xl p-6 border border-white/80 shadow-lg shadow-slate-200/40 hover:shadow-xl hover:border-blue-300 transition-all group">
-              <div className="flex items-start justify-between mb-3">
-                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-sky-50 text-blue-700 border border-sky-100">
-                  {ph.city}
-                </span>
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200/60 flex items-center gap-1">
-                  <Percent className="w-3.5 h-3.5 text-sky-600" />
-                  {ph.discount}
-                </span>
-              </div>
-
-              <h4 className="font-extrabold text-slate-900 text-lg mb-2 group-hover:text-blue-600 transition-colors">
-                {ph.name}
-              </h4>
-
-              <div className="space-y-2 text-xs text-slate-600 font-normal">
-                <p className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-slate-400" />
-                  <span>{ph.address}</span>
-                </p>
-                <p className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-slate-400" />
-                  <span className="font-semibold text-slate-800">{ph.phone}</span>
-                </p>
-              </div>
-
-              <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-blue-800 font-semibold">
-                <span className="flex items-center gap-1.5">
-                  <CheckCircle className="w-4 h-4 text-sky-600" />
-                  Acepta Receta Digital
-                </span>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>
