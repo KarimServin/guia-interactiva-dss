@@ -46,7 +46,7 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-600 text-white'
     },
     details: {
-      summary: 'El Departamento de Servicios Sociales (DSS) es un sistema solidario de cobertura de salud creado y sostenido por los profesionales matriculados en el Consejo Profesional de Ciencias Económicas de Santa Fe – Cámara I.\n\nAl matricularse en el Consejo Profesional de Ciencias Económicas, el profesional debe contar de forma obligatoria con la obra social, excepto si realiza la declaración jurada de no ejercicio profesional. La afiliación es automática al momento de la matriculación, para profesionales de hasta 50 años.',
+      summary: 'La incorporación al Departamento de Servicios Sociales (DSS) se realiza de forma automática al matricularte en el Consejo Profesional de Ciencias Económicas (Cámara I) para profesionales de hasta 50 años, asegurando cobertura médica inmediata.',
       highlights: [
         'Sistema Solidario: Creado y sostenido por los profesionales matriculados en el CPCE Santa Fe - Cámara I.',
         'Afiliación Automática: Se genera sin trámites adicionales al matricularte (para profesionales de hasta 50 años).',
@@ -56,7 +56,7 @@ export const ACTION_MODULES: ActionModule[] = [
       steps: [
         { step: 1, title: 'Matriculación en CPCE', desc: 'Al matricularte en la Cámara I del CPCE Santa Fe, el alta en el DSS es automática si tenés hasta 50 años.' },
         { step: 2, title: 'Atención Inmediata', desc: 'Con tu N° de Matrícula podés atenderte en cartilla o comprar medicamentos con descuento.' },
-        { step: 3, title: 'Incorporar Familiares', desc: 'Podés dar de alta a tu grupo familiar descargando y presentando el Formulario de Alta.' }
+        { step: 3, title: 'Incorporar Familiares', desc: 'Podés dar de alta a tu grupo familiar descargando y presenting el Formulario de Alta.' }
       ],
       faqs: [
         { q: '¿Qué sucede si tengo más de 50 años al momento de matricularme?', a: 'En ese caso, podés consultar en la secretaría del DSS para evaluar la incorporación conforme a las reglamentaciones vigentes.' },
@@ -82,7 +82,7 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-sky-600 text-white'
     },
     details: {
-      summary: 'El profesional matriculado puede adherir a la obra social a su grupo familiar, es decir, cónyuge e hijos.\n\nEl titular como tal no posee período de carencia ni restricciones por preexistencias y la cobertura es inmediata desde el alta. Sin embargo, los integrantes del grupo familiar pueden tener período de carencia de entre 3 y 12 meses.',
+      summary: 'Podés extender los beneficios de tu cobertura médica adhiriendo a tu cónyuge e hijos. Mientras la cobertura del titular es inmediata, los familiares adheridos cuentan con períodos de carencia según la prestación.',
       highlights: [
         'Titular sin carencias: Cobertura inmediata sin restricciones por preexistencias.',
         'Períodos de Carencia (Grupo Familiar): Aplicables entre 3 y 12 meses según la prestación.',
@@ -141,7 +141,7 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-900 text-white'
     },
     details: {
-      summary: '',
+      summary: 'Identificarte ante médicos, sanatorios y farmacias es simple: solo indicá tu número de matrícula titular (o extensión de familiar) y presentá tu DNI. No necesitás credencial física.',
       highlights: [
         'Identificación en consulta: No necesitás credencial física. Presentate únicamente indicando tu número de matrícula titular (o extensión de grupo familiar) y tu DNI.',
         'Credencial digital: Llevá tu credencial y la de tu familia en el celular descargando la App oficial del Consejo.'
@@ -170,7 +170,7 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-600 text-white'
     },
     details: {
-      summary: '',
+      summary: 'Accedé a atención médica buscando profesionales en nuestra cartilla digital y emitiendo previamente tu orden de consulta de manera online.',
       highlights: [],
       steps: [
         { 
@@ -311,7 +311,7 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-900 text-white'
     },
     details: {
-      summary: '',
+      summary: 'Gestioná la autorización de tus estudios, prácticas o análisis enviando la indicación médica digitalmente por WhatsApp durante nuestro horario de atención.',
       highlights: [
         'Necesitan autorización previa: Estudios, Prácticas, Imágenes, Odontología, Análisis, etc.',
         '¿Cómo se autoriza?\nEnviando la indicación médica por WhatsApp al [3425 10-5675](https://wa.me/5493425105675).',
@@ -432,7 +432,7 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-sky-600 text-white'
     },
     details: {
-      summary: '¿Cómo funciona el coseguro?\nCuando una práctica es autorizada, el DSS cubre el porcentaje correspondiente según el plan y el saldo restante se incorpora automáticamente a la cuenta corriente del afiliado.\n\nImportante: no es necesario abonar importes en clínicas, sanatorios o centros médicos al momento de realizar la prestación. El coseguro se liquida junto con la cuota mensual siguiente.\n\nEjemplo: una ecografía\n• Plan General - cobertura del 70%\n• Plan Básico - cobertura del 60%\nLa diferencia restante se registra como coseguro.',
+      summary: 'Al autorizar una práctica médica, el DSS cubre el porcentaje de cobertura correspondiente y registra la diferencia restante como coseguro en tu cuenta corriente. No debés realizar pagos directos en los centros de atención.',
       highlights: [
         'Funcionamiento del coseguro: Al autorizar una práctica, el DSS cubre el porcentaje correspondiente según el plan y el saldo restante se incorpora automáticamente a la cuenta corriente del afiliado.',
         'Sin cobro en el acto: Importante: no es necesario abonar importes en clínicas, sanatorios o centros médicos al momento de realizar la prestación.',
@@ -533,7 +533,7 @@ export const ACTION_MODULES: ActionModule[] = [
   {
     id: 'contacto',
     buttonNumber: 11,
-    title: 'Guía de autogestión para afiliados del DSS CPCE Santa Fe • Cámara I',
+    title: 'Contacto',
     verbTitle: 'Contacto y ayuda',
     shortDesc: 'Si aún no pudiste resolver tu duda o requerís una gestión asistida, nuestro equipo está a tu disposición por múltiples vías.',
     iconName: 'Headphones',
@@ -545,7 +545,7 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-sky-600 text-white'
     },
     details: {
-      summary: 'Guía de autogestión para afiliados del DSS CPCE Santa Fe • Cámara I\n\nSi aún no pudiste resolver tu duda o requerís una gestión asistida, nuestro equipo está a tu disposición por múltiples vías.\n\nAspectos Clave de la Cobertura:\n• Sede Central: San Lorenzo 1849 – Santa Fe – Cámara I\n• Horario de Atención: Lunes a viernes | 7 a 15 hs\n• Contacto WhatsApp: WA 3425 10-5675 (https://wa.me/5493425105675)\n• Web: cpcesfe1.org.ar\n• Correo Electrónico: dss@cpcesfe1.org.ar',
+      summary: 'Si aún no pudiste resolver tu duda o requerís una gestión asistida, nuestro equipo está a tu disposición por múltiples vías de atención presencial y digital.',
       highlights: [
         'Sede Central: San Lorenzo 1849 – Santa Fe – Cámara I',
         'Horario de Atención: Lunes a viernes | 7 a 15 hs',
