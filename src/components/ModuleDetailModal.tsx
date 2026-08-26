@@ -121,6 +121,16 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
     module.details.relatedFormIds?.includes(f.id)
   );
 
+  const hasSteps = !!(module.details.steps && module.details.steps.length > 0);
+  const hasFaqs = !!(module.details.faqs && module.details.faqs.length > 0);
+
+  const [activeTab, setActiveTab] = React.useState<'info' | 'pasos' | 'faqs'>('info');
+
+  // Reset tab selection when module changes
+  React.useEffect(() => {
+    setActiveTab('info');
+  }, [module.id]);
+
   return (
     <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 md:p-6 overflow-y-auto animate-fadeIn">
       <div className="bg-white rounded-2xl shadow-xl border border-slate-200/80 w-full max-w-3xl overflow-hidden flex flex-col max-h-[90vh]">
@@ -148,174 +158,219 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
           </button>
         </div>
 
-        {/* Modal Body Content (Continuous Scrolling Flow) */}
+        {/* Tab Selector */}
+        {(hasSteps || hasFaqs) && (
+          <div className="flex border-b border-slate-200 bg-slate-50 px-6 pt-2 shrink-0 overflow-x-auto gap-2 scrollbar-none">
+            <button
+              onClick={() => setActiveTab('info')}
+              className={`pb-3 pt-2 text-xs font-bold border-b-2 px-4 transition-all whitespace-nowrap ${
+                activeTab === 'info'
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-slate-500 hover:text-slate-950'
+              }`}
+            >
+              Información General
+            </button>
+            {hasSteps && (
+              <button
+                onClick={() => setActiveTab('pasos')}
+                className={`pb-3 pt-2 text-xs font-bold border-b-2 px-4 transition-all whitespace-nowrap ${
+                  activeTab === 'pasos'
+                    ? 'border-blue-600 text-blue-600'
+                    : 'border-transparent text-slate-500 hover:text-slate-950'
+                }`}
+              >
+                Guía Paso a Paso
+              </button>
+            )}
+            {hasFaqs && (
+              <button
+                onClick={() => setActiveTab('faqs')}
+                className={`pb-3 pt-2 text-xs font-bold border-b-2 px-4 transition-all whitespace-nowrap ${
+                  activeTab === 'faqs'
+                    ? 'border-blue-600 text-blue-600'
+                    : 'border-transparent text-slate-500 hover:text-slate-950'
+                }`}
+              >
+                Preguntas Frecuentes
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* Modal Body Content */}
         <div className="p-6 overflow-y-auto space-y-6 flex-1">
           
-          {/* Summary Box */}
-          {module.details.summary && (
-            <div className="bg-blue-50/60 p-5 rounded-2xl border border-blue-100">
-              <p className="text-sm text-slate-800 leading-relaxed font-medium whitespace-pre-line">
-                {renderTextWithLinks(module.details.summary)}
-              </p>
-            </div>
-          )}
+          {/* TAB 1: General Info */}
+          {activeTab === 'info' && (
+            <>
+              {/* Summary Box */}
+              {module.details.summary && (
+                <div className="bg-blue-50/60 p-5 rounded-2xl border border-blue-100">
+                  <p className="text-sm text-slate-800 leading-relaxed font-medium whitespace-pre-line">
+                    {renderTextWithLinks(module.details.summary)}
+                  </p>
+                </div>
+              )}
 
-          {/* Highlights */}
-          {module.details.highlights && module.details.highlights.length > 0 && (
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-blue-900 mb-3 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-sky-600" />
-                Aspectos Clave de la Cobertura
-              </h4>
-              <div className="grid grid-cols-1 gap-2.5">
-                {module.details.highlights.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50/80 border border-slate-200/80">
-                    <div className="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0" />
-                    <span className="text-xs text-slate-700 font-medium leading-relaxed whitespace-pre-line">
-                      {renderTextWithLinks(item)}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* App Download Buttons */}
-          {module.details.appLinks && (
-            <div className="pt-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-3 flex items-center gap-2">
-                <Smartphone className="w-4 h-4 text-blue-600" />
-                Descargar App Institucional del Consejo
-              </h4>
-              <div className="p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
+              {/* Highlights */}
+              {module.details.highlights && module.details.highlights.length > 0 && (
                 <div>
-                  <p className="text-sm font-bold text-white mb-1">
-                    Credencial Digital DSS en tu Celular
-                  </p>
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    Descargá la aplicación oficial para acceder a tu credencial digital y la de tu grupo familiar.
-                  </p>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-blue-900 mb-3 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-sky-600" />
+                    Aspectos Clave de la Cobertura
+                  </h4>
+                  <div className="grid grid-cols-1 gap-2.5">
+                    {module.details.highlights.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50/80 border border-slate-200/80">
+                        <div className="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0" />
+                        <span className="text-xs text-slate-700 font-medium leading-relaxed whitespace-pre-line">
+                          {renderTextWithLinks(item)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 shrink-0 w-full sm:w-auto">
-                  {module.details.appLinks.android && (
-                    <a
-                      href={module.details.appLinks.android}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all shadow-xs"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      Obtener para Android
-                    </a>
-                  )}
-                  {module.details.appLinks.ios && (
-                    <a
-                      href={module.details.appLinks.ios}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all shadow-xs"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      Obtener para iOS
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
+              )}
 
-          {/* Carencias Table */}
-          {module.details.carenciasTable && module.details.carenciasTable.length > 0 && (
-            <div className="pt-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-3 flex items-center gap-2">
-                <Clock className="w-4 h-4 text-blue-600" />
-                Períodos de Carencia (Grupo Familiar)
-              </h4>
-              <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xs">
-                <div className="max-h-80 overflow-y-auto">
-                  <table className="w-full text-left text-xs border-collapse">
-                    <thead className="bg-slate-100/80 text-slate-700 sticky top-0 font-bold border-b border-slate-200/80">
-                      <tr>
-                        <th className="py-2.5 px-4">Prestación / Servicio</th>
-                        <th className="py-2.5 px-4 text-right">Período de Carencia</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100">
-                      {module.details.carenciasTable.map((item, idx) => (
-                        <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
-                          <td className="py-2.5 px-4 font-medium text-slate-800">{item.prestacion}</td>
-                          <td className="py-2.5 px-4 text-right font-bold text-blue-700">
-                            {item.carencia ? (
-                              <span className="inline-block bg-blue-50 text-blue-800 px-2.5 py-0.5 rounded-full border border-blue-100">
-                                {item.carencia}
-                              </span>
-                            ) : (
-                              <span className="text-slate-400 font-normal">-</span>
-                            )}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+              {/* App Download Buttons */}
+              {module.details.appLinks && (
+                <div className="pt-2">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-3 flex items-center gap-2">
+                    <Smartphone className="w-4 h-4 text-blue-600" />
+                    Descargar App Institucional del Consejo
+                  </h4>
+                  <div className="p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
+                    <div>
+                      <p className="text-sm font-bold text-white mb-1">
+                        Credencial Digital DSS en tu Celular
+                      </p>
+                      <p className="text-xs text-slate-300 leading-relaxed">
+                        Descargá la aplicación oficial para acceder a tu credencial digital y la de tu grupo familiar.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 shrink-0 w-full sm:w-auto">
+                      {module.details.appLinks.android && (
+                        <a
+                          href={module.details.appLinks.android}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all shadow-xs"
+                        >
+                          <Download className="w-3.5 h-3.5" />
+                          Obtener para Android
+                        </a>
+                      )}
+                      {module.details.appLinks.ios && (
+                        <a
+                          href={module.details.appLinks.ios}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all shadow-xs"
+                        >
+                          <Download className="w-3.5 h-3.5" />
+                          Obtener para iOS
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          )}
+              )}
 
-          {/* Cobertura Table */}
-          {module.details.coberturaTable && module.details.coberturaTable.length > 0 && (
-            <div className="pt-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-3 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-blue-600" />
-                Tabla Detallada de Coberturas y Planes
-              </h4>
-              <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xs">
-                <div className="max-h-96 overflow-y-auto">
-                  <table className="w-full text-left text-xs border-collapse">
-                    <thead className="bg-slate-900 text-white sticky top-0 font-bold z-10">
-                      <tr>
-                        <th className="py-3 px-4">Prestación</th>
-                        <th className="py-3 px-4">Descripción</th>
-                        <th className="py-3 px-4 text-right">Plan General</th>
-                        <th className="py-3 px-4 text-right">Plan Básico</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100">
-                      {module.details.coberturaTable.map((item, idx) => {
-                        if (item.isHeader) {
-                          return (
-                            <tr key={idx} className="bg-slate-100/90 font-bold text-slate-900">
-                              <td colSpan={4} className="py-2.5 px-4 uppercase tracking-wider text-[11px] border-y border-slate-200">
-                                {item.prestacion}
+              {/* Carencias Table */}
+              {module.details.carenciasTable && module.details.carenciasTable.length > 0 && (
+                <div className="pt-2">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-3 flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-blue-600" />
+                    Períodos de Carencia (Grupo Familiar)
+                  </h4>
+                  <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xs">
+                    <div className="max-h-80 overflow-y-auto">
+                      <table className="w-full text-left text-xs border-collapse">
+                        <thead className="bg-slate-100/80 text-slate-700 sticky top-0 font-bold border-b border-slate-200/80">
+                          <tr>
+                            <th className="py-2.5 px-4">Prestación / Servicio</th>
+                            <th className="py-2.5 px-4 text-right">Período de Carencia</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          {module.details.carenciasTable.map((item, idx) => (
+                            <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
+                              <td className="py-2.5 px-4 font-medium text-slate-800">{item.prestacion}</td>
+                              <td className="py-2.5 px-4 text-right font-bold text-blue-700">
+                                {item.carencia ? (
+                                  <span className="inline-block bg-blue-50 text-blue-800 px-2.5 py-0.5 rounded-full border border-blue-100">
+                                    {item.carencia}
+                                  </span>
+                                ) : (
+                                  <span className="text-slate-400 font-normal">-</span>
+                                )}
                               </td>
                             </tr>
-                          );
-                        }
-                        return (
-                          <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
-                            <td className="py-2.5 px-4 font-semibold text-slate-800">{item.prestacion}</td>
-                            <td className="py-2.5 px-4 text-slate-500 leading-normal">{item.descripcion || '-'}</td>
-                            <td className="py-2.5 px-4 text-right font-bold text-blue-700">{item.general || '-'}</td>
-                            <td className="py-2.5 px-4 text-right font-bold text-indigo-700">{item.basico || '-'}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              )}
+
+              {/* Cobertura Table */}
+              {module.details.coberturaTable && module.details.coberturaTable.length > 0 && (
+                <div className="pt-2">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-3 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                    Tabla Detallada de Coberturas y Planes
+                  </h4>
+                  <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xs">
+                    <div className="max-h-96 overflow-y-auto">
+                      <table className="w-full text-left text-xs border-collapse">
+                        <thead className="bg-slate-900 text-white sticky top-0 font-bold z-10">
+                          <tr>
+                            <th className="py-3 px-4">Prestación</th>
+                            <th className="py-3 px-4">Descripción</th>
+                            <th className="py-3 px-4 text-right">Plan General</th>
+                            <th className="py-3 px-4 text-right">Plan Básico</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          {module.details.coberturaTable.map((item, idx) => {
+                            if (item.isHeader) {
+                              return (
+                                <tr key={idx} className="bg-slate-100/90 font-bold text-slate-900">
+                                  <td colSpan={4} className="py-2.5 px-4 uppercase tracking-wider text-[11px] border-y border-slate-200">
+                                    {item.prestacion}
+                                  </td>
+                                </tr>
+                              );
+                            }
+                            return (
+                              <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
+                                <td className="py-2.5 px-4 font-semibold text-slate-800">{item.prestacion}</td>
+                                <td className="py-2.5 px-4 text-slate-500 leading-normal">{item.descripcion || '-'}</td>
+                                <td className="py-2.5 px-4 text-right font-bold text-blue-700">{item.general || '-'}</td>
+                                <td className="py-2.5 px-4 text-right font-bold text-indigo-700">{item.basico || '-'}</td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </>
           )}
 
-          {/* Step-by-Step Guide */}
-          {module.details.steps && module.details.steps.length > 0 && (
-            <div className="pt-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-3 flex items-center gap-2">
+          {/* TAB 2: Steps Guide */}
+          {activeTab === 'pasos' && hasSteps && (
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-2">
                 <ListOrdered className="w-4 h-4 text-blue-600" />
                 Guía de Tramitación Paso a Paso
               </h4>
               <div className="space-y-3">
-                {module.details.steps.map(s => (
+                {module.details.steps!.map(s => (
                   <div key={s.step} className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
                     <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-extrabold flex items-center justify-center text-xs shrink-0 shadow-xs">
                       {s.step}
@@ -334,15 +389,15 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
             </div>
           )}
 
-          {/* Frequently Asked Questions */}
-          {module.details.faqs && module.details.faqs.length > 0 && (
-            <div className="pt-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-3 flex items-center gap-2">
+          {/* TAB 3: FAQs */}
+          {activeTab === 'faqs' && hasFaqs && (
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-2">
                 <HelpCircle className="w-4 h-4 text-sky-600" />
                 Preguntas Frecuentes
               </h4>
               <div className="space-y-3">
-                {module.details.faqs.map((faq, i) => (
+                {module.details.faqs!.map((faq, i) => (
                   <div key={i} className="p-4 rounded-2xl bg-slate-50/70 border border-slate-200/80 shadow-2xs space-y-1.5">
                     <div className="flex items-start gap-2 text-blue-900 font-bold text-xs">
                       <HelpCircle className="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5" />
@@ -357,9 +412,9 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
             </div>
           )}
 
-          {/* Related Forms */}
+          {/* Related Forms (Persists under active tab content if forms exist) */}
           {relatedForms.length > 0 && (
-            <div className="p-5 bg-sky-50/80 rounded-2xl border border-sky-100">
+            <div className="p-5 bg-sky-50/80 rounded-2xl border border-sky-100 mt-4">
               <h4 className="text-xs font-bold text-blue-900 uppercase tracking-wider mb-3 flex items-center gap-2">
                 <FileText className="w-4 h-4 text-sky-600" />
                 Formularios relacionados
