@@ -96,31 +96,32 @@ export const VademecumBasico: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-in fade-in duration-300">
       
-      {/* Banner */}
-      <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-950 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+      {/* Banner & Search Combined */}
+      <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-950 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden flex flex-col gap-6">
         <div className="absolute right-0 top-0 w-85 h-85 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
-        <span className="inline-flex items-center gap-1 bg-sky-400/20 text-sky-200 border border-sky-300/30 text-xs font-semibold px-3 py-1 rounded-full mb-3 shadow-xs">
-          <Pill className="w-3.5 h-3.5" />
-          Vademécum Oficial
-        </span>
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">
-          Vademécum Básico
-        </h2>
-        <p className="text-sky-100/90 text-xs sm:text-sm max-w-2xl leading-relaxed font-normal">
-          Buscador de cobertura farmacéutica. Ingresá el nombre comercial, droga, laboratorio o presentación del medicamento.
-        </p>
-      </div>
+        
+        <div>
+          <span className="inline-flex items-center gap-1 bg-sky-400/20 text-sky-200 border border-sky-300/30 text-xs font-semibold px-3 py-1 rounded-full mb-3 shadow-xs">
+            <Pill className="w-3.5 h-3.5" />
+            Vademécum Oficial
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+            Vademécum Básico
+          </h2>
+          <p className="text-sky-100/90 text-xs sm:text-sm max-w-2xl leading-relaxed font-normal">
+            Buscador de cobertura farmacéutica. Ingresá el nombre comercial, droga, laboratorio o presentación del medicamento.
+          </p>
+        </div>
 
-      {/* Search Input Widget */}
-      <div className="bg-white/80 backdrop-blur-md border border-slate-200/80 rounded-3xl p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row items-center gap-4">
-        <div className="relative w-full">
+        {/* Search Input Widget */}
+        <div className="relative w-full z-10">
           <Search className="w-4 h-4 text-slate-400 absolute left-4 top-3.5" />
           <input
             type="text"
             value={inputQuery}
             onChange={handleSearchChange}
             placeholder="Buscar por Nombre Comercial, Droga, Laboratorio o Presentación..."
-            className="w-full pl-11 pr-10 py-3 bg-white border border-slate-200/85 rounded-2xl text-xs sm:text-sm font-medium focus:ring-2 focus:ring-sky-400 focus:outline-none transition-all shadow-2xs"
+            className="w-full pl-11 pr-10 py-3 bg-white text-slate-900 rounded-2xl text-xs sm:text-sm font-semibold focus:ring-2 focus:ring-sky-400 focus:outline-none transition-all shadow-md"
           />
           {inputQuery && (
             <button
