@@ -176,7 +176,7 @@ export const ACTION_MODULES: ActionModule[] = [
         { 
           step: 1, 
           title: 'Buscar un prestador', 
-          desc: 'Consultá la [Cartilla de Prestadores Online](https://cpcesfe1.org.ar/cartilla-de-prestadores/)\n\nTambién podés solicitar información por [WhatsApp: 3425 10-5675](https://wa.me/5493425105675).' 
+          desc: 'Consultá la [Cartilla de Prestadores Online](https://dss.contadores.org.ar/cartilla)\n\nTambién podés solicitar información por [WhatsApp: 3425 10-5675](https://wa.me/5493425105675).' 
         },
         { 
           step: 2, 
