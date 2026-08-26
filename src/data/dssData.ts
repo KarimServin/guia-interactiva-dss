@@ -468,33 +468,27 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-900 text-white'
     },
     details: {
-      summary: 'El DSS ofrece dos planes de cobertura: un Plan General y un Plan Básico.\n\n• Prácticas médicas: El Plan General cubre hasta un 70% y el Plan Básico el 60% del valor de las prácticas.\n\n• Internación: El Plan Básico cubre el 80% y el Plan General el 100% en caso de internación.\n\n• Medicamentos: En medicamentos, ambos cubren el 60% si se encuentra en el vademécum.',
+      summary: 'El Departamento de Servicios Sociales ofrece esquemas de cobertura diferenciados según tu plan de adhesión (General o Básico), asegurando asistencia médica, farmacológica e internación integral.',
       highlights: [
-        'Plan General: Cobertura de hasta un 70% en prácticas y 100% en internación.',
-        'Plan Básico: Cobertura del 60% en prácticas y 80% en internación.',
-        'Medicamentos: Cobertura del 60% en ambos planes para medicamentos del vademécum.'
+        'Plan General: Cobertura del 70% en prácticas médicas y 100% en internación.',
+        'Plan Básico: Cobertura del 60% en prácticas médicas y 80% en internación.',
+        'Medicamentos: Cobertura del 60% en ambos planes para especialidades incluidas en el Vademécum.'
       ],
       steps: [
         { 
           step: 1, 
-          title: 'Consultá tu Plan', 
-          desc: 'Verificá si estás adherido al Plan General o al Plan Básico.' 
+          title: 'Identificación en la consulta', 
+          desc: 'Informá tu número de matrícula titular y DNI al prestador para verificar tu plan de cobertura activo.' 
         },
         { 
           step: 2, 
-          title: 'Cobertura en Prácticas', 
-          desc: 'Obtené hasta el 70% de cobertura en Plan General o 60% en Plan Básico.' 
-        },
-        { 
-          step: 3, 
-          title: 'Internación y Medicamentos', 
-          desc: '100% internación en Plan General (80% Básico) y 60% en medicamentos del vademécum para ambos planes.' 
+          title: 'Aplicación del descuento', 
+          desc: 'El descuento de cobertura (60% o 70% en prácticas) se descuenta y se aplica directamente al validar la orden de consulta.' 
         }
       ],
       faqs: [
-        { q: '¿Qué porcentaje de cobertura ofrecen los planes en prácticas médicas?', a: 'El Plan General cubre hasta un 70% y el Plan Básico el 60% del valor de las prácticas.' },
-        { q: '¿Cuál es la cobertura en caso de internación?', a: 'El Plan General cubre el 100% en internación y el Plan Básico cubre el 80%.' },
-        { q: '¿Cuánto cubren en medicamentos?', a: 'En medicamentos, ambos planes cubren el 60% siempre que el producto se encuentre en el vademécum.' }
+        { q: '¿Cómo sé a qué plan estoy adherido?', a: 'Podés consultar tu plan activo poniéndote en contacto con la administración del DSS o revisándolo en tus recibos de aportes.' },
+        { q: '¿La cobertura de medicamentos varía según el plan?', a: 'No, ambos planes (General y Básico) cubren por igual el 60% en todos los medicamentos del Vademécum Básico.' }
       ],
       relatedFormIds: ['FORM-01', 'FORM-04'],
       quickActionLabel: 'Preguntar al Asistente Virtual',
