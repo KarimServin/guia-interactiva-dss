@@ -115,157 +115,238 @@ export const CuotasValores: React.FC = () => {
         </div>
       )}
 
-      {/* Official Table 1:1 */}
+      {/* Desktop View: Compact Table (Hidden on mobile) */}
       {!loading && data && (
-        <div className="space-y-4">
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden animate-in fade-in duration-200">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-xs">
-                <thead>
-                  {/* Row 1: Group Headers */}
-                  <tr className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white text-[10px] uppercase tracking-wider font-extrabold">
-                    <th className="py-2.5 px-4 border-b border-slate-800 w-1/4">
-                      Categoría / Plan
+        <div className="hidden md:block bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden animate-in fade-in duration-200">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                {/* Row 1: Group Headers */}
+                <tr className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white text-[10px] uppercase tracking-wider font-extrabold">
+                  <th className="py-2.5 px-4 border-b border-slate-800 w-1/4">
+                    Categoría / Plan
+                  </th>
+                  {(matriculaFilter === 'todos' || matriculaFilter === 'activa') && (
+                    <th colSpan={3} className="py-2.5 px-4 border-b border-slate-800 text-center bg-blue-900/40 border-l border-r border-blue-800/40">
+                      <div className="flex items-center justify-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        <span>Matrícula Activa</span>
+                      </div>
                     </th>
-                    {(matriculaFilter === 'todos' || matriculaFilter === 'activa') && (
-                      <th colSpan={3} className="py-2.5 px-4 border-b border-slate-800 text-center bg-blue-900/40 border-l border-r border-blue-800/40">
-                        <div className="flex items-center justify-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                          <span>Matrícula Activa</span>
-                        </div>
-                      </th>
-                    )}
-                    {(matriculaFilter === 'todos' || matriculaFilter === 'mantenimiento') && (
-                      <th colSpan={3} className="py-2.5 px-4 border-b border-slate-800 text-center bg-amber-950/40 border-l border-slate-800">
-                        <div className="flex items-center justify-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-amber-400"></span>
-                          <span>Mantenimiento Matrícula</span>
-                        </div>
-                      </th>
-                    )}
-                  </tr>
+                  )}
+                  {(matriculaFilter === 'todos' || matriculaFilter === 'mantenimiento') && (
+                    <th colSpan={3} className="py-2.5 px-4 border-b border-slate-800 text-center bg-amber-950/40 border-l border-slate-800">
+                      <div className="flex items-center justify-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+                        <span>Mantenimiento Matrícula</span>
+                      </div>
+                    </th>
+                  )}
+                </tr>
 
-                  {/* Row 2: Column Headers */}
-                  <tr className="bg-slate-50 text-slate-600 text-[10px] font-bold uppercase tracking-wider border-b border-slate-200">
-                    <th className="py-2 px-4">Detalle Afiliado</th>
+                {/* Row 2: Column Headers */}
+                <tr className="bg-slate-50 text-slate-600 text-[10px] font-bold uppercase tracking-wider border-b border-slate-200">
+                  <th className="py-2 px-4">Detalle Afiliado</th>
 
-                    {/* Matrícula Activa Columns */}
-                    {(matriculaFilter === 'todos' || matriculaFilter === 'activa') && (
-                      <>
-                        <th className="py-2 px-3 text-right bg-blue-50/30">Total</th>
-                        <th className="py-2 px-3 text-right bg-blue-50/30 text-slate-500">Emerg</th>
-                        <th className="py-2 px-3 text-right bg-blue-100/40 text-blue-950 font-extrabold">C/Emerg</th>
-                      </>
-                    )}
+                  {/* Matrícula Activa Columns */}
+                  {(matriculaFilter === 'todos' || matriculaFilter === 'activa') && (
+                    <>
+                      <th className="py-2 px-3 text-right bg-blue-50/30">Total</th>
+                      <th className="py-2 px-3 text-right bg-blue-50/30 text-slate-500">Emerg</th>
+                      <th className="py-2 px-3 text-right bg-blue-100/40 text-blue-950 font-extrabold">C/Emerg</th>
+                    </>
+                  )}
 
-                    {/* Mantenimiento Columns */}
-                    {(matriculaFilter === 'todos' || matriculaFilter === 'mantenimiento') && (
-                      <>
-                        <th className="py-2 px-3 text-right bg-amber-50/30">Total</th>
-                        <th className="py-2 px-3 text-right bg-amber-50/30 text-slate-500">Emerg</th>
-                        <th className="py-2 px-3 text-right bg-amber-100/40 text-amber-950 font-extrabold">C/Emerg</th>
-                      </>
-                    )}
-                  </tr>
-                </thead>
+                  {/* Mantenimiento Columns */}
+                  {(matriculaFilter === 'todos' || matriculaFilter === 'mantenimiento') && (
+                    <>
+                      <th className="py-2 px-3 text-right bg-amber-50/30">Total</th>
+                      <th className="py-2 px-3 text-right bg-amber-50/30 text-slate-500">Emerg</th>
+                      <th className="py-2 px-3 text-right bg-amber-100/40 text-amber-950 font-extrabold">C/Emerg</th>
+                    </>
+                  )}
+                </tr>
+              </thead>
 
-                <tbody className="divide-y divide-slate-100 text-slate-700">
-                  {data.sections.map((sec, secIdx) => {
-                    const isBasico = sec.title.toLowerCase().includes('básico') || sec.title.toLowerCase().includes('basico');
-                    const isGeneral = sec.title.toLowerCase().includes('general');
+              <tbody className="divide-y divide-slate-100 text-slate-700">
+                {data.sections.map((sec, secIdx) => {
+                  const isBasico = sec.title.toLowerCase().includes('básico') || sec.title.toLowerCase().includes('basico');
+                  const isGeneral = sec.title.toLowerCase().includes('general');
 
-                    return (
-                      <React.Fragment key={secIdx}>
-                        {/* Section Header Row */}
-                        <tr className={`font-extrabold text-[10px] uppercase tracking-wider ${
-                          isBasico 
-                            ? 'bg-sky-50/60 text-blue-900 border-t border-sky-100' 
-                            : isGeneral 
-                            ? 'bg-indigo-50/60 text-indigo-950 border-t border-indigo-100'
-                            : 'bg-amber-50/60 text-amber-950 border-t border-amber-100'
-                        }`}>
-                          <td 
-                            colSpan={matriculaFilter === 'todos' ? 7 : 4} 
-                            className="py-1.5 px-4 flex items-center gap-1.5 font-extrabold"
-                          >
-                            <span className={`w-2 h-2 rounded-full ${
-                              isBasico ? 'bg-sky-500' : isGeneral ? 'bg-indigo-600' : 'bg-amber-500'
-                            }`} />
-                            <span>{sec.title}</span>
+                  return (
+                    <React.Fragment key={secIdx}>
+                      {/* Section Header Row */}
+                      <tr className={`font-extrabold text-[10px] uppercase tracking-wider ${
+                        isBasico 
+                          ? 'bg-sky-50/60 text-blue-900 border-t border-sky-100' 
+                          : isGeneral 
+                          ? 'bg-indigo-50/60 text-indigo-950 border-t border-indigo-100'
+                          : 'bg-amber-50/60 text-amber-950 border-t border-amber-100'
+                      }`}>
+                        <td 
+                          colSpan={matriculaFilter === 'todos' ? 7 : 4} 
+                          className="py-1.5 px-4 flex items-center gap-1.5 font-extrabold"
+                        >
+                          <span className={`w-2 h-2 rounded-full ${
+                            isBasico ? 'bg-sky-500' : isGeneral ? 'bg-indigo-600' : 'bg-amber-500'
+                          }`} />
+                          <span>{sec.title}</span>
+                        </td>
+                      </tr>
+
+                      {/* Data Rows under Section */}
+                      {sec.rows.map((row, rowIdx) => (
+                        <tr key={rowIdx} className="hover:bg-slate-50 transition-colors">
+                          <td className="py-2 px-4 font-bold text-slate-800">
+                            {row.categoria}
                           </td>
+
+                          {/* Matrícula Activa */}
+                          {(matriculaFilter === 'todos' || matriculaFilter === 'activa') && (
+                            <>
+                              <td className="py-2 px-3 text-right font-medium text-slate-700 bg-blue-50/10">
+                                {row.activa.total}
+                              </td>
+                              <td className="py-2 px-3 text-right text-slate-400 bg-blue-50/10">
+                                {row.activa.emerg}
+                              </td>
+                              <td className="py-2 px-3 text-right font-extrabold text-blue-900 bg-blue-50/30">
+                                {row.activa.conEmerg}
+                              </td>
+                            </>
+                          )}
+
+                          {/* Mantenimiento Matrícula */}
+                          {(matriculaFilter === 'todos' || matriculaFilter === 'mantenimiento') && (
+                            <>
+                              <td className="py-2 px-3 text-right font-medium text-slate-700 bg-amber-50/10">
+                                {row.mantenimiento.total || '-'}
+                              </td>
+                              <td className="py-2 px-3 text-right text-slate-400 bg-amber-50/10">
+                                {row.mantenimiento.emerg || '-'}
+                              </td>
+                              <td className="py-2 px-3 text-right font-extrabold text-amber-950 bg-amber-50/30">
+                                {row.mantenimiento.conEmerg || '-'}
+                              </td>
+                            </>
+                          )}
                         </tr>
-
-                        {/* Data Rows under Section */}
-                        {sec.rows.map((row, rowIdx) => (
-                          <tr key={rowIdx} className="hover:bg-slate-50 transition-colors">
-                            <td className="py-2 px-4 font-bold text-slate-800">
-                              {row.categoria}
-                            </td>
-
-                            {/* Matrícula Activa */}
-                            {(matriculaFilter === 'todos' || matriculaFilter === 'activa') && (
-                              <>
-                                <td className="py-2 px-3 text-right font-medium text-slate-700 bg-blue-50/10">
-                                  {row.activa.total}
-                                </td>
-                                <td className="py-2 px-3 text-right text-slate-400 bg-blue-50/10">
-                                  {row.activa.emerg}
-                                </td>
-                                <td className="py-2 px-3 text-right font-extrabold text-blue-900 bg-blue-50/30">
-                                  {row.activa.conEmerg}
-                                </td>
-                              </>
-                            )}
-
-                            {/* Mantenimiento Matrícula */}
-                            {(matriculaFilter === 'todos' || matriculaFilter === 'mantenimiento') && (
-                              <>
-                                <td className="py-2 px-3 text-right font-medium text-slate-700 bg-amber-50/10">
-                                  {row.mantenimiento.total || '-'}
-                                </td>
-                                <td className="py-2 px-3 text-right text-slate-400 bg-amber-50/10">
-                                  {row.mantenimiento.emerg || '-'}
-                                </td>
-                                <td className="py-2 px-3 text-right font-extrabold text-amber-950 bg-amber-50/30">
-                                  {row.mantenimiento.conEmerg || '-'}
-                                </td>
-                              </>
-                            )}
-                          </tr>
-                        ))}
-                      </React.Fragment>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+                      ))}
+                    </React.Fragment>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
+        </div>
+      )}
 
-          {/* Payment Methods Footer Note - Clean and Elegant */}
-          <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-5 text-slate-700 space-y-2">
-            <h4 className="font-extrabold text-slate-900 text-xs flex items-center gap-1.5">
-              <CreditCard className="w-4 h-4 text-blue-600" />
-              Medios de pago autorizados
-            </h4>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5 text-[11px] leading-relaxed">
-              <li className="flex items-start gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
-                <span><strong>Débito Automático:</strong> en CBU (Banco Macro, Santa Fe, Nación, otros) o Tarjeta de Crédito (Visa, Mastercard).</span>
-              </li>
-              <li className="flex items-start gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
-                <span><strong>Pago Mis Cuentas / Red Link:</strong> Buscando <em>"CPCE Santa Fe - Cámara I"</em>.</span>
-              </li>
-              <li className="flex items-start gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
-                <span><strong>Botón de Pago Web:</strong> Desde la Autogestión del Consejo.</span>
-              </li>
-              <li className="flex items-start gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
-                <span><strong>Transferencia Bancaria:</strong> A la cuenta institucional del CPCE Santa Fe Cámara I.</span>
-              </li>
-            </ul>
-          </div>
+      {/* Mobile View: Adaptive Cards Layout (Hidden on desktop/tablet) */}
+      {!loading && data && (
+        <div className="block md:hidden space-y-5 animate-in fade-in duration-200">
+          {data.sections.map((sec, secIdx) => {
+            const isBasico = sec.title.toLowerCase().includes('básico') || sec.title.toLowerCase().includes('basico');
+            const isGeneral = sec.title.toLowerCase().includes('general');
+
+            return (
+              <div key={secIdx} className="space-y-2.5">
+                {/* Mobile Section Header */}
+                <div className={`flex items-center gap-1.5 px-1 py-1 border-b text-[10px] font-extrabold uppercase tracking-wider ${
+                  isBasico ? 'border-sky-200 text-blue-900' : isGeneral ? 'border-indigo-200 text-indigo-950' : 'border-amber-200 text-amber-950'
+                }`}>
+                  <span className={`w-2 h-2 rounded-full ${
+                    isBasico ? 'bg-sky-500' : isGeneral ? 'bg-indigo-600' : 'bg-amber-500'
+                  }`} />
+                  <span>{sec.title}</span>
+                </div>
+
+                {/* Cards Grid */}
+                <div className="grid grid-cols-1 gap-2.5">
+                  {sec.rows.map((row, rowIdx) => (
+                    <div key={rowIdx} className="bg-white rounded-xl border border-slate-200 p-3.5 shadow-2xs space-y-2.5">
+                      <div className="border-b border-slate-100 pb-1.5">
+                        <span className="text-xs font-extrabold text-slate-800">{row.categoria}</span>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-2.5 text-[11px]">
+                        {/* Matrícula Activa Box */}
+                        {(matriculaFilter === 'todos' || matriculaFilter === 'activa') && (
+                          <div className="bg-blue-50/40 rounded-lg p-2.5 border border-blue-100/50 space-y-1">
+                            <div className="flex items-center gap-1 border-b border-blue-100/30 pb-1 mb-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                              <span className="font-bold text-blue-950 text-[9px] uppercase tracking-wider">Matrícula Activa</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">Total Base:</span>
+                              <span className="font-medium text-slate-700">{row.activa.total}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">Emergencia:</span>
+                              <span className="text-slate-600">{row.activa.emerg}</span>
+                            </div>
+                            <div className="flex justify-between border-t border-blue-100/30 pt-1 mt-1">
+                              <span className="font-semibold text-blue-900">Total c/Emerg:</span>
+                              <span className="font-extrabold text-blue-950">{row.activa.conEmerg}</span>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Mantenimiento Matrícula Box */}
+                        {(matriculaFilter === 'todos' || matriculaFilter === 'mantenimiento') && (
+                          <div className="bg-amber-50/30 rounded-lg p-2.5 border border-amber-100/40 space-y-1">
+                            <div className="flex items-center gap-1 border-b border-amber-100/30 pb-1 mb-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                              <span className="font-bold text-amber-950 text-[9px] uppercase tracking-wider">Mantenimiento</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">Total Base:</span>
+                              <span className="font-medium text-slate-700">{row.mantenimiento.total || '-'}</span>
+                            </div>
+                            <div className="flex justify-between">
+                              <span className="text-slate-500">Emergencia:</span>
+                              <span className="text-slate-600">{row.mantenimiento.emerg || '-'}</span>
+                            </div>
+                            <div className="flex justify-between border-t border-amber-100/30 pt-1 mt-1">
+                              <span className="font-semibold text-amber-900">Total c/Emerg:</span>
+                              <span className="font-extrabold text-amber-955">{row.mantenimiento.conEmerg || '-'}</span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Payment Methods Footer Note - Clean and Elegant */}
+      {!loading && data && (
+        <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-5 text-slate-700 space-y-2">
+          <h4 className="font-extrabold text-slate-900 text-xs flex items-center gap-1.5">
+            <CreditCard className="w-4 h-4 text-blue-600" />
+            Medios de pago autorizados
+          </h4>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5 text-[11px] leading-relaxed">
+            <li className="flex items-start gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
+              <span><strong>Débito Automático:</strong> en CBU (Banco Macro, Santa Fe, Nación, otros) o Tarjeta de Crédito (Visa, Mastercard).</span>
+            </li>
+            <li className="flex items-start gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
+              <span><strong>Pago Mis Cuentas / Red Link:</strong> Buscando <em>"CPCE Santa Fe - Cámara I"</em>.</span>
+            </li>
+            <li className="flex items-start gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
+              <span><strong>Botón de Pago Web:</strong> Desde la Autogestión del Consejo.</span>
+            </li>
+            <li className="flex items-start gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
+              <span><strong>Transferencia Bancaria:</strong> A la cuenta institucional del CPCE Santa Fe Cámara I.</span>
+            </li>
+          </ul>
         </div>
       )}
 
