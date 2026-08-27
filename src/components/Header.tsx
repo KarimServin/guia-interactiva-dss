@@ -14,7 +14,8 @@ import {
   Users,
   Pill,
   FileText,
-  CreditCard
+  CreditCard,
+  Home
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -25,6 +26,7 @@ interface HeaderProps {
 }
 
 const NAV_ITEMS = [
+  { id: 'guia', label: 'Home', icon: Home },
   { id: 'afiliacion', label: '¿Cómo afiliarme?', icon: UserCheck },
   { id: 'cartilla', label: 'Cartilla Médica', icon: Users },
   { id: 'vademecum', label: 'Vademecum', icon: Pill },
@@ -112,14 +114,6 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
               className="h-11 sm:h-12 w-auto object-contain block" 
             />
           </button>
-          <div className="h-8 sm:h-10 w-px bg-slate-300/80 shrink-0"></div>
-          <a href="https://cpcesfe1.org.ar" target="_blank" rel="noopener noreferrer" className="flex items-center shrink-0">
-            <img 
-              src="/cpce-logo-header.png" 
-              alt="Consejo Profesional de Ciencias Económicas - Cámara I" 
-              className="h-9 sm:h-[40px] w-auto object-contain block" 
-            />
-          </a>
         </div>
 
         {/* Desktop Transparent Nav Buttons with Hover Fill */}
