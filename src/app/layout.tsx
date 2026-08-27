@@ -93,8 +93,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${plusJakartaSans.variable} ${outfit.variable} scroll-smooth`}>
-      <body className="bg-white text-slate-900 min-h-dvh flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white">
+    <html lang="es" className={`${plusJakartaSans.variable} ${outfit.variable} scroll-smooth`} suppressHydrationWarning>
+      <body className="bg-white text-slate-900 min-h-dvh flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white" suppressHydrationWarning>
         {children}
       </body>
     </html>

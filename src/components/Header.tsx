@@ -47,6 +47,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
       // Toggle dropdown instead of default route
       setIsVademecumDropdownOpen(!isVademecumDropdownOpen);
       return;
+    } else if (id === 'cuotas') {
+      router.push('/cuotas');
     } else {
       router.push(`/?tab=${id}`);
     }

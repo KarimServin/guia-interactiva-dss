@@ -13,6 +13,7 @@ import { FormsCenter } from '@/components/FormsCenter';
 import { CoseguroTableModal } from '@/components/CoseguroTableModal';
 import { AuthorizationSimulator } from '@/components/AuthorizationSimulator';
 import { AffiliationLanding } from '@/components/AffiliationLanding';
+import { CuotasValores } from '@/components/CuotasValores';
 import { Footer } from '@/components/Footer';
 
 import { ACTION_MODULES, FORMS_DATA } from '@/data/dssData';
@@ -41,6 +42,8 @@ export default function HomePage() {
           router.replace('/cartilla');
         } else if (tab === 'vademecum') {
           router.replace('/vademecum/farmacias');
+        } else if (tab === 'cuotas') {
+          router.replace('/cuotas');
         } else {
           setActiveTab(tab);
         }
@@ -107,9 +110,7 @@ export default function HomePage() {
     } else if (navId === 'formularios') {
       setActiveTab('formularios');
     } else if (navId === 'cuotas') {
-      setActiveTab('guia');
-      const mod = ACTION_MODULES.find(m => m.id === 'pagos');
-      if (mod) setSelectedModule(mod);
+      router.push('/cuotas');
     }
   };
 
@@ -298,6 +299,11 @@ export default function HomePage() {
         {/* VIEW 4: DESCARGA DE FORMULARIOS */}
         {activeTab === 'formularios' && (
           <FormsCenter initialFormId={targetFormForCenter} />
+        )}
+
+        {/* VIEW 5: CUOTAS Y VALORES */}
+        {activeTab === 'cuotas' && (
+          <CuotasValores />
         )}
 
       </main>
