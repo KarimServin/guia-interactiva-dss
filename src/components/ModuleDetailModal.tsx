@@ -132,27 +132,28 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
   }, [module.id]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 md:p-6 overflow-y-auto animate-fadeIn">
-      <div className="bg-white rounded-2xl shadow-xl border border-slate-200/80 w-full max-w-3xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-2.5 sm:p-4 md:p-6 overflow-y-auto animate-fadeIn">
+      <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-slate-200/80 w-full max-w-3xl overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[90vh] my-auto">
         
         {/* Modal Header */}
-        <div className="p-6 bg-slate-900 text-white flex items-start justify-between gap-4 relative">
+        <div className="p-4 sm:p-6 bg-slate-900 text-white flex items-start justify-between gap-3 relative">
           <div>
-            <div className="flex items-center gap-2 mb-1.5">
-              <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-slate-800 text-sky-300 border border-slate-700">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-[10px] sm:text-[11px] font-semibold px-2 sm:px-2.5 py-0.5 rounded-md bg-slate-800 text-sky-300 border border-slate-700">
                 {module.title}
               </span>
             </div>
-            <h2 className="font-heading text-xl font-bold text-white tracking-tight">
+            <h2 className="font-heading text-lg sm:text-xl font-bold text-white tracking-tight">
               {module.verbTitle}
             </h2>
-            <p className="text-xs text-slate-400 mt-0.5 font-normal">
+            <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 font-normal">
               Guía de autogestión para afiliados del DSS CPCE Santa Fe • Cámara I
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors shrink-0"
+            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors shrink-0"
+            aria-label="Cerrar ventana"
           >
             <X className="w-4 h-4" />
           </button>
@@ -160,10 +161,10 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
 
         {/* Tab Selector */}
         {(hasSteps || hasFaqs) && (
-          <div className="flex border-b border-slate-200 bg-slate-50 px-6 pt-2 shrink-0 overflow-x-auto gap-2 scrollbar-none">
+          <div className="flex border-b border-slate-200 bg-slate-50 px-3 sm:px-6 pt-2 shrink-0 overflow-x-auto gap-1 sm:gap-2 scrollbar-none">
             <button
               onClick={() => setActiveTab('info')}
-              className={`pb-3 pt-2 text-xs font-bold border-b-2 px-4 transition-all whitespace-nowrap ${
+              className={`pb-2.5 pt-1.5 text-xs font-bold border-b-2 px-3 sm:px-4 transition-all whitespace-nowrap ${
                 activeTab === 'info'
                   ? 'border-blue-600 text-blue-600'
                   : 'border-transparent text-slate-500 hover:text-slate-950'
@@ -174,7 +175,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
             {hasSteps && (
               <button
                 onClick={() => setActiveTab('pasos')}
-                className={`pb-3 pt-2 text-xs font-bold border-b-2 px-4 transition-all whitespace-nowrap ${
+                className={`pb-2.5 pt-1.5 text-xs font-bold border-b-2 px-3 sm:px-4 transition-all whitespace-nowrap ${
                   activeTab === 'pasos'
                     ? 'border-blue-600 text-blue-600'
                     : 'border-transparent text-slate-500 hover:text-slate-950'
@@ -186,7 +187,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
             {hasFaqs && (
               <button
                 onClick={() => setActiveTab('faqs')}
-                className={`pb-3 pt-2 text-xs font-bold border-b-2 px-4 transition-all whitespace-nowrap ${
+                className={`pb-2.5 pt-1.5 text-xs font-bold border-b-2 px-3 sm:px-4 transition-all whitespace-nowrap ${
                   activeTab === 'faqs'
                     ? 'border-blue-600 text-blue-600'
                     : 'border-transparent text-slate-500 hover:text-slate-950'
@@ -199,15 +200,15 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
         )}
 
         {/* Modal Body Content */}
-        <div className="p-6 overflow-y-auto space-y-6 flex-1">
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-5 sm:space-y-6 flex-1">
           
           {/* TAB 1: General Info */}
           {activeTab === 'info' && (
             <>
               {/* Summary Box */}
               {module.details.summary && (
-                <div className="bg-blue-50/60 p-5 rounded-2xl border border-blue-100">
-                  <p className="text-sm text-slate-800 leading-relaxed font-medium whitespace-pre-line">
+                <div className="bg-blue-50/60 p-4 sm:p-5 rounded-2xl border border-blue-100">
+                  <p className="text-xs sm:text-sm text-slate-800 leading-relaxed font-medium whitespace-pre-line">
                     {renderTextWithLinks(module.details.summary)}
                   </p>
                 </div>
@@ -217,12 +218,12 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
               {module.details.highlights && module.details.highlights.length > 0 && (
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-blue-900 mb-3 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-sky-600" />
+                    <CheckCircle2 className="w-4 h-4 text-sky-600 shrink-0" />
                     Aspectos Clave de la Cobertura
                   </h4>
                   <div className="grid grid-cols-1 gap-2.5">
                     {module.details.highlights.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50/80 border border-slate-200/80">
+                      <div key={idx} className="flex items-start gap-3 p-3 sm:p-3.5 rounded-2xl bg-slate-50/80 border border-slate-200/80">
                         <div className="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0" />
                         <span className="text-xs text-slate-700 font-medium leading-relaxed whitespace-pre-line">
                           {renderTextWithLinks(item)}
@@ -237,25 +238,25 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
               {module.details.appLinks && (
                 <div className="pt-2">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-3 flex items-center gap-2">
-                    <Smartphone className="w-4 h-4 text-blue-600" />
+                    <Smartphone className="w-4 h-4 text-blue-600 shrink-0" />
                     Descargar App Institucional del Consejo
                   </h4>
-                  <div className="p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
-                    <div>
-                      <p className="text-sm font-bold text-white mb-1">
+                  <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
+                    <div className="text-center sm:text-left">
+                      <p className="text-xs sm:text-sm font-bold text-white mb-1">
                         Credencial Digital DSS en tu Celular
                       </p>
-                      <p className="text-xs text-slate-300 leading-relaxed">
+                      <p className="text-[11px] sm:text-xs text-slate-300 leading-relaxed">
                         Descargá la aplicación oficial para acceder a tu credencial digital y la de tu grupo familiar.
                       </p>
                     </div>
-                    <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 shrink-0 w-full sm:w-auto">
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 shrink-0 w-full sm:w-auto">
                       {module.details.appLinks.android && (
                         <a
                           href={module.details.appLinks.android}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all shadow-xs"
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all shadow-xs text-center"
                         >
                           <Download className="w-3.5 h-3.5" />
                           Obtener para Android
@@ -266,7 +267,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
                           href={module.details.appLinks.ios}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all shadow-xs"
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all shadow-xs text-center"
                         >
                           <Download className="w-3.5 h-3.5" />
                           Obtener para iOS
@@ -281,12 +282,12 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
               {module.details.carenciasTable && module.details.carenciasTable.length > 0 && (
                 <div className="pt-2">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-3 flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-blue-600" />
+                    <Clock className="w-4 h-4 text-blue-600 shrink-0" />
                     Períodos de Carencia (Grupo Familiar)
                   </h4>
-                  <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xs">
+                  <div className="overflow-x-auto rounded-2xl border border-slate-200/80 bg-white shadow-xs">
                     <div className="max-h-80 overflow-y-auto">
-                      <table className="w-full text-left text-xs border-collapse">
+                      <table className="w-full text-left text-xs border-collapse min-w-[440px]">
                         <thead className="bg-slate-100/80 text-slate-700 sticky top-0 font-bold border-b border-slate-200/80">
                           <tr>
                             <th className="py-2.5 px-4">Prestación / Servicio</th>
@@ -319,12 +320,12 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
               {module.details.coberturaTable && module.details.coberturaTable.length > 0 && (
                 <div className="pt-2">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-3 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
                     Tabla Detallada de Coberturas y Planes
                   </h4>
-                  <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xs">
+                  <div className="overflow-x-auto rounded-2xl border border-slate-200/80 bg-white shadow-xs">
                     <div className="max-h-96 overflow-y-auto">
-                      <table className="w-full text-left text-xs border-collapse">
+                      <table className="w-full text-left text-xs border-collapse min-w-[540px]">
                         <thead className="bg-slate-900 text-white sticky top-0 font-bold z-10">
                           <tr>
                             <th className="py-3 px-4">Prestación</th>
@@ -366,13 +367,13 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
           {activeTab === 'pasos' && hasSteps && (
             <div className="space-y-4">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-2">
-                <ListOrdered className="w-4 h-4 text-blue-600" />
+                <ListOrdered className="w-4 h-4 text-blue-600 shrink-0" />
                 Guía de Tramitación Paso a Paso
               </h4>
               <div className="space-y-3">
                 {module.details.steps!.map(s => (
-                  <div key={s.step} className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
-                    <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-extrabold flex items-center justify-center text-xs shrink-0 shadow-xs">
+                  <div key={s.step} className="flex items-start gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-600 text-white font-extrabold flex items-center justify-center text-xs shrink-0 shadow-xs">
                       {s.step}
                     </div>
                     <div>
@@ -393,17 +394,17 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
           {activeTab === 'faqs' && hasFaqs && (
             <div className="space-y-4">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-2">
-                <HelpCircle className="w-4 h-4 text-sky-600" />
+                <HelpCircle className="w-4 h-4 text-sky-600 shrink-0" />
                 Preguntas Frecuentes
               </h4>
               <div className="space-y-3">
                 {module.details.faqs!.map((faq, i) => (
-                  <div key={i} className="p-4 rounded-2xl bg-slate-50/70 border border-slate-200/80 shadow-2xs space-y-1.5">
+                  <div key={i} className="p-3.5 sm:p-4 rounded-2xl bg-slate-50/70 border border-slate-200/80 shadow-2xs space-y-1.5">
                     <div className="flex items-start gap-2 text-blue-900 font-bold text-xs">
                       <HelpCircle className="w-3.5 h-3.5 text-sky-600 shrink-0 mt-0.5" />
                       <span>{faq.q}</span>
                     </div>
-                    <p className="text-xs text-slate-600 pl-5 leading-relaxed font-normal">
+                    <p className="text-xs text-slate-600 pl-5.5 leading-relaxed font-normal">
                       {renderTextWithLinks(faq.a)}
                     </p>
                   </div>
@@ -412,26 +413,26 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
             </div>
           )}
 
-          {/* Related Forms (Persists under active tab content if forms exist) */}
+          {/* Related Forms */}
           {relatedForms.length > 0 && (
-            <div className="p-5 bg-sky-50/80 rounded-2xl border border-sky-100 mt-4">
+            <div className="p-4 sm:p-5 bg-sky-50/80 rounded-2xl border border-sky-100 mt-4">
               <h4 className="text-xs font-bold text-blue-900 uppercase tracking-wider mb-3 flex items-center gap-2">
-                <FileText className="w-4 h-4 text-sky-600" />
+                <FileText className="w-4 h-4 text-sky-600 shrink-0" />
                 Formularios relacionados
               </h4>
               <div className="space-y-2.5">
                 {relatedForms.map(form => (
-                  <div key={form.id} className="flex items-center justify-between p-3 bg-white rounded-xl border border-sky-200/80 shadow-xs">
+                  <div key={form.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 bg-white rounded-xl border border-sky-200/80 shadow-xs">
                     <div>
                       <p className="text-xs font-bold text-slate-800">{form.code}: {form.title}</p>
-                      <p className="text-[11px] text-slate-500">{form.description}</p>
+                      <p className="text-[11px] text-slate-500 mt-0.5">{form.description}</p>
                     </div>
                     <button
                       onClick={() => {
                         onClose();
                         onOpenForm(form.id);
                       }}
-                      className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-xs font-bold transition-all shadow-xs flex items-center gap-1 shrink-0"
+                      className="w-full sm:w-auto justify-center px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-xs font-bold transition-all shadow-xs flex items-center gap-1 shrink-0"
                     >
                       Ver Formulario
                       <ChevronRight className="w-3.5 h-3.5" />
@@ -444,11 +445,11 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
 
         </div>
 
-        {/* Modal Footer with Quick Action Button */}
-        <div className="p-5 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+        {/* Modal Footer */}
+        <div className="p-4 sm:p-5 bg-slate-50 border-t border-slate-200 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
           <button
             onClick={onClose}
-            className="px-5 py-2.5 rounded-full text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-200 transition-colors"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-full text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-200 transition-colors text-center"
           >
             Cerrar Ventana
           </button>
@@ -459,7 +460,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
                 onClose();
                 onQuickAction(module.details.quickActionTarget!);
               }}
-              className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full text-xs font-bold transition-all shadow-md flex items-center gap-2"
+              className="w-full sm:w-auto justify-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full text-xs font-bold transition-all shadow-md flex items-center gap-2"
             >
               <span>{module.details.quickActionLabel}</span>
               <ArrowRight className="w-4 h-4" />

@@ -112,16 +112,16 @@ export const DigitalCredential: React.FC<DigitalCredentialProps> = ({ onClose })
   };
 
   return (
-    <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100 max-w-4xl mx-auto my-6">
+    <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-2xl border border-slate-100 max-w-4xl mx-auto my-auto max-h-[92vh] sm:max-h-[90vh] overflow-y-auto">
       {/* Title */}
-      <div className="flex items-center justify-between border-b border-slate-100 pb-5 mb-6">
-        <div className="flex items-center gap-3.5">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-400 to-blue-600 text-white flex items-center justify-center font-bold shadow-md">
-            <CreditCard className="w-6 h-6" />
+      <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4 sm:pb-5 sm:mb-6">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-sky-400 to-blue-600 text-white flex items-center justify-center font-bold shadow-md shrink-0">
+            <CreditCard className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div>
-            <h3 className="text-xl font-extrabold text-slate-900">Credencial Digital DSS</h3>
-            <p className="text-xs text-slate-500">
+            <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight">Credencial Digital DSS</h3>
+            <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
               Generador y simulador oficial de credencial para atención médica sin carnet físico
             </p>
           </div>
@@ -129,18 +129,19 @@ export const DigitalCredential: React.FC<DigitalCredentialProps> = ({ onClose })
         {onClose && (
           <button 
             onClick={onClose} 
-            className="p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors"
+            className="p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors shrink-0"
+            aria-label="Cerrar"
           >
             <X className="w-5 h-5" />
           </button>
         )}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
         {/* Form Controls to Customize Credential */}
-        <div className="lg:col-span-5 bg-slate-50/80 p-6 rounded-3xl border border-slate-200/80 space-y-4">
+        <div className="lg:col-span-5 bg-slate-50/80 p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200/80 space-y-4">
           <h4 className="text-xs font-bold uppercase tracking-wider text-blue-900 flex items-center gap-2">
-            <User className="w-4 h-4 text-sky-600" />
+            <User className="w-4 h-4 text-sky-600 shrink-0" />
             Datos del Afiliado
           </h4>
 
@@ -220,63 +221,63 @@ export const DigitalCredential: React.FC<DigitalCredentialProps> = ({ onClose })
         {/* Live Credential Card Preview */}
         <div className="lg:col-span-7 space-y-4">
           <div className="text-xs font-semibold text-slate-500 flex items-center gap-2">
-            <Smartphone className="w-4 h-4 text-sky-600" />
+            <Smartphone className="w-4 h-4 text-sky-600 shrink-0" />
             Vista Previa Digital (Ideal Pantalla Móvil)
           </div>
 
           {/* Actual Realistic Credential Badge */}
-          <div className="bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-950 text-white rounded-3xl p-6 shadow-2xl border border-sky-400/30 relative overflow-hidden max-w-md mx-auto">
+          <div className="bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-950 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl border border-sky-400/30 relative overflow-hidden max-w-md mx-auto">
             {/* Top Bar */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-3.5 mb-5">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3 sm:pb-3.5 mb-4 sm:mb-5">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-2xl bg-white/10 backdrop-blur-md text-white font-bold flex items-center justify-center text-xs shadow-xs border border-white/10">
-                  <Shield className="w-5 h-5 text-sky-400" />
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl bg-white/10 backdrop-blur-md text-white font-bold flex items-center justify-center text-xs shadow-xs border border-white/10 shrink-0">
+                  <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-sky-400" />
                 </div>
                 <div>
-                  <p className="text-xs font-extrabold uppercase tracking-tight text-white leading-none">
+                  <p className="text-[11px] sm:text-xs font-extrabold uppercase tracking-tight text-white leading-none">
                     CPCE SANTA FE • CÁMARA I
                   </p>
-                  <p className="text-[10px] text-sky-300 font-semibold uppercase tracking-wider">
+                  <p className="text-[9px] sm:text-[10px] text-sky-300 font-semibold uppercase tracking-wider mt-0.5">
                     Servicios Sociales
                   </p>
                 </div>
               </div>
-              <span className="inline-flex items-center gap-1 bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="inline-flex items-center gap-1 bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[9px] sm:text-[10px] font-bold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full uppercase tracking-wider shrink-0">
+                <CheckCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-400" />
                 ACTIVO
               </span>
             </div>
 
             {/* Main Content */}
-            <div className="grid grid-cols-12 gap-3 items-center">
-              <div className="col-span-8 space-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+              <div className="sm:col-span-8 space-y-2.5 sm:space-y-3">
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-300">
+                  <p className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-slate-300">
                     MATRÍCULA / AFILIADO N°
                   </p>
-                  <p className="text-2xl font-black text-sky-300 font-mono tracking-tight">
+                  <p className="text-xl sm:text-2xl font-black text-sky-300 font-mono tracking-tight">
                     {fullMatriculaCode}
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-300">
+                  <p className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-slate-300">
                     INTEGRANTE / AFILIADO
                   </p>
-                  <p className="text-sm font-extrabold text-white tracking-tight">
+                  <p className="text-xs sm:text-sm font-extrabold text-white tracking-tight">
                     {memberName}
                   </p>
-                  <p className="text-xs text-slate-300 mt-0.5">
+                  <p className="text-[11px] sm:text-xs text-slate-300 mt-0.5">
                     DNI: {dni} • <span className="text-sky-300 font-semibold">{memberRelation}</span>
                   </p>
                 </div>
               </div>
 
               {/* QR Code Container */}
-              <div className="col-span-4 flex flex-col items-center justify-center bg-white/95 p-2.5 rounded-2xl shadow-inner">
+              <div className="sm:col-span-4 flex flex-col items-center justify-center bg-white/95 p-2.5 rounded-2xl shadow-inner my-1 sm:my-0">
                 {/* SVG Mock QR */}
-                <div className="w-16 h-16 bg-blue-950 p-2 rounded-xl flex items-center justify-center">
-                  <QrCode className="w-12 h-12 text-white" />
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-blue-950 p-2 rounded-xl flex items-center justify-center">
+                  <QrCode className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
                 </div>
                 <span className="text-[9px] font-bold text-slate-700 mt-1 uppercase">
                   VAL. DIGITAL
@@ -285,13 +286,13 @@ export const DigitalCredential: React.FC<DigitalCredentialProps> = ({ onClose })
             </div>
 
             {/* Bottom Footer Details */}
-            <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs text-slate-300 font-medium">
+            <div className="mt-4 sm:mt-6 pt-3 sm:pt-3.5 border-t border-white/10 flex items-center justify-between text-[11px] sm:text-xs text-slate-300 font-medium">
               <span>Plan Solidario DSS</span>
               <span>Vigencia: Diciembre 2026</span>
             </div>
           </div>
 
-          <div className="bg-sky-50/80 border border-sky-200/80 rounded-2xl p-4 text-xs text-blue-950 leading-relaxed font-medium">
+          <div className="bg-sky-50/80 border border-sky-200/80 rounded-2xl p-3.5 sm:p-4 text-xs text-blue-950 leading-relaxed font-medium">
             <strong>Nota para el prestador médico:</strong> Conforme al reglamento del DSS CPCE Santa Fe Cámara I, no es obligatorio exhibir un carnet plástico físico. Mencionando el número de matrícula y la extensión correspondiente, el profesional o sanatorio puede registrar la consulta o estudio de inmediato.
           </div>
         </div>

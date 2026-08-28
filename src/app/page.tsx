@@ -325,8 +325,8 @@ export default function HomePage() {
 
       {/* 2. Digital Credential Modal */}
       {showCredentialModal && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-          <div className="w-full max-w-4xl">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto animate-fadeIn">
+          <div className="w-full max-w-4xl my-auto">
             <DigitalCredential onClose={() => setShowCredentialModal(false)} />
           </div>
         </div>
@@ -339,8 +339,8 @@ export default function HomePage() {
 
       {/* 4. Authorization Simulator Modal */}
       {showAutorizadorModal && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-          <div className="w-full max-w-3xl">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto animate-fadeIn">
+          <div className="w-full max-w-3xl my-auto">
             <AuthorizationSimulator onClose={() => setShowAutorizadorModal(false)} />
           </div>
         </div>
