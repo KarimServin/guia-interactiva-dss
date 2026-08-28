@@ -103,13 +103,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             ))}
           </div>
 
-          {/* Discreet Affiliate Tip Banner */}
-          <div className="bg-sky-50/80 backdrop-blur-sm border border-sky-200/60 rounded-xl px-4 py-2.5 flex items-center justify-center gap-2.5 text-center text-xs text-sky-900 shadow-2xs max-w-xl mx-auto mb-8">
-            <ShieldCheck className="w-4 h-4 text-sky-600 shrink-0" />
-            <span className="font-medium text-[11.5px] leading-tight">
-              <strong className="font-semibold text-sky-950">Tip de acceso:</strong> Tu número de Matrícula es tu única identificación requerida para la atención médica y farmacias.
-            </span>
-          </div>
+
 
           {/* Minimalist Wide-Angle Double Scroll Down Arrow */}
           <div className="flex justify-center pt-3">
