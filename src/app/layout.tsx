@@ -74,9 +74,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/dss-logo.png",
-    shortcut: "/dss-logo.png",
-    apple: "/dss-logo.png",
+    icon: "/dss-icon.png",
+    shortcut: "/dss-icon.png",
+    apple: "/dss-icon.png",
   },
 };
 
