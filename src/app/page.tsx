@@ -311,8 +311,7 @@ export default function HomePage() {
       {/* Footer */}
       <Footer />
 
-      {/* MODALS */}
-      {/* 1. Module Detail Modal */}
+      {/* 1. Module Detail Sheet (Bottom Sheet mobile / Side Drawer desktop) */}
       <ModuleDetailModal
         module={selectedModule}
         onClose={() => setSelectedModule(null)}
@@ -323,7 +322,7 @@ export default function HomePage() {
         onQuickAction={handleQuickAction}
       />
 
-      {/* 2. Digital Credential Modal */}
+      {/* 2. Digital Credential Modal (keeps overlay style for now) */}
       {showCredentialModal && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto animate-fadeIn">
           <div className="w-full max-w-4xl my-auto">
@@ -332,19 +331,17 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* 3. Coseguros Table Modal */}
-      {showCoseguroModal && (
-        <CoseguroTableModal onClose={() => setShowCoseguroModal(false)} />
-      )}
+      {/* 3. Coseguros Sheet */}
+      <CoseguroTableModal
+        isOpen={showCoseguroModal}
+        onClose={() => setShowCoseguroModal(false)}
+      />
 
-      {/* 4. Authorization Simulator Modal */}
-      {showAutorizadorModal && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto animate-fadeIn">
-          <div className="w-full max-w-3xl my-auto">
-            <AuthorizationSimulator onClose={() => setShowAutorizadorModal(false)} />
-          </div>
-        </div>
-      )}
+      {/* 4. Authorization Simulator Sheet */}
+      <AuthorizationSimulator
+        isOpen={showAutorizadorModal}
+        onClose={() => setShowAutorizadorModal(false)}
+      />
 
     </div>
   );
