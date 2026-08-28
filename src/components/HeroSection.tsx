@@ -106,7 +106,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
 
           {/* Minimalist Wide-Angle Double Scroll Down Arrow */}
-          <div className="flex justify-center pt-3">
+          <div className="flex justify-center pt-10 sm:pt-16 pb-2">
             <button
               onClick={() => {
                 const el = document.getElementById('servicios');
