@@ -1,15 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
-import { Pill, Calculator, CheckCircle, Info } from 'lucide-react';
+import React from 'react';
+import { Pill, CheckCircle, Info } from 'lucide-react';
 
 export const PharmacyDirectory: React.FC = () => {
-  const [calcPrice, setCalcPrice] = useState<number>(12500);
-  const [coverageType, setCoverageType] = useState<number>(60); // 60, 70, 100
-
-  const discountAmount = Math.round((calcPrice * coverageType) / 100);
-  const affiliatePays = calcPrice - discountAmount;
-
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-in fade-in duration-300">
       {/* Banner */}
@@ -24,59 +18,6 @@ export const PharmacyDirectory: React.FC = () => {
         <p className="text-sky-100/90 text-xs sm:text-sm max-w-2xl leading-relaxed font-normal">
           Accedé al 60% de descuento directo en mostrador con tu prescripción médica y carnet en todas las farmacias adheridas al Colegio de Farmacéuticos de la Provincia de Santa Fe – 1ª Circunscripción.
         </p>
-      </div>
-
-      {/* Interactive Discount Calculator Widget */}
-      <div className="bg-white/70 backdrop-blur-xl border border-white/80 rounded-3xl p-6 sm:p-8 shadow-lg shadow-slate-200/40">
-        <div className="flex items-center gap-3 mb-5">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold shadow-md">
-            <Calculator className="w-5 h-5 text-sky-200" />
-          </div>
-          <div>
-            <h3 className="font-extrabold text-slate-900 text-lg">Simulador de Cobertura en Medicamentos</h3>
-            <p className="text-xs text-slate-600 font-medium">Calculá cuánto abonas en la farmacia según tu plan de cobertura</p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
-          <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-              Precio del Medicamento ($)
-            </label>
-            <input
-              type="number"
-              value={calcPrice}
-              onChange={(e) => setCalcPrice(Number(e.target.value) || 0)}
-              className="w-full px-4 py-2.5 bg-white/80 border border-slate-200/80 rounded-2xl text-sm font-bold text-slate-900 focus:ring-2 focus:ring-sky-400 focus:outline-none transition-all shadow-2xs"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-              Tipo de Cobertura Aprobada
-            </label>
-            <select
-              value={coverageType}
-              onChange={(e) => setCoverageType(Number(e.target.value))}
-              className="w-full px-4 py-2.5 bg-white/80 border border-slate-200/80 rounded-2xl text-xs font-medium text-slate-900 focus:ring-2 focus:ring-sky-400 focus:outline-none transition-all shadow-2xs"
-            >
-              <option value={60}>60% - Cobertura Habitual Vademécum</option>
-              <option value={70}>70% - Plan Cronicidad Empadronado</option>
-              <option value={100}>100% - Anticonceptivos / Materno Infantil / Oncología</option>
-            </select>
-          </div>
-
-          <div className="bg-white/90 p-4 sm:p-5 rounded-2xl border border-sky-100 shadow-sm flex items-center justify-between">
-            <div>
-              <p className="text-xs font-semibold text-slate-500">Cobertura DSS ({coverageType}%):</p>
-              <p className="text-base font-bold text-sky-600">${discountAmount.toLocaleString('es-AR')}</p>
-            </div>
-            <div className="text-right">
-              <p className="text-xs font-semibold text-slate-500">Abonás en Mostrador:</p>
-              <p className="text-xl font-extrabold text-blue-900">${affiliatePays.toLocaleString('es-AR')}</p>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Normativas y Coberturas Clave */}
