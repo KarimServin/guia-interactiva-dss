@@ -75,12 +75,6 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
   const handleTabClick = (tabId: string) => {
     const targetId = getSubTabId(tabId);
     setActiveTab(targetId);
-    setTimeout(() => {
-      const el = document.getElementById('coberturas-tab-content');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 50);
   };
 
   return (
@@ -421,42 +415,151 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
         {/* 5. FARMACIAS Y ANTICONCEPTIVOS */}
         {activeTab === 'farmacia' && (
           <div className="space-y-6 animate-in fade-in duration-200">
+            {/* Header Title */}
             <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
               <div className="p-2.5 rounded-2xl bg-emerald-100 text-emerald-700 font-bold">
                 <Pill className="w-6 h-6" />
               </div>
               <div>
-                <h2 className="text-xl font-extrabold text-slate-900">Farmacia y Anticonceptivos</h2>
-                <p className="text-xs text-slate-500">Cobertura de medicamentos ambulatorios y tratamientos anticonceptivos</p>
+                <h2 className="text-xl font-extrabold text-slate-900">Cobertura en Farmacia, Medicamentos y Salud Sexual</h2>
+                <p className="text-xs text-slate-500">Esquema detallado de bonificaciones al 60% y cobertura integral al 100%</p>
               </div>
             </div>
 
-            <div className="space-y-2">
-              <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-                <Pill className="w-5 h-5 text-emerald-600" />
-                Pastillas Anticonceptivas y Medicamentos
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                Se incorpora dentro de la cobertura del DSS las pastillas anticonceptivas, el reconocimiento es del <strong className="text-slate-900 font-bold">60% para ambos planes</strong> con descuento directamente en Farmacia. El Afiliado deberá presentar en el DSS una ficha de tratamiento prolongado (deberá ser renovada cada seis meses), indicando alguna de las pastillas que se encuentran en el vademécum. Una vez completado este procedimiento podrá realizar la compra con el descuento mencionado.
-              </p>
+            {/* Quick Access Badges Banner */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="bg-gradient-to-br from-emerald-50 to-teal-50/60 p-5 rounded-2xl border border-emerald-200/80 space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-extrabold text-xs">
+                    60% Cobertura
+                  </span>
+                  <h3 className="font-bold text-slate-900 text-sm">Medicamentos Ambulatorios</h3>
+                </div>
+                <p className="text-xs text-slate-700 leading-relaxed font-normal">
+                  Descuento directo en mostrador para medicamentos incluidos en el Vademécum Ambulatorio General (Plan General y Plan Básico).
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-rose-50 to-pink-50/60 p-5 rounded-2xl border border-rose-200/80 space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 rounded-full bg-rose-600 text-white font-extrabold text-xs">
+                    100% Cobertura
+                  </span>
+                  <h3 className="font-bold text-slate-900 text-sm">Salud Sexual y Anticoncepción</h3>
+                </div>
+                <p className="text-xs text-slate-700 leading-relaxed font-normal">
+                  Cobertura sin cargo en pastillas anticonceptivas seleccionadas, DIU/SIU, implantes y anticoncepción de emergencia.
+                </p>
+              </div>
             </div>
 
-            {/* Direct Links */}
-            <div className="flex flex-wrap gap-3 pt-2">
-              <button
-                onClick={() => router.push('/vademecum/anticonceptivos')}
-                className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
-              >
-                <span>Vademécum de Anticonceptivos</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={() => router.push('/vademecum/basico')}
-                className="bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
-              >
-                <span>Vademécum General (Nombres Comerciales, Monodrogas y Presentaciones)</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </button>
+            {/* DETAILED SECTION: COBERTURA AL 60% */}
+            <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs space-y-4">
+              <div className="flex items-center gap-2 text-emerald-800 border-b border-slate-100 pb-3">
+                <BadgePercent className="w-5 h-5 text-emerald-600" />
+                <h3 className="font-bold text-slate-900 text-base">
+                  1. Funcionamiento de la Cobertura al 60% (Medicamentos Generales)
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-700">
+                <div className="space-y-2 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+                  <h4 className="font-bold text-slate-900 flex items-center gap-1.5 text-xs">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    Modalidad de Compra en Mostrador
+                  </h4>
+                  <ul className="space-y-1.5 text-slate-600 leading-relaxed">
+                    <li>• Presentá en cualquier farmacia adherida tu <strong>Receta Médica</strong> (física o digital) emitida por el profesional.</li>
+                    <li>• Acreditar identidad con tu <strong>Número de Matrícula Profesional</strong> o DNI.</li>
+                    <li>• La farmacia aplica el <strong>60% de descuento directo</strong> sobre el precio de lista y abonás únicamente el 40% restante.</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-2 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+                  <h4 className="font-bold text-slate-900 flex items-center gap-1.5 text-xs">
+                    <FileText className="w-4 h-4 text-blue-600" />
+                    Tratamientos Prolongados / Crónicos
+                  </h4>
+                  <ul className="space-y-1.5 text-slate-600 leading-relaxed">
+                    <li>• Para medicamentos de uso habitual o crónico, presentá la <strong>Ficha de Tratamiento Prolongado</strong> en la secretaría del DSS.</li>
+                    <li>• La ficha cuenta con una validez de <strong>6 meses</strong> y automatiza el expendio directo en farmacia sin trámites adicionales.</li>
+                    <li>• Vademécum incluye las principales monodrogas y presentaciones comerciales aprobadas.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* DETAILED SECTION: COBERTURA AL 100% */}
+            <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs space-y-4">
+              <div className="flex items-center gap-2 text-rose-800 border-b border-slate-100 pb-3">
+                <Sparkles className="w-5 h-5 text-rose-600" />
+                <h3 className="font-bold text-slate-900 text-base">
+                  2. Cobertura al 100% (Salud Sexual, Reproductiva y Anticoncepción)
+                </h3>
+              </div>
+
+              <p className="text-xs text-slate-700 leading-relaxed">
+                En cumplimiento del Programa de Salud Sexual y Procreación Responsable y la normativa vigente del DSS, los siguientes métodos anticonceptivos cuentan con <strong>cobertura total al 100% sin cargo</strong> para las afiliadas:
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
+                <div className="p-3.5 bg-rose-50/70 rounded-xl border border-rose-100 space-y-1">
+                  <strong className="font-bold text-rose-950 block">Pastillas Orales / Inyectables:</strong>
+                  <p className="text-rose-900 text-[11px] leading-relaxed">
+                    100% de cobertura en las opciones del Vademécum de Anticonceptivos con registro en el programa.
+                  </p>
+                </div>
+
+                <div className="p-3.5 bg-rose-50/70 rounded-xl border border-rose-100 space-y-1">
+                  <strong className="font-bold text-rose-950 block">DIU / SIU / Implante Subdérmico:</strong>
+                  <p className="text-rose-900 text-[11px] leading-relaxed">
+                    100% cubierto tanto el dispositivo físico como el honorario médico de colocación.
+                  </p>
+                </div>
+
+                <div className="p-3.5 bg-rose-50/70 rounded-xl border border-rose-100 space-y-1">
+                  <strong className="font-bold text-rose-950 block">Anticoncepción de Emergencia:</strong>
+                  <p className="text-rose-900 text-[11px] leading-relaxed">
+                    100% sin cargo con receta en farmacias adheridas.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2 text-xs text-slate-700">
+                <strong className="font-bold text-slate-900 block">¿Cómo empadronarse para la Cobertura al 100%?</strong>
+                <ol className="list-decimal pl-4 space-y-1 text-slate-600 leading-relaxed">
+                  <li>Solicitá a tu médico ginecólogo/a completar la <strong>Ficha de Empadronamiento de Anticonceptivos</strong> o indicación médica.</li>
+                  <li>Presentá la ficha en la secretaría del DSS o mediante el canal oficial.</li>
+                  <li>Una vez autorizada, podés retirar mensualmente las pastillas anticonceptivas al 100% sin cargo en la farmacia adherida.</li>
+                </ol>
+              </div>
+            </div>
+
+            {/* Direct Vademécum Shortcuts */}
+            <div className="bg-slate-900 rounded-2xl p-5 text-white space-y-3">
+              <h4 className="font-bold text-sm text-white">Consultá los Vademécums Oficiales</h4>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                Accedé a los listados actualizados de monodrogas, marcas y nombres comerciales disponibles en el sistema.
+              </p>
+
+              <div className="flex flex-wrap gap-3 pt-1">
+                <button
+                  onClick={() => router.push('/vademecum/anticonceptivos')}
+                  className="bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-md flex items-center gap-2 cursor-pointer"
+                >
+                  <Sparkles className="w-4 h-4 text-rose-200" />
+                  <span>Ver Vademécum de Anticonceptivos (100% y 60%)</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={() => router.push('/vademecum/basico')}
+                  className="bg-white/15 hover:bg-white/25 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all border border-white/20 flex items-center gap-2 cursor-pointer"
+                >
+                  <Pill className="w-4 h-4 text-emerald-400" />
+                  <span>Ver Vademécum General Ambulatorio (60%)</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </button>
+              </div>
             </div>
           </div>
         )}
