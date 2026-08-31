@@ -129,9 +129,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
             const isVademecum = item.id === 'vademecum';
             const isCoberturas = item.id === 'coberturas-planes';
             const isActive = isVademecum
-              ? (activeTab.startsWith('vademecum') && activeTab !== 'vademecum-farmacias')
+              ? (activeTab.startsWith('vademecum') && activeTab !== 'vademecum-farmacias' && activeTab !== 'cobertura-farmacias')
               : isCoberturas
-                ? ['coberturas-planes', 'subsidio-sepelios', 'cobertura-odontologia', 'chequeo-preventivo', 'vademecum-farmacias'].includes(activeTab)
+                ? ['coberturas-planes', 'subsidio-sepelios', 'sepelios', 'cobertura-odontologia', 'odontologia', 'chequeo-preventivo', 'vademecum-farmacias', 'cobertura-farmacias', 'farmacia', 'materno', 'nutricion-celiacos', 'protesis'].includes(activeTab)
                 : activeTab === item.id;
 
             if (isCoberturas) {
@@ -168,50 +168,70 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                           router.push('/?tab=coberturas-planes');
                           setIsCoberturasDropdownOpen(false);
                         }}
-                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                         Ver coberturas y planes
                       </button>
                       <button
                         onClick={() => {
-                          router.push('/vademecum/farmacias');
+                          router.push('/?tab=materno');
                           setIsCoberturasDropdownOpen(false);
                         }}
-                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-rose-50 hover:text-rose-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                        Plan Materno Infantil
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/?tab=cobertura-farmacias');
+                          setIsCoberturasDropdownOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-emerald-50 hover:text-emerald-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                         Cobertura en farmacias
                       </button>
                       <button
                         onClick={() => {
-                          router.push('/?tab=subsidio-sepelios');
-                          setIsCoberturasDropdownOpen(false);
-                        }}
-                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
-                        Subsidio sepelios
-                      </button>
-                      <button
-                        onClick={() => {
                           router.push('/?tab=cobertura-odontologia');
                           setIsCoberturasDropdownOpen(false);
                         }}
-                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-cyan-50 hover:text-cyan-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
                         Cobertura odontología
                       </button>
                       <button
                         onClick={() => {
-                          router.push('/?tab=chequeo-preventivo');
+                          router.push('/?tab=nutricion-celiacos');
                           setIsCoberturasDropdownOpen(false);
                         }}
-                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-amber-50 hover:text-amber-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                        Chequeo preventivo anual
+                        Nutrición y Celíacos
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/?tab=protesis');
+                          setIsCoberturasDropdownOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                        Prótesis y Órtesis
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/?tab=subsidio-sepelios');
+                          setIsCoberturasDropdownOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                        Subsidio sepelios
                       </button>
                     </div>
                   )}
@@ -348,23 +368,23 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                       </button>
                       <button
                         onClick={() => {
-                          router.push('/vademecum/farmacias');
+                          router.push('/?tab=materno');
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-rose-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                        Plan Materno Infantil
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/?tab=cobertura-farmacias');
                           setIsMobileMenuOpen(false);
                         }}
                         className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-emerald-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                         Cobertura en farmacias
-                      </button>
-                      <button
-                        onClick={() => {
-                          router.push('/?tab=subsidio-sepelios');
-                          setIsMobileMenuOpen(false);
-                        }}
-                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-purple-700 transition-colors flex items-center gap-2"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
-                        Subsidio sepelios
                       </button>
                       <button
                         onClick={() => {
@@ -378,13 +398,33 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                       </button>
                       <button
                         onClick={() => {
-                          router.push('/?tab=chequeo-preventivo');
+                          router.push('/?tab=nutricion-celiacos');
                           setIsMobileMenuOpen(false);
                         }}
                         className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                        Chequeo preventivo anual
+                        Nutrición y Celíacos
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/?tab=protesis');
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-purple-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                        Prótesis y Órtesis
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/?tab=subsidio-sepelios');
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-indigo-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                        Subsidio sepelios
                       </button>
                     </div>
                   )}

@@ -41,8 +41,8 @@ export default function HomePage() {
       if (tab) {
         if (tab === 'cartilla') {
           router.replace('/cartilla');
-        } else if (tab === 'vademecum') {
-          router.replace('/vademecum/farmacias');
+        } else if (tab === 'vademecum' || tab === 'farmacias') {
+          setActiveTab('cobertura-farmacias');
         } else if (tab === 'cuotas') {
           router.replace('/cuotas');
         } else {
@@ -60,8 +60,9 @@ export default function HomePage() {
     }
     if (target === 'cartilla') {
       router.push('/cartilla');
-    } else if (target === 'vademecum') {
-      router.push('/vademecum/farmacias');
+    } else if (target === 'vademecum' || target === 'farmacias') {
+      setActiveTab('cobertura-farmacias');
+      router.push('/?tab=cobertura-farmacias');
     } else if (target === 'formularios') {
       setActiveTab('formularios');
       router.push('/?tab=formularios');
@@ -278,7 +279,7 @@ export default function HomePage() {
         )}
 
         {/* VIEW: COBERTURAS Y PLANES */}
-        {['coberturas-planes', 'subsidio-sepelios', 'cobertura-odontologia', 'chequeo-preventivo'].includes(activeTab) && (
+        {['coberturas-planes', 'subsidio-sepelios', 'sepelios', 'cobertura-odontologia', 'odontologia', 'chequeo-preventivo', 'materno', 'plan-materno', 'nutricion-celiacos', 'celiacos', 'protesis', 'ortesis', 'farmacia'].includes(activeTab) && (
           <CoberturasPlanesView 
             key={activeTab}
             initialSubTab={activeTab} 

@@ -37,11 +37,14 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
 
   // Helper to map route key to internal sub-tab id
   const getSubTabId = (key: string) => {
-    if (key === 'subsidio-sepelios' || key === 'subsidios') return 'subsidios';
+    if (key === 'subsidio-sepelios' || key === 'sepelios') return 'sepelios';
     if (key === 'cobertura-odontologia' || key === 'odontologia') return 'odontologia';
     if (key === 'vademecum-farmacias' || key === 'farmacia') return 'farmacia';
     if (key === 'internaciones') return 'internaciones';
     if (key === 'medica' || key === 'chequeo-preventivo') return 'medica';
+    if (key === 'materno' || key === 'plan-materno') return 'materno';
+    if (key === 'nutricion-celiacos' || key === 'celiacos' || key === 'nutricion') return 'nutricion-celiacos';
+    if (key === 'protesis' || key === 'ortesis') return 'protesis';
     return 'planes';
   };
 
@@ -56,10 +59,13 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
   const TABS = [
     { id: 'planes', title: 'Planes y Ámbito', subtitle: 'Santa Fe, Rosario, Cba', icon: ShieldCheck },
     { id: 'medica', title: 'Asistencia Médica', subtitle: 'Arts. 14 a 24', icon: Stethoscope },
+    { id: 'materno', title: 'Plan Materno Infantil', subtitle: 'Art. 20 (Mamá y Bebé)', icon: Baby },
     { id: 'internaciones', title: 'Internaciones', subtitle: 'Urgencias y Quirúrgicos', icon: BedDouble },
-    { id: 'farmacia', title: 'Farmacia y Nutrición', subtitle: 'Vademécum 60%-100%', icon: Pill },
+    { id: 'farmacia', title: 'Farmacia y Anticonceptivos', subtitle: 'Vademécum 60%-100%', icon: Pill },
     { id: 'odontologia', title: 'Odontología', subtitle: 'Arts. 25 a 28', icon: Smile },
-    { id: 'subsidios', title: 'Subsidios y Prótesis', subtitle: 'Celíacos y Sepelios', icon: HeartHandshake },
+    { id: 'nutricion-celiacos', title: 'Nutrición y Celíacos', subtitle: 'Sin TACC y Controles', icon: Apple },
+    { id: 'protesis', title: 'Prótesis y Órtesis', subtitle: 'Art. 19 (60% y 40%)', icon: Bone },
+    { id: 'sepelios', title: 'Subsidio Sepelios', subtitle: 'Cobertura por Fallecimiento', icon: HeartHandshake },
   ];
 
   return (
@@ -97,7 +103,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
               <span>Ver Tabla Comparativa de Coseguros y Planes</span>
             </button>
             <button
-              onClick={() => router.push('/vademecum/farmacias')}
+              onClick={() => setActiveTab('farmacia')}
               className="bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all border border-white/20 flex items-center gap-2 cursor-pointer"
             >
               <Pill className="w-4 h-4 text-emerald-400" />
@@ -107,8 +113,8 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
         </div>
       </div>
 
-      {/* RESPONSIVE CATEGORY SELECTOR GRID (DESKTOP: 6 COLS, MOBILE: 2 COLS) */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      {/* RESPONSIVE 3x3 CATEGORY SELECTOR GRID (DESKTOP: 3 COLS, MOBILE: 2 COLS) */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3">
         {TABS.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -116,18 +122,18 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`group flex flex-col items-center text-center p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer relative overflow-hidden ${
+              className={`group flex items-center gap-3.5 text-left p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer relative overflow-hidden ${
                 isActive
-                  ? 'bg-gradient-to-b from-blue-600 to-indigo-700 text-white border-blue-600 shadow-md shadow-blue-600/25 ring-2 ring-blue-400/40 scale-[1.02]'
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white border-blue-600 shadow-md shadow-blue-600/25 ring-2 ring-blue-400/40 scale-[1.01]'
                   : 'bg-white text-slate-700 border-slate-200/90 hover:border-blue-300 hover:bg-blue-50/50 hover:text-slate-900 shadow-2xs'
               }`}
             >
               {/* Top Accent line when active */}
               {isActive && (
-                <div className="absolute top-0 left-0 right-0 h-1 bg-sky-300 rounded-t-full" />
+                <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-sky-300 rounded-l-full" />
               )}
               
-              <div className={`p-2.5 rounded-xl mb-2 transition-transform group-hover:scale-110 ${
+              <div className={`p-2.5 rounded-xl shrink-0 transition-transform group-hover:scale-110 ${
                 isActive 
                   ? 'bg-white/15 text-white' 
                   : 'bg-blue-50 text-blue-600 group-hover:bg-blue-100'
@@ -135,15 +141,16 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
                 <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
 
-              <span className="text-xs sm:text-xs font-bold leading-tight">
-                {tab.title}
-              </span>
-              
-              <span className={`text-[10px] mt-1 font-medium ${
-                isActive ? 'text-blue-100' : 'text-slate-400'
-              }`}>
-                {tab.subtitle}
-              </span>
+              <div className="min-w-0 flex-1">
+                <h4 className="text-xs sm:text-sm font-bold leading-tight truncate">
+                  {tab.title}
+                </h4>
+                <p className={`text-[11px] mt-0.5 font-medium truncate ${
+                  isActive ? 'text-blue-100' : 'text-slate-500'
+                }`}>
+                  {tab.subtitle}
+                </p>
+              </div>
             </button>
           );
         })}
@@ -253,18 +260,6 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
                 </p>
               </div>
 
-              {/* Plan Materno Infantil (Art. 20) */}
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
-                <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2">
-                  <Baby className="w-4 h-4 text-rose-600" />
-                  a.6) Plan Materno Infantil (Art. 20)
-                </h3>
-                <ul className="text-xs text-slate-600 space-y-1.5 leading-relaxed">
-                  <li>• <strong className="text-slate-800">Embarazada:</strong> Desde la gestación hasta 30 días post-parto sin coseguro (consultas, ecografía, internación y laboratorio). Presentar certificado médico estampillado con FPP.</li>
-                  <li>• <strong className="text-slate-800">Recién Nacido:</strong> Desde el nacimiento hasta los 12 meses de vida sin coseguro (consultas, leche maternizada o entera por 3 meses; leches medicamentosas al % de medicamentos con HC).</li>
-                </ul>
-              </div>
-
               {/* Fisioterapia y Fonoaudiología (Art. 21 y 22) */}
               <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
                 <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2">
@@ -302,7 +297,55 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           </div>
         )}
 
-        {/* 3. INTERNACIONES */}
+        {/* 3. PLAN MATERNO INFANTIL */}
+        {activeTab === 'materno' && (
+          <div className="space-y-6 animate-in fade-in duration-200">
+            <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
+              <div className="p-2.5 rounded-2xl bg-rose-100 text-rose-700 font-bold">
+                <Baby className="w-6 h-6" />
+              </div>
+              <div>
+                <h2 className="text-xl font-extrabold text-slate-900">Plan Materno Infantil (Art. 20)</h2>
+                <p className="text-xs text-slate-500">Cobertura integral sin coseguro para la mamá y el recién nacido</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              {/* Cobertura Embarazada */}
+              <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-3">
+                <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
+                  <Baby className="w-5 h-5 text-rose-600" />
+                  Cobertura para la Embarazada
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  Cubre desde la confirmación del embarazo hasta <strong className="text-slate-900 font-bold">30 días post-parto sin cosecha de coseguro</strong> en todas las prestaciones vinculadas: consultas médicas, ecografías, estudios de laboratorio e internación para el parto o cesárea.
+                </p>
+                <div className="bg-rose-50/80 p-3.5 rounded-2xl border border-rose-100 text-xs text-rose-950 font-medium">
+                  Requisito: Presentar en el DSS el certificado médico estampillado que indique la Fecha Probable de Parto (FPP).
+                </div>
+              </div>
+
+              {/* Cobertura Recién Nacido */}
+              <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-3">
+                <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-rose-600" />
+                  Cobertura para el Recién Nacido
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  Cubre desde el nacimiento hasta los <strong className="text-slate-900 font-bold">12 meses de vida sin coseguro</strong> (consultas de pediatría, vacunas y estudios).
+                </p>
+                <ul className="text-xs text-slate-600 space-y-1.5 leading-relaxed pt-1 border-t border-slate-200/60">
+                  <li>• <strong className="text-slate-800">Leches Maternizadas o Enteras:</strong> Cobertura por un período de 3 meses.</li>
+                  <li>• <strong className="text-slate-800">Leches Medicamentosas:</strong> Se reconocen al porcentaje de medicamentos con Historia Clínica y prescripción médica justificada.</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* 4. INTERNACIONES */}
         {activeTab === 'internaciones' && (
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
@@ -369,7 +412,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           </div>
         )}
 
-        {/* 4. FARMACIAS, ANTICONCEPTIVOS Y NUTRICIÓN */}
+        {/* 5. FARMACIAS Y ANTICONCEPTIVOS */}
         {activeTab === 'farmacia' && (
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
@@ -377,8 +420,8 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
                 <Pill className="w-6 h-6" />
               </div>
               <div>
-                <h2 className="text-xl font-extrabold text-slate-900">Farmacia, Anticonceptivos y Nutricionistas</h2>
-                <p className="text-xs text-slate-500">Cobertura de medicamentos y asistencia nutricional</p>
+                <h2 className="text-xl font-extrabold text-slate-900">Farmacia y Anticonceptivos</h2>
+                <p className="text-xs text-slate-500">Cobertura de medicamentos ambulatorios y tratamientos anticonceptivos</p>
               </div>
             </div>
 
@@ -408,28 +451,11 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
                 <span>Vademécum General (Nombres Comerciales, Monodrogas y Presentaciones)</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </button>
-              <button
-                onClick={() => router.push('/vademecum/farmacias')}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
-              >
-                <span>Ver Cobertura en Farmacia</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-
-            <div className="pt-4 border-t border-slate-100 space-y-2">
-              <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-                <Apple className="w-5 h-5 text-emerald-600" />
-                Nutricionistas
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                Cobertura integral en el tratamiento nutricional, incluyendo la Consulta inicial por derivación, el Plan Alimentario y los controles mensuales.
-              </p>
             </div>
           </div>
         )}
 
-        {/* 5. ASISTENCIA ODONTOLÓGICA */}
+        {/* 6. ASISTENCIA ODONTOLÓGICA */}
         {activeTab === 'odontologia' && (
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
@@ -500,57 +526,102 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           </div>
         )}
 
-        {/* 6. SUBSIDIOS Y PRÓTESIS */}
-        {activeTab === 'subsidios' && (
+        {/* 7. NUTRICIÓN Y CELÍACOS */}
+        {activeTab === 'nutricion-celiacos' && (
+          <div className="space-y-6 animate-in fade-in duration-200">
+            <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
+              <div className="p-2.5 rounded-2xl bg-amber-100 text-amber-700 font-bold">
+                <Apple className="w-6 h-6" />
+              </div>
+              <div>
+                <h2 className="text-xl font-extrabold text-slate-900">Nutrición y Subsidio Celíacos</h2>
+                <p className="text-xs text-slate-500">Tratamiento nutricional y ayuda económica para alimentos sin TACC</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              {/* Nutricionistas */}
+              <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-3">
+                <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
+                  <Apple className="w-5 h-5 text-emerald-600" />
+                  Atención Nutricional
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  Cobertura integral en el tratamiento nutricional, incluyendo la Consulta inicial por derivación médica, el Plan Alimentario personalizado y los controles mensuales de seguimiento.
+                </p>
+              </div>
+
+              {/* Subsidio Celíacos */}
+              <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-3">
+                <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-amber-600" />
+                  Subsidio Celíacos
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  El DSS otorgará una ayuda económica a aquellos afiliados con celiaquía para adquirir los alimentos libre de gluten. Para acceder a este beneficio deberá presentar el Formulario <strong className="text-slate-900">“Protocolo Celíacos”</strong> llenado por el médico tratante adjuntando copia de estudios previos (análisis y resultado de la biopsia).
+                </p>
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* 8. PRÓTESIS Y ÓRTESIS (ART. 19) */}
+        {activeTab === 'protesis' && (
+          <div className="space-y-6 animate-in fade-in duration-200">
+            <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
+              <div className="p-2.5 rounded-2xl bg-purple-100 text-purple-700 font-bold">
+                <Bone className="w-6 h-6" />
+              </div>
+              <div>
+                <h2 className="text-xl font-extrabold text-slate-900">Provisión de Prótesis y Órtesis (Art. 19)</h2>
+                <p className="text-xs text-slate-500">Porcentajes de cobertura, alquiler de elementos ortopédicos y requisitos</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-4">
+              <div className="space-y-2">
+                <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
+                  <Bone className="w-5 h-5 text-purple-600" />
+                  Cobertura de Prótesis y Órtesis
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  Cobertura de prótesis y órtesis del <strong className="text-slate-900 font-bold">60% para el Plan General</strong> y del <strong className="text-slate-900 font-bold">40% para el Plan Básico</strong> del menor de tres presupuestos (provisión o reintegro). Pedidos sin marcas comerciales. Cirugías requieren autorización previa del material.
+                </p>
+              </div>
+
+              <div className="bg-purple-50/80 p-4 rounded-2xl border border-purple-100 space-y-1 text-xs text-purple-950">
+                <strong className="font-bold text-sm block">Alquiler de Elementos Ortopédicos:</strong>
+                <p className="leading-relaxed">
+                  Alquiler de muletas, camas, sillas de ruedas, trípodes y andadores por reintegro con prescripción médica hasta el valor fijado por el DSS por un máximo de <strong className="font-bold">90 días por año</strong>. Reintegro sobre el menor de 2 presupuestos.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 9. SUBSIDIO SEPELIOS */}
+        {activeTab === 'sepelios' && (
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
               <div className="p-2.5 rounded-2xl bg-purple-100 text-purple-700 font-bold">
                 <HeartHandshake className="w-6 h-6" />
               </div>
               <div>
-                <h2 className="text-xl font-extrabold text-slate-900">Subsidios, Prótesis y Beneficios Especiales</h2>
-                <p className="text-xs text-slate-500">Subsidio Celíacos, Prótesis/Órtesis (Art. 19) y Subsidio Sepelios</p>
+                <h2 className="text-xl font-extrabold text-slate-900">Subsidio por Sepelios</h2>
+                <p className="text-xs text-slate-500">Ayuda y cobertura económica institucional</p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              
-              {/* Subsidio Celíacos */}
-              <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-3">
-                <div className="p-2.5 rounded-2xl bg-amber-100 text-amber-700 font-bold w-fit">
-                  <Apple className="w-5 h-5" />
-                </div>
-                <h3 className="font-bold text-slate-900 text-base">Subsidio Celíacos</h3>
-                <p className="text-xs text-slate-700 leading-relaxed">
-                  El DSS otorgará una ayuda económica a aquellos afiliados con celiaquía para adquirir los alimentos libre de gluten. Para acceder a este beneficio deberá presentar el Formulario <strong className="text-slate-900">“Protocolo Celíacos”</strong> llenado por el médico tratante adjuntando copia de estudios previos (análisis y resultado de la biopsia).
-                </p>
-              </div>
-
-              {/* Prótesis y Órtesis */}
-              <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-3">
-                <div className="p-2.5 rounded-2xl bg-purple-100 text-purple-700 font-bold w-fit">
-                  <Bone className="w-5 h-5" />
-                </div>
-                <h3 className="font-bold text-slate-900 text-base">Provisión de Prótesis (Art. 19)</h3>
-                <p className="text-xs text-slate-700 leading-relaxed">
-                  Cobertura de prótesis y órtesis del <strong className="text-slate-900">60% para el Plan General</strong> y del <strong className="text-slate-900">40% para el Plan Básico</strong> del menor de tres presupuestos (provisión o reintegro). Pedidos sin marcas comerciales. Cirugías requieren autorización previa del material.
-                </p>
-                <p className="text-[11px] text-slate-500 border-t border-slate-200/60 pt-2">
-                  Alquiler de muletas, camas, sillas, trípodes y andadores hasta valor fijado por el DSS por máximo de 90 días por año.
-                </p>
-              </div>
-
-              {/* Subsidio Sepelios */}
-              <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-3">
-                <div className="p-2.5 rounded-2xl bg-slate-200 text-slate-800 font-bold w-fit">
-                  <HeartHandshake className="w-5 h-5 text-purple-600" />
-                </div>
-                <h3 className="font-bold text-slate-900 text-base">Subsidio Sepelios</h3>
-                <p className="text-xs text-slate-700 leading-relaxed">
-                  Ayuda y cobertura económica otorgada por el Departamento de Servicios Sociales ante el fallecimiento del afiliado titular o familiar a cargo, previa presentación de la solicitud y documentación fehaciente.
-                </p>
-              </div>
-
+            <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-4">
+              <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
+                <HeartHandshake className="w-5 h-5 text-purple-600" />
+                Cobertura por Fallecimiento
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                Ayuda y cobertura económica otorgada por el Departamento de Servicios Sociales ante el fallecimiento del afiliado titular o familiar a cargo, previa presentación de la solicitud correspondiente y documentación fehaciente.
+              </p>
             </div>
           </div>
         )}
