@@ -40,6 +40,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVademecumDropdownOpen, setIsVademecumDropdownOpen] = useState(false);
   const [isMobileVademecumOpen, setIsMobileVademecumOpen] = useState(false);
+  const [isCoberturasDropdownOpen, setIsCoberturasDropdownOpen] = useState(false);
+  const [isMobileCoberturasOpen, setIsMobileCoberturasOpen] = useState(false);
   const router = useRouter();
 
   const handleNavClick = (id: string) => {
@@ -48,8 +50,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
     } else if (id === 'guia') {
       router.push('/');
     } else if (id === 'vademecum') {
-      // Toggle dropdown instead of default route
       setIsVademecumDropdownOpen(!isVademecumDropdownOpen);
+      return;
+    } else if (id === 'coberturas-planes') {
+      setIsCoberturasDropdownOpen(!isCoberturasDropdownOpen);
       return;
     } else if (id === 'cuotas') {
       router.push('/cuotas');
@@ -123,9 +127,55 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isVademecum = item.id === 'vademecum';
+            const isCoberturas = item.id === 'coberturas-planes';
             const isActive = isVademecum
               ? activeTab.startsWith('vademecum')
               : activeTab === item.id;
+
+            if (isCoberturas) {
+              return (
+                <div
+                  key={item.id}
+                  className="relative"
+                  onMouseEnter={() => setIsCoberturasDropdownOpen(true)}
+                  onMouseLeave={() => setIsCoberturasDropdownOpen(false)}
+                >
+                  <button
+                    id="nav-coberturas-trigger"
+                    onClick={() => handleNavClick(item.id)}
+                    className={`flex items-center gap-1.5 px-3.5 py-2 text-xs lg:text-[13px] font-bold rounded-full transition-all duration-200 group cursor-pointer ${
+                      isActive 
+                        ? 'bg-blue-600 text-white shadow-xs' 
+                        : 'text-slate-800 bg-transparent hover:bg-blue-600 hover:text-white'
+                    }`}
+                  >
+                    <Icon className={`w-4 h-4 shrink-0 transition-colors duration-250 ${
+                      isActive ? 'text-white' : 'text-blue-600 group-hover:text-white'
+                    }`} />
+                    <span>{item.label}</span>
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-250 ${
+                      isCoberturasDropdownOpen ? 'rotate-180' : ''
+                    }`} />
+                  </button>
+
+                  {/* Dropdown Card */}
+                  {isCoberturasDropdownOpen && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-56 bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                      <button
+                        onClick={() => {
+                          handleNavClick('coberturas-planes');
+                          setIsCoberturasDropdownOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                        Ver Coberturas
+                      </button>
+                    </div>
+                  )}
+                </div>
+              );
+            }
 
             if (isVademecum) {
               return (
@@ -228,9 +278,45 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isVademecum = item.id === 'vademecum';
+            const isCoberturas = item.id === 'coberturas-planes';
             const isActive = isVademecum
               ? activeTab.startsWith('vademecum')
               : activeTab === item.id;
+
+            if (isCoberturas) {
+              return (
+                <div key={item.id} className="space-y-1">
+                  <button
+                    onClick={() => setIsMobileCoberturasOpen(!isMobileCoberturasOpen)}
+                    className={`w-full flex items-center justify-between px-4 py-3 text-[13px] font-bold rounded-full transition-all group ${
+                      isActive ? 'bg-blue-50 text-blue-700 font-extrabold' : 'text-slate-800 bg-transparent active:bg-blue-50/50'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <Icon className="w-4.5 h-4.5 text-blue-600 shrink-0" />
+                      <span>{item.label}</span>
+                    </div>
+                    <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                      isMobileCoberturasOpen ? 'rotate-180' : ''
+                    }`} />
+                  </button>
+                  {isMobileCoberturasOpen && (
+                    <div className="pl-6 space-y-1 animate-in fade-in duration-200">
+                      <button
+                        onClick={() => {
+                          handleNavClick('coberturas-planes');
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                        Ver Coberturas
+                      </button>
+                    </div>
+                  )}
+                </div>
+              );
+            }
 
             if (isVademecum) {
               return (
