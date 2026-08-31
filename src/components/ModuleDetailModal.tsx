@@ -183,7 +183,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
       ? 'from-amber-500 to-orange-600'
       : module.colorClass.text.includes('purple') || module.colorClass.text.includes('violet')
       ? 'from-violet-600 to-purple-700'
-      : 'from-blue-600 to-indigo-700';
+      : 'from-slate-900 via-slate-800 to-indigo-950';
 
   /* ── Shared content block ── */
   const content = (

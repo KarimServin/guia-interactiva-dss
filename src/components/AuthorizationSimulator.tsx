@@ -32,7 +32,7 @@ export const AuthorizationSimulator: React.FC<AuthorizationSimulatorProps> = ({ 
       </div>
 
       {/* Header */}
-      <div className="shrink-0 bg-gradient-to-r from-blue-600 to-sky-600 px-5 pt-4 pb-5">
+      <div className="shrink-0 bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 px-5 pt-4 pb-5">
         <div className="flex items-start justify-between gap-3">
           <div>
             <span className="inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-md bg-white/20 text-white/90 mb-2">

@@ -163,8 +163,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                     onClick={() => handleNavClick(item.id)}
                     className={`flex items-center gap-1.5 px-3.5 py-2 text-xs lg:text-[13px] font-bold rounded-full transition-all duration-200 group cursor-pointer ${
                       isActive 
-                        ? 'bg-blue-600 text-white shadow-xs' 
-                        : 'text-slate-800 bg-transparent hover:bg-blue-600 hover:text-white'
+                        ? 'bg-gradient-to-r from-slate-800 to-indigo-900 text-white shadow-xs' 
+                        : 'text-slate-800 bg-transparent hover:bg-slate-800 hover:text-white'
                     }`}
                   >
                     <Icon className={`w-4 h-4 shrink-0 transition-colors duration-250 ${
@@ -246,8 +246,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                     id="nav-vademecum-trigger"
                     className={`flex items-center gap-1.5 px-3.5 py-2 text-xs lg:text-[13px] font-bold rounded-full transition-all duration-200 group cursor-pointer ${
                       isActive 
-                        ? 'bg-blue-600 text-white shadow-xs' 
-                        : 'text-slate-800 bg-transparent hover:bg-blue-600 hover:text-white'
+                        ? 'bg-gradient-to-r from-slate-800 to-indigo-900 text-white shadow-xs' 
+                        : 'text-slate-800 bg-transparent hover:bg-slate-800 hover:text-white'
                     }`}
                   >
                     <Icon className={`w-4 h-4 shrink-0 transition-colors duration-250 ${
