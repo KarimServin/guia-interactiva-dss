@@ -32,17 +32,17 @@ export const FormsCenter: React.FC<FormsCenterProps> = () => {
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
-        <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold text-sky-200">
-            <FileText className="w-4 h-4 text-sky-400" />
-            Repositorio Oficial de Documentos DSS
+      <div className="bg-gradient-to-br from-slate-900 via-indigo-950 to-blue-950 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 text-white shadow-md relative overflow-hidden border border-slate-800/80">
+        <div className="absolute right-0 top-0 w-72 h-72 bg-sky-500/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
+        <div className="relative z-10 max-w-3xl space-y-2.5 sm:space-y-4">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[11px] sm:text-xs font-semibold text-sky-200">
+            <FileText className="w-3.5 h-3.5 text-sky-400" />
+            <span>Repositorio Oficial de Documentos DSS</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+          <h2 className="text-xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight">
             Formularios y Solicitudes Oficiales
           </h2>
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+          <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed font-normal">
             Descargá los formularios en formato PDF oficial para presentar en el Departamento de Servicios Sociales. 
             Podés completarlos en forma impresa o digitalmente y enviarlos por correo electrónico a <strong className="text-white">dss@cpn.org.ar</strong>.
           </p>
