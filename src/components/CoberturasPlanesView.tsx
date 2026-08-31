@@ -22,7 +22,8 @@ import {
   Brain,
   Trees,
   BadgePercent,
-  CheckCircle2
+  CheckCircle2,
+  Leaf
 } from 'lucide-react';
 
 interface CoberturasPlanesViewProps {
@@ -632,13 +633,18 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
 
             {/* Adquisición Parcelas Lar de Paz */}
             <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-5">
-              <div>
-                <h3 className="font-bold text-slate-900 text-base">
-                  Adquisición de Parcelas — Parque Cementerio &quot;Lar de Paz&quot;
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Información y condiciones del convenio institucional para la adquisición de parcelas.
-                </p>
+              <div className="flex items-start gap-3">
+                <div className="p-2 rounded-xl bg-emerald-50 text-emerald-700/80 border border-emerald-200/60 shrink-0 mt-0.5">
+                  <Leaf className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 text-base">
+                    Adquisición de Parcelas — Parque Cementerio &quot;Lar de Paz&quot;
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    Información y condiciones del convenio institucional para la adquisición de parcelas.
+                  </p>
+                </div>
               </div>
 
               <div className="space-y-4 text-xs sm:text-sm text-slate-700">
