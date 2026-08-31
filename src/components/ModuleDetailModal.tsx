@@ -118,10 +118,10 @@ interface TabBtnProps {
 const TabBtn: React.FC<TabBtnProps> = ({ active, onClick, icon, label }) => (
   <button
     onClick={onClick}
-    className={`relative flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
+    className={`relative flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
       active
-        ? 'bg-blue-600 text-white shadow-sm shadow-blue-300/40'
-        : 'text-slate-500 hover:text-slate-800 hover:bg-slate-100'
+        ? 'bg-white text-slate-950 shadow-md font-extrabold scale-[1.02]'
+        : 'bg-white/15 hover:bg-white/25 text-white/95 font-semibold backdrop-blur-md border border-white/25 hover:border-white/40'
     }`}
   >
     {icon}
@@ -218,7 +218,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
 
         {/* Tab pills */}
         {(hasSteps || hasFaqs) && (
-          <div className="flex gap-1.5 mt-4 flex-wrap">
+          <div className="bg-black/15 backdrop-blur-md p-1.5 rounded-2xl border border-white/15 flex gap-2 mt-4 overflow-x-auto">
             <TabBtn
               active={activeTab === 'info'}
               onClick={() => setActiveTab('info')}
