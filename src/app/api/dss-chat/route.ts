@@ -28,7 +28,7 @@ Datos clave del DSS CPCE Santa Fe Cámara I:
 - Medios de pago de cuota: Débito automático en cuenta o tarjeta, Pago Mis Cuentas, Red Link, Transferencia Bancaria o Botón de Pago web.
 - Sede: San Lorenzo 1849 – Santa Fe – Cámara I
 - Horario: Lunes a viernes | 7 a 15 hs
-- Contacto WhatsApp: 3425 10-5675
+- Contacto WhatsApp: (342) 510-5675
 - Web / Más información en: cpcesfe1.org.ar
 - Urgencias y Emergencias 24hs: Sanatorios adheridos según cartilla.
 

@@ -183,7 +183,7 @@ export const ACTION_MODULES: ActionModule[] = [
         { 
           step: 1, 
           title: 'Buscar un prestador', 
-          desc: 'Consultá la [Cartilla de Prestadores Online](https://dss.contadores.org.ar/cartilla) o comunicate por WhatsApp al 3425 10-5675.' 
+          desc: 'Consultá la [Cartilla de Prestadores Online](https://dss.contadores.org.ar/cartilla) o comunicate por WhatsApp al (342) 510-5675.' 
         },
         { 
           step: 2, 
@@ -322,7 +322,7 @@ export const ACTION_MODULES: ActionModule[] = [
         '• Solicitud de Prescripción / Autorización Médica (pmedica.pdf)',
         '• Ficha Odontológica Oficial (Ficha odontologica.pdf)',
         '• Solicitud de Cobertura en Ortodoncia (ortodoncia.pdf)',
-        'Canal Digital: Enviá la foto legible del formulario por WhatsApp al 3425 10-5675 (Lunes a viernes de 7 a 15 hs).'
+        'Canal Digital: Enviá la foto legible del formulario por WhatsApp al (342) 510-5675 (Lunes a viernes de 7 a 15 hs).'
       ],
       steps: [
         {
@@ -333,7 +333,7 @@ export const ACTION_MODULES: ActionModule[] = [
         {
           step: 2,
           title: 'Envío por WhatsApp',
-          desc: 'Enviá la foto del formulario completo al [WhatsApp 3425 10-5675](https://wa.me/5493425105675).'
+          desc: 'Enviá la foto del formulario completo al [WhatsApp (342) 510-5675](https://wa.me/5493425105675).'
         },
         {
           step: 3,
@@ -342,7 +342,7 @@ export const ACTION_MODULES: ActionModule[] = [
         }
       ],
       faqs: [
-        { q: '¿Cuál es el canal oficial para enviar la indicación médica?', a: 'El único canal habilitado es el WhatsApp 3425 10-5675 en el horario de Lunes a viernes de 7 a 15 hs.' }
+        { q: '¿Cuál es el canal oficial para enviar la indicación médica?', a: 'El único canal habilitado es el WhatsApp (342) 510-5675 en el horario de Lunes a viernes de 7 a 15 hs.' }
       ],
       coberturaTable: [
         { prestacion: 'CONSULTAS', isHeader: true },
@@ -555,7 +555,7 @@ export const ACTION_MODULES: ActionModule[] = [
       highlights: [
         'Sede Central: San Lorenzo 1849 – Santa Fe – Cámara I',
         'Horario de Atención: Lunes a viernes | 7 a 15 hs',
-        'Contacto WhatsApp: WA 3425 10-5675 (https://wa.me/5493425105675)',
+        'Contacto WhatsApp: WA (342) 510-5675 (https://wa.me/5493425105675)',
         'Web: cpcesfe1.org.ar',
         'Correo Electrónico: dss@cpn.org.ar'
       ],
@@ -685,7 +685,7 @@ export const FORMS_DATA: FormItem[] = [
 export const MEDICAL_PROVIDERS: MedicalProvider[] = [];
 
 export const PHARMACIES_DATA: Pharmacy[] = [
-  { id: 'ph1', name: 'Farmacia del Consejo (Sede)', city: 'Santa Fe', address: 'San Lorenzo 1849', phone: 'WA 3425 10-5675', discount: '40% Directo / 70% Crónicos', hasRecetaDigital: true },
+  { id: 'ph1', name: 'Farmacia del Consejo (Sede)', city: 'Santa Fe', address: 'San Lorenzo 1849', phone: 'WA (342) 510-5675', discount: '40% Directo / 70% Crónicos', hasRecetaDigital: true },
   { id: 'ph2', name: 'Farmacia Central', city: 'Santa Fe', address: 'San Martín 2100', phone: '0342-453-1111', discount: '40% Directo', hasRecetaDigital: true },
   { id: 'ph3', name: 'Farmacia Bulevar', city: 'Santa Fe', address: 'Bv. Pellegrini 2800', phone: '0342-455-2222', discount: '40% Directo', hasRecetaDigital: true },
   { id: 'ph4', name: 'Farmacia Santo Tomé Norte', city: 'Santo Tomé', address: 'Av. 7 de Marzo 2200', phone: '0342-474-3333', discount: '40% Directo', hasRecetaDigital: true },
