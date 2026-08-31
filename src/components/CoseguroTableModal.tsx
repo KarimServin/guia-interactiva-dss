@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PLANES_COMPARATIVE_DATA, PlanComparisonItem } from '../data/dssData';
-import { X, ShieldCheck, Search, ExternalLink, Filter, Sparkles, CheckCircle2, Clock } from 'lucide-react';
+import { X, ShieldCheck, Search, Filter, Sparkles, Clock } from 'lucide-react';
 
 interface CoseguroTableModalProps {
   isOpen: boolean;
@@ -46,8 +46,6 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ isOpen, 
     });
   }, [selectedCategory, searchTerm]);
 
-  const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/13xDFQ0nDq0WfnqytFK4h_kLsBqxU88bs/edit?gid=1967038765#gid=1967038765";
-
   const content = (
     <>
       {/* Drag handle (mobile) */}
@@ -77,20 +75,6 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ isOpen, 
           >
             <X className="w-5 h-5" />
           </button>
-        </div>
-
-        {/* Link to Spreadsheet Source */}
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/10 text-xs">
-          <span className="text-slate-300 font-medium">Fuente oficial actualizada</span>
-          <a
-            href={GOOGLE_SHEET_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 border border-emerald-500/40 text-xs font-bold transition-all cursor-pointer"
-          >
-            <span>Ver Planilla Original en Google Sheets</span>
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
         </div>
       </div>
 
