@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PLANES_COMPARATIVE_DATA, PlanComparisonItem } from '../data/dssData';
-import { X, ShieldCheck, Search, Filter, Sparkles, Clock } from 'lucide-react';
+import { X, ShieldCheck, Search, Filter, Sparkles, Clock, ArrowLeftRight } from 'lucide-react';
 
 interface CoseguroTableModalProps {
   isOpen: boolean;
@@ -49,19 +49,19 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ isOpen, 
   const content = (
     <>
       {/* Drag handle (mobile) */}
-      <div className="md:hidden flex justify-center pt-3 pb-1 shrink-0 bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900">
+      <div className="md:hidden flex justify-center pt-3 pb-1 shrink-0 bg-gradient-to-r from-blue-950 via-indigo-950 to-slate-900">
         <div className="w-10 h-1 rounded-full bg-white/30" />
       </div>
 
       {/* Header */}
-      <div className="shrink-0 bg-gradient-to-r from-blue-950 via-indigo-900 to-slate-900 px-5 pt-4 pb-5 text-white">
+      <div className="shrink-0 bg-gradient-to-r from-blue-950 via-indigo-900 to-slate-900 px-4 sm:px-5 pt-3 sm:pt-4 pb-4 text-white">
         <div className="flex items-start justify-between gap-3">
           <div>
             <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-200 border border-blue-400/30 mb-1.5">
               <Sparkles className="w-3 h-3 text-blue-400" />
               <span>CPCE Santa Fe · Cámara I</span>
             </div>
-            <h2 className="text-lg md:text-xl font-extrabold text-white leading-tight">
+            <h2 className="text-base sm:text-lg md:text-xl font-extrabold text-white leading-tight">
               Tabla Comparativa de Cobertura y Planes
             </h2>
             <p className="text-xs text-slate-300 mt-1 leading-normal">
@@ -79,7 +79,7 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ isOpen, 
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="shrink-0 bg-slate-50 border-b border-slate-200 p-4 space-y-3">
+      <div className="shrink-0 bg-slate-50 border-b border-slate-200 p-3 sm:p-4 space-y-2.5 sm:space-y-3">
         {/* Search */}
         <div className="relative">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -120,29 +120,40 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ isOpen, 
       </div>
 
       {/* Body Content */}
-      <div className="flex-1 overflow-y-auto overscroll-contain p-4 space-y-4 bg-slate-50/50">
+      <div className="flex-1 overflow-y-auto overscroll-contain p-3 sm:p-4 space-y-3 bg-slate-50/50">
         
         {/* Explanation banner */}
-        <div className="p-3.5 bg-blue-50/90 border border-blue-100 rounded-2xl flex items-start gap-3">
-          <ShieldCheck className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-          <p className="text-xs text-slate-700 leading-relaxed">
+        <div className="p-3 bg-blue-50/90 border border-blue-100 rounded-2xl flex items-start gap-2.5">
+          <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 shrink-0 mt-0.5" />
+          <p className="text-[11px] sm:text-xs text-slate-700 leading-relaxed">
             <strong className="text-blue-900 font-bold">Resumen de liquidación:</strong> Los porcentajes indican la cobertura a cargo del DSS. Los coseguros se incorporan a tu resumen mensual de cuenta corriente sin necesidad de abonar efectivo al prestador.
           </p>
         </div>
 
-        {/* Table */}
-        <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-xs bg-white">
-          <table className="w-full text-xs border-collapse min-w-[620px]">
+        {/* Mobile Horizontal Scroll Indicator Banner */}
+        <div className="md:hidden flex items-center justify-between gap-2 px-3 py-2 bg-indigo-50 border border-indigo-200 text-indigo-900 rounded-xl text-[11px] font-bold shadow-2xs">
+          <span className="flex items-center gap-2">
+            <ArrowLeftRight className="w-4 h-4 text-indigo-600 shrink-0 animate-pulse" />
+            <span>Deslizá la tabla hacia los lados para comparar planes</span>
+          </span>
+          <span className="text-[10px] bg-indigo-200/80 text-indigo-950 px-2 py-0.5 rounded-md uppercase tracking-wider shrink-0 font-extrabold">
+            ← Deslizar →
+          </span>
+        </div>
+
+        {/* Table Container */}
+        <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-xs bg-white relative">
+          <table className="w-full text-xs border-collapse min-w-[580px]">
             <thead className="bg-slate-900 text-white font-bold text-left">
               <tr>
-                <th className="py-3.5 px-4 text-xs font-extrabold w-2/5">Prestación / Detalle</th>
-                <th className="py-3.5 px-3 text-center text-xs font-extrabold bg-blue-900/90 text-sky-200 border-x border-blue-800">
+                <th className="py-3 px-3.5 text-xs font-extrabold w-2/5">Prestación / Detalle</th>
+                <th className="py-3 px-3 text-center text-xs font-extrabold bg-blue-900/90 text-sky-200 border-x border-blue-800">
                   Plan General
                 </th>
-                <th className="py-3.5 px-3 text-center text-xs font-extrabold bg-slate-800 text-slate-200 border-r border-slate-700">
+                <th className="py-3 px-3 text-center text-xs font-extrabold bg-slate-800 text-slate-200 border-r border-slate-700">
                   Plan Básico
                 </th>
-                <th className="py-3.5 px-3 text-center text-xs font-extrabold">Carencia</th>
+                <th className="py-3 px-3 text-center text-xs font-extrabold">Carencia</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -150,7 +161,7 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ isOpen, 
                 filteredData.map((row, idx) => (
                   <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
                     {/* Prestacion */}
-                    <td className="py-3 px-4">
+                    <td className="py-2.5 px-3.5">
                       <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
                         {row.category}
                       </span>
@@ -163,7 +174,7 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ isOpen, 
                     </td>
 
                     {/* Plan General */}
-                    <td className="py-3 px-3 text-center bg-blue-50/40 border-x border-blue-100">
+                    <td className="py-2.5 px-3 text-center bg-blue-50/40 border-x border-blue-100">
                       <span className={`inline-block px-2.5 py-1 rounded-lg font-extrabold text-xs ${
                         row.planGeneral.includes('100%')
                           ? 'bg-blue-600 text-white shadow-2xs'
@@ -176,7 +187,7 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ isOpen, 
                     </td>
 
                     {/* Plan Básico */}
-                    <td className="py-3 px-3 text-center border-r border-slate-100">
+                    <td className="py-2.5 px-3 text-center border-r border-slate-100">
                       <span className={`inline-block px-2.5 py-1 rounded-lg font-extrabold text-xs ${
                         row.planBasico.includes('100%')
                           ? 'bg-emerald-600 text-white shadow-2xs'
@@ -189,8 +200,8 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ isOpen, 
                     </td>
 
                     {/* Carencia */}
-                    <td className="py-3 px-3 text-center">
-                      <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold ${
+                    <td className="py-2.5 px-3 text-center">
+                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold ${
                         row.carencia.includes('Sin carencia')
                           ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                           : 'bg-amber-50 text-amber-800 border border-amber-200'
@@ -219,14 +230,14 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ isOpen, 
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="shrink-0 p-4 bg-white border-t border-slate-200 flex items-center justify-between gap-3">
-        <span className="text-xs text-slate-500 font-medium hidden sm:inline">
+      {/* Footer - On mobile only shows item count, button is hidden on mobile to save vertical space */}
+      <div className="shrink-0 px-4 py-3 bg-white border-t border-slate-200 flex items-center justify-between gap-3">
+        <span className="text-xs text-slate-500 font-medium">
           Mostrando {filteredData.length} de {PLANES_COMPARATIVE_DATA.length} prestaciones
         </span>
         <button
           onClick={onClose}
-          className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white text-xs font-bold shadow-sm active:scale-95 transition-all cursor-pointer ml-auto"
+          className="hidden md:inline-flex px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white text-xs font-bold shadow-sm active:scale-95 transition-all cursor-pointer ml-auto"
         >
           Cerrar Tabla Comparativa
         </button>
@@ -256,7 +267,7 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ isOpen, 
             exit={{ y: '100%' }}
             transition={{ type: 'spring', stiffness: 380, damping: 38, mass: 0.8 }}
             className="md:hidden fixed bottom-0 inset-x-0 z-50 flex flex-col bg-white rounded-t-3xl shadow-2xl overflow-hidden"
-            style={{ maxHeight: '94dvh' }}
+            style={{ maxHeight: '95dvh' }}
           >
             {content}
           </motion.div>
