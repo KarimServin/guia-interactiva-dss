@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useDragControls } from 'motion/react';
 import { ActionModule } from '../types';
 import { FORMS_DATA } from '../data/dssData';
 import {
@@ -19,7 +19,6 @@ import {
   Info,
   BookOpen,
   MessageCircle,
-  GripHorizontal,
 } from 'lucide-react';
 
 interface ModuleDetailModalProps {
@@ -140,6 +139,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<'info' | 'pasos' | 'faqs'>('info');
   const scrollRef = useRef<HTMLDivElement>(null);
+  const dragControls = useDragControls();
 
   useEffect(() => {
     if (module) {
@@ -186,17 +186,18 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
 
   const content = (
     <>
-      {/* ── Apple-style Drag Handle Bar (Mobile & Desktop) ── */}
-      <div className="md:hidden flex flex-col items-center justify-center pt-3 pb-1.5 shrink-0 bg-slate-900 touch-none cursor-grab active:cursor-grabbing border-b border-white/10">
+      {/* ── Drag Handle Bar (Mobile & Desktop Header Drag Target) ── */}
+      <div 
+        onPointerDown={(e) => dragControls.start(e)}
+        className="md:hidden flex justify-center py-3 shrink-0 bg-slate-900 touch-none cursor-grab active:cursor-grabbing border-b border-white/10"
+      >
         <div className="w-12 h-1.5 rounded-full bg-white/40 group-active:bg-white/60 transition-colors" />
-        <span className="text-[10px] text-white/50 mt-1 font-medium select-none">Deslizá hacia abajo para cerrar</span>
       </div>
 
-      <div className="hidden md:flex items-center justify-between px-5 py-2.5 bg-slate-900 text-slate-300 text-xs font-semibold shrink-0 touch-none cursor-grab active:cursor-grabbing border-b border-white/10 select-none">
-        <span className="flex items-center gap-1.5 text-[11px] text-slate-300">
-          <GripHorizontal className="w-4 h-4 text-slate-400" />
-          Deslizá a la derecha o tocá el botón para cerrar
-        </span>
+      <div 
+        onPointerDown={(e) => dragControls.start(e)}
+        className="hidden md:flex items-center justify-end px-5 py-2.5 bg-slate-900 shrink-0 touch-none cursor-grab active:cursor-grabbing border-b border-white/10"
+      >
         <button
           onClick={onClose}
           className="p-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer"
@@ -207,7 +208,10 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
       </div>
 
       {/* ── Panel header ── */}
-      <div className={`shrink-0 bg-gradient-to-r ${accentColor} px-5 pt-4 pb-5 md:pt-6 md:pb-6`}>
+      <div 
+        onPointerDown={(e) => dragControls.start(e)}
+        className={`shrink-0 bg-gradient-to-r ${accentColor} px-5 pt-4 pb-5 md:pt-6 md:pb-6 cursor-grab active:cursor-grabbing touch-none select-none`}
+      >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <span className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-white/20 text-white/95 border border-white/20 mb-2 backdrop-blur-sm">
@@ -505,28 +509,48 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
             onClick={onClose}
           />
 
-          {/* ── MOBILE: Bottom Sheet ── */}
+          {/* ── MOBILE: Bottom Sheet (Drag header/pill down to close) ── */}
           <motion.div
             key="bottom-sheet"
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
-            transition={{ type: 'spring', stiffness: 380, damping: 38, mass: 0.8 }}
-            className="md:hidden fixed bottom-0 inset-x-0 z-50 flex flex-col bg-white rounded-t-3xl shadow-2xl overflow-hidden"
+            transition={{ type: 'spring', stiffness: 400, damping: 40, mass: 0.8 }}
+            drag="y"
+            dragControls={dragControls}
+            dragListener={false}
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={{ top: 0, bottom: 0.8 }}
+            onDragEnd={(_e, info) => {
+              if (info.offset.y > 60 || info.velocity.y > 200) {
+                onClose();
+              }
+            }}
+            className="md:hidden fixed bottom-0 inset-x-0 z-50 flex flex-col bg-white rounded-t-[28px] shadow-2xl overflow-hidden border-t border-white/20"
             style={{ maxHeight: '92dvh' }}
           >
             {content}
           </motion.div>
 
-          {/* ── DESKTOP: Right Side Drawer ── */}
+          {/* ── DESKTOP: Right Side Drawer (Drag header right to close) ── */}
           <motion.div
             key="side-drawer"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', stiffness: 340, damping: 36, mass: 0.9 }}
-            className="hidden md:flex fixed right-0 top-0 bottom-0 z-50 flex-col bg-white shadow-2xl border-l border-slate-200/80 overflow-hidden"
-            style={{ width: 'min(480px, 90vw)' }}
+            transition={{ type: 'spring', stiffness: 360, damping: 38, mass: 0.9 }}
+            drag="x"
+            dragControls={dragControls}
+            dragListener={false}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={{ left: 0, right: 0.8 }}
+            onDragEnd={(_e, info) => {
+              if (info.offset.x > 60 || info.velocity.x > 200) {
+                onClose();
+              }
+            }}
+            className="hidden md:flex fixed right-0 top-0 bottom-0 z-50 flex-col bg-white shadow-2xl border-l border-slate-200/80 overflow-hidden rounded-l-[28px]"
+            style={{ width: 'min(500px, 90vw)' }}
           >
             {content}
           </motion.div>
