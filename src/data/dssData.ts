@@ -705,3 +705,78 @@ export const COSEGUROS_TABLE = [
   { practica: 'Sesión de Kinesiología / Fisioterapia', coseguro: '$1.500', cobro: 'Liquidación Mensual', nota: 'Hasta 10 sesiones por prescripción' },
   { practica: 'Control de Niño Sano / Embarazo / Plan PMI', coseguro: '$0 (CERO)', cobro: 'Cobertura 100% DSS', nota: 'Sin costo adicionales' }
 ];
+
+export interface PlanComparisonItem {
+  category: string;
+  prestacion: string;
+  descripcion: string;
+  planGeneral: string;
+  planBasico: string;
+  carencia: string;
+}
+
+export const PLANES_COMPARATIVE_DATA: PlanComparisonItem[] = [
+  // 1. CONSULTAS Y DIAGNÓSTICO DE BAJA COMPLEJIDAD
+  { category: 'Consultas y Baja Complejidad', prestacion: 'Consultas Consultorio / Domicilio', descripcion: 'Atención médica general y especializada en consultorio o domicilio', planGeneral: 'V. Modulado (100%)', planBasico: 'V. Modulado (100%)', carencia: '3 Meses' },
+  { category: 'Consultas y Baja Complejidad', prestacion: 'Diagnóstico y Tratamiento de Baja Complejidad', descripcion: 'Autorización Previa / Coseguro', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Consultas y Baja Complejidad', prestacion: 'Laboratorio de Análisis Clínicos', descripcion: 'Análisis clínicos de rutina y especiales', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Consultas y Baja Complejidad', prestacion: 'Radiología', descripcion: 'Estudios radiológicos convencionales', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Consultas y Baja Complejidad', prestacion: 'Kinesiología / Fisiatría', descripcion: 'Tope: 20 sesiones anuales', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Consultas y Baja Complejidad', prestacion: 'Ecografías Generales', descripcion: 'Ecografías generales y ginecológicas', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Consultas y Baja Complejidad', prestacion: 'Tratamiento Esclerosante', descripcion: 'Tope: 08 sesiones por única vez', planGeneral: '70%', planBasico: 'Sin Cobertura', carencia: '3 Meses' },
+
+  // 2. PREVENCIÓN Y CHEQUEO ANUAL
+  { category: 'Prevención y Chequeo Anual', prestacion: 'Chequeo Preventivo Anual', descripcion: 'Autorización 100% cobertura 1ª práctica del año', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Prevención y Chequeo Anual', prestacion: 'Colposcopía y Papanicolaou', descripcion: 'Exámenes ginecológicos preventivos anuales', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Prevención y Chequeo Anual', prestacion: 'Senografías (Mamografía)', descripcion: 'Mujeres desde los 35 años', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Prevención y Chequeo Anual', prestacion: 'PSA (Antígeno Prostático)', descripcion: 'Hombres mayores a 45 años', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Prevención y Chequeo Anual', prestacion: 'Ecografía Prostática', descripcion: 'Hombres mayores a 45 años', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+
+  // 3. DIAGNÓSTICO Y TRATAMIENTO DE ALTA COMPLEJIDAD
+  { category: 'Diagnóstico de Alta Complejidad', prestacion: 'Tomografía Axial Computada (TAC)', descripcion: 'Autorización Previa / Coseguro', planGeneral: '70%', planBasico: '60%', carencia: '6 Meses' },
+  { category: 'Diagnóstico de Alta Complejidad', prestacion: 'Resonancia Magnética Nuclear (RMN)', descripcion: 'Autorización Previa / Coseguro', planGeneral: '70%', planBasico: '60%', carencia: '6 Meses' },
+  { category: 'Diagnóstico de Alta Complejidad', prestacion: 'Cámara Gamma', descripcion: 'Estudios de medicina nuclear con autorización previa', planGeneral: '70%', planBasico: '60%', carencia: '6 Meses' },
+  { category: 'Diagnóstico de Alta Complejidad', prestacion: 'Densitometría Ósea', descripcion: 'Autorización Previa / Coseguro', planGeneral: '70%', planBasico: '60%', carencia: '6 Meses' },
+  { category: 'Diagnóstico de Alta Complejidad', prestacion: 'PET (Tomografía por Emisión de Positrones)', descripcion: 'Autorización Previa / Coseguro', planGeneral: '50%', planBasico: '50%', carencia: '6 Meses' },
+
+  // 4. ESPECIALIDADES Y SALUD MENTAL
+  { category: 'Especialidades y Salud Mental', prestacion: 'Neurología', descripcion: 'Autorización Previa / Coseguro', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Especialidades y Salud Mental', prestacion: 'Alergia', descripcion: 'Reintegro / Determinado por Auditoría Médica', planGeneral: 'Según Reglamento', planBasico: 'Según Reglamento', carencia: '3 Meses' },
+  { category: 'Especialidades y Salud Mental', prestacion: 'Nefrología', descripcion: 'Autorización Previa / Coseguro', planGeneral: '100%', planBasico: '100%', carencia: '3 Meses' },
+  { category: 'Especialidades y Salud Mental', prestacion: 'Psiquiatría', descripcion: 'Reintegro valor consulta. Tope 6 anuales', planGeneral: '100%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Especialidades y Salud Mental', prestacion: 'Psicología y Psicopedagogía', descripcion: 'Individual / Familiar / Grupal (Tope 20 anuales) / Pruebas psicométricas', planGeneral: '50%', planBasico: '40%', carencia: '3 Meses' },
+  { category: 'Especialidades y Salud Mental', prestacion: 'Fonoaudiología', descripcion: 'Autorización / Tope: 30 sesiones anuales', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+
+  // 5. MEDICAMENTOS Y VACUNAS
+  { category: 'Medicamentos y Vacunas', prestacion: 'Medicamentos en Farmacias Adheridas', descripcion: 'Colegio de Farmacéuticos / Descuento directo', planGeneral: '60%', planBasico: 'Según Convenio', carencia: '3 Meses' },
+  { category: 'Medicamentos y Vacunas', prestacion: 'Vacunas', descripcion: 'Reintegro. Límite según Reglamento', planGeneral: '50%', planBasico: 'Sin Cobertura', carencia: 'Sin carencia' },
+
+  // 6. ASISTENCIA SANATORIAL E INTERNACIONES
+  { category: 'Asistencia Sanatorial e Internaciones', prestacion: 'Asistencia Sanatorial (Internaciones)', descripcion: 'Honorarios, pensión y gastos. Autorización Previa / Coseguro', planGeneral: '100%', planBasico: '80%', carencia: '3 Meses' },
+  { category: 'Asistencia Sanatorial e Internaciones', prestacion: 'Habitación Privada', descripcion: 'Por Reintegro - 3 Días', planGeneral: '100%', planBasico: '80%', carencia: '3 Meses' },
+  { category: 'Asistencia Sanatorial e Internaciones', prestacion: 'Intervenciones Quirúrgicas', descripcion: 'Ambulatorio / Internación', planGeneral: '100%', planBasico: '80%', carencia: '6 a 12 Meses' },
+
+  // 7. SALUD NUTRICIONAL, MATERNO Y ORTOPEDIA
+  { category: 'Salud Nutricional, Materno y Ortopedia', prestacion: 'Nutrición', descripcion: 'Autorización / Coseguro', planGeneral: '70%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Salud Nutricional, Materno y Ortopedia', prestacion: 'Plan Materno Infantil', descripcion: 'Coversión 100% embarazo y 1er año del bebé (Según Reglamento)', planGeneral: '100%', planBasico: '100%', carencia: '3 Meses' },
+  { category: 'Salud Nutricional, Materno y Ortopedia', prestacion: 'Traumatología, Prótesis y Órtesis', descripcion: 'Provisión / Reintegro menor presupuesto', planGeneral: '60%', planBasico: '40%', carencia: '6 Meses' },
+  { category: 'Salud Nutricional, Materno y Ortopedia', prestacion: 'Alquiler de Elementos Ortopédicos', descripcion: 'Sillas de ruedas, muletas, elementos de rehabilitación', planGeneral: '60%', planBasico: '40%', carencia: '6 Meses' },
+  { category: 'Salud Nutricional, Materno y Ortopedia', prestacion: 'Audífonos', descripcion: 'Con tope según presupuesto y auditoría', planGeneral: 'Según Reglamento', planBasico: 'Según Reglamento', carencia: '6 Meses' },
+  { category: 'Salud Nutricional, Materno y Ortopedia', prestacion: 'Ambulancia y Traslados', descripcion: 'Traslados de urgencia / Reintegros', planGeneral: '30%', planBasico: 'Sin Cobertura', carencia: '3 Meses' },
+
+  // 8. ODONTOLOGÍA Y VISIÓN
+  { category: 'Odontología y Salud Visual', prestacion: 'Afiliados con Cobertura Especial', descripcion: 'Valor Modulado', planGeneral: '100%', planBasico: '100%', carencia: '6 Meses' },
+  { category: 'Odontología y Salud Visual', prestacion: 'Odontología - Dentistería', descripcion: 'Reintegros - Padrón por Autorización Coseguro', planGeneral: '70%', planBasico: '70%', carencia: '6 Meses' },
+  { category: 'Odontología y Salud Visual', prestacion: 'Odontología - Prótesis', descripcion: 'Reintegros según arancel', planGeneral: '50%', planBasico: 'Sin Cobertura', carencia: '6 Meses' },
+  { category: 'Odontología y Salud Visual', prestacion: 'Odontología - Ortodoncia', descripcion: 'Reintegros - Según Reglamento', planGeneral: '70%', planBasico: 'Sin Cobertura', carencia: '6 Meses' },
+  { category: 'Odontología y Salud Visual', prestacion: 'Óptica', descripcion: 'Anteojos recetados cada dos años', planGeneral: '100%', planBasico: '60%', carencia: '3 Meses' },
+  { category: 'Odontología y Salud Visual', prestacion: 'Exímer Láser (Cirugía Refractiva)', descripcion: 'Por reintegro - Valor Modulado segun dioptrías (2.5 a +6 D)', planGeneral: '50% a 100%', planBasico: 'Sin Cobertura', carencia: '12 Meses' },
+
+  // 9. TRATAMIENTOS ESPECIALES Y SUBSIDIOS
+  { category: 'Tratamientos Especiales y Subsidios', prestacion: 'Tratamiento Oncológico', descripcion: 'Pensión, Honorarios, Gastos y Terapia Radiante (Autorización Previa)', planGeneral: '100%', planBasico: '100%', carencia: '12 Meses' },
+  { category: 'Tratamientos Especiales y Subsidios', prestacion: 'Subsidios Familiares y Guarderías', descripcion: 'Módulo Fijo por reintegro', planGeneral: '100%', planBasico: 'Sin Cobertura', carencia: '12 Meses' },
+  { category: 'Tratamientos Especiales y Subsidios', prestacion: 'Celiaquía (Alimentos sin TACC)', descripcion: 'Subsidio mensual según ley nacional', planGeneral: '100%', planBasico: '100%', carencia: 'Sin carencia' },
+  { category: 'Tratamientos Especiales y Subsidios', prestacion: 'Servicio de Sepelio', descripcion: 'Cobertura directa o subsidio por fallecimiento', planGeneral: '100%', planBasico: '100%', carencia: '6 Meses' },
+  { category: 'Tratamientos Especiales y Subsidios', prestacion: 'Fertilización Asistida', descripcion: 'Módulo Fijo según reglamento', planGeneral: '100%', planBasico: '60%', carencia: '6 Meses' },
+  { category: 'Tratamientos Especiales y Subsidios', prestacion: 'Coseguro Otra Obra Social', descripcion: 'Prácticas reconocidas por DSS por Reintegro', planGeneral: 'Según Reintegro', planBasico: 'Según Reintegro', carencia: 'Carencia DSS' }
+];
