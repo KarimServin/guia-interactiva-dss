@@ -62,15 +62,18 @@ export const PharmacyDirectory: React.FC = () => {
             </div>
             <div className="bg-rose-50/80 p-4 rounded-2xl border border-rose-100 space-y-2">
               <strong className="text-rose-950 font-bold block text-xs">Cobertura de Anticonceptivos:</strong>
-              <p className="text-rose-900 text-[11px] leading-relaxed">
-                La cobertura de medicamentos anticonceptivos puede gestionarse de las siguientes maneras:
+              <p className="text-rose-900 text-[11px] leading-relaxed font-medium">
+                La cobertura de medicamentos anticonceptivos puede gestionarse de dos maneras: <strong>Con receta médica (60% de cobertura en farmacias convenidas según el listado)</strong> o <strong>Con Ficha Electrónica de Anticoncepción (100% de cobertura mediante ficha confeccionada por su ginecólogo/a y aprobada previamente por la Obra Social)</strong>.
               </p>
               <div className="space-y-1.5 pt-1 text-[11px] text-rose-950">
                 <p>
-                  <strong className="font-bold">• Con receta médica (60%):</strong> Cobertura del 60% cuando son adquiridos en farmacias convenidas, mediante la correspondiente receta médica y de acuerdo con el listado de medicamentos incluidos en la cobertura.
+                  <strong className="font-bold">• Con Receta Médica (60%):</strong> Cobertura del 60% adquiridos en farmacias convenidas, mediante la receta correspondiente y de acuerdo con el listado incluido.
                 </p>
                 <p>
-                  <strong className="font-bold">• Con ficha electrónica de anticoncepción (100%):</strong> Cobertura del 100% mediante una ficha electrónica confeccionada por su médico/a ginecólogo/a. Una vez aprobada por la Obra Social y vigente, no será necesario presentar una receta adicional para cada dispensa.
+                  <strong className="font-bold">• Con Ficha Electrónica (100%):</strong> Cobertura del 100% mediante ficha electrónica confeccionada por médico/a ginecólogo/a y aprobada por la Obra Social.
+                </p>
+                <p>
+                  <strong className="font-bold">• Sin Receta Adicional con Ficha Vigente:</strong> Una vez aprobada y vigente, no es necesario presentar receta adicional para cada dispensa.
                 </p>
                 <p className="text-[10.5px] font-bold text-rose-900 pt-1 border-t border-rose-200/60">
                   Importante: La cobertura del 100% requiere que la ficha electrónica haya sido previamente confeccionada, aprobada y se encuentre vigente.

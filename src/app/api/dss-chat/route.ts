@@ -22,6 +22,7 @@ Datos clave del DSS CPCE Santa Fe Cámara I:
 - Extensiones Grupo Familiar: Cónyuge = Matrícula + 01. Hijos = Matrícula + 11, 12, 13, etc.
 - Credencial digital accesible desde la App Institucional del Consejo o la Guía Web (no requiere credencial física).
 - Cobertura en medicamentos: 40% habitual en farmacias adheridas, 70% o 100% en enfermedades crónicas/PMI/oncología previo trámite de empadronamiento.
+- Cobertura de anticonceptivos: 60% con receta médica en farmacias convenidas o 100% mediante Ficha Electrónica de Anticoncepción confeccionada por ginecólogo/a y previa aprobación del DSS.
 - Autorizaciones de prácticas: Prácticas simples no requieren autorización previa. Alta complejidad y odontología especial requieren enviar orden médica con pedido digitalizado.
 - Coseguros: Se abonan mediante resumen mensual o bonos en prestaciones médicas/estudios según la categoría de práctica.
 - Medios de pago de cuota: Débito automático en cuenta o tarjeta, Pago Mis Cuentas, Red Link, Transferencia Bancaria o Botón de Pago web.

@@ -489,49 +489,51 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
               </div>
             </div>
 
-            {/* DETAILED SECTION: COBERTURA AL 100% */}
+            {/* DETAILED SECTION: COBERTURA Y SALUD SEXUAL */}
             <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs space-y-4">
               <div className="flex items-center gap-2 text-rose-800 border-b border-slate-100 pb-3">
                 <Sparkles className="w-5 h-5 text-rose-600" />
                 <h3 className="font-bold text-slate-900 text-base">
-                  2. Cobertura al 100% (Salud Sexual, Reproductiva y Anticoncepción)
+                  2. Cobertura de Anticonceptivos (Salud Sexual, Reproductiva y Anticoncepción)
                 </h3>
               </div>
 
-              <p className="text-xs text-slate-700 leading-relaxed">
-                En cumplimiento del Programa de Salud Sexual y Procreación Responsable y la normativa vigente del DSS, los siguientes métodos anticonceptivos cuentan con <strong>cobertura total al 100% sin cargo</strong> para las afiliadas:
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+                La cobertura de medicamentos anticonceptivos puede gestionarse de dos maneras: <strong>Con receta médica (60% de cobertura en farmacias convenidas según el listado)</strong> o <strong>Con Ficha Electrónica de Anticoncepción (100% de cobertura mediante ficha confeccionada por su ginecólogo/a y aprobada previamente por la Obra Social)</strong>.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
-                <div className="p-3.5 bg-rose-50/70 rounded-xl border border-rose-100 space-y-1">
-                  <strong className="font-bold text-rose-950 block">Pastillas Orales / Inyectables:</strong>
-                  <p className="text-rose-900 text-[11px] leading-relaxed">
-                    100% de cobertura en las opciones del Vademécum de Anticonceptivos con registro en el programa.
-                  </p>
+              <div className="bg-rose-50/60 p-4 rounded-xl border border-rose-100/80 space-y-3">
+                <h4 className="font-extrabold text-rose-950 text-xs uppercase tracking-wider">
+                  Aspectos Clave
+                </h4>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                  <div className="bg-white p-3 rounded-lg border border-rose-100 space-y-1">
+                    <strong className="text-slate-900 font-bold block">Con Receta Médica (60%):</strong>
+                    <p className="text-slate-600 text-[11.5px] leading-relaxed">
+                      Cobertura del 60% adquiridos en farmacias convenidas, mediante la receta correspondiente y de acuerdo con el listado incluido.
+                    </p>
+                  </div>
+
+                  <div className="bg-white p-3 rounded-lg border border-rose-100 space-y-1">
+                    <strong className="text-rose-950 font-bold block">Con Ficha Electrónica (100%):</strong>
+                    <p className="text-rose-900 text-[11.5px] leading-relaxed">
+                      Cobertura del 100% mediante ficha electrónica confeccionada por médico/a ginecólogo/a y aprobada por la Obra Social.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="p-3.5 bg-rose-50/70 rounded-xl border border-rose-100 space-y-1">
-                  <strong className="font-bold text-rose-950 block">DIU / SIU / Implante Subdérmico:</strong>
-                  <p className="text-rose-900 text-[11px] leading-relaxed">
-                    100% cubierto tanto el dispositivo físico como el honorario médico de colocación.
-                  </p>
+                <div className="bg-white p-3 rounded-lg border border-rose-100 text-xs space-y-1.5">
+                  <div className="flex items-start gap-2 text-slate-700">
+                    <span className="font-bold text-emerald-600 shrink-0">•</span>
+                    <p className="text-[11.5px]">
+                      <strong>Sin Receta Adicional con Ficha Vigente:</strong> Una vez aprobada y vigente, no es necesario presentar receta adicional para cada dispensa.
+                    </p>
+                  </div>
+                  <div className="pt-1.5 border-t border-rose-100 text-rose-950 font-bold text-[11px]">
+                    <strong>Importante:</strong> La cobertura del 100% requiere que la ficha electrónica haya sido previamente confeccionada, aprobada y se encuentre vigente.
+                  </div>
                 </div>
-
-                <div className="p-3.5 bg-rose-50/70 rounded-xl border border-rose-100 space-y-1">
-                  <strong className="font-bold text-rose-950 block">Anticoncepción de Emergencia:</strong>
-                  <p className="text-rose-900 text-[11px] leading-relaxed">
-                    100% sin cargo con receta en farmacias adheridas.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2 text-xs text-slate-700">
-                <strong className="font-bold text-slate-900 block">¿Cómo empadronarse para la Cobertura al 100%?</strong>
-                <ol className="list-decimal pl-4 space-y-1 text-slate-600 leading-relaxed">
-                  <li>Solicitá a tu médico ginecólogo/a completar la <strong>Ficha de Empadronamiento de Anticonceptivos</strong> o indicación médica.</li>
-                  <li>Presentá la ficha en la secretaría del DSS o mediante el canal oficial.</li>
-                  <li>Una vez autorizada, podés retirar mensualmente las pastillas anticonceptivas al 100% sin cargo en la farmacia adherida.</li>
-                </ol>
               </div>
             </div>
 

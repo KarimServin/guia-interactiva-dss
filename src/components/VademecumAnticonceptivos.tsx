@@ -141,7 +141,7 @@ export const VademecumAnticonceptivos: React.FC = () => {
           <h3>Cobertura de Anticonceptivos</h3>
         </div>
         <p className="text-xs text-rose-900 leading-relaxed font-medium">
-          La cobertura de medicamentos anticonceptivos puede gestionarse de las siguientes maneras:
+          La cobertura de medicamentos anticonceptivos puede gestionarse de dos maneras: <strong>Con receta médica (60% de cobertura en farmacias convenidas según el listado)</strong> o <strong>Con Ficha Electrónica de Anticoncepción (100% de cobertura mediante ficha confeccionada por su ginecólogo/a y aprobada previamente por la Obra Social)</strong>.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
           <div className="bg-white/80 backdrop-blur-sm p-4 rounded-2xl border border-rose-100 shadow-xs space-y-1">
@@ -150,7 +150,7 @@ export const VademecumAnticonceptivos: React.FC = () => {
               Con Receta Médica (60%)
             </h4>
             <p className="text-[11.5px] text-slate-700 leading-relaxed">
-              Los anticonceptivos tienen una cobertura del 60% cuando son adquiridos en farmacias convenidas, mediante la correspondiente receta médica y de acuerdo con el listado de medicamentos incluidos en la cobertura.
+              Cobertura del 60% adquiridos en farmacias convenidas, mediante la receta correspondiente y de acuerdo con el listado incluido.
             </p>
           </div>
           <div className="bg-white/80 backdrop-blur-sm p-4 rounded-2xl border border-rose-100 shadow-xs space-y-1">
@@ -159,16 +159,16 @@ export const VademecumAnticonceptivos: React.FC = () => {
               Con Ficha Electrónica (100%)
             </h4>
             <p className="text-[11.5px] text-slate-700 leading-relaxed">
-              El afiliado puede acceder a una cobertura del 100% mediante una ficha electrónica confeccionada por su médico/a ginecólogo/a.
+              Cobertura del 100% mediante ficha electrónica confeccionada por médico/a ginecólogo/a y aprobada por la Obra Social.
             </p>
           </div>
         </div>
         <div className="bg-white/60 p-3.5 rounded-2xl border border-rose-200/60 text-xs text-slate-700 space-y-1">
           <p className="leading-relaxed text-[11.5px]">
-            Una vez que la ficha electrónica haya sido aprobada por la Obra Social y se encuentre vigente, el anticonceptivo indicado contará con cobertura del 100% y no será necesario presentar una receta adicional para cada dispensa, mientras la ficha permanezca vigente y de acuerdo con las condiciones autorizadas.
+            <strong>Sin Receta Adicional con Ficha Vigente:</strong> Una vez aprobada y vigente, no es necesario presentar receta adicional para cada dispensa.
           </p>
           <p className="text-[11px] font-bold text-rose-950 pt-1 border-t border-rose-100">
-            Importante: la cobertura del 100% requiere que la ficha electrónica haya sido previamente confeccionada, aprobada y se encuentre vigente.
+            Importante: La cobertura del 100% requiere que la ficha electrónica haya sido previamente confeccionada, aprobada y se encuentre vigente.
           </p>
         </div>
       </div>
