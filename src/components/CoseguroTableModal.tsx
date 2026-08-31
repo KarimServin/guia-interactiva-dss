@@ -141,8 +141,74 @@ export const CoseguroTableModal: React.FC<CoseguroTableModalProps> = ({ isOpen, 
           </span>
         </div>
 
-        {/* Table Container */}
-        <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-xs bg-white relative">
+        {/* Mobile View: Fluid Cards (No horizontal scroll required) */}
+        <div className="sm:hidden space-y-3">
+          {filteredData.length > 0 ? (
+            filteredData.map((row, idx) => (
+              <div key={idx} className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-2xs space-y-2.5">
+                <div>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                    {row.category}
+                  </span>
+                  <div className="font-extrabold text-slate-900 text-sm mt-0.5">
+                    {row.prestacion}
+                  </div>
+                  {row.descripcion && (
+                    <div className="text-xs text-slate-500 mt-0.5 leading-snug">
+                      {row.descripcion}
+                    </div>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 text-center">
+                  <div className="bg-blue-50/70 p-2 rounded-xl border border-blue-100/80">
+                    <span className="text-[10px] text-blue-900 font-bold block mb-1">Plan General</span>
+                    <span className={`inline-block px-2 py-0.5 rounded-md font-extrabold text-[11px] ${
+                      row.planGeneral.includes('100%')
+                        ? 'bg-blue-600 text-white shadow-2xs'
+                        : row.planGeneral.includes('Sin Cobertura')
+                        ? 'bg-slate-100 text-slate-400'
+                        : 'bg-blue-100 text-blue-900'
+                    }`}>
+                      {row.planGeneral}
+                    </span>
+                  </div>
+
+                  <div className="bg-slate-50 p-2 rounded-xl border border-slate-200/80">
+                    <span className="text-[10px] text-slate-700 font-bold block mb-1">Plan Básico</span>
+                    <span className={`inline-block px-2 py-0.5 rounded-md font-extrabold text-[11px] ${
+                      row.planBasico.includes('100%')
+                        ? 'bg-emerald-600 text-white shadow-2xs'
+                        : row.planBasico.includes('Sin Cobertura')
+                        ? 'bg-rose-50 text-rose-500 border border-rose-100'
+                        : 'bg-slate-100 text-slate-800'
+                    }`}>
+                      {row.planBasico}
+                    </span>
+                  </div>
+
+                  <div className="bg-amber-50/70 p-2 rounded-xl border border-amber-100/80 flex flex-col justify-center items-center">
+                    <span className="text-[10px] text-amber-900 font-bold block mb-1">Carencia</span>
+                    <span className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
+                      row.carencia.includes('Sin carencia')
+                        ? 'bg-emerald-100 text-emerald-800'
+                        : 'bg-amber-100 text-amber-900'
+                    }`}>
+                      {row.carencia}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="py-8 text-center text-slate-500 bg-white rounded-2xl border border-slate-200">
+              <p className="text-xs font-semibold">No se encontraron prestaciones para &quot;{searchTerm}&quot;</p>
+            </div>
+          )}
+        </div>
+
+        {/* Desktop View: Traditional Table */}
+        <div className="hidden sm:block overflow-x-auto rounded-2xl border border-slate-200 shadow-xs bg-white relative">
           <table className="w-full text-xs border-collapse min-w-[580px]">
             <thead className="bg-slate-900 text-white font-bold text-left">
               <tr>
