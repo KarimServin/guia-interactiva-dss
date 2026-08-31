@@ -75,39 +75,40 @@ export const ActionGrid: React.FC<ActionGridProps> = ({
         {modules.map((mod) => {
           const Icon = getIconComponent(mod.iconName);
           const isHighlighted = filteredModuleId === mod.id;
-          const badgeStyle = getModuleBadgeStyle(mod.buttonNumber);
 
           return (
             <div
               key={mod.id}
               onClick={() => onSelectModule(mod)}
-              className={`group bg-white p-6 rounded-2xl border border-slate-200/80 shadow-2xs hover:shadow-md hover:border-blue-400 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center justify-between text-center min-h-[200px] cursor-pointer ${
-                isHighlighted ? 'ring-2 ring-blue-500 border-blue-500 bg-blue-50/20' : ''
+              className={`group relative bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 p-6 rounded-2xl border border-slate-700/80 shadow-md hover:shadow-xl hover:border-slate-500 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-between text-center min-h-[200px] cursor-pointer overflow-hidden ${
+                isHighlighted ? 'ring-2 ring-sky-400 border-sky-400' : ''
               }`}
             >
-              <div className="flex flex-col items-center text-center w-full">
+              <div className="absolute -right-6 -top-6 w-24 h-24 bg-sky-500/10 rounded-full blur-xl pointer-events-none" />
+
+              <div className="flex flex-col items-center text-center w-full relative z-10">
                 {/* Centered Icon Logo */}
-                <div className={`w-12 h-12 rounded-2xl ${badgeStyle.iconBg} flex items-center justify-center shrink-0 shadow-2xs group-hover:bg-blue-600 group-hover:text-white transition-colors duration-200 mb-3.5`}>
+                <div className="w-12 h-12 rounded-2xl bg-white/10 text-sky-300 border border-white/15 flex items-center justify-center shrink-0 shadow-2xs group-hover:bg-white/20 group-hover:text-white group-hover:scale-105 transition-all duration-200 mb-3.5">
                   <Icon className="w-6 h-6" />
                 </div>
 
                 {/* Centered Verb Title */}
-                <h3 className="font-heading font-bold text-base text-slate-900 group-hover:text-blue-700 leading-snug mb-1 transition-colors text-center">
+                <h3 className="font-heading font-extrabold text-base text-white leading-snug mb-1 text-center">
                   {mod.verbTitle}
                 </h3>
 
                 {/* Centered Subtitle */}
-                <p className="text-xs font-semibold text-sky-700 text-center">
+                <p className="text-xs font-medium text-slate-300 text-center">
                   {mod.title}
                 </p>
               </div>
 
               {/* Action Link Row Centered */}
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-center gap-1.5 w-full mt-4">
-                <span className="text-xs font-semibold text-slate-700 group-hover:text-blue-700 transition-colors">
+              <div className="pt-3 border-t border-white/10 flex items-center justify-center gap-1.5 w-full mt-4 relative z-10">
+                <span className="text-xs font-semibold text-sky-300 group-hover:text-white transition-colors">
                   Consultar Trámite
                 </span>
-                <div className="w-5 h-5 rounded-full bg-slate-100 group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center text-slate-500 transition-colors">
+                <div className="w-5 h-5 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center text-white transition-colors">
                   <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 </div>
               </div>

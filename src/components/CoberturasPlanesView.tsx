@@ -87,12 +87,12 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
     <div id="coberturas-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-in fade-in duration-300">
       
       {/* HERO BANNER */}
-      <div className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 rounded-3xl p-6 sm:p-10 text-white shadow-xl overflow-hidden border border-slate-800">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl overflow-hidden border border-blue-800/40">
+        <div className="absolute right-0 top-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
         
         <div className="relative z-10 max-w-4xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-slate-200 text-xs font-semibold backdrop-blur-sm">
-            <Sparkles className="w-3.5 h-3.5 text-slate-300" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-semibold backdrop-blur-sm">
+            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
             <span>Departamento de Servicios Sociales</span>
           </div>
 
@@ -108,7 +108,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <button
               onClick={() => onOpenCosegurosModal && onOpenCosegurosModal()}
-              className="bg-slate-800 hover:bg-slate-700 text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm h-11 border border-slate-600 shadow-md transition-all flex items-center justify-center gap-2.5 cursor-pointer"
+              className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm h-11 border border-blue-500 shadow-md transition-all flex items-center justify-center gap-2.5 cursor-pointer"
             >
               <FileText className="w-4 h-4 shrink-0" />
               <span>Ver Tabla Comparativa de Coseguros y Planes</span>
@@ -135,19 +135,19 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
               onClick={() => handleTabClick(tab.id)}
               className={`group flex items-center gap-3.5 text-left p-4 rounded-2xl border transition-all cursor-pointer relative overflow-hidden ${
                 isActive
-                  ? 'bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 text-white border-slate-700 shadow-md shadow-slate-900/30 ring-1 ring-slate-700/50 scale-[1.01]'
-                  : 'bg-white text-slate-700 border-slate-200/90 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 shadow-2xs'
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white border-blue-600 shadow-md shadow-blue-600/25 ring-2 ring-blue-400/40 scale-[1.01]'
+                  : 'bg-white text-slate-700 border-slate-200/90 hover:border-blue-300 hover:bg-blue-50/50 hover:text-slate-900 shadow-2xs'
               }`}
             >
-              {/* Left Accent line when active */}
+              {/* Top Accent line when active */}
               {isActive && (
-                <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-slate-400 rounded-l-full" />
+                <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-sky-300 rounded-l-full" />
               )}
               
-              <div className={`p-2.5 rounded-xl shrink-0 transition-transform group-hover:scale-105 ${
+              <div className={`p-2.5 rounded-xl shrink-0 transition-transform group-hover:scale-110 ${
                 isActive 
                   ? 'bg-white/15 text-white' 
-                  : 'bg-slate-100 text-slate-700 group-hover:bg-slate-200/80'
+                  : 'bg-blue-50 text-blue-600 group-hover:bg-blue-100'
               }`}>
                 <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
