@@ -181,49 +181,49 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                       <button
                         onClick={() => handleSubMenuClick('coberturas-planes')}
-                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                         Ver coberturas y planes
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('materno')}
-                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-rose-50 hover:text-rose-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-rose-50 hover:text-rose-700 transition-colors flex items-center gap-2 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
                         Plan Materno Infantil
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('cobertura-farmacias')}
-                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-emerald-50 hover:text-emerald-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-emerald-50 hover:text-emerald-700 transition-colors flex items-center gap-2 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                         Cobertura en farmacias
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('cobertura-odontologia')}
-                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-cyan-50 hover:text-cyan-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-cyan-50 hover:text-cyan-700 transition-colors flex items-center gap-2 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
                         Cobertura odontología
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('nutricion-celiacos')}
-                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-amber-50 hover:text-amber-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-amber-50 hover:text-amber-700 transition-colors flex items-center gap-2 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                         Nutrición y Celíacos
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('protesis')}
-                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
                         Prótesis y Órtesis
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('subsidio-sepelios')}
-                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors flex items-center gap-2 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
                         Subsidio sepelios
@@ -267,7 +267,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                           router.push('/vademecum/basico');
                           setIsVademecumDropdownOpen(false);
                         }}
-                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                         Vademécum Básico
@@ -277,7 +277,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                           router.push('/vademecum/anticonceptivos');
                           setIsVademecumDropdownOpen(false);
                         }}
-                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
                         Anticonceptivos
@@ -311,7 +311,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
         <div className="flex md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2.5 rounded-xl hover:bg-slate-100 text-slate-700 transition-colors"
+            className="p-2.5 rounded-xl hover:bg-slate-100 text-slate-700 transition-colors cursor-pointer"
             aria-label="Toggle Menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6 text-slate-700" /> : <Menu className="w-6 h-6 text-slate-700" />}
@@ -337,7 +337,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                 <div key={item.id} className="space-y-1">
                   <button
                     onClick={() => setIsMobileCoberturasOpen(!isMobileCoberturasOpen)}
-                    className={`w-full flex items-center justify-between px-4 py-3 text-xs sm:text-[13px] font-bold rounded-2xl transition-all group ${
+                    className={`w-full flex items-center justify-between px-4 py-3 text-xs sm:text-[13px] font-bold rounded-2xl transition-all group cursor-pointer ${
                       isActive ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200/60'
                     }`}
                   >
@@ -353,49 +353,49 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                     <div className="pl-4 pr-1 py-1 space-y-1 animate-in fade-in duration-200">
                       <button
                         onClick={() => handleSubMenuClick('coberturas-planes')}
-                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 bg-slate-50/80 hover:bg-blue-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 bg-slate-50/80 hover:bg-blue-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-2 h-2 rounded-full bg-blue-600 shrink-0" />
                         <span>Ver coberturas y planes</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('materno')}
-                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-rose-700 bg-slate-50/80 hover:bg-rose-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-rose-700 bg-slate-50/80 hover:bg-rose-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-2 h-2 rounded-full bg-rose-500 shrink-0" />
                         <span>Plan Materno Infantil</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('cobertura-farmacias')}
-                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-emerald-700 bg-slate-50/80 hover:bg-emerald-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-emerald-700 bg-slate-50/80 hover:bg-emerald-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
                         <span>Cobertura en farmacias</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('cobertura-odontologia')}
-                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-cyan-700 bg-slate-50/80 hover:bg-cyan-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-cyan-700 bg-slate-50/80 hover:bg-cyan-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-2 h-2 rounded-full bg-cyan-500 shrink-0" />
                         <span>Cobertura odontología</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('nutricion-celiacos')}
-                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-amber-700 bg-slate-50/80 hover:bg-amber-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-amber-700 bg-slate-50/80 hover:bg-amber-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
                         <span>Nutrición y Celíacos</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('protesis')}
-                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-purple-700 bg-slate-50/80 hover:bg-purple-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-purple-700 bg-slate-50/80 hover:bg-purple-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-2 h-2 rounded-full bg-purple-500 shrink-0" />
                         <span>Prótesis y Órtesis</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('subsidio-sepelios')}
-                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-indigo-700 bg-slate-50/80 hover:bg-indigo-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-indigo-700 bg-slate-50/80 hover:bg-indigo-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-2 h-2 rounded-full bg-indigo-500 shrink-0" />
                         <span>Subsidio sepelios</span>
@@ -411,7 +411,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                 <div key={item.id} className="space-y-1">
                   <button
                     onClick={() => setIsMobileVademecumOpen(!isMobileVademecumOpen)}
-                    className={`w-full flex items-center justify-between px-4 py-3 text-xs sm:text-[13px] font-bold rounded-2xl transition-all group ${
+                    className={`w-full flex items-center justify-between px-4 py-3 text-xs sm:text-[13px] font-bold rounded-2xl transition-all group cursor-pointer ${
                       isActive ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200/60'
                     }`}
                   >
@@ -430,7 +430,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                           router.push('/vademecum/basico');
                           setIsMobileMenuOpen(false);
                         }}
-                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 bg-slate-50/80 hover:bg-blue-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 bg-slate-50/80 hover:bg-blue-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-2 h-2 rounded-full bg-blue-600 shrink-0" />
                         <span>Vademécum Básico</span>
@@ -440,7 +440,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                           router.push('/vademecum/anticonceptivos');
                           setIsMobileMenuOpen(false);
                         }}
-                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-rose-700 bg-slate-50/80 hover:bg-rose-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-rose-700 bg-slate-50/80 hover:bg-rose-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-2 h-2 rounded-full bg-rose-500 shrink-0" />
                         <span>Anticonceptivos</span>
@@ -455,7 +455,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`w-full flex items-center justify-between px-4 py-3 text-xs sm:text-[13px] font-bold rounded-2xl transition-all group ${
+                className={`w-full flex items-center justify-between px-4 py-3 text-xs sm:text-[13px] font-bold rounded-2xl transition-all group cursor-pointer ${
                   isActive ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200/60'
                 }`}
               >
