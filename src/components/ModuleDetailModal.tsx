@@ -175,7 +175,6 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
   const hasSteps = !!(module.details.steps && module.details.steps.length > 0);
   const hasFaqs = !!(module.details.faqs && module.details.faqs.length > 0);
 
-  /* ── Color accent per module ── */
   const accentColor =
     module.colorClass.text.includes('emerald') || module.colorClass.text.includes('green')
       ? 'from-emerald-600 to-teal-600'
@@ -185,19 +184,33 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
       ? 'from-violet-600 to-purple-700'
       : 'from-slate-900 via-slate-800 to-indigo-950';
 
-  /* ── Shared content block ── */
   const content = (
     <>
-      {/* ── Drag handle (mobile only) ── */}
-      <div className="md:hidden flex justify-center pt-3 pb-1 shrink-0">
-        <div className="w-10 h-1 rounded-full bg-slate-300" />
+      {/* ── Apple-style Drag Handle Bar (Mobile & Desktop) ── */}
+      <div className="md:hidden flex flex-col items-center justify-center pt-3 pb-1.5 shrink-0 bg-slate-900 touch-none cursor-grab active:cursor-grabbing border-b border-white/10">
+        <div className="w-12 h-1.5 rounded-full bg-white/40 group-active:bg-white/60 transition-colors" />
+        <span className="text-[10px] text-white/50 mt-1 font-medium select-none">Deslizá hacia abajo para cerrar</span>
+      </div>
+
+      <div className="hidden md:flex items-center justify-between px-5 py-2.5 bg-slate-900 text-slate-300 text-xs font-semibold shrink-0 touch-none cursor-grab active:cursor-grabbing border-b border-white/10 select-none">
+        <span className="flex items-center gap-1.5 text-[11px] text-slate-300">
+          <GripHorizontal className="w-4 h-4 text-slate-400" />
+          Deslizá a la derecha o tocá el botón para cerrar
+        </span>
+        <button
+          onClick={onClose}
+          className="p-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer"
+          aria-label="Cerrar panel"
+        >
+          <X className="w-4 h-4" />
+        </button>
       </div>
 
       {/* ── Panel header ── */}
       <div className={`shrink-0 bg-gradient-to-r ${accentColor} px-5 pt-4 pb-5 md:pt-6 md:pb-6`}>
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <span className="inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-md bg-white/20 text-white/90 mb-2">
+            <span className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-white/20 text-white/95 border border-white/20 mb-2 backdrop-blur-sm">
               {module.title}
             </span>
             <h2 className="text-base md:text-lg font-extrabold text-white leading-snug tracking-tight">
@@ -209,7 +222,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl bg-white/15 hover:bg-white/30 text-white transition-colors shrink-0 mt-0.5"
+            className="md:hidden p-2 rounded-xl bg-white/15 hover:bg-white/30 text-white transition-colors shrink-0 mt-0.5 cursor-pointer"
             aria-label="Cerrar panel"
           >
             <X className="w-4 h-4" />
@@ -218,7 +231,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
 
         {/* Tab pills */}
         {(hasSteps || hasFaqs) && (
-          <div className="bg-black/15 backdrop-blur-md p-1.5 rounded-2xl border border-white/15 flex gap-2 mt-4 overflow-x-auto">
+          <div className="bg-black/20 backdrop-blur-xl p-1.5 rounded-2xl border border-white/20 flex gap-2 mt-4 overflow-x-auto">
             <TabBtn
               active={activeTab === 'info'}
               onClick={() => setActiveTab('info')}
@@ -245,7 +258,6 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
         )}
       </div>
 
-      {/* ── Scrollable body ── */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto overscroll-contain p-4 md:p-5 space-y-4">
 
         {/* TAB: Info */}
@@ -260,7 +272,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
               className="space-y-4"
             >
               {module.details.summary && (
-                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
+                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 shadow-2xs">
                   <p className="text-xs text-slate-700 leading-relaxed font-medium whitespace-pre-line">
                     {renderTextWithLinks(module.details.summary)}
                   </p>

@@ -136,43 +136,7 @@ export const AffiliationLanding: React.FC<AffiliationLandingProps> = ({ onGoToFo
           </div>
         </div>
 
-        {/* Related Official Forms */}
-        <div className="bg-slate-50/60 rounded-2xl p-6 sm:p-8 border border-slate-200/80 space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-            <h2 className="font-heading text-lg font-bold text-slate-900">
-              Formularios Oficiales
-            </h2>
-            {onGoToFormularios && (
-              <button
-                onClick={() => onGoToFormularios()}
-                className="text-xs text-blue-700 font-bold hover:underline flex items-center gap-1 cursor-pointer"
-              >
-                Ver todos en Centro de Formularios →
-              </button>
-            )}
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {affiliationForms.map((form) => (
-              <div key={form.id} className="p-4 bg-white rounded-xl border border-slate-200 space-y-3 flex flex-col justify-between">
-                <div>
-                  <span className="text-[10px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md">
-                    {form.code}
-                  </span>
-                  <h4 className="font-bold text-slate-900 text-sm mt-2">{form.title}</h4>
-                  <p className="text-xs text-slate-500 mt-1 line-clamp-2">{form.description}</p>
-                </div>
-                <button
-                  onClick={() => onGoToFormularios && onGoToFormularios(form.id)}
-                  className="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs rounded-lg transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
-                >
-                  <Download className="w-3.5 h-3.5 text-slate-600" />
-                  Descargar PDF
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* FAQs */}
         <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-2xs space-y-4">
