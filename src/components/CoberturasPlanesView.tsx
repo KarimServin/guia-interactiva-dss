@@ -524,14 +524,6 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
             <p className="text-xs text-slate-700 leading-relaxed">
               El DSS otorgará una ayuda económica a aquellos afiliados con celiaquía para adquirir los alimentos libre de gluten. Para acceder a este beneficio deberá presentar el Formulario <strong className="text-slate-900">“Protocolo Celíacos”</strong> llenado por el médico tratante adjuntando copia de estudios previos (análisis y resultado de la biopsia).
             </p>
-            <div className="pt-2">
-              <button
-                onClick={() => onGoToFormularios && onGoToFormularios('protocolo-celiacos')}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-900 hover:text-amber-950 underline cursor-pointer"
-              >
-                Descargar Formulario Protocolo Celíacos ➔
-              </button>
-            </div>
           </div>
 
           {/* Prótesis y Órtesis */}
