@@ -292,7 +292,7 @@ export default function HomePage() {
         )}
 
         {/* VIEW: COBERTURAS Y PLANES */}
-        {['coberturas-planes', 'subsidio-sepelios', 'sepelios', 'cobertura-odontologia', 'odontologia', 'chequeo-preventivo', 'materno', 'plan-materno', 'nutricion-celiacos', 'celiacos', 'protesis', 'ortesis', 'farmacia'].includes(activeTab) && (
+        {['coberturas-planes', 'subsidio-sepelios', 'sepelios', 'cobertura-odontologia', 'odontologia', 'chequeo-preventivo', 'medica', 'internaciones', 'materno', 'plan-materno', 'nutricion-celiacos', 'celiacos', 'nutricion', 'protesis', 'ortesis', 'farmacia', 'farmacias', 'cobertura-farmacias', 'cobertura-farmacia', 'vademecum-farmacias'].includes(activeTab) && (
           <CoberturasPlanesView 
             key={activeTab}
             initialSubTab={activeTab} 
