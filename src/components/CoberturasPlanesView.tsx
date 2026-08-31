@@ -19,7 +19,10 @@ import {
   Sparkles,
   ArrowRight,
   Baby,
-  Brain
+  Brain,
+  Trees,
+  BadgePercent,
+  CheckCircle2
 } from 'lucide-react';
 
 interface CoberturasPlanesViewProps {
@@ -603,27 +606,96 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           </div>
         )}
 
-        {/* 9. SUBSIDIO SEPELIOS */}
+        {/* 9. SUBSIDIO SEPELIOS Y CONVENIOS */}
         {activeTab === 'sepelios' && (
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
-              <div className="p-2.5 rounded-2xl bg-purple-100 text-purple-700 font-bold">
+              <div className="p-2.5 rounded-2xl bg-indigo-100 text-indigo-700 font-bold">
                 <HeartHandshake className="w-6 h-6" />
               </div>
               <div>
-                <h2 className="text-xl font-extrabold text-slate-900">Subsidio por Sepelios</h2>
-                <p className="text-xs text-slate-500">Ayuda y cobertura económica institucional</p>
+                <h2 className="text-xl font-extrabold text-slate-900">Subsidio por Sepelios y Beneficios</h2>
+                <p className="text-xs text-slate-500">Ayuda económica institucional y convenios exclusivos</p>
               </div>
             </div>
 
-            <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-4">
+            {/* Subsidio por Fallecimiento */}
+            <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-3">
               <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
-                <HeartHandshake className="w-5 h-5 text-purple-600" />
-                Cobertura por Fallecimiento
+                <HeartHandshake className="w-5 h-5 text-indigo-600" />
+                Subsidio por Fallecimiento
               </h3>
               <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                 Ayuda y cobertura económica otorgada por el Departamento de Servicios Sociales ante el fallecimiento del afiliado titular o familiar a cargo, previa presentación de la solicitud correspondiente y documentación fehaciente.
               </p>
+            </div>
+
+            {/* Beneficio Lar de Paz */}
+            <div className="bg-gradient-to-br from-indigo-950 via-blue-900 to-slate-900 p-6 sm:p-8 rounded-3xl text-white space-y-6 shadow-md border border-indigo-700/50 relative overflow-hidden">
+              <div className="absolute -right-8 -top-8 w-40 h-40 bg-indigo-500/20 rounded-full blur-2xl pointer-events-none" />
+
+              {/* Header Lar de Paz */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-indigo-700/60 pb-4">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold mb-2">
+                    <BadgePercent className="w-3.5 h-3.5" />
+                    <span>20% de Descuento Especial</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-extrabold text-white">
+                    Adquisición de Parcelas — Parque Cementerio &quot;Lar de Paz&quot;
+                  </h3>
+                  <p className="text-xs text-indigo-200 mt-0.5">
+                    Convenio institucional con beneficio tarifario sobre los precios de lista oficiales de Ceprisa.
+                  </p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-2xl text-center shrink-0">
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-indigo-200 block">Descuento</span>
+                  <span className="text-xl font-black text-emerald-400">20% OFF</span>
+                </div>
+              </div>
+
+              {/* Features Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-white/10 backdrop-blur-sm p-4.5 rounded-2xl border border-white/10 space-y-2.5">
+                  <div className="flex items-center gap-2 text-indigo-200 font-bold text-xs sm:text-sm">
+                    <Trees className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Características del Predio</span>
+                  </div>
+                  <ul className="text-xs text-slate-200 space-y-2 leading-relaxed">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                      <span>Predio parquizado en un entorno natural cuidado y sereno.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                      <span>Parcelas a perpetuidad de 1,20 m x 2,40 m (capacidad para 2 féretros + 2 reducciones).</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                      <span>Absoluta libertad de culto y capilla ecuménica disponible para oficios religiosos a solicitud.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-sm p-4.5 rounded-2xl border border-white/10 space-y-3 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-indigo-200 font-bold text-xs sm:text-sm">
+                      <FileText className="w-4 h-4 text-sky-400 shrink-0" />
+                      <span>Escritura y Expensas</span>
+                    </div>
+                    <p className="text-xs text-slate-200 leading-relaxed">
+                      La parcela requiere escriturar y la titularidad asume el pago regular de las expensas del predio.
+                    </p>
+                  </div>
+                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+                    <span className="text-indigo-200 font-medium">Beneficio exclusivo:</span>
+                    <strong className="text-emerald-300 font-extrabold bg-emerald-500/20 px-2.5 py-1 rounded-lg border border-emerald-400/30">
+                      20% Dto. S/ Valor Ceprisa
+                    </strong>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         )}
