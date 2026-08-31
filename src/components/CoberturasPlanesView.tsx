@@ -54,9 +54,32 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
 
   const [activeTab, setActiveTab] = useState<string>(getSubTabId(initialSubTab));
 
+  const handleTabClick = (tabId: string, shouldScroll = true) => {
+    const targetId = getSubTabId(tabId);
+    setActiveTab(targetId);
+
+    if (shouldScroll) {
+      setTimeout(() => {
+        const elem = document.getElementById('coberturas-tab-content');
+        if (elem) {
+          elem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
+    }
+  };
+
   useEffect(() => {
     if (initialSubTab) {
-      setActiveTab(getSubTabId(initialSubTab));
+      const subId = getSubTabId(initialSubTab);
+      setActiveTab(subId);
+      if (initialSubTab !== 'planes') {
+        setTimeout(() => {
+          const elem = document.getElementById('coberturas-tab-content');
+          if (elem) {
+            elem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      }
     }
   }, [initialSubTab]);
 
@@ -71,11 +94,6 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
     { id: 'protesis', title: 'Prótesis y Órtesis', icon: Bone },
     { id: 'sepelios', title: 'Subsidio Sepelios', icon: HeartHandshake },
   ];
-
-  const handleTabClick = (tabId: string) => {
-    const targetId = getSubTabId(tabId);
-    setActiveTab(targetId);
-  };
 
   return (
     <div id="coberturas-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-in fade-in duration-300">
@@ -108,7 +126,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
               <span>Ver Tabla Comparativa de Coseguros y Planes</span>
             </button>
             <button
-              onClick={() => handleTabClick('farmacia')}
+              onClick={() => handleTabClick('farmacia', true)}
               className="bg-white/10 hover:bg-white/20 text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm h-11 border border-white/20 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
             >
               <Pill className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -126,7 +144,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           return (
             <button
               key={tab.id}
-              onClick={() => handleTabClick(tab.id)}
+              onClick={() => handleTabClick(tab.id, true)}
               className={`group flex items-center gap-3.5 text-left p-4 rounded-2xl border transition-all cursor-pointer relative overflow-hidden ${
                 isActive
                   ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white border-blue-600 shadow-md shadow-blue-600/25 ring-2 ring-blue-400/40 scale-[1.01]'
