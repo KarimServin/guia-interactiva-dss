@@ -25,7 +25,7 @@ import {
 interface ModuleDetailModalProps {
   module: ActionModule | null;
   onClose: () => void;
-  onOpenForm: (formId: string) => void;
+  onOpenForm?: (formId: string) => void;
   onQuickAction: (target: string) => void;
 }
 
@@ -460,33 +460,6 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
               ))}
             </motion.div>
           </AnimatePresence>
-        )}
-
-        {/* Related Forms */}
-        {relatedForms.length > 0 && (
-          <div className="pt-2 border-t border-slate-100">
-            <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2.5 flex items-center gap-1.5">
-              <FileText className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-              Formularios Relacionados
-            </h4>
-            <div className="space-y-2">
-              {relatedForms.map(form => (
-                <div key={form.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 p-3.5 bg-sky-50/80 rounded-xl border border-sky-100">
-                  <div>
-                    <p className="text-xs font-bold text-slate-800">{form.code}: {form.title}</p>
-                    <p className="text-[11px] text-slate-500 mt-0.5">{form.description}</p>
-                  </div>
-                  <button
-                    onClick={() => { onClose(); onOpenForm(form.id); }}
-                    className="w-full sm:w-auto flex items-center justify-center gap-1 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-xs font-bold transition-all shrink-0"
-                  >
-                    Ver
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
         )}
       </div>
 

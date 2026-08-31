@@ -46,24 +46,24 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-600 text-white'
     },
     details: {
-      summary: 'La incorporación al Departamento de Servicios Sociales (DSS) se realiza de forma automática al matricularte en el Consejo Profesional de Ciencias Económicas (Cámara I) para profesionales de hasta 50 años, asegurando cobertura médica inmediata.',
+      summary: 'La incorporación al Departamento de Servicios Sociales (DSS) se realiza de forma automática al matricularte en el CPCE Santa Fe (Cámara I) para profesionales de hasta 50 años. Para inscripciones directas o declaraciones sanitarias, debés presentar la Solicitud de Afiliación Directa y la Declaración Jurada de Salud.',
       highlights: [
         'Sistema Solidario: Creado y sostenido por los profesionales matriculados en el CPCE Santa Fe - Cámara I.',
         'Afiliación Automática: Se genera sin trámites adicionales al matricularte (para profesionales de hasta 50 años).',
-        'Sin Credenciales Físicas: Tu número de Matrícula Titular te identifica ante médicos, sanatorios y farmacias.',
-        'Extensión Familiar: Posibilidad de agregar cónyuge e hijos con códigos vinculados a tu matrícula.'
+        'Formularios Oficiales: Solicitud de Afiliación Directa (afiliacion.pdf) y Declaración Jurada de Salud (Formulario DD JJ Salud.pdf).',
+        'Sin Credenciales Físicas: Tu número de Matrícula Titular te identifica ante médicos, sanatorios y farmacias.'
       ],
       steps: [
         { step: 1, title: 'Matriculación en CPCE', desc: 'Al matricularte en la Cámara I del CPCE Santa Fe, el alta en el DSS es automática si tenés hasta 50 años.' },
-        { step: 2, title: 'Atención Inmediata', desc: 'Con tu N° de Matrícula podés atenderte en cartilla o comprar medicamentos con descuento.' },
-        { step: 3, title: 'Incorporar Familiares', desc: 'Podés dar de alta a tu grupo familiar descargando y presenting el Formulario de Alta.' }
+        { step: 2, title: 'Descargar Formularios Oficiales', desc: 'En la sección de Formularios podés descargar la Solicitud de Afiliación Directa y la Declaración Jurada de Salud.' },
+        { step: 3, title: 'Presentación', desc: 'Enviá la documentación completa por correo a dss@cpn.org.ar o en la sede de San Lorenzo 1849, Santa Fe.' }
       ],
       faqs: [
         { q: '¿Qué sucede si tengo más de 50 años al momento de matricularme?', a: 'En ese caso, podés consultar en la secretaría del DSS para evaluar la incorporación conforme a las reglamentaciones vigentes.' },
         { q: '¿Debo realizar algún trámite presencial para mi afiliación titular?', a: 'No, la afiliación del titular es 100% automática al concretar el trámite de matriculación profesional.' }
       ],
-      relatedFormIds: ['FORM-01', 'FORM-02'],
-      quickActionLabel: 'Ver Formulario de Afiliación Directa',
+      relatedFormIds: [],
+      quickActionLabel: 'Ir al Centro de Formularios Oficiales',
       quickActionTarget: 'formularios'
     }
   },
@@ -82,8 +82,9 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-sky-600 text-white'
     },
     details: {
-      summary: 'Podés extender los beneficios de tu cobertura médica adhiriendo a tu cónyuge e hijos. Mientras la cobertura del titular es inmediata, los familiares adheridos cuentan con períodos de carencia según la prestación.',
+      summary: 'Podés extender los beneficios de tu cobertura médica adhiriendo a tu cónyuge e hijos. Para el alta o modificación de familiares debés presentar el formulario de Actualización de Datos Personales y Familiares junto con la Declaración Jurada de Salud de cada integrante.',
       highlights: [
+        'Formularios requeridos: Actualización de Datos Personales y Familiares (Actualizacion de datos DSS.pdf) y Declaración Jurada de Salud (Formulario DD JJ Salud.pdf).',
         'Titular sin carencias: Cobertura inmediata sin restricciones por preexistencias.',
         'Períodos de Carencia (Grupo Familiar): Aplicables entre 3 y 12 meses según la prestación.',
         'Códigos de Extensión: Cónyuge (+01), Hijos (+11, +12, +13, etc.).',
@@ -114,15 +115,15 @@ export const ACTION_MODULES: ActionModule[] = [
         { prestacion: "Coseguro Otra Obra Social", carencia: "" }
       ],
       steps: [
-        { step: 1, title: 'Completá el Formulario de Alta', desc: 'Descargá el Formulario de Incorporación de Grupo Familiar (FORM-02).' },
-        { step: 2, title: 'Adjuntá la documentación', desc: 'Certificado de matrimonio/convivencia o partida de nacimiento del hijo/a.' },
-        { step: 3, title: 'Presentá en el DSS', desc: 'Enviar vía e-mail a dss@cpn.org.ar o en la sede de San Lorenzo 1849 – Santa Fe – Cámara I.' }
+        { step: 1, title: 'Descargar Formularios de Alta', desc: 'Obtené desde la sección Formularios los PDF oficiales de Actualización de Datos Personales y Declaración Jurada de Salud.' },
+        { step: 2, title: 'Adjuntar la documentación', desc: 'Certificado de matrimonio/convivencia o partida de nacimiento del hijo/a.' },
+        { step: 3, title: 'Presentar en el DSS', desc: 'Enviar vía e-mail a dss@cpn.org.ar o en la sede de San Lorenzo 1849 – Santa Fe – Cámara I.' }
       ],
       faqs: [
         { q: '¿Cómo mantengo la cobertura de mi hijo estudiante mayor de 21 años?', a: 'Debés presentar anualmente en el mes de Abril el Certificado de Alumno Regular emitido por la institución universitaria o terciaria reconocida.' }
       ],
-      relatedFormIds: ['FORM-02', 'FORM-07'],
-      quickActionLabel: 'Descargar Formulario Alta Familiar',
+      relatedFormIds: [],
+      quickActionLabel: 'Ir a Formularios de Grupo Familiar',
       quickActionTarget: 'formularios'
     }
   },
@@ -141,9 +142,10 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-900 text-white'
     },
     details: {
-      summary: 'Identificarte ante médicos, sanatorios y farmacias es simple: solo indicá tu número de matrícula titular (o extensión de familiar) y presentá tu DNI. No necesitás credencial física.',
+      summary: 'Identificarte ante médicos, sanatorios y farmacias es simple: solo indicá tu número de matrícula titular (o extensión de familiar) y presentá tu DNI. En caso de cambiar de residencia, descargá la Declaración de Cambio de Domicilio.',
       highlights: [
-        'Identificación en consulta: No necesitás credencial física. Presentate únicamente indicando tu número de matrícula titular (o extensión de grupo familiar) y tu DNI.',
+        'Identificación en consulta: No necesitás credencial física. Presentate únicamente indicando tu número de matrícula titular (o extensión) y tu DNI.',
+        'Notificación de Cambios: En caso de modificar tu dirección, completá la Declaración de Cambio de Domicilio (Cambio de Domicilio.pdf).',
         'Credencial digital: Llevá tu credencial y la de tu familia en el celular descargando la App oficial del Consejo.'
       ],
       appLinks: {
@@ -152,7 +154,8 @@ export const ACTION_MODULES: ActionModule[] = [
       },
       faqs: [
         { q: '¿Qué hago si el prestador me pide credencial física?', a: 'Podés informar que el DSS opera sin credencial física obligatoria mediante N° de Matrícula, o mostrar tu Credencial Digital desde la App institucional.' }
-      ]
+      ],
+      relatedFormIds: []
     }
   },
   {
@@ -170,23 +173,27 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-600 text-white'
     },
     details: {
-      summary: 'Accedé a atención médica buscando profesionales en nuestra cartilla digital y emitiendo previamente tu orden de consulta de manera online.',
-      highlights: [],
+      summary: 'Accedé a atención médica buscando profesionales en nuestra cartilla digital y emitiendo previamente tu orden de consulta. Para requerimientos de prácticas y estudios, utilizá la Solicitud de Prescripción / Autorización Médica.',
+      highlights: [
+        'Formulario para Prácticas: Solicitud de Prescripción / Autorización Médica (pmedica.pdf).',
+        'Cartilla Digital: Búsqueda online de médicos y centros de salud por especialidad.',
+        'Orden de Consulta: Emisión directa a través del Software de Gestión Institucional.'
+      ],
       steps: [
         { 
           step: 1, 
           title: 'Buscar un prestador', 
-          desc: 'Consultá la [Cartilla de Prestadores Online](https://dss.contadores.org.ar/cartilla)\n\nTambién podés solicitar información por [WhatsApp: 3425 10-5675](https://wa.me/5493425105675).' 
+          desc: 'Consultá la [Cartilla de Prestadores Online](https://dss.contadores.org.ar/cartilla) o comunicate por WhatsApp al 3425 10-5675.' 
         },
         { 
           step: 2, 
           title: 'Emitir la orden de consulta', 
-          desc: 'Ingresá al [Software de Gestión](http://www.contadores.org.ar/php/login.php) y generá la orden de consulta (el monto de la misma se generará en la factura del próximo mes).' 
+          desc: 'Ingresá al Software de Gestión y generá la orden de consulta.' 
         },
         { 
           step: 3, 
           title: 'Asistir al turno', 
-          desc: 'Presentate con:\n• DNI\n• Orden de consulta emitida' 
+          desc: 'Presentate con tu DNI y la Orden de consulta emitida. Si requerís autorizar estudios, adjuntá la Solicitud de Prescripción Médica.' 
         }
       ],
       faqs: [
@@ -213,19 +220,18 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-sky-600 text-white'
     },
     details: {
-      summary: 'Obtené una cobertura del 60% en medicamentos presentando tu credencial y prescripción médica en farmacias adheridas de la 1.ª Circunscripción. Si tenés otra obra social, podés utilizar el beneficio de cobertura complementaria presentando ambas credenciales.',
+      summary: 'Obtené una cobertura del 60% en medicamentos presentando tu credencial y receta en farmacias adheridas de la 1.ª Circunscripción. Para medicamentos oncológicos o auditorías especiales, utilizá la Solicitud de Cobertura Oncológica.',
       highlights: [
-        'Cobertura del 60%: Adquisición en farmacias adheridas al Colegio de Farmacéuticos de Santa Fe (1ª Circunscripción) con carnet y prescripción médica.',
-        'Doble Cobertura Complementaria: Beneficio de ambos descuentos presentando ambas credenciales en la farmacia sin trámites adicionales.',
-        'Cantidades Reconocidas: Hasta 2 productos distintos por receta, hasta 2 envases chicos o 1 grande, antibióticos monodosis (hasta 6) y multidosis (hasta 1).',
-        'Sin Reintegros: No se realizan reintegros por compras de medicamentos dentro de la 1.ª Circunscripción de la Provincia.',
-        'Tratamientos Prolongados: Presentación de Historia Clínica del médico tratante en el DSS (validez por 180 días) para autorización.'
+        'Cobertura del 60%: Adquisición en farmacias adheridas con carnet y prescripción médica.',
+        'Medicamentos Oncológicos: Trámite especial mediante la Solicitud de Cobertura Oncológica (oncologia.pdf).',
+        'Prescripciones Médicas: Formulario oficial de Solicitud de Prescripción / Autorización Médica (pmedica.pdf).',
+        'Doble Cobertura Complementaria: Sumá descuentos si contás con otra obra social o prepaga.'
       ],
       steps: [
         { 
           step: 1, 
           title: 'Prescripción Médica', 
-          desc: 'Pedí a tu médico la receta (física o electrónica en sistema).' 
+          desc: 'Pedí a tu médico la receta o completá la Solicitud de Prescripción Médica oficial.' 
         },
         { 
           step: 2, 
@@ -234,18 +240,16 @@ export const ACTION_MODULES: ActionModule[] = [
         },
         { 
           step: 3, 
-          title: 'Doble Cobertura (Obra Social Complementaria)', 
-          desc: 'Si contás con otra obra social, presentá ambas credenciales para sumar ambos descuentos en el acto.' 
+          title: 'Casos Especiales / Oncología', 
+          desc: 'Para tratamientos oncológicos, presentá la Solicitud de Cobertura Oncológica en el DSS.' 
         }
       ],
       faqs: [
-        { q: '¿Cómo opera la doble cobertura con otra obra social?', a: 'Podés comprar beneficiándote de ambos descuentos. Confeccionás la orden según requerimientos de tu otra obra social y presentás ambas credenciales en la farmacia para que el DSS actúe como complementaria.' },
-        { q: '¿Qué cantidades de medicamentos se reconocen por receta?', a: 'Hasta 2 productos distintos por receta, hasta 2 envases chicos o 1 grande, hasta 6 antibióticos inyectables monodosis o 1 multidosis.' },
-        { q: '¿Cómo es la gestión de Tratamientos Prolongados?', a: 'Requiere presentar en la administración del DSS una Historia Clínica del médico tratante para evaluación de Auditoría Médica. La validez es de 180 días.' },
-        { q: '¿Hay reintegros por medicamentos?', a: 'No, no se realizan reintegros por compras de medicamentos dentro de la 1.ª Circunscripción de la Provincia.' }
+        { q: '¿Cómo opera la doble cobertura con otra obra social?', a: 'Podés comprar beneficiándote de ambos descuentos. Confeccionás la orden según requerimientos de tu otra obra social y presentás ambas credenciales en la farmacia.' },
+        { q: '¿Qué cantidades de medicamentos se reconocen por receta?', a: 'Hasta 2 productos distintos por receta, hasta 2 envases chicos o 1 grande.' }
       ],
       relatedFormIds: [],
-      quickActionLabel: 'Buscador de Farmacias y Cobertura',
+      quickActionLabel: 'Buscador de Farmacias y Vademécum',
       quickActionTarget: 'vademecum'
     }
   },
@@ -266,16 +270,15 @@ export const ACTION_MODULES: ActionModule[] = [
     details: {
       summary: 'Las afiliadas obtienen cobertura del 100% en anticonceptivos orales del vademécum. Para acceder, solo es necesario completar una vez al año la ficha de tratamiento prolongado en el DSS.',
       highlights: [
-        'Cobertura Total (100%): Cobertura total de anticonceptivos orales incluidos en el vademécum para Plan Básico y Ampliado.',
-        'Sin Receta Médica: No requiere receta médica para retirar en la farmacia adherida.',
-        'Ficha de Tratamiento Prolongado: Único requisito con vigencia anual cargada en el sistema del Colegio de Farmacéuticos.',
-        'Exclusivo Vademécum: Aplica exclusivamente a los productos listados en el vademécum institucional.'
+        'Cobertura Total (100%): Cobertura total de anticonceptivos orales incluidos en el vademécum.',
+        'Sin Receta Médica en Farmacia: No requiere receta mensual tras la habilitación anual.',
+        'Ficha de Tratamiento Prolongado: Requisito administrativo anual cargado en el DSS.'
       ],
       steps: [
         { 
           step: 1, 
           title: 'Completá la Ficha de Tratamiento', 
-          desc: 'Solicitá y completá la ficha de tratamiento prolongado (vigencia anual).' 
+          desc: 'Solicitá y completá la ficha de tratamiento prolongado anual en la administración del DSS.' 
         },
         { 
           step: 2, 
@@ -285,14 +288,14 @@ export const ACTION_MODULES: ActionModule[] = [
         { 
           step: 3, 
           title: 'Retiro Directo', 
-          desc: 'Retirá las pastillas anticonceptivas del vademécum directamente en la farmacia con tu credencial, sin necesidad de receta médica.' 
+          desc: 'Retirá las pastillas anticonceptivas del vademécum directamente en la farmacia con tu credencial.' 
         }
       ],
       faqs: [
-        { q: '¿Es necesario presentar receta médica en la farmacia?', a: 'No, no se necesita receta médica. Solo se requiere completar la ficha de tratamiento prolongado con vigencia anual.' },
-        { q: '¿Cuál es el porcentaje de cobertura?', a: 'Cobertura total (100%) tanto para el Plan Básico como para el Ampliado en anticonceptivos orales listados en el vademécum.' }
+        { q: '¿Es necesario presentar receta médica en la farmacia?', a: 'No, no se necesita receta médica mensual. Solo se requiere la ficha de tratamiento prolongado anual.' }
       ],
-      quickActionLabel: 'Ver Vademécum y Farmacias Adheridas',
+      relatedFormIds: [],
+      quickActionLabel: 'Ver Vademécum de Anticonceptivos',
       quickActionTarget: 'vademecum'
     }
   },
@@ -311,27 +314,29 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-900 text-white'
     },
     details: {
-      summary: 'Gestioná la autorización de tus estudios, prácticas o análisis enviando la indicación médica digitalmente por WhatsApp durante nuestro horario de atención.',
+      summary: 'Gestioná la autorización de tus estudios y prácticas presentando la prescripción médica oficial o la ficha correspondiente (Solicitud de Prescripción / Autorización Médica, Ficha Odontológica Oficial o Solicitud de Cobertura en Ortodoncia).',
       highlights: [
-        'Necesitan autorización previa: Estudios, Prácticas, Imágenes, Odontología, Análisis, etc.',
-        '¿Cómo se autoriza?\nEnviando la indicación médica por WhatsApp al [3425 10-5675](https://wa.me/5493425105675).',
-        'Atención: Lunes a viernes | 7 a 15 hs'
+        'Formularios de Autorización:',
+        '• Solicitud de Prescripción / Autorización Médica (pmedica.pdf)',
+        '• Ficha Odontológica Oficial (Ficha odontologica.pdf)',
+        '• Solicitud de Cobertura en Ortodoncia (ortodoncia.pdf)',
+        'Canal Digital: Enviá la foto legible del formulario por WhatsApp al 3425 10-5675 (Lunes a viernes de 7 a 15 hs).'
       ],
       steps: [
         {
           step: 1,
-          title: 'Indicación Médica',
-          desc: 'Obtené la orden o receta prescrita por el profesional médico.'
+          title: 'Formulario / Indicación Médica',
+          desc: 'Completá junto a tu profesional la Solicitud de Prescripción Médica (pmedica.pdf), Ficha Odontológica u Ortodoncia.'
         },
         {
           step: 2,
           title: 'Envío por WhatsApp',
-          desc: 'Enviá la foto legible de la orden al [WhatsApp 3425 10-5675](https://wa.me/5493425105675).'
+          desc: 'Enviá la foto del formulario completo al [WhatsApp 3425 10-5675](https://wa.me/5493425105675).'
         },
         {
           step: 3,
           title: 'Procesamiento',
-          desc: 'El equipo de Auditoría Médica procesará la solicitud en horario de atención (Lunes a viernes de 7 a 15 hs).'
+          desc: 'Auditoría Médica procesará la solicitud y recibirás la autorización digital en tu celular.'
         }
       ],
       faqs: [
@@ -413,8 +418,9 @@ export const ACTION_MODULES: ActionModule[] = [
         { prestacion: 'COSEGURO OTRA OBRA SOCIAL', isHeader: true },
         { prestacion: 'Prácticas reconocidas por DSS', descripcion: '', general: '', basico: '' }
       ],
-      quickActionLabel: 'Enviar indicación médica por WhatsApp',
-      quickActionTarget: 'https://wa.me/5493425105675'
+      relatedFormIds: [],
+      quickActionLabel: 'Ir al Centro de Formularios',
+      quickActionTarget: 'formularios'
     }
   },
   {
@@ -432,21 +438,19 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-sky-600 text-white'
     },
     details: {
-      summary: 'Al autorizar una práctica médica, el DSS cubre el porcentaje de cobertura correspondiente y registra la diferencia restante como coseguro en tu cuenta corriente. No debés realizar pagos directos en los centros de atención.',
+      summary: 'Al autorizar una práctica médica, el DSS cubre el porcentaje correspondiente y registra la diferencia restante como coseguro en tu cuenta corriente. No debés realizar pagos directos en los centros de atención.',
       highlights: [
-        'Funcionamiento del coseguro: Al autorizar una práctica, el DSS cubre el porcentaje correspondiente según el plan y el saldo restante se incorpora automáticamente a la cuenta corriente del afiliado.',
-        'Sin cobro en el acto: Importante: no es necesario abonar importes en clínicas, sanatorios o centros médicos al momento de realizar la prestación.',
-        'Liquidación en cuota mensual: El coseguro se liquida junto con la cuota mensual siguiente.',
-        'Ejemplo (ecografía): Plan General cobertura del 70% / Plan Básico cobertura del 60%. La diferencia restante se registra como coseguro.'
+        'Funcionamiento del coseguro: El saldo restante se incorpora automáticamente a la cuenta corriente del afiliado.',
+        'Sin cobro en el acto: No es necesario abonar importes en clínicas o sanatorios al momento de la prestación.',
+        'Liquidación en cuota mensual: El coseguro se incluye en tu cuota del mes siguiente.'
       ],
       steps: [
-        { step: 1, title: 'Práctica Autorizada', desc: 'El DSS cubre el porcentaje correspondiente según tu plan (Ejemplo: 70% Plan General / 60% Plan Básico).' },
-        { step: 2, title: 'Atención Sin Abono Directo', desc: 'No es necesario abonar importes en clínicas, sanatorios o centros médicos al momento de realizar la prestación.' },
-        { step: 3, title: 'Liquidación Mensual', desc: 'El saldo restante se incorpora automáticamente a la cuenta corriente y se liquida en tu cuota mensual siguiente.' }
+        { step: 1, title: 'Práctica Autorizada', desc: 'El DSS cubre el porcentaje correspondiente según tu plan (70% Plan General / 60% Plan Básico).' },
+        { step: 2, title: 'Atención Sin Abono Directo', desc: 'No es necesario abonar importes en clínicas, sanatorios o centros médicos.' },
+        { step: 3, title: 'Liquidación Mensual', desc: 'El saldo restante se liquida en tu factura del mes siguiente.' }
       ],
       faqs: [
-        { q: '¿Debo abonar algo en la clínica o centro médico al momento de la prestación?', a: 'No. Importante: no es necesario abonar importes en clínicas, sanatorios o centros médicos al momento de realizar la prestación. El coseguro se liquida junto con la cuota mensual siguiente.' },
-        { q: '¿Cómo se registra el coseguro de una ecografía?', a: 'El DSS cubre el 70% en Plan General o 60% en Plan Básico. La diferencia restante se incorpora automáticamente a la cuenta corriente del afiliado como coseguro.' }
+        { q: '¿Debo abonar algo en la clínica o centro médico al momento de la prestación?', a: 'No, el coseguro se liquida en tu factura mensual del DSS.' }
       ],
       relatedFormIds: [],
       quickActionLabel: 'Ver Tabla de Coseguros',
@@ -468,29 +472,29 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-900 text-white'
     },
     details: {
-      summary: 'El Departamento de Servicios Sociales ofrece esquemas de cobertura diferenciados según tu plan de adhesión (General o Básico), asegurando asistencia médica, farmacológica e internación integral.',
+      summary: 'El DSS ofrece esquemas de cobertura diferenciados según tu plan (General o Básico). Para solicitar el cambio entre planes, utilizá el formulario de Solicitud de Cambio de Plan de Cobertura.',
       highlights: [
+        'Formulario de Cambio de Plan: Solicitud de Cambio de Plan de Cobertura (Cambio de Plan.pdf).',
         'Plan General: Cobertura del 70% en prácticas médicas y 100% en internación.',
         'Plan Básico: Cobertura del 60% en prácticas médicas y 80% en internación.',
-        'Medicamentos: Cobertura del 60% en ambos planes para especialidades incluidas en el Vademécum.'
+        'Medicamentos: Cobertura del 60% en ambos planes para Vademécum.'
       ],
       steps: [
         { 
           step: 1, 
-          title: 'Identificación en la consulta', 
-          desc: 'Informá tu número de matrícula titular y DNI al prestador para verificar tu plan de cobertura activo.' 
+          title: 'Verificar Plan Activo', 
+          desc: 'Consultá tu plan de cobertura activo con la administración del DSS.' 
         },
         { 
           step: 2, 
-          title: 'Aplicación del descuento', 
-          desc: 'El descuento de cobertura (60% o 70% en prácticas) se descuenta y se aplica directamente al validar la orden de consulta.' 
+          title: 'Cambio de Plan', 
+          desc: 'Si deseás modificar tu plan, descargá y completá la Solicitud de Cambio de Plan de Cobertura en la sección Formularios.' 
         }
       ],
       faqs: [
-        { q: '¿Cómo sé a qué plan estoy adherido?', a: 'Podés consultar tu plan activo poniéndote en contacto con la administración del DSS o revisándolo en tus recibos de aportes.' },
-        { q: '¿La cobertura de medicamentos varía según el plan?', a: 'No, ambos planes (General y Básico) cubren por igual el 60% en todos los medicamentos del Vademécum Básico.' }
+        { q: '¿Cómo sé a qué plan estoy adherido?', a: 'Podés consultar tu plan activo poniéndote en contacto con la administración del DSS o revisándolo en tus recibos de aportes.' }
       ],
-      relatedFormIds: ['FORM-01', 'FORM-04'],
+      relatedFormIds: [],
       quickActionLabel: 'Preguntar al Asistente Virtual',
       quickActionTarget: 'asistente'
     }
@@ -500,7 +504,7 @@ export const ACTION_MODULES: ActionModule[] = [
     buttonNumber: 10,
     title: 'Medios de pago',
     verbTitle: 'Quiero saber cómo pagar mi cuota',
-    shortDesc: 'Información sobre cuotas, débito automático, homebanking, botón de pago y deducción impositiva.',
+    shortDesc: 'Información sobre cuotas, débito automático, homebanking, botón de pago y subsidios.',
     iconName: 'CreditCard',
     colorClass: {
       bg: 'bg-white',
@@ -510,23 +514,23 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-900 text-white'
     },
     details: {
-      summary: 'Conocé las distintas alternativas de pago de tu cuota de afiliación DSS y liquidaciones de coseguros.',
+      summary: 'Conocé las alternativas de pago de tu cuota de afiliación y coseguros. Además, para tramitar reintegros especiales o guarderías, utilizá la Solicitud de Subsidio por Guardería.',
       highlights: [
-        'Débito Automático en CBU (Banco Macro, Santa Fe, Nación, otros) o Tarjeta de Crédito (Visa, Mastercard).',
+        'Subsidios y Reintegros: Solicitud de Subsidio por Guardería (guarderia.pdf).',
+        'Débito Automático en CBU (Banco Macro, Santa Fe, Nación, otros) o Tarjeta de Crédito.',
         'Pago Mis Cuentas / Red Link buscando "CPCE Santa Fe - Cámara I".',
-        'Botón de Pago Web desde la Autogestión del Consejo.',
-        'Transferencia bancaria a cuenta institucional del CPCE Santa Fe Camera I.'
+        'Botón de Pago Web desde la Autogestión del Consejo.'
       ],
       steps: [
         { step: 1, title: 'Elegí el medio de pago', desc: 'Recomendamos adherir al Débito Automático para evitar vencimientos.' },
-        { step: 2, title: 'Adherí online', desc: 'Completá el formulario FORM-06 con tu CBU o datos de tarjeta.' },
-        { step: 3, title: 'Descargá tu comprobante', desc: 'Obtené el comprobante apto para deducción en Impuesto a las Ganancias.' }
+        { step: 2, title: 'Tramitar Subsidios', desc: 'Para subsidio por guardería, completá la Solicitud de Subsidio por Guardería y adjuntá la factura correspondiente.' },
+        { step: 3, title: 'Comprobante de Pago', desc: 'Obtené el comprobante apto para deducción en Impuesto a las Ganancias.' }
       ],
       faqs: [
         { q: '¿Puedo deducir las aportaciones del DSS en Impuesto a las Ganancias?', a: 'Sí, la cuota del DSS es computable como gasto médico deducción cuota obra social/prepaga conforme a la normativa de AFIP/ARCA.' }
       ],
-      relatedFormIds: ['FORM-06'],
-      quickActionLabel: 'Formulario Adhesión a Débito',
+      relatedFormIds: [],
+      quickActionLabel: 'Ir al Centro de Formularios',
       quickActionTarget: 'formularios'
     }
   },
@@ -556,6 +560,7 @@ export const ACTION_MODULES: ActionModule[] = [
       faqs: [
         { q: '¿Adónde llamo en caso de una urgencia médica fuera del horario administrativo?', a: 'Comunicate directamente con la guardia del sanatorio contratado indicando tu número de matrícula DSS, o al servicio de emergencias médicas contratado.' }
       ],
+      relatedFormIds: [],
       quickActionLabel: 'Enviar WhatsApp de Contacto',
       quickActionTarget: 'https://wa.me/5493425105675'
     }
