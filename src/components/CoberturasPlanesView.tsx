@@ -54,12 +54,12 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
   }, [initialSubTab]);
 
   const TABS = [
-    { id: 'planes', label: 'Planes y Ámbito Geográfico', icon: ShieldCheck },
-    { id: 'medica', label: 'Asistencia Médica (Arts. 14-24)', icon: Stethoscope },
-    { id: 'internaciones', label: 'Internaciones', icon: BedDouble },
-    { id: 'farmacia', label: 'Farmacia, Anticonceptivos y Nutrición', icon: Pill },
-    { id: 'odontologia', label: 'Odontología (Arts. 25-28)', icon: Smile },
-    { id: 'subsidios', label: 'Subsidios y Prótesis', icon: HeartHandshake },
+    { id: 'planes', title: 'Planes y Ámbito', subtitle: 'Santa Fe, Rosario, Cba', icon: ShieldCheck },
+    { id: 'medica', title: 'Asistencia Médica', subtitle: 'Arts. 14 a 24', icon: Stethoscope },
+    { id: 'internaciones', title: 'Internaciones', subtitle: 'Urgencias y Quirúrgicos', icon: BedDouble },
+    { id: 'farmacia', title: 'Farmacia y Nutrición', subtitle: 'Vademécum 60%-100%', icon: Pill },
+    { id: 'odontologia', title: 'Odontología', subtitle: 'Arts. 25 a 28', icon: Smile },
+    { id: 'subsidios', title: 'Subsidios y Prótesis', subtitle: 'Celíacos y Sepelios', icon: HeartHandshake },
   ];
 
   return (
@@ -107,8 +107,8 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
         </div>
       </div>
 
-      {/* INTERACTIVE BUTTON TABS */}
-      <div className="bg-slate-100/90 p-2 rounded-2xl border border-slate-200/80 flex items-center gap-2 overflow-x-auto scrollbar-none shadow-xs">
+      {/* RESPONSIVE CATEGORY SELECTOR GRID (DESKTOP: 6 COLS, MOBILE: 2 COLS) */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {TABS.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -116,14 +116,34 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all cursor-pointer ${
+              className={`group flex flex-col items-center text-center p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer relative overflow-hidden ${
                 isActive
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20 scale-[1.01]'
-                  : 'bg-transparent text-slate-700 hover:bg-white/70 hover:text-slate-900'
+                  ? 'bg-gradient-to-b from-blue-600 to-indigo-700 text-white border-blue-600 shadow-md shadow-blue-600/25 ring-2 ring-blue-400/40 scale-[1.02]'
+                  : 'bg-white text-slate-700 border-slate-200/90 hover:border-blue-300 hover:bg-blue-50/50 hover:text-slate-900 shadow-2xs'
               }`}
             >
-              <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-blue-600'}`} />
-              <span>{tab.label}</span>
+              {/* Top Accent line when active */}
+              {isActive && (
+                <div className="absolute top-0 left-0 right-0 h-1 bg-sky-300 rounded-t-full" />
+              )}
+              
+              <div className={`p-2.5 rounded-xl mb-2 transition-transform group-hover:scale-110 ${
+                isActive 
+                  ? 'bg-white/15 text-white' 
+                  : 'bg-blue-50 text-blue-600 group-hover:bg-blue-100'
+              }`}>
+                <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+              </div>
+
+              <span className="text-xs sm:text-xs font-bold leading-tight">
+                {tab.title}
+              </span>
+              
+              <span className={`text-[10px] mt-1 font-medium ${
+                isActive ? 'text-blue-100' : 'text-slate-400'
+              }`}>
+                {tab.subtitle}
+              </span>
             </button>
           );
         })}
