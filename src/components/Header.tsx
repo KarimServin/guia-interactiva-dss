@@ -15,7 +15,8 @@ import {
   Pill,
   FileText,
   CreditCard,
-  Home
+  Home,
+  ShieldCheck
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -27,6 +28,7 @@ interface HeaderProps {
 
 const NAV_ITEMS = [
   { id: 'guia', label: 'Home', icon: Home },
+  { id: 'coberturas-planes', label: 'Coberturas y planes', icon: ShieldCheck },
   { id: 'afiliacion', label: '¿Cómo afiliarme?', icon: UserCheck },
   { id: 'cartilla', label: 'Cartilla Médica', icon: Users },
   { id: 'vademecum', label: 'Vademecum', icon: Pill },

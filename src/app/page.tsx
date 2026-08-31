@@ -276,6 +276,13 @@ export default function HomePage() {
           </div>
         )}
 
+        {/* VIEW: COBERTURAS Y PLANES */}
+        {activeTab === 'coberturas-planes' && (
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-100 shadow-sm min-h-[400px] flex items-center justify-center animate-fadeIn">
+            {/* Sin información cargada por el momento */}
+          </div>
+        )}
+
         {/* VIEW 2: ¿CÓMO AFILIARME? LANDING VIEW */}
         {activeTab === 'afiliacion' && (
           <AffiliationLanding 
