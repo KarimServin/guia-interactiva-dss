@@ -58,6 +58,7 @@ export interface FormItem {
   requiredDocs: string[];
   estimatedDays: string;
   isFillable: boolean;
+  fileUrl?: string; // e.g. '/formularios/form-01.pdf'
   fields?: {
     id: string;
     label: string;
