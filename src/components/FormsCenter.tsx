@@ -345,7 +345,7 @@ export const FormsCenter: React.FC<FormsCenterProps> = ({ initialFormId }) => {
                   </div>
                   <h4 className="text-xl font-extrabold text-slate-900">¡Formulario Generado con Éxito!</h4>
                   <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed font-normal">
-                    Tus datos fueron procesados. Podés descargar el PDF completado listo para firmar, o copiar el resumen impreso para enviar por correo a <strong>dss@cpcesfe1.org.ar</strong>.
+                    Tus datos fueron procesados. Podés descargar el PDF completado listo para firmar, o copiar el resumen impreso para enviar por correo a <strong>dss@cpn.org.ar</strong>.
                   </p>
 
                   <div className="flex flex-wrap items-center justify-center gap-3 pt-4">

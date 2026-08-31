@@ -116,7 +116,7 @@ export const ACTION_MODULES: ActionModule[] = [
       steps: [
         { step: 1, title: 'Completá el Formulario de Alta', desc: 'Descargá el Formulario de Incorporación de Grupo Familiar (FORM-02).' },
         { step: 2, title: 'Adjuntá la documentación', desc: 'Certificado de matrimonio/convivencia o partida de nacimiento del hijo/a.' },
-        { step: 3, title: 'Presentá en el DSS', desc: 'Enviar vía e-mail a dss@cpcesfe1.org.ar o en la sede de San Lorenzo 1849 – Santa Fe – Cámara I.' }
+        { step: 3, title: 'Presentá en el DSS', desc: 'Enviar vía e-mail a dss@cpn.org.ar o en la sede de San Lorenzo 1849 – Santa Fe – Cámara I.' }
       ],
       faqs: [
         { q: '¿Cómo mantengo la cobertura de mi hijo estudiante mayor de 21 años?', a: 'Debés presentar anualmente en el mes de Abril el Certificado de Alumno Regular emitido por la institución universitaria o terciaria reconocida.' }
@@ -551,7 +551,7 @@ export const ACTION_MODULES: ActionModule[] = [
         'Horario de Atención: Lunes a viernes | 7 a 15 hs',
         'Contacto WhatsApp: WA 3425 10-5675 (https://wa.me/5493425105675)',
         'Web: cpcesfe1.org.ar',
-        'Correo Electrónico: dss@cpcesfe1.org.ar'
+        'Correo Electrónico: dss@cpn.org.ar'
       ],
       faqs: [
         { q: '¿Adónde llamo en caso de una urgencia médica fuera del horario administrativo?', a: 'Comunicate directamente con la guardia del sanatorio contratado indicando tu número de matrícula DSS, o al servicio de emergencias médicas contratado.' }

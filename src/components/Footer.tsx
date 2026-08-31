@@ -71,8 +71,8 @@ export const Footer: React.FC = () => {
                 <div className="w-7 h-7 rounded-lg bg-blue-100/80 text-blue-700 flex items-center justify-center shrink-0 shadow-2xs">
                   <Mail className="w-3.5 h-3.5" />
                 </div>
-                <a href="mailto:dss@cpcesfe1.org.ar" className="hover:text-blue-800 transition-colors">
-                  dss@cpcesfe1.org.ar
+                <a href="mailto:dss@cpn.org.ar" className="hover:text-blue-800 transition-colors">
+                  dss@cpn.org.ar
                 </a>
               </li>
             </ul>
