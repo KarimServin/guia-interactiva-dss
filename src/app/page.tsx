@@ -14,6 +14,7 @@ import { CoseguroTableModal } from '@/components/CoseguroTableModal';
 import { AuthorizationSimulator } from '@/components/AuthorizationSimulator';
 import { AffiliationLanding } from '@/components/AffiliationLanding';
 import { CuotasValores } from '@/components/CuotasValores';
+import { CoberturasPlanesView } from '@/components/CoberturasPlanesView';
 import { Footer } from '@/components/Footer';
 
 import { ACTION_MODULES, FORMS_DATA } from '@/data/dssData';
@@ -278,17 +279,15 @@ export default function HomePage() {
 
         {/* VIEW: COBERTURAS Y PLANES */}
         {['coberturas-planes', 'subsidio-sepelios', 'cobertura-odontologia', 'chequeo-preventivo'].includes(activeTab) && (
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-100 shadow-sm min-h-[400px] flex flex-col items-center justify-center text-center animate-fadeIn space-y-3">
-            <h3 className="text-xl font-bold text-slate-800">
-              {activeTab === 'coberturas-planes' && 'Coberturas y Planes'}
-              {activeTab === 'subsidio-sepelios' && 'Subsidio Sepelios'}
-              {activeTab === 'cobertura-odontologia' && 'Cobertura Odontología'}
-              {activeTab === 'chequeo-preventivo' && 'Chequeo Preventivo Anual'}
-            </h3>
-            <p className="text-xs text-slate-500 max-w-md font-medium">
-              Próximamente se cargará la información oficial de esta sección.
-            </p>
-          </div>
+          <CoberturasPlanesView 
+            key={activeTab}
+            initialSubTab={activeTab} 
+            onOpenCosegurosModal={() => setShowCoseguroModal(true)}
+            onGoToFormularios={(formId) => {
+              if (formId) setTargetFormForCenter(formId);
+              setActiveTab('formularios');
+            }}
+          />
         )}
 
         {/* VIEW 2: ¿CÓMO AFILIARME? LANDING VIEW */}
