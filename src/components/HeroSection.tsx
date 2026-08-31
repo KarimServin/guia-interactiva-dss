@@ -106,13 +106,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
 
           {/* Minimalist Wide-Angle Double Scroll Down Arrow */}
-          <div className="flex justify-center pt-10 sm:pt-16 pb-2">
+          <div className="flex justify-center pt-20 sm:pt-32 pb-6 -mb-6 sm:-mb-8">
             <button
               onClick={() => {
                 const el = document.getElementById('servicios');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="p-2 text-slate-400 hover:text-blue-600 opacity-60 hover:opacity-100 transition-all focus:outline-none cursor-pointer animate-bounce"
+              className="p-3 text-slate-400 hover:text-blue-600 opacity-70 hover:opacity-100 transition-all focus:outline-none cursor-pointer animate-bounce"
               title="Desplazarse hacia abajo"
             >
               <svg 
