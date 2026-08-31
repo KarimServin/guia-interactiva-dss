@@ -28,8 +28,8 @@ interface HeaderProps {
 
 const NAV_ITEMS = [
   { id: 'guia', label: 'Home', icon: Home },
-  { id: 'coberturas-planes', label: 'Coberturas y planes', icon: ShieldCheck },
   { id: 'afiliacion', label: '¿Cómo afiliarme?', icon: UserCheck },
+  { id: 'coberturas-planes', label: 'Coberturas y planes', icon: ShieldCheck },
   { id: 'cartilla', label: 'Cartilla Médica', icon: Users },
   { id: 'vademecum', label: 'Vademecum', icon: Pill },
   { id: 'formularios', label: 'Formularios', icon: FileText },
@@ -123,7 +123,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
         </div>
 
         {/* Desktop Transparent Nav Buttons with Hover Fill */}
-        <nav className="hidden md:flex items-center gap-1.5">
+        <nav className="hidden md:flex items-center justify-end ml-auto gap-1.5">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isVademecum = item.id === 'vademecum';
