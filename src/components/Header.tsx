@@ -129,8 +129,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
             const isVademecum = item.id === 'vademecum';
             const isCoberturas = item.id === 'coberturas-planes';
             const isActive = isVademecum
-              ? activeTab.startsWith('vademecum')
-              : activeTab === item.id;
+              ? (activeTab.startsWith('vademecum') && activeTab !== 'vademecum-farmacias')
+              : isCoberturas
+                ? ['coberturas-planes', 'subsidio-sepelios', 'cobertura-odontologia', 'chequeo-preventivo', 'vademecum-farmacias'].includes(activeTab)
+                : activeTab === item.id;
 
             if (isCoberturas) {
               return (
@@ -160,16 +162,56 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
 
                   {/* Dropdown Card */}
                   {isCoberturasDropdownOpen && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-56 bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                       <button
                         onClick={() => {
-                          handleNavClick('coberturas-planes');
+                          router.push('/?tab=coberturas-planes');
                           setIsCoberturasDropdownOpen(false);
                         }}
                         className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                        Ver Coberturas
+                        Ver coberturas y planes
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/vademecum/farmacias');
+                          setIsCoberturasDropdownOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        Cobertura en farmacias
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/?tab=subsidio-sepelios');
+                          setIsCoberturasDropdownOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                        Subsidio sepelios
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/?tab=cobertura-odontologia');
+                          setIsCoberturasDropdownOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
+                        Cobertura odontología
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/?tab=chequeo-preventivo');
+                          setIsCoberturasDropdownOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        Chequeo preventivo anual
                       </button>
                     </div>
                   )}
@@ -225,16 +267,6 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                         <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
                         Anticonceptivos
                       </button>
-                      <button
-                        onClick={() => {
-                          router.push('/vademecum/farmacias');
-                          setIsVademecumDropdownOpen(false);
-                        }}
-                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        Cobertura en Farmacias
-                      </button>
                     </div>
                   )}
                 </div>
@@ -267,7 +299,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
             className="p-2.5 rounded-xl hover:bg-slate-100 text-slate-700 transition-colors"
             aria-label="Toggle Menu"
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X className="w-6 h-6 text-slate-700" /> : <Menu className="w-6 h-6 text-slate-700" />}
           </button>
         </div>
       </div>
@@ -280,8 +312,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
             const isVademecum = item.id === 'vademecum';
             const isCoberturas = item.id === 'coberturas-planes';
             const isActive = isVademecum
-              ? activeTab.startsWith('vademecum')
-              : activeTab === item.id;
+              ? (activeTab.startsWith('vademecum') && activeTab !== 'vademecum-farmacias')
+              : isCoberturas
+                ? ['coberturas-planes', 'subsidio-sepelios', 'cobertura-odontologia', 'chequeo-preventivo', 'vademecum-farmacias'].includes(activeTab)
+                : activeTab === item.id;
 
             if (isCoberturas) {
               return (
@@ -304,13 +338,53 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                     <div className="pl-6 space-y-1 animate-in fade-in duration-200">
                       <button
                         onClick={() => {
-                          handleNavClick('coberturas-planes');
+                          router.push('/?tab=coberturas-planes');
                           setIsMobileMenuOpen(false);
                         }}
                         className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                        Ver Coberturas
+                        Ver coberturas y planes
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/vademecum/farmacias');
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-emerald-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        Cobertura en farmacias
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/?tab=subsidio-sepelios');
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-purple-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                        Subsidio sepelios
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/?tab=cobertura-odontologia');
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-cyan-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
+                        Cobertura odontología
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push('/?tab=chequeo-preventivo');
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        Chequeo preventivo anual
                       </button>
                     </div>
                   )}
@@ -356,16 +430,6 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
                         Anticonceptivos
-                      </button>
-                      <button
-                        onClick={() => {
-                          router.push('/vademecum/farmacias');
-                          setIsMobileMenuOpen(false);
-                        }}
-                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-emerald-700 transition-colors flex items-center gap-2"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        Cobertura en Farmacias
                       </button>
                     </div>
                   )}
