@@ -39,7 +39,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
   const getSubTabId = (key: string) => {
     if (key === 'subsidio-sepelios' || key === 'sepelios') return 'sepelios';
     if (key === 'cobertura-odontologia' || key === 'odontologia') return 'odontologia';
-    if (key === 'vademecum-farmacias' || key === 'farmacia') return 'farmacia';
+    if (key === 'vademecum-farmacias' || key === 'cobertura-farmacias' || key === 'cobertura-farmacia' || key === 'farmacias' || key === 'farmacia') return 'farmacia';
     if (key === 'internaciones') return 'internaciones';
     if (key === 'medica' || key === 'chequeo-preventivo') return 'medica';
     if (key === 'materno' || key === 'plan-materno') return 'materno';
@@ -57,19 +57,20 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
   }, [initialSubTab]);
 
   const TABS = [
-    { id: 'planes', title: 'Planes y Ámbito', subtitle: 'Santa Fe, Rosario, Cba', icon: ShieldCheck },
-    { id: 'medica', title: 'Asistencia Médica', subtitle: 'Arts. 14 a 24', icon: Stethoscope },
-    { id: 'materno', title: 'Plan Materno Infantil', subtitle: 'Art. 20 (Mamá y Bebé)', icon: Baby },
-    { id: 'internaciones', title: 'Internaciones', subtitle: 'Urgencias y Quirúrgicos', icon: BedDouble },
-    { id: 'farmacia', title: 'Farmacia y Anticonceptivos', subtitle: 'Vademécum 60%-100%', icon: Pill },
-    { id: 'odontologia', title: 'Odontología', subtitle: 'Arts. 25 a 28', icon: Smile },
-    { id: 'nutricion-celiacos', title: 'Nutrición y Celíacos', subtitle: 'Sin TACC y Controles', icon: Apple },
-    { id: 'protesis', title: 'Prótesis y Órtesis', subtitle: 'Art. 19 (60% y 40%)', icon: Bone },
-    { id: 'sepelios', title: 'Subsidio Sepelios', subtitle: 'Cobertura por Fallecimiento', icon: HeartHandshake },
+    { id: 'planes', title: 'Planes y Ámbito', icon: ShieldCheck },
+    { id: 'medica', title: 'Asistencia Médica', icon: Stethoscope },
+    { id: 'materno', title: 'Plan Materno Infantil', icon: Baby },
+    { id: 'internaciones', title: 'Internaciones', icon: BedDouble },
+    { id: 'farmacia', title: 'Farmacia y Anticonceptivos', icon: Pill },
+    { id: 'odontologia', title: 'Odontología', icon: Smile },
+    { id: 'nutricion-celiacos', title: 'Nutrición y Celíacos', icon: Apple },
+    { id: 'protesis', title: 'Prótesis y Órtesis', icon: Bone },
+    { id: 'sepelios', title: 'Subsidio Sepelios', icon: HeartHandshake },
   ];
 
   const handleTabClick = (tabId: string) => {
-    setActiveTab(tabId);
+    const targetId = getSubTabId(tabId);
+    setActiveTab(targetId);
     setTimeout(() => {
       const el = document.getElementById('coberturas-tab-content');
       if (el) {
@@ -95,28 +96,24 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
             Coberturas y Planes
           </h1>
 
-          <p className="text-slate-200 text-xs sm:text-base leading-relaxed">
-            Pensamos y actuamos en función de las prioridades de nuestros Profesionales, ofreciendo las opciones del <strong className="text-white font-bold">Plan Básico</strong> y el <strong className="text-white font-bold">Plan General</strong>. Así procuramos un modelo de atención en su concepto más amplio, apuntando claramente a la promoción de la salud, educando en la prevención y auspiciando conductas saludables para disminuir los factores de riesgos.
-          </p>
-
-          <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            A través de la más amplia red de prestadores a nivel provincial, accederán a un sistema de protección médico asistencial de alta calidad con una marcada concepción solidaria y una atención cordial y personalizada de máximo nivel que aseguren su mejor calidad de vida.
+          <p className="text-slate-200 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl">
+            El Departamento de Servicios Sociales ofrece a sus profesionales dos modalidades de cobertura: el <strong className="text-white font-bold">Plan General</strong> y el <strong className="text-white font-bold">Plan Básico</strong>, respaldados por una amplia red de prestadores médicos e institucionales en toda la provincia.
           </p>
 
           {/* Quick CTAs */}
-          <div className="pt-2 flex flex-wrap gap-3">
+          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <button
               onClick={() => onOpenCosegurosModal && onOpenCosegurosModal()}
-              className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-md flex items-center gap-2 cursor-pointer"
+              className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm h-11 border border-blue-500 shadow-md transition-all flex items-center justify-center gap-2.5 cursor-pointer"
             >
-              <FileText className="w-4 h-4" />
+              <FileText className="w-4 h-4 shrink-0" />
               <span>Ver Tabla Comparativa de Coseguros y Planes</span>
             </button>
             <button
               onClick={() => handleTabClick('farmacia')}
-              className="bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all border border-white/20 flex items-center gap-2 cursor-pointer"
+              className="bg-white/10 hover:bg-white/20 text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm h-11 border border-white/20 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
             >
-              <Pill className="w-4 h-4 text-emerald-400" />
+              <Pill className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>Ver Cobertura en Farmacias</span>
             </button>
           </div>
@@ -132,7 +129,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
             <button
               key={tab.id}
               onClick={() => handleTabClick(tab.id)}
-              className={`group flex items-center gap-3.5 text-left p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer relative overflow-hidden ${
+              className={`group flex items-center gap-3.5 text-left p-4 rounded-2xl border transition-all cursor-pointer relative overflow-hidden ${
                 isActive
                   ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white border-blue-600 shadow-md shadow-blue-600/25 ring-2 ring-blue-400/40 scale-[1.01]'
                   : 'bg-white text-slate-700 border-slate-200/90 hover:border-blue-300 hover:bg-blue-50/50 hover:text-slate-900 shadow-2xs'
@@ -152,14 +149,9 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
               </div>
 
               <div className="min-w-0 flex-1">
-                <h4 className="text-xs sm:text-sm font-bold leading-tight truncate">
+                <h4 className="text-xs sm:text-sm font-bold leading-tight">
                   {tab.title}
                 </h4>
-                <p className={`text-[11px] mt-0.5 font-medium truncate ${
-                  isActive ? 'text-blue-100' : 'text-slate-500'
-                }`}>
-                  {tab.subtitle}
-                </p>
               </div>
             </button>
           );

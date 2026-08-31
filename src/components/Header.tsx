@@ -321,7 +321,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-1 shadow-lg">
+        <div className="md:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-md px-4 py-4 space-y-1.5 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isVademecum = item.id === 'vademecum';
@@ -329,7 +329,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
             const isActive = isVademecum
               ? (activeTab.startsWith('vademecum') && activeTab !== 'vademecum-farmacias')
               : isCoberturas
-                ? ['coberturas-planes', 'subsidio-sepelios', 'cobertura-odontologia', 'chequeo-preventivo', 'vademecum-farmacias'].includes(activeTab)
+                ? ['coberturas-planes', 'subsidio-sepelios', 'cobertura-odontologia', 'chequeo-preventivo', 'vademecum-farmacias', 'cobertura-farmacias', 'farmacia', 'materno', 'nutricion-celiacos', 'protesis'].includes(activeTab)
                 : activeTab === item.id;
 
             if (isCoberturas) {
@@ -337,68 +337,68 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                 <div key={item.id} className="space-y-1">
                   <button
                     onClick={() => setIsMobileCoberturasOpen(!isMobileCoberturasOpen)}
-                    className={`w-full flex items-center justify-between px-4 py-3 text-[13px] font-bold rounded-full transition-all group ${
-                      isActive ? 'bg-blue-50 text-blue-700 font-extrabold' : 'text-slate-800 bg-transparent active:bg-blue-50/50'
+                    className={`w-full flex items-center justify-between px-4 py-3 text-xs sm:text-[13px] font-bold rounded-2xl transition-all group ${
+                      isActive ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200/60'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <Icon className="w-4.5 h-4.5 text-blue-600 shrink-0" />
+                      <Icon className={`w-4.5 h-4.5 shrink-0 ${isActive ? 'text-white' : 'text-blue-600'}`} />
                       <span>{item.label}</span>
                     </div>
-                    <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
-                      isMobileCoberturasOpen ? 'rotate-180' : ''
-                    }`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                      isActive ? 'text-white/80' : 'text-slate-400'
+                    } ${isMobileCoberturasOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {isMobileCoberturasOpen && (
-                    <div className="pl-6 space-y-1 animate-in fade-in duration-200">
+                    <div className="pl-4 pr-1 py-1 space-y-1 animate-in fade-in duration-200">
                       <button
                         onClick={() => handleSubMenuClick('coberturas-planes')}
-                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 bg-slate-50/80 hover:bg-blue-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                        Ver coberturas y planes
+                        <div className="w-2 h-2 rounded-full bg-blue-600 shrink-0" />
+                        <span>Ver coberturas y planes</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('materno')}
-                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-rose-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-rose-700 bg-slate-50/80 hover:bg-rose-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                        Plan Materno Infantil
+                        <div className="w-2 h-2 rounded-full bg-rose-500 shrink-0" />
+                        <span>Plan Materno Infantil</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('cobertura-farmacias')}
-                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-emerald-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-emerald-700 bg-slate-50/80 hover:bg-emerald-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        Cobertura en farmacias
+                        <div className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                        <span>Cobertura en farmacias</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('cobertura-odontologia')}
-                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-cyan-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-cyan-700 bg-slate-50/80 hover:bg-cyan-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
-                        Cobertura odontología
+                        <div className="w-2 h-2 rounded-full bg-cyan-500 shrink-0" />
+                        <span>Cobertura odontología</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('nutricion-celiacos')}
-                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-amber-700 bg-slate-50/80 hover:bg-amber-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                        Nutrición y Celíacos
+                        <div className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+                        <span>Nutrición y Celíacos</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('protesis')}
-                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-purple-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-purple-700 bg-slate-50/80 hover:bg-purple-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
-                        Prótesis y Órtesis
+                        <div className="w-2 h-2 rounded-full bg-purple-500 shrink-0" />
+                        <span>Prótesis y Órtesis</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('subsidio-sepelios')}
-                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-indigo-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-indigo-700 bg-slate-50/80 hover:bg-indigo-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-                        Subsidio sepelios
+                        <div className="w-2 h-2 rounded-full bg-indigo-500 shrink-0" />
+                        <span>Subsidio sepelios</span>
                       </button>
                     </div>
                   )}
@@ -411,39 +411,39 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                 <div key={item.id} className="space-y-1">
                   <button
                     onClick={() => setIsMobileVademecumOpen(!isMobileVademecumOpen)}
-                    className={`w-full flex items-center justify-between px-4 py-3 text-[13px] font-bold rounded-full transition-all group ${
-                      isActive ? 'bg-blue-50 text-blue-700 font-extrabold' : 'text-slate-800 bg-transparent active:bg-blue-50/50'
+                    className={`w-full flex items-center justify-between px-4 py-3 text-xs sm:text-[13px] font-bold rounded-2xl transition-all group ${
+                      isActive ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200/60'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <Icon className="w-4.5 h-4.5 text-blue-600 shrink-0" />
+                      <Icon className={`w-4.5 h-4.5 shrink-0 ${isActive ? 'text-white' : 'text-blue-600'}`} />
                       <span>{item.label}</span>
                     </div>
-                    <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
-                      isMobileVademecumOpen ? 'rotate-180' : ''
-                    }`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                      isActive ? 'text-white/80' : 'text-slate-400'
+                    } ${isMobileVademecumOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {isMobileVademecumOpen && (
-                    <div className="pl-6 space-y-1 animate-in fade-in duration-200">
+                    <div className="pl-4 pr-1 py-1 space-y-1 animate-in fade-in duration-200">
                       <button
                         onClick={() => {
                           router.push('/vademecum/basico');
                           setIsMobileMenuOpen(false);
                         }}
-                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 bg-slate-50/80 hover:bg-blue-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                        Vademécum Básico
+                        <div className="w-2 h-2 rounded-full bg-blue-600 shrink-0" />
+                        <span>Vademécum Básico</span>
                       </button>
                       <button
                         onClick={() => {
                           router.push('/vademecum/anticonceptivos');
                           setIsMobileMenuOpen(false);
                         }}
-                        className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-rose-600 transition-colors flex items-center gap-2"
+                        className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-slate-700 hover:text-rose-700 bg-slate-50/80 hover:bg-rose-50/80 rounded-xl border border-slate-100 transition-colors flex items-center gap-2.5"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                        Anticonceptivos
+                        <div className="w-2 h-2 rounded-full bg-rose-500 shrink-0" />
+                        <span>Anticonceptivos</span>
                       </button>
                     </div>
                   )}
@@ -455,15 +455,17 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`w-full flex items-center justify-between px-4 py-3 text-[13px] font-bold rounded-full transition-all group ${
-                  isActive ? 'bg-blue-50 text-blue-700 font-extrabold' : 'text-slate-800 bg-transparent active:bg-blue-50/50'
+                className={`w-full flex items-center justify-between px-4 py-3 text-xs sm:text-[13px] font-bold rounded-2xl transition-all group ${
+                  isActive ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200/60'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <Icon className="w-4.5 h-4.5 text-blue-600 shrink-0" />
+                  <Icon className={`w-4.5 h-4.5 shrink-0 ${isActive ? 'text-white' : 'text-blue-600'}`} />
                   <span>{item.label}</span>
                 </div>
-                <ChevronRight className="w-4 h-4 text-slate-400 group-active:text-blue-600 transition-colors" />
+                <ChevronRight className={`w-4 h-4 transition-colors ${
+                  isActive ? 'text-white/80' : 'text-slate-400 group-hover:text-blue-600'
+                }`} />
               </button>
             );
           })}
