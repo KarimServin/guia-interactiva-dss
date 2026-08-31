@@ -68,8 +68,18 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
     { id: 'sepelios', title: 'Subsidio Sepelios', subtitle: 'Cobertura por Fallecimiento', icon: HeartHandshake },
   ];
 
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId);
+    setTimeout(() => {
+      const el = document.getElementById('coberturas-tab-content');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 50);
+  };
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-in fade-in duration-300">
+    <div id="coberturas-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-in fade-in duration-300">
       
       {/* HERO BANNER */}
       <div className="relative bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl overflow-hidden border border-blue-800/40">
@@ -103,7 +113,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
               <span>Ver Tabla Comparativa de Coseguros y Planes</span>
             </button>
             <button
-              onClick={() => setActiveTab('farmacia')}
+              onClick={() => handleTabClick('farmacia')}
               className="bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all border border-white/20 flex items-center gap-2 cursor-pointer"
             >
               <Pill className="w-4 h-4 text-emerald-400" />
@@ -121,7 +131,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => handleTabClick(tab.id)}
               className={`group flex items-center gap-3.5 text-left p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer relative overflow-hidden ${
                 isActive
                   ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white border-blue-600 shadow-md shadow-blue-600/25 ring-2 ring-blue-400/40 scale-[1.01]'
@@ -157,7 +167,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
       </div>
 
       {/* TAB CONTENT CONTAINER */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm min-h-[420px] transition-all">
+      <div id="coberturas-tab-content" className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm min-h-[420px] transition-all scroll-mt-24">
 
         {/* 1. PLANES Y ÁMBITO GEOGRÁFICO */}
         {activeTab === 'planes' && (

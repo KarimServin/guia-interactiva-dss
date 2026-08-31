@@ -33,23 +33,29 @@ export default function HomePage() {
   const [showAutorizadorModal, setShowAutorizadorModal] = useState<boolean>(false);
   const [targetFormForCenter, setTargetFormForCenter] = useState<string | null>(null);
 
-  // Sync tab state from query parameter on mount
+  // Sync tab state from query parameter on mount & navigation
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      const tab = params.get('tab');
-      if (tab) {
-        if (tab === 'cartilla') {
-          router.replace('/cartilla');
-        } else if (tab === 'vademecum' || tab === 'farmacias') {
-          setActiveTab('cobertura-farmacias');
-        } else if (tab === 'cuotas') {
-          router.replace('/cuotas');
-        } else {
-          setActiveTab(tab);
+    const syncTabFromUrl = () => {
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        const tab = params.get('tab');
+        if (tab) {
+          if (tab === 'cartilla') {
+            router.replace('/cartilla');
+          } else if (tab === 'vademecum' || tab === 'farmacias') {
+            setActiveTab('cobertura-farmacias');
+          } else if (tab === 'cuotas') {
+            router.replace('/cuotas');
+          } else {
+            setActiveTab(tab);
+          }
         }
       }
-    }
+    };
+
+    syncTabFromUrl();
+    window.addEventListener('popstate', syncTabFromUrl);
+    return () => window.removeEventListener('popstate', syncTabFromUrl);
   }, [router]);
 
   // Quick Action Handler inside Module Modal
@@ -106,13 +112,20 @@ export default function HomePage() {
     } else if (navId === 'afiliacion') {
       setActiveTab('afiliacion');
     } else if (navId === 'cartilla') {
-      setActiveTab('cartilla');
-    } else if (navId === 'vademecum') {
-      setActiveTab('vademecum');
-    } else if (navId === 'formularios') {
-      setActiveTab('formularios');
+      router.push('/cartilla');
     } else if (navId === 'cuotas') {
       router.push('/cuotas');
+    } else if (navId === 'formularios') {
+      setActiveTab('formularios');
+    } else {
+      // Coberturas y Planes sub-tabs
+      setActiveTab(navId);
+      setTimeout(() => {
+        const el = document.getElementById('coberturas-tab-content') || document.getElementById('coberturas-content');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
     }
   };
 

@@ -44,6 +44,22 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
   const [isMobileCoberturasOpen, setIsMobileCoberturasOpen] = useState(false);
   const router = useRouter();
 
+  const handleSubMenuClick = (subTabKey: string) => {
+    setIsCoberturasDropdownOpen(false);
+    setIsMobileMenuOpen(false);
+    if (onSelectNav) {
+      onSelectNav(subTabKey);
+    }
+    router.push(`/?tab=${subTabKey}`);
+
+    setTimeout(() => {
+      const el = document.getElementById('coberturas-tab-content') || document.getElementById('coberturas-content');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 150);
+  };
+
   const handleNavClick = (id: string) => {
     if (id === 'cartilla') {
       router.push('/cartilla');
@@ -164,70 +180,49 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                   {isCoberturasDropdownOpen && (
                     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                       <button
-                        onClick={() => {
-                          router.push('/?tab=coberturas-planes');
-                          setIsCoberturasDropdownOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('coberturas-planes')}
                         className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                         Ver coberturas y planes
                       </button>
                       <button
-                        onClick={() => {
-                          router.push('/?tab=materno');
-                          setIsCoberturasDropdownOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('materno')}
                         className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-rose-50 hover:text-rose-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
                         Plan Materno Infantil
                       </button>
                       <button
-                        onClick={() => {
-                          router.push('/?tab=cobertura-farmacias');
-                          setIsCoberturasDropdownOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('cobertura-farmacias')}
                         className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-emerald-50 hover:text-emerald-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                         Cobertura en farmacias
                       </button>
                       <button
-                        onClick={() => {
-                          router.push('/?tab=cobertura-odontologia');
-                          setIsCoberturasDropdownOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('cobertura-odontologia')}
                         className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-cyan-50 hover:text-cyan-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
                         Cobertura odontología
                       </button>
                       <button
-                        onClick={() => {
-                          router.push('/?tab=nutricion-celiacos');
-                          setIsCoberturasDropdownOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('nutricion-celiacos')}
                         className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-amber-50 hover:text-amber-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                         Nutrición y Celíacos
                       </button>
                       <button
-                        onClick={() => {
-                          router.push('/?tab=protesis');
-                          setIsCoberturasDropdownOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('protesis')}
                         className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-purple-50 hover:text-purple-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
                         Prótesis y Órtesis
                       </button>
                       <button
-                        onClick={() => {
-                          router.push('/?tab=subsidio-sepelios');
-                          setIsCoberturasDropdownOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('subsidio-sepelios')}
                         className="w-full text-left px-4 py-2 text-[13px] font-bold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
@@ -357,70 +352,49 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                   {isMobileCoberturasOpen && (
                     <div className="pl-6 space-y-1 animate-in fade-in duration-200">
                       <button
-                        onClick={() => {
-                          router.push('/?tab=coberturas-planes');
-                          setIsMobileMenuOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('coberturas-planes')}
                         className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-blue-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                         Ver coberturas y planes
                       </button>
                       <button
-                        onClick={() => {
-                          router.push('/?tab=materno');
-                          setIsMobileMenuOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('materno')}
                         className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-rose-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
                         Plan Materno Infantil
                       </button>
                       <button
-                        onClick={() => {
-                          router.push('/?tab=cobertura-farmacias');
-                          setIsMobileMenuOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('cobertura-farmacias')}
                         className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-emerald-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                         Cobertura en farmacias
                       </button>
                       <button
-                        onClick={() => {
-                          router.push('/?tab=cobertura-odontologia');
-                          setIsMobileMenuOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('cobertura-odontologia')}
                         className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-cyan-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
                         Cobertura odontología
                       </button>
                       <button
-                        onClick={() => {
-                          router.push('/?tab=nutricion-celiacos');
-                          setIsMobileMenuOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('nutricion-celiacos')}
                         className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                         Nutrición y Celíacos
                       </button>
                       <button
-                        onClick={() => {
-                          router.push('/?tab=protesis');
-                          setIsMobileMenuOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('protesis')}
                         className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-purple-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
                         Prótesis y Órtesis
                       </button>
                       <button
-                        onClick={() => {
-                          router.push('/?tab=subsidio-sepelios');
-                          setIsMobileMenuOpen(false);
-                        }}
+                        onClick={() => handleSubMenuClick('subsidio-sepelios')}
                         className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-indigo-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
