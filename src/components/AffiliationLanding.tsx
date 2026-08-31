@@ -57,10 +57,6 @@ export const AffiliationLanding: React.FC<AffiliationLandingProps> = ({ onGoToFo
 
         {/* Soft Institutional Header */}
         <div className="bg-gradient-to-r from-sky-50/90 via-blue-50/70 to-slate-50 rounded-2xl p-6 sm:p-10 border border-sky-200/80 shadow-2xs space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-sky-200 text-sky-800 text-xs font-semibold rounded-md shadow-2xs">
-            <UserCheck className="w-3.5 h-3.5 text-sky-600" />
-            <span>Departamento de Servicios Sociales • CPCE Cámara I</span>
-          </div>
           <h1 className="font-heading text-2xl sm:text-4xl font-bold text-slate-900 tracking-tight">
             Afiliación e Incorporación al DSS
           </h1>
