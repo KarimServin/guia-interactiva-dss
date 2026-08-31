@@ -552,7 +552,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
                 onClose();
               }
             }}
-            className="md:hidden fixed bottom-0 inset-x-0 z-50 flex flex-col bg-white rounded-t-[28px] shadow-2xl overflow-hidden border-t border-white/20"
+            className="md:hidden fixed bottom-0 inset-x-0 z-50 flex flex-col bg-white rounded-t-[28px] shadow-2xl overflow-hidden"
             style={{ maxHeight: '92dvh' }}
           >
             {content}
