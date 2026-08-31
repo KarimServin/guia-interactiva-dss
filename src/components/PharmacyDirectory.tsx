@@ -119,11 +119,22 @@ export const PharmacyDirectory: React.FC = () => {
                 Para autorizar el consumo continuo de medicamentos en patologías crónicas, el afiliado deberá presentar en la administración del DSS una <strong className="text-slate-800">Historia Clínica del médico tratante</strong> (validez por 180 días) para análisis de la Auditoría Médica.
               </p>
             </div>
-            <div className="bg-rose-50/80 p-3 rounded-2xl border border-rose-100 space-y-1">
-              <strong className="text-rose-950 font-bold block">Pastillas Anticonceptivas (Cobertura 100%):</strong>
+            <div className="bg-rose-50/80 p-4 rounded-2xl border border-rose-100 space-y-2">
+              <strong className="text-rose-950 font-bold block text-xs">Cobertura de Anticonceptivos:</strong>
               <p className="text-rose-900 text-[11px] leading-relaxed">
-                Cobertura total de anticonceptivos orales incluidos en el vademécum (Plan Básico y Ampliado), <strong className="font-bold">sin necesidad de receta médica</strong>. El único requisito es completar la ficha de tratamiento prolongado (vigencia anual). Una vez cargada en el sistema del Colegio de Farmacéuticos, la afiliada retira directamente en la farmacia.
+                La cobertura de medicamentos anticonceptivos puede gestionarse de las siguientes maneras:
               </p>
+              <div className="space-y-1.5 pt-1 text-[11px] text-rose-950">
+                <p>
+                  <strong className="font-bold">• Con receta médica (60%):</strong> Cobertura del 60% cuando son adquiridos en farmacias convenidas, mediante la correspondiente receta médica y de acuerdo con el listado de medicamentos incluidos en la cobertura.
+                </p>
+                <p>
+                  <strong className="font-bold">• Con ficha electrónica de anticoncepción (100%):</strong> Cobertura del 100% mediante una ficha electrónica confeccionada por su médico/a ginecólogo/a. Una vez aprobada por la Obra Social y vigente, no será necesario presentar una receta adicional para cada dispensa.
+                </p>
+                <p className="text-[10.5px] font-bold text-rose-900 pt-1 border-t border-rose-200/60">
+                  Importante: La cobertura del 100% requiere que la ficha electrónica haya sido previamente confeccionada, aprobada y se encuentre vigente.
+                </p>
+              </div>
             </div>
           </div>
         </div>

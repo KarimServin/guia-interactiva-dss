@@ -257,8 +257,8 @@ export const ACTION_MODULES: ActionModule[] = [
     id: 'anticonceptivas',
     buttonNumber: 6,
     title: 'Pastillas anticonceptivas',
-    verbTitle: 'Cobertura de pastillas anticonceptivas',
-    shortDesc: 'Cobertura total (100%) para anticonceptivos orales del vademécum con ficha de vigencia anual, sin necesidad de receta.',
+    verbTitle: 'Cobertura de anticonceptivos',
+    shortDesc: 'Cobertura del 60% con receta médica en farmacias convenidas o 100% con Ficha Electrónica de Anticoncepción previa y vigente.',
     iconName: 'HeartPulse',
     colorClass: {
       bg: 'bg-white',
@@ -268,31 +268,33 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-rose-600 text-white'
     },
     details: {
-      summary: 'Las afiliadas obtienen cobertura del 100% en anticonceptivos orales del vademécum. Para acceder, solo es necesario completar una vez al año la ficha de tratamiento prolongado en el DSS.',
+      summary: 'La cobertura de medicamentos anticonceptivos puede gestionarse de dos maneras: Con receta médica (60% de cobertura en farmacias convenidas según el listado) o Con Ficha Electrónica de Anticoncepción (100% de cobertura mediante ficha confeccionada por su ginecólogo/a y aprobada previamente por la Obra Social).',
       highlights: [
-        'Cobertura Total (100%): Cobertura total de anticonceptivos orales incluidos en el vademécum.',
-        'Sin Receta Médica en Farmacia: No requiere receta mensual tras la habilitación anual.',
-        'Ficha de Tratamiento Prolongado: Requisito administrativo anual cargado en el DSS.'
+        'Con Receta Médica (60%): Cobertura del 60% adquiridos en farmacias convenidas, mediante la receta correspondiente y de acuerdo con el listado incluido.',
+        'Con Ficha Electrónica (100%): Cobertura del 100% mediante ficha electrónica confeccionada por médico/a ginecólogo/a y aprobada por la Obra Social.',
+        'Sin Receta Adicional con Ficha Vigente: Una vez aprobada y vigente, no es necesario presentar receta adicional para cada dispensa.',
+        'Importante: La cobertura del 100% requiere que la ficha electrónica haya sido previamente confeccionada, aprobada y se encuentre vigente.'
       ],
       steps: [
         { 
           step: 1, 
-          title: 'Completá la Ficha de Tratamiento', 
-          desc: 'Solicitá y completá la ficha de tratamiento prolongado anual en la administración del DSS.' 
+          title: 'Con Receta Médica (60%)', 
+          desc: 'Presentá tu receta médica en farmacias convenidas para acceder a la cobertura del 60% de los medicamentos incluidos.' 
         },
         { 
           step: 2, 
-          title: 'Carga en Sistema', 
-          desc: 'Una vez cargada en el sistema del Colegio de Farmacéuticos, se habilita la cobertura total.' 
+          title: 'Con Ficha Electrónica (100%)', 
+          desc: 'Solicitá a tu médico/a ginecólogo/a la confección de la ficha electrónica de anticoncepción para su evaluación y aprobación previa por la Obra Social.' 
         },
         { 
           step: 3, 
-          title: 'Retiro Directo', 
-          desc: 'Retirá las pastillas anticonceptivas del vademécum directamente en la farmacia con tu credencial.' 
+          title: 'Retiro con Ficha Vigente', 
+          desc: 'Con la ficha aprobada y vigente, el anticonceptivo indicado contará con 100% de cobertura sin requerir recetas adicionales para cada dispensa.' 
         }
       ],
       faqs: [
-        { q: '¿Es necesario presentar receta médica en la farmacia?', a: 'No, no se necesita receta médica mensual. Solo se requiere la ficha de tratamiento prolongado anual.' }
+        { q: '¿Cómo obtengo el 60% de cobertura en anticonceptivos?', a: 'Los anticonceptivos tienen una cobertura del 60% cuando son adquiridos en farmacias convenidas, mediante la correspondiente receta médica y de acuerdo con el listado de medicamentos incluidos en la cobertura.' },
+        { q: '¿Cómo accedo a la cobertura del 100% en anticonceptivos?', a: 'El afiliado puede acceder a una cobertura del 100% mediante una ficha electrónica confeccionada por su médico/a ginecólogo/a. Una vez aprobada por la Obra Social y vigente, contará con 100% de cobertura sin necesidad de receta adicional mientras permanezca vigente.' }
       ],
       relatedFormIds: [],
       quickActionLabel: 'Ver Vademécum de Anticonceptivos',
