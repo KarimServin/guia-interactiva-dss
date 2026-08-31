@@ -107,7 +107,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
       </div>
 
       {/* Main Navbar Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-6">
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-6">
         {/* Brand & Identity */}
         <div className="flex items-center gap-4 sm:gap-6">
           <button 
