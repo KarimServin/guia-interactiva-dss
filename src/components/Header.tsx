@@ -233,7 +233,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                         className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        Farmacias Adheridas
+                        Cobertura en Farmacias
                       </button>
                     </div>
                   )}
@@ -365,7 +365,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                         className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-emerald-700 transition-colors flex items-center gap-2"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        Farmacias Adheridas
+                        Cobertura en Farmacias
                       </button>
                     </div>
                   )}

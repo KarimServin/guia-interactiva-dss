@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "Servicios Sociales",
     "Cobertura Médica",
     "Cartilla Médica Santa Fe",
-    "Farmacias Adheridas DSS",
+    "Cobertura en Farmacias DSS",
     "Credencial Digital DSS",
     "Coseguros CPCE",
     "Ciencias Económicas Santa Fe"
