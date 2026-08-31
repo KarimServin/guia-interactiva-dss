@@ -562,7 +562,118 @@ export const ACTION_MODULES: ActionModule[] = [
   }
 ];
 
-export const FORMS_DATA: FormItem[] = [];
+export const FORMS_DATA: FormItem[] = [
+  {
+    id: 'FORM-01',
+    code: 'DSS-FORM-01',
+    title: 'Solicitud de Afiliación Directa',
+    category: 'Afiliación',
+    description: 'Formulario oficial de incorporación e inscripción al Departamento de Servicios Sociales (DSS) para matriculados.',
+    requiredDocs: ['Fotocopia de DNI (frente y dorso)', 'Constancia de matriculación emitida por CPCE Santa Fe Cámara I'],
+    estimatedDays: '24 a 48 hs hábiles',
+    isFillable: false,
+    fileUrl: '/formularios/afiliacion.pdf'
+  },
+  {
+    id: 'FORM-02',
+    code: 'DSS-FORM-02',
+    title: 'Declaración Jurada de Salud',
+    category: 'Afiliación',
+    description: 'Declaración jurada obligatoria de antecedentes médicos de salud para el titular y su grupo familiar a incorporar.',
+    requiredDocs: ['Firmado por el titular matriculado', 'Estudios médicos complementarios (si corresponde)'],
+    estimatedDays: '24 a 48 hs hábiles',
+    isFillable: false,
+    fileUrl: '/formularios/Formulario DD JJ Salud.pdf'
+  },
+  {
+    id: 'FORM-03',
+    code: 'DSS-FORM-03',
+    title: 'Actualización de Datos Personales y Familiares',
+    category: 'Afiliación',
+    description: 'Formulario para actualizar datos de contacto, grupo familiar, estado civil o información personal en el DSS.',
+    requiredDocs: ['Documentación respaldatoria del cambio (DNI, actas, etc.)'],
+    estimatedDays: '24 a 48 hs hábiles',
+    isFillable: false,
+    fileUrl: '/formularios/Actualizacion de datos DSS.pdf'
+  },
+  {
+    id: 'FORM-04',
+    code: 'DSS-FORM-04',
+    title: 'Declaración de Cambio de Domicilio',
+    category: 'Afiliación',
+    description: 'Trámite de notificación y cambio de domicilio particular o laboral para actualización en la base del DSS.',
+    requiredDocs: ['Constancia o certificado de domicilio / Servicio a su nombre'],
+    estimatedDays: '24 hs hábiles',
+    isFillable: false,
+    fileUrl: '/formularios/Cambio de Domicilio.pdf'
+  },
+  {
+    id: 'FORM-05',
+    code: 'DSS-FORM-05',
+    title: 'Solicitud de Cambio de Plan de Cobertura',
+    category: 'Afiliación',
+    description: 'Formulario para solicitar la modificación o pase entre los distintos planes de salud del DSS.',
+    requiredDocs: ['Nota firmada por el titular solicitando la modificación del plan'],
+    estimatedDays: '48 a 72 hs hábiles',
+    isFillable: false,
+    fileUrl: '/formularios/Cambio de Plan.pdf'
+  },
+  {
+    id: 'FORM-06',
+    code: 'DSS-FORM-06',
+    title: 'Solicitud de Prescripción / Autorización Médica',
+    category: 'Autorizaciones',
+    description: 'Formulario para la solicitud y autorización previa de prestaciones médicas, estudios y prácticas complejas.',
+    requiredDocs: ['Orden o prescripción médica del profesional tratante'],
+    estimatedDays: '24 a 48 hs hábiles',
+    isFillable: false,
+    fileUrl: '/formularios/pmedica.pdf'
+  },
+  {
+    id: 'FORM-07',
+    code: 'DSS-FORM-07',
+    title: 'Solicitud de Cobertura Oncológica',
+    category: 'Medicamentos',
+    description: 'Formulario especial para la auditoría médica y provisión de medicamentos y tratamientos de oncología con cobertura especial.',
+    requiredDocs: ['Resumen de Historia Clínica elaborado por oncólogo tratante', 'Protocolo del tratamiento prescripto'],
+    estimatedDays: '48 a 72 hs hábiles (Auditoría Médica)',
+    isFillable: false,
+    fileUrl: '/formularios/oncologia.pdf'
+  },
+  {
+    id: 'FORM-08',
+    code: 'DSS-FORM-08',
+    title: 'Ficha Odontológica Oficial',
+    category: 'Autorizaciones',
+    description: 'Planilla para registro de odontograma, diagnóstico y solicitud de prácticas odontológicas en prestadores de convenio.',
+    requiredDocs: ['Completado y firmado por el odontólogo prestador'],
+    estimatedDays: 'Inmediato / Auditoría según práctica',
+    isFillable: false,
+    fileUrl: '/formularios/Ficha odontologica.pdf'
+  },
+  {
+    id: 'FORM-09',
+    code: 'DSS-FORM-09',
+    title: 'Solicitud de Cobertura en Ortodoncia',
+    category: 'Autorizaciones',
+    description: 'Formulario de auditoría médica para inicio y plan de tratamiento ortodóncico de afiliados.',
+    requiredDocs: ['Diagnóstico del especialista ortodoncista', 'Estudios cefalométricos y trazados iniciales'],
+    estimatedDays: '3 a 5 días hábiles',
+    isFillable: false,
+    fileUrl: '/formularios/ortodoncia.pdf'
+  },
+  {
+    id: 'FORM-10',
+    code: 'DSS-FORM-10',
+    title: 'Solicitud de Subsidio por Guardería',
+    category: 'Subsidios',
+    description: 'Solicitud de reintegro o subsidio por gastos de guardería e institución maternal para hijos de afiliados.',
+    requiredDocs: ['Factura / Recibo oficial de la institución educativa o guardería', 'Partida de nacimiento del menor'],
+    estimatedDays: '5 a 7 días hábiles',
+    isFillable: false,
+    fileUrl: '/formularios/guarderia.pdf'
+  }
+];
 
 export const MEDICAL_PROVIDERS: MedicalProvider[] = [];
 

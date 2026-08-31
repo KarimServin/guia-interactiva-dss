@@ -302,16 +302,16 @@ export const FormsCenter: React.FC<FormsCenterProps> = ({ initialFormId }) => {
               </div>
 
               {/* Action buttons */}
-              <div className="pt-4 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div className={`pt-4 border-t border-slate-100 ${f.isFillable ? 'grid grid-cols-1 sm:grid-cols-2 gap-2.5' : 'flex'}`}>
                 {f.fileUrl ? (
                   <a
                     href={f.fileUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     download
-                    className="py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-sm"
+                    className={`py-2.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-full font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md ${f.isFillable ? '' : 'w-full'}`}
                   >
-                    <Download className="w-4 h-4 text-white" />
+                    <Download className="w-4 h-4 text-sky-200" />
                     Descargar PDF Oficial
                   </a>
                 ) : (
