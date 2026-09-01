@@ -148,57 +148,54 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
   const hasSteps = !!(module.details.steps && module.details.steps.length > 0);
   const hasFaqs = !!(module.details.faqs && module.details.faqs.length > 0);
 
-  // Friendly, clean institutional color palette (pleasant blues/indigos)
-  const headerBgGradient = "from-blue-600 via-blue-700 to-indigo-700";
-
   const content = (
     <>
       {/* ── Drag Handle Bar (Mobile Drag Target) ── */}
       <div 
         onPointerDown={(e) => dragControls.start(e)}
-        className="md:hidden flex justify-center py-2.5 shrink-0 bg-blue-700 touch-none cursor-grab active:cursor-grabbing border-b border-white/10"
+        className="md:hidden flex justify-center py-2.5 shrink-0 bg-sky-100/90 touch-none cursor-grab active:cursor-grabbing border-b border-sky-200/80"
       >
-        <div className="w-12 h-1.5 rounded-full bg-white/40 group-active:bg-white/60 transition-colors" />
+        <div className="w-12 h-1.5 rounded-full bg-slate-400/60 group-active:bg-slate-500 transition-colors" />
       </div>
 
       {/* ── Desktop Top Close Bar ── */}
       <div 
         onPointerDown={(e) => dragControls.start(e)}
-        className="hidden md:flex items-center justify-between px-6 py-3 bg-blue-700 shrink-0 touch-none border-b border-white/15"
+        className="hidden md:flex items-center justify-between px-6 py-3 bg-sky-100/90 shrink-0 touch-none border-b border-sky-200/80"
       >
-        <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
-          <ShieldCheck className="w-4 h-4 text-sky-300" />
+        <div className="flex items-center gap-2 text-slate-800 text-xs font-bold">
+          <ShieldCheck className="w-4 h-4 text-blue-600" />
           <span>Información de Cobertura DSS</span>
         </div>
         <button
           onClick={onClose}
-          className="p-1.5 rounded-xl bg-white/15 hover:bg-white/30 text-white transition-all cursor-pointer"
+          className="p-1.5 rounded-xl bg-white hover:bg-sky-200/60 text-slate-700 border border-sky-200/80 shadow-2xs transition-all cursor-pointer"
           aria-label="Cerrar panel"
         >
           <X className="w-4 h-4" />
         </button>
       </div>
 
-      {/* ── Panel Header ── */}
+      {/* ── Panel Header: Celeste Claro Pastel y Suave ── */}
       <div 
         onPointerDown={(e) => dragControls.start(e)}
-        className={`shrink-0 bg-gradient-to-r ${headerBgGradient} px-6 py-5 md:py-6 cursor-grab active:cursor-grabbing touch-none select-none text-white shadow-xs`}
+        className="shrink-0 bg-gradient-to-r from-sky-50 via-blue-50/90 to-sky-100/80 border-b border-sky-200/80 px-6 py-5 md:py-6 cursor-grab active:cursor-grabbing touch-none select-none shadow-2xs"
       >
         <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0 space-y-1">
-            <span className="inline-block text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-white/20 text-white border border-white/20 backdrop-blur-xs">
+          <div className="min-w-0 space-y-1.5">
+            <span className="inline-block text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-blue-100/90 text-blue-800 border border-blue-200/80">
               {module.title}
             </span>
-            <h2 className="text-lg md:text-xl font-extrabold text-white leading-snug tracking-tight">
+            <h2 className="text-lg md:text-xl font-extrabold text-slate-900 leading-snug tracking-tight">
               {module.verbTitle}
             </h2>
-            <p className="text-xs text-blue-100 font-medium">
+            <p className="text-xs text-slate-600 font-medium">
               DSS · CPCE Santa Fe · Cámara I
             </p>
           </div>
           <button
             onClick={onClose}
-            className="md:hidden p-2 rounded-xl bg-white/20 hover:bg-white/35 text-white transition-colors shrink-0 mt-0.5 cursor-pointer"
+            className="md:hidden p-2 rounded-xl bg-white hover:bg-sky-200/60 text-slate-700 border border-sky-200/80 shadow-2xs transition-colors shrink-0 mt-0.5 cursor-pointer"
             aria-label="Cerrar panel"
           >
             <X className="w-4 h-4" />
@@ -313,7 +310,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
               {module.details.coberturaTable.map((item, idx) => {
                 if (item.isHeader) {
                   return (
-                    <div key={idx} className="bg-blue-700 text-white px-3 py-1.5 rounded-xl font-bold text-[10px] uppercase tracking-wider mt-3">
+                    <div key={idx} className="bg-slate-800 text-white px-3 py-1.5 rounded-xl font-bold text-[10px] uppercase tracking-wider mt-3">
                       {item.prestacion}
                     </div>
                   );
@@ -338,7 +335,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
             {/* Desktop View: Table */}
             <div className="hidden sm:block overflow-x-auto rounded-2xl border border-slate-200 shadow-2xs">
               <table className="w-full text-xs border-collapse min-w-[460px]">
-                <thead className="bg-blue-700 text-white font-bold">
+                <thead className="bg-slate-800 text-white font-bold">
                   <tr>
                     <th className="py-2.5 px-3 text-left">Prestación</th>
                     <th className="py-2.5 px-3 text-left">Descripción</th>
@@ -374,12 +371,12 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
 
         {/* 6. APP MOBILE DOWNLOAD (SI APLICA) */}
         {module.details.appLinks && (
-          <div className="rounded-2xl bg-gradient-to-r from-blue-700 to-indigo-800 p-5 text-white shadow-xs space-y-3">
+          <div className="rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 p-5 text-white shadow-2xs space-y-3">
             <div className="flex items-center gap-2">
-              <Smartphone className="w-5 h-5 text-sky-300 shrink-0" />
+              <Smartphone className="w-5 h-5 text-sky-100 shrink-0" />
               <p className="text-xs sm:text-sm font-bold text-white">Credencial Digital en tu Celular</p>
             </div>
-            <p className="text-xs text-blue-100 leading-relaxed">
+            <p className="text-xs text-sky-50 leading-relaxed">
               Descargá la app oficial para acceder a tu credencial digital y la de tu grupo familiar.
             </p>
             <div className="flex flex-col sm:flex-row gap-2.5 pt-1">
@@ -399,9 +396,9 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
                   href={module.details.appLinks.ios}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all shadow-xs"
+                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-sky-50 text-blue-800 font-bold text-xs transition-all shadow-xs"
                 >
-                  <Download className="w-3.5 h-3.5" />
+                  <Download className="w-3.5 h-3.5 text-blue-600" />
                   Obtener para iOS
                 </a>
               )}
@@ -426,12 +423,12 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
 
       </div>
 
-      {/* ── FOOTER CTA (BOTÓN AMIGABLE AZUL) ── */}
+      {/* ── FOOTER CTA (BOTÓN SUAVE Y ELEGANTE) ── */}
       {module.details.quickActionLabel && module.details.quickActionTarget && (
         <div className="shrink-0 p-4 bg-white border-t border-slate-200/80 shadow-md">
           <button
             onClick={() => { onClose(); onQuickAction(module.details.quickActionTarget!); }}
-            className="w-full flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs sm:text-sm font-bold transition-all shadow-sm active:scale-[0.98] cursor-pointer"
+            className="w-full flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-sky-600 hover:from-sky-600 hover:to-blue-700 text-white text-xs sm:text-sm font-bold transition-all shadow-2xs active:scale-[0.98] cursor-pointer"
           >
             {module.details.quickActionLabel}
             <ArrowRight className="w-4 h-4" />
