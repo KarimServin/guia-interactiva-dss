@@ -62,6 +62,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
   const handleNavClick = (id: string) => {
     if (id === 'cartilla') {
       router.push('/cartilla');
+    } else if (id === 'afiliacion') {
+      router.push('/afiliacion');
     } else if (id === 'guia') {
       router.push('/');
     } else if (id === 'vademecum') {
