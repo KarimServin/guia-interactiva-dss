@@ -313,8 +313,14 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
       </div>
 
       {/* Mobile Menu Dropdown */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200/60 bg-white/95 backdrop-blur-xl px-3.5 py-3 space-y-1 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200">
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen
+            ? 'max-h-[600px] opacity-100'
+            : 'max-h-0 opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="border-b border-slate-200/60 bg-white/95 backdrop-blur-xl px-3.5 py-3 space-y-1 shadow-2xl">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isVademecum = item.id === 'vademecum';
@@ -477,7 +483,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
             );
           })}
         </div>
-      )}
+      </div>
     </header>
   );
 };
