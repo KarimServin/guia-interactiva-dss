@@ -33,31 +33,6 @@ export default function HomePage() {
   const [showAutorizadorModal, setShowAutorizadorModal] = useState<boolean>(false);
   const [targetFormForCenter, setTargetFormForCenter] = useState<string | null>(null);
 
-  // Sync tab state from query parameter on mount & navigation
-  useEffect(() => {
-    const syncTabFromUrl = () => {
-      if (typeof window !== 'undefined') {
-        const params = new URLSearchParams(window.location.search);
-        const tab = params.get('tab');
-        if (tab) {
-          if (tab === 'cartilla') {
-            router.replace('/cartilla');
-          } else if (tab === 'vademecum' || tab === 'farmacias') {
-            setActiveTab('cobertura-farmacias');
-          } else if (tab === 'cuotas') {
-            router.replace('/cuotas');
-          } else {
-            setActiveTab(tab);
-          }
-        }
-      }
-    };
-
-    syncTabFromUrl();
-    window.addEventListener('popstate', syncTabFromUrl);
-    return () => window.removeEventListener('popstate', syncTabFromUrl);
-  }, [router]);
-
   // Quick Action Handler inside Module Modal
   const handleQuickAction = (target: string) => {
     if (target.startsWith('http')) {
@@ -68,10 +43,8 @@ export default function HomePage() {
       router.push('/cartilla');
     } else if (target === 'vademecum' || target === 'farmacias') {
       setActiveTab('cobertura-farmacias');
-      router.push('/?tab=cobertura-farmacias');
     } else if (target === 'formularios') {
       setActiveTab('formularios');
-      router.push('/?tab=formularios');
     } else if (target === 'autorizador') {
       setShowAutorizadorModal(true);
     } else if (target === 'coseguro-tabla') {

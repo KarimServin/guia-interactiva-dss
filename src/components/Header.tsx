@@ -50,7 +50,6 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
     if (onSelectNav) {
       onSelectNav(subTabKey);
     }
-    router.push(`/?tab=${subTabKey}`);
 
     setTimeout(() => {
       const el = document.getElementById('coberturas-tab-content') || document.getElementById('coberturas-content');
@@ -73,8 +72,6 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
       return;
     } else if (id === 'cuotas') {
       router.push('/cuotas');
-    } else {
-      router.push(`/?tab=${id}`);
     }
 
     if (onSelectNav) {
@@ -154,24 +151,24 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                   <button
                     id="nav-coberturas-trigger"
                     onClick={() => handleNavClick(item.id)}
-                    className={`flex items-center gap-1.5 px-3.5 py-2 text-xs lg:text-[13px] font-bold rounded-full transition-all duration-200 group cursor-pointer ${
+                    className={`flex items-center gap-1.5 px-3.5 py-2 text-xs lg:text-[13px] font-bold rounded-full transition-all duration-150 group cursor-pointer ${
                       isActive 
                         ? 'bg-gradient-to-r from-slate-800 to-indigo-900 text-white shadow-xs' 
                         : 'text-slate-800 bg-transparent hover:bg-slate-800 hover:text-white'
                     }`}
                   >
-                    <Icon className={`w-4 h-4 shrink-0 transition-colors duration-250 ${
+                    <Icon className={`w-4 h-4 shrink-0 transition-colors duration-150 ${
                       isActive ? 'text-white' : 'text-blue-600 group-hover:text-white'
                     }`} />
                     <span>{item.label}</span>
-                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-250 ${
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${
                       isCoberturasDropdownOpen ? 'rotate-180' : ''
                     }`} />
                   </button>
 
                   {/* Dropdown Card */}
                   {isCoberturasDropdownOpen && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
                       <button
                         onClick={() => handleSubMenuClick('coberturas-planes')}
                         className="w-full text-left px-4 py-2 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
@@ -237,24 +234,24 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                 >
                   <button
                     id="nav-vademecum-trigger"
-                    className={`flex items-center gap-1.5 px-3.5 py-2 text-xs lg:text-[13px] font-bold rounded-full transition-all duration-200 group cursor-pointer ${
+                    className={`flex items-center gap-1.5 px-3.5 py-2 text-xs lg:text-[13px] font-bold rounded-full transition-all duration-150 group cursor-pointer ${
                       isActive 
                         ? 'bg-gradient-to-r from-slate-800 to-indigo-900 text-white shadow-xs' 
                         : 'text-slate-800 bg-transparent hover:bg-slate-800 hover:text-white'
                     }`}
                   >
-                    <Icon className={`w-4 h-4 shrink-0 transition-colors duration-250 ${
+                    <Icon className={`w-4 h-4 shrink-0 transition-colors duration-150 ${
                       isActive ? 'text-white' : 'text-blue-600 group-hover:text-white'
                     }`} />
                     <span>{item.label}</span>
-                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-250 ${
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-150 ${
                       isVademecumDropdownOpen ? 'rotate-180' : ''
                     }`} />
                   </button>
 
                   {/* Dropdown Card */}
                   {isVademecumDropdownOpen && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-56 bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-56 bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
                       <button
                         onClick={() => {
                           router.push('/vademecum/basico');
@@ -285,7 +282,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`flex items-center gap-2 px-3.5 py-2 text-xs lg:text-[13px] font-bold rounded-full transition-all duration-200 active:scale-95 group cursor-pointer ${
+                className={`flex items-center gap-2 px-3.5 py-2 text-xs lg:text-[13px] font-bold rounded-full transition-all duration-150 active:scale-95 group cursor-pointer ${
                   isActive 
                     ? 'bg-blue-600 text-white shadow-xs' 
                     : 'text-slate-800 bg-transparent hover:bg-blue-600 hover:text-white'
@@ -314,7 +311,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
 
       {/* Mobile Menu Dropdown */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`md:hidden overflow-hidden transition-all duration-[180ms] ease-in-out ${
           isMobileMenuOpen
             ? 'max-h-[600px] opacity-100'
             : 'max-h-0 opacity-0 pointer-events-none'
