@@ -46,6 +46,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Main Title & Subtitle */}
         <div className="text-center max-w-3xl mx-auto mb-8">
+          <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-sky-700/90 mb-2">
+            Bienvenido al Portal DSS
+          </p>
           <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 text-slate-900">
             Guía Interactiva para Afiliados
           </h1>
