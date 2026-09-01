@@ -53,11 +53,11 @@ export const Footer: React.FC = () => {
                 <span className="leading-snug pt-1">San Lorenzo 1849 – Santa Fe – Cámara I</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <div className="w-6 h-6 shrink-0 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 shrink-0 aspect-square">
-                    <path fill="#25D366" d="M12 2A10 10 0 0 0 2 12c0 1.77.46 3.44 1.27 4.9L2 22l5.22-1.37A9.95 9.95 0 0 0 12 22a10 10 0 0 0 10-10A10 10 0 0 0 12 2zm5.41 13.06c-.24.67-1.38 1.28-1.93 1.33-.5.05-1.15.08-3.32-.82-2.78-1.16-4.57-3.99-4.71-4.17-.14-.19-1.13-1.51-1.13-2.88 0-1.37.72-2.04.97-2.32.26-.27.56-.34.75-.34.19 0 .37.01.54.01.17.01.4-.07.62.48.23.56.78 1.9.85 2.04.07.14.11.29.02.48-.09.19-.14.3-.27.46-.14.17-.29.36-.41.48-.14.14-.28.29-.12.56.16.28.71 1.17 1.52 1.9.69.62 1.27.87 1.58 1.01.31.14.48.11.66-.09.18-.21.78-.91.99-1.22.21-.31.42-.26.7-.15.28.11 1.8.85 2.11 1c.31.16.52.23.6.36.07.13.07.75-.17 1.42z" />
-                  </svg>
-                </div>
+                <img 
+                  src="/whatsapp-logo.png" 
+                  alt="WhatsApp" 
+                  className="w-6 h-6 object-contain shrink-0" 
+                />
                 <a href="https://wa.me/5493425105675" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-700 transition-colors font-bold text-slate-800">
                   (342) 510-5675
                 </a>
