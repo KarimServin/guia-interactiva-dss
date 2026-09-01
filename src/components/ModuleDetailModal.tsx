@@ -19,6 +19,7 @@ import {
   Info,
   BookOpen,
   MessageCircle,
+  ShieldCheck,
 } from 'lucide-react';
 
 interface ModuleDetailModalProps {
@@ -29,7 +30,7 @@ interface ModuleDetailModalProps {
 }
 
 /* ─────────────────────────────────────────
-   Link renderer helpers (unchanged logic)
+   Link renderer helpers
 ───────────────────────────────────────── */
 const parsePlainUrls = (text: string): (string | React.ReactNode)[] => {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -52,7 +53,7 @@ const parsePlainUrls = (text: string): (string | React.ReactNode)[] => {
             rel="noopener noreferrer"
             className={
               isWa
-                ? "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all mx-1 no-underline shadow-sm"
+                ? "inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all mx-1 no-underline shadow-xs"
                 : "text-blue-600 hover:text-blue-800 underline font-semibold break-all inline-flex items-center gap-1 transition-colors mx-0.5"
             }
           >
@@ -89,7 +90,7 @@ const renderTextWithLinks = (text: string) => {
         rel="noopener noreferrer"
         className={
           isWa
-            ? "inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all mx-1 no-underline shadow-sm"
+            ? "inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all mx-1 no-underline shadow-xs"
             : "text-blue-600 hover:text-blue-800 underline font-semibold inline-flex items-center gap-1 transition-colors mx-0.5"
         }
       >
@@ -106,29 +107,6 @@ const renderTextWithLinks = (text: string) => {
 };
 
 /* ─────────────────────────────────────────
-   Tab pill component
-───────────────────────────────────────── */
-interface TabBtnProps {
-  active: boolean;
-  onClick: () => void;
-  icon: React.ReactNode;
-  label: string;
-}
-const TabBtn: React.FC<TabBtnProps> = ({ active, onClick, icon, label }) => (
-  <button
-    onClick={onClick}
-    className={`relative flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
-      active
-        ? 'bg-white text-slate-950 shadow-md font-extrabold scale-[1.02]'
-        : 'bg-white/15 hover:bg-white/25 text-white/95 font-semibold backdrop-blur-md border border-white/25 hover:border-white/40'
-    }`}
-  >
-    {icon}
-    {label}
-  </button>
-);
-
-/* ─────────────────────────────────────────
    Main Sheet component
 ───────────────────────────────────────── */
 export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
@@ -137,14 +115,12 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
   onOpenForm,
   onQuickAction,
 }) => {
-  const [activeTab, setActiveTab] = useState<'info' | 'pasos' | 'faqs'>('info');
   const scrollRef = useRef<HTMLDivElement>(null);
   const dragControls = useDragControls();
 
   useEffect(() => {
-    if (module) {
-      setActiveTab('info');
-      if (scrollRef.current) scrollRef.current.scrollTop = 0;
+    if (module && scrollRef.current) {
+      scrollRef.current.scrollTop = 0;
     }
   }, [module?.id]);
 
@@ -169,348 +145,293 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
 
   if (!module) return null;
 
-  const relatedForms = FORMS_DATA.filter(f =>
-    module.details.relatedFormIds?.includes(f.id)
-  );
   const hasSteps = !!(module.details.steps && module.details.steps.length > 0);
   const hasFaqs = !!(module.details.faqs && module.details.faqs.length > 0);
 
-  const accentColor =
-    module.colorClass.text.includes('emerald') || module.colorClass.text.includes('green')
-      ? 'from-emerald-600 to-teal-600'
-      : module.colorClass.text.includes('amber') || module.colorClass.text.includes('orange')
-      ? 'from-amber-500 to-orange-600'
-      : module.colorClass.text.includes('purple') || module.colorClass.text.includes('violet')
-      ? 'from-violet-600 to-purple-700'
-      : 'from-slate-900 via-slate-800 to-indigo-950';
+  // Friendly, clean institutional color palette (pleasant blues/indigos)
+  const headerBgGradient = "from-blue-600 via-blue-700 to-indigo-700";
 
   const content = (
     <>
-      {/* ── Drag Handle Bar (Mobile & Desktop Header Drag Target) ── */}
+      {/* ── Drag Handle Bar (Mobile Drag Target) ── */}
       <div 
         onPointerDown={(e) => dragControls.start(e)}
-        className="md:hidden flex justify-center py-3 shrink-0 bg-slate-900 touch-none cursor-grab active:cursor-grabbing border-b border-white/10"
+        className="md:hidden flex justify-center py-2.5 shrink-0 bg-blue-700 touch-none cursor-grab active:cursor-grabbing border-b border-white/10"
       >
         <div className="w-12 h-1.5 rounded-full bg-white/40 group-active:bg-white/60 transition-colors" />
       </div>
 
+      {/* ── Desktop Top Close Bar ── */}
       <div 
         onPointerDown={(e) => dragControls.start(e)}
-        className="hidden md:flex items-center justify-end px-5 py-2.5 bg-slate-900 shrink-0 touch-none cursor-grab active:cursor-grabbing border-b border-white/10"
+        className="hidden md:flex items-center justify-between px-6 py-3 bg-blue-700 shrink-0 touch-none border-b border-white/15"
       >
+        <div className="flex items-center gap-2 text-white/90 text-xs font-semibold">
+          <ShieldCheck className="w-4 h-4 text-sky-300" />
+          <span>Información de Cobertura DSS</span>
+        </div>
         <button
           onClick={onClose}
-          className="p-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer"
+          className="p-1.5 rounded-xl bg-white/15 hover:bg-white/30 text-white transition-all cursor-pointer"
           aria-label="Cerrar panel"
         >
           <X className="w-4 h-4" />
         </button>
       </div>
 
-      {/* ── Panel header ── */}
+      {/* ── Panel Header ── */}
       <div 
         onPointerDown={(e) => dragControls.start(e)}
-        className={`shrink-0 bg-gradient-to-r ${accentColor} px-5 pt-4 pb-5 md:pt-6 md:pb-6 cursor-grab active:cursor-grabbing touch-none select-none`}
+        className={`shrink-0 bg-gradient-to-r ${headerBgGradient} px-6 py-5 md:py-6 cursor-grab active:cursor-grabbing touch-none select-none text-white shadow-xs`}
       >
         <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <span className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-white/20 text-white/95 border border-white/20 mb-2 backdrop-blur-sm">
+          <div className="min-w-0 space-y-1">
+            <span className="inline-block text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-white/20 text-white border border-white/20 backdrop-blur-xs">
               {module.title}
             </span>
-            <h2 className="text-base md:text-lg font-extrabold text-white leading-snug tracking-tight">
+            <h2 className="text-lg md:text-xl font-extrabold text-white leading-snug tracking-tight">
               {module.verbTitle}
             </h2>
-            <p className="text-[11px] text-white/70 mt-1 font-normal">
+            <p className="text-xs text-blue-100 font-medium">
               DSS · CPCE Santa Fe · Cámara I
             </p>
           </div>
           <button
             onClick={onClose}
-            className="md:hidden p-2 rounded-xl bg-white/15 hover:bg-white/30 text-white transition-colors shrink-0 mt-0.5 cursor-pointer"
+            className="md:hidden p-2 rounded-xl bg-white/20 hover:bg-white/35 text-white transition-colors shrink-0 mt-0.5 cursor-pointer"
             aria-label="Cerrar panel"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
-
-        {/* Tab pills */}
-        {(hasSteps || hasFaqs) && (
-          <div className="bg-black/20 backdrop-blur-xl p-1.5 rounded-2xl border border-white/20 flex gap-2 mt-4 overflow-x-auto">
-            <TabBtn
-              active={activeTab === 'info'}
-              onClick={() => setActiveTab('info')}
-              icon={<Info className="w-3.5 h-3.5" />}
-              label="Info"
-            />
-            {hasSteps && (
-              <TabBtn
-                active={activeTab === 'pasos'}
-                onClick={() => setActiveTab('pasos')}
-                icon={<BookOpen className="w-3.5 h-3.5" />}
-                label="Paso a Paso"
-              />
-            )}
-            {hasFaqs && (
-              <TabBtn
-                active={activeTab === 'faqs'}
-                onClick={() => setActiveTab('faqs')}
-                icon={<MessageCircle className="w-3.5 h-3.5" />}
-                label="FAQs"
-              />
-            )}
-          </div>
-        )}
       </div>
 
-      <div ref={scrollRef} className="flex-1 overflow-y-auto overscroll-contain p-4 md:p-5 space-y-4">
+      {/* ── PANEL BODY CONTENT: VISTA CONTINUA Y DE CORRIDA ── */}
+      <div ref={scrollRef} className="flex-1 overflow-y-auto overscroll-contain p-5 md:p-6 space-y-6 bg-slate-50/50">
 
-        {/* TAB: Info */}
-        {activeTab === 'info' && (
-          <AnimatePresence mode="wait">
-            <motion.div
-              key="info"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.18 }}
-              className="space-y-4"
-            >
-              {module.details.summary && (
-                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 shadow-2xs">
-                  <p className="text-xs text-slate-700 leading-relaxed font-medium whitespace-pre-line">
-                    {renderTextWithLinks(module.details.summary)}
-                  </p>
-                </div>
-              )}
-
-              {module.details.highlights && module.details.highlights.length > 0 && (
-                <div>
-                  <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2.5 flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                    Aspectos Clave
-                  </h4>
-                  <div className="space-y-2">
-                    {module.details.highlights.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-200/80 shadow-sm">
-                        <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${accentColor} mt-1.5 shrink-0`} />
-                        <span className="text-xs text-slate-700 font-medium leading-relaxed">
-                          {renderTextWithLinks(item)}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* App Download */}
-              {module.details.appLinks && (
-                <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-blue-950 p-4 text-white">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Smartphone className="w-4 h-4 text-sky-400 shrink-0" />
-                    <p className="text-xs font-bold text-white">Credencial Digital en tu Celular</p>
-                  </div>
-                  <p className="text-[11px] text-slate-400 mb-3 leading-relaxed">
-                    Descargá la app oficial para acceder a tu credencial digital y la de tu grupo familiar.
-                  </p>
-                  <div className="flex flex-col gap-2">
-                    {module.details.appLinks.android && (
-                      <a
-                        href={module.details.appLinks.android}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all"
-                      >
-                        <Download className="w-3.5 h-3.5" />
-                        Obtener para Android
-                      </a>
-                    )}
-                    {module.details.appLinks.ios && (
-                      <a
-                        href={module.details.appLinks.ios}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all"
-                      >
-                        <Download className="w-3.5 h-3.5" />
-                        Obtener para iOS
-                      </a>
-                    )}
-                  </div>
-                </div>
-              )}
-
-              {/* Carencias Table (Fluid list for mobile & desktop - NO horizontal scroll) */}
-              {module.details.carenciasTable && module.details.carenciasTable.length > 0 && (
-                <div>
-                  <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2.5 flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                    Períodos de Carencia (Grupo Familiar)
-                  </h4>
-                  <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs divide-y divide-slate-100 overflow-hidden">
-                    {module.details.carenciasTable.map((item, idx) => (
-                      <div key={idx} className="p-3 flex items-center justify-between gap-3 hover:bg-slate-50/70 transition-colors">
-                        <span className="text-xs font-semibold text-slate-800 leading-snug">
-                          {item.prestacion}
-                        </span>
-                        <div className="shrink-0">
-                          {item.carencia ? (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-blue-50 text-blue-700 border border-blue-200/60 shadow-2xs">
-                              {item.carencia}
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
-                              Sin carencia
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Cobertura Table */}
-              {module.details.coberturaTable && module.details.coberturaTable.length > 0 && (
-                <div>
-                  <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2.5 flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                    Tabla de Coberturas
-                  </h4>
-                  
-                  {/* Mobile View: Fluid Cards (No scroll) */}
-                  <div className="sm:hidden space-y-2.5">
-                    {module.details.coberturaTable.map((item, idx) => {
-                      if (item.isHeader) {
-                        return (
-                          <div key={idx} className="bg-slate-900 text-white px-3 py-1.5 rounded-xl font-bold text-[10px] uppercase tracking-wider mt-3">
-                            {item.prestacion}
-                          </div>
-                        );
-                      }
-                      return (
-                        <div key={idx} className="p-3 bg-white rounded-xl border border-slate-200 shadow-2xs space-y-1.5">
-                          <div className="flex items-start justify-between gap-2">
-                            <span className="text-xs font-bold text-slate-900">{item.prestacion}</span>
-                          </div>
-                          {item.descripcion && (
-                            <p className="text-[11px] text-slate-500 leading-snug">{item.descripcion}</p>
-                          )}
-                          <div className="flex items-center justify-between pt-1 border-t border-slate-100 text-xs">
-                            <span className="text-[11px] text-slate-500">Plan General: <strong className="text-blue-700 font-bold">{item.general || '—'}</strong></span>
-                            <span className="text-[11px] text-slate-500">Plan Básico: <strong className="text-indigo-700 font-bold">{item.basico || '—'}</strong></span>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Desktop View: Table */}
-                  <div className="hidden sm:block overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
-                    <table className="w-full text-xs border-collapse min-w-[460px]">
-                      <thead className="bg-slate-900 text-white font-bold">
-                        <tr>
-                          <th className="py-2.5 px-3 text-left">Prestación</th>
-                          <th className="py-2.5 px-3 text-left">Descripción</th>
-                          <th className="py-2.5 px-3 text-right">General</th>
-                          <th className="py-2.5 px-3 text-right">Básico</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-slate-100 bg-white">
-                        {module.details.coberturaTable.map((item, idx) => {
-                          if (item.isHeader) {
-                            return (
-                              <tr key={idx} className="bg-slate-100/90">
-                                <td colSpan={4} className="py-2 px-3 font-bold text-slate-600 text-[10px] uppercase tracking-wider">
-                                  {item.prestacion}
-                                </td>
-                              </tr>
-                            );
-                          }
-                          return (
-                            <tr key={idx} className="hover:bg-slate-50">
-                              <td className="py-2.5 px-3 font-semibold text-slate-800">{item.prestacion}</td>
-                              <td className="py-2.5 px-3 text-slate-500">{item.descripcion || '—'}</td>
-                              <td className="py-2.5 px-3 text-right font-bold text-blue-700">{item.general || '—'}</td>
-                              <td className="py-2.5 px-3 text-right font-bold text-indigo-700">{item.basico || '—'}</td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
+        {/* 1. RESUMEN / SÍNTESIS GENERAL */}
+        {module.details.summary && (
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border border-sky-100 shadow-2xs space-y-2">
+            <h4 className="text-xs font-extrabold text-blue-900 uppercase tracking-wider flex items-center gap-1.5">
+              <Info className="w-4 h-4 text-blue-600 shrink-0" />
+              Descripción General
+            </h4>
+            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal whitespace-pre-line">
+              {renderTextWithLinks(module.details.summary)}
+            </p>
+          </div>
         )}
 
-        {/* TAB: Pasos */}
-        {activeTab === 'pasos' && hasSteps && (
-          <AnimatePresence mode="wait">
-            <motion.div
-              key="pasos"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.18 }}
-              className="space-y-3"
-            >
-              <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
-                <ListOrdered className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                Guía Paso a Paso
-              </h4>
-              {module.details.steps!.map((s, idx) => (
-                <motion.div
+        {/* 2. ASPECTOS CLAVE */}
+        {module.details.highlights && module.details.highlights.length > 0 && (
+          <div className="space-y-3">
+            <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              Aspectos Clave
+            </h4>
+            <div className="space-y-2.5">
+              {module.details.highlights.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
+                  <div className="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0" />
+                  <span className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
+                    {renderTextWithLinks(item)}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 3. GUÍA PASO A PASO (DE CORRIDA) */}
+        {hasSteps && (
+          <div className="space-y-3 pt-2">
+            <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-2">
+              <ListOrdered className="w-4 h-4 text-blue-600 shrink-0" />
+              Guía Paso a Paso
+            </h4>
+            <div className="space-y-3">
+              {module.details.steps!.map((s) => (
+                <div
                   key={s.step}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.06, duration: 0.2 }}
-                  className="flex gap-3 p-3.5 bg-white rounded-2xl border border-slate-200/80 shadow-sm"
+                  className="flex gap-3.5 p-4 bg-white rounded-2xl border border-slate-200/90 shadow-2xs"
                 >
-                  <div className={`w-7 h-7 rounded-full bg-gradient-to-br ${accentColor} text-white font-extrabold flex items-center justify-center text-xs shrink-0 shadow-sm`}>
+                  <div className="w-8 h-8 rounded-xl bg-blue-600 text-white font-extrabold flex items-center justify-center text-xs shrink-0 shadow-xs">
                     {s.step}
                   </div>
-                  <div>
-                    <h5 className="text-xs font-bold text-slate-900">{s.title}</h5>
-                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                  <div className="space-y-1">
+                    <h5 className="text-xs sm:text-sm font-bold text-slate-900">{s.title}</h5>
+                    <p className="text-xs text-slate-600 leading-relaxed">
                       {renderTextWithLinks(s.desc)}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          </div>
         )}
 
-        {/* TAB: FAQs */}
-        {activeTab === 'faqs' && hasFaqs && (
-          <AnimatePresence mode="wait">
-            <motion.div
-              key="faqs"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.18 }}
-              className="space-y-3"
-            >
-              <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
-                <HelpCircle className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                Preguntas Frecuentes
-              </h4>
+        {/* 4. PERÍODOS DE CARENCIA */}
+        {module.details.carenciasTable && module.details.carenciasTable.length > 0 && (
+          <div className="space-y-3 pt-2">
+            <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-2">
+              <Clock className="w-4 h-4 text-blue-600 shrink-0" />
+              Períodos de Carencia (Grupo Familiar)
+            </h4>
+            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs divide-y divide-slate-100 overflow-hidden">
+              {module.details.carenciasTable.map((item, idx) => (
+                <div key={idx} className="p-3.5 flex items-center justify-between gap-3 hover:bg-slate-50/70 transition-colors">
+                  <span className="text-xs font-semibold text-slate-800 leading-snug">
+                    {item.prestacion}
+                  </span>
+                  <div className="shrink-0">
+                    {item.carencia ? (
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-200/60 shadow-2xs">
+                        {item.carencia}
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                        Sin carencia
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 5. TABLA DE COBERTURAS */}
+        {module.details.coberturaTable && module.details.coberturaTable.length > 0 && (
+          <div className="space-y-3 pt-2">
+            <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-2">
+              <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+              Tabla de Coberturas
+            </h4>
+            
+            {/* Mobile View: Fluid Cards */}
+            <div className="sm:hidden space-y-2.5">
+              {module.details.coberturaTable.map((item, idx) => {
+                if (item.isHeader) {
+                  return (
+                    <div key={idx} className="bg-blue-700 text-white px-3 py-1.5 rounded-xl font-bold text-[10px] uppercase tracking-wider mt-3">
+                      {item.prestacion}
+                    </div>
+                  );
+                }
+                return (
+                  <div key={idx} className="p-3.5 bg-white rounded-xl border border-slate-200 shadow-2xs space-y-1.5">
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="text-xs font-bold text-slate-900">{item.prestacion}</span>
+                    </div>
+                    {item.descripcion && (
+                      <p className="text-[11px] text-slate-500 leading-snug">{item.descripcion}</p>
+                    )}
+                    <div className="flex items-center justify-between pt-1 border-t border-slate-100 text-xs">
+                      <span className="text-[11px] text-slate-500">Plan General: <strong className="text-blue-700 font-bold">{item.general || '—'}</strong></span>
+                      <span className="text-[11px] text-slate-500">Plan Básico: <strong className="text-indigo-700 font-bold">{item.basico || '—'}</strong></span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Desktop View: Table */}
+            <div className="hidden sm:block overflow-x-auto rounded-2xl border border-slate-200 shadow-2xs">
+              <table className="w-full text-xs border-collapse min-w-[460px]">
+                <thead className="bg-blue-700 text-white font-bold">
+                  <tr>
+                    <th className="py-2.5 px-3 text-left">Prestación</th>
+                    <th className="py-2.5 px-3 text-left">Descripción</th>
+                    <th className="py-2.5 px-3 text-right">General</th>
+                    <th className="py-2.5 px-3 text-right">Básico</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 bg-white">
+                  {module.details.coberturaTable.map((item, idx) => {
+                    if (item.isHeader) {
+                      return (
+                        <tr key={idx} className="bg-slate-100">
+                          <td colSpan={4} className="py-2 px-3 font-bold text-slate-600 text-[10px] uppercase tracking-wider">
+                            {item.prestacion}
+                          </td>
+                        </tr>
+                      );
+                    }
+                    return (
+                      <tr key={idx} className="hover:bg-slate-50">
+                        <td className="py-2.5 px-3 font-semibold text-slate-800">{item.prestacion}</td>
+                        <td className="py-2.5 px-3 text-slate-500">{item.descripcion || '—'}</td>
+                        <td className="py-2.5 px-3 text-right font-bold text-blue-700">{item.general || '—'}</td>
+                        <td className="py-2.5 px-3 text-right font-bold text-indigo-700">{item.basico || '—'}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* 6. APP MOBILE DOWNLOAD (SI APLICA) */}
+        {module.details.appLinks && (
+          <div className="rounded-2xl bg-gradient-to-r from-blue-700 to-indigo-800 p-5 text-white shadow-xs space-y-3">
+            <div className="flex items-center gap-2">
+              <Smartphone className="w-5 h-5 text-sky-300 shrink-0" />
+              <p className="text-xs sm:text-sm font-bold text-white">Credencial Digital en tu Celular</p>
+            </div>
+            <p className="text-xs text-blue-100 leading-relaxed">
+              Descargá la app oficial para acceder a tu credencial digital y la de tu grupo familiar.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-2.5 pt-1">
+              {module.details.appLinks.android && (
+                <a
+                  href={module.details.appLinks.android}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all shadow-xs"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  Obtener para Android
+                </a>
+              )}
+              {module.details.appLinks.ios && (
+                <a
+                  href={module.details.appLinks.ios}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all shadow-xs"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  Obtener para iOS
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* 7. PREGUNTAS FRECUENTES (DE CORRIDA) */}
+        {hasFaqs && (
+          <div className="space-y-3 pt-2">
+            <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-2">
+              <HelpCircle className="w-4 h-4 text-blue-600 shrink-0" />
+              Preguntas Frecuentes
+            </h4>
+            <div className="space-y-2.5">
               {module.details.faqs!.map((faq, i) => (
                 <AccordionFaq key={i} q={faq.q} a={faq.a} index={i} />
               ))}
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          </div>
         )}
+
       </div>
 
-      {/* ── Footer CTA ── */}
+      {/* ── FOOTER CTA (BOTÓN AMIGABLE AZUL) ── */}
       {module.details.quickActionLabel && module.details.quickActionTarget && (
-        <div className="shrink-0 p-4 bg-white border-t border-slate-100">
+        <div className="shrink-0 p-4 bg-white border-t border-slate-200/80 shadow-md">
           <button
             onClick={() => { onClose(); onQuickAction(module.details.quickActionTarget!); }}
-            className={`w-full flex items-center justify-center gap-2 py-3 rounded-2xl bg-gradient-to-r ${accentColor} text-white text-sm font-bold transition-all shadow-md hover:opacity-90 active:scale-[0.98]`}
+            className="w-full flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs sm:text-sm font-bold transition-all shadow-sm active:scale-[0.98] cursor-pointer"
           >
             {module.details.quickActionLabel}
             <ArrowRight className="w-4 h-4" />
@@ -531,11 +452,11 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm"
+            className="fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-xs"
             onClick={onClose}
           />
 
-          {/* ── MOBILE: Bottom Sheet (Drag header/pill down to close) ── */}
+          {/* ── MOBILE: Bottom Sheet ── */}
           <motion.div
             key="bottom-sheet"
             initial={{ y: '100%' }}
@@ -552,13 +473,13 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
                 onClose();
               }
             }}
-            className="md:hidden fixed bottom-0 inset-x-0 z-50 flex flex-col bg-white rounded-t-[28px] shadow-2xl overflow-hidden"
+            className="md:hidden fixed bottom-0 inset-x-0 z-50 flex flex-col bg-white rounded-t-[24px] shadow-2xl overflow-hidden"
             style={{ maxHeight: '92dvh' }}
           >
             {content}
           </motion.div>
 
-          {/* ── DESKTOP: Right Side Drawer (Drag header right to close) ── */}
+          {/* ── DESKTOP: Right Side Drawer ── */}
           <motion.div
             key="side-drawer"
             initial={{ x: '100%' }}
@@ -575,8 +496,8 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
                 onClose();
               }
             }}
-            className="hidden md:flex fixed right-0 top-0 bottom-0 z-50 flex-col bg-white shadow-2xl border-l border-slate-200/80 overflow-hidden rounded-l-[28px]"
-            style={{ width: 'min(500px, 90vw)' }}
+            className="hidden md:flex fixed right-0 top-0 bottom-0 z-50 flex-col bg-white shadow-2xl border-l border-slate-200/80 overflow-hidden rounded-l-[24px]"
+            style={{ width: 'min(520px, 90vw)' }}
           >
             {content}
           </motion.div>
@@ -593,28 +514,19 @@ const AccordionFaq: React.FC<{ q: string; a: string; index: number }> = ({ q, a,
   const [open, setOpen] = useState(false);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -12 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: index * 0.05, duration: 0.18 }}
-      className="rounded-2xl border border-slate-200/80 bg-white shadow-sm overflow-hidden"
+    <div
+      className="rounded-xl border border-slate-200/90 bg-white shadow-2xs overflow-hidden transition-colors"
     >
       <button
-        className="w-full flex items-center justify-between gap-3 p-3.5 text-left hover:bg-slate-50 transition-colors"
+        className="w-full flex items-center justify-between gap-3 p-3.5 text-left hover:bg-slate-50/80 transition-colors cursor-pointer"
         onClick={() => setOpen(v => !v)}
         aria-expanded={open}
       >
-        <div className="flex items-start gap-2">
-          <HelpCircle className="w-3.5 h-3.5 text-sky-500 shrink-0 mt-0.5" />
-          <span className="text-xs font-bold text-blue-900 leading-snug">{q}</span>
+        <div className="flex items-start gap-2.5">
+          <HelpCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+          <span className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">{q}</span>
         </div>
-        <motion.span
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="shrink-0 text-slate-400"
-        >
-          <ChevronRight className="w-4 h-4 rotate-90" />
-        </motion.span>
+        <ChevronRight className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${open ? 'rotate-90 text-blue-600' : ''}`} />
       </button>
       <AnimatePresence initial={false}>
         {open && (
@@ -622,15 +534,15 @@ const AccordionFaq: React.FC<{ q: string; a: string; index: number }> = ({ q, a,
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.22, ease: 'easeInOut' }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="px-4 pb-4 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-100">
-              <div className="pt-3">{renderTextWithLinks(a)}</div>
+            <div className="px-4 pb-4 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
+              {renderTextWithLinks(a)}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 };
