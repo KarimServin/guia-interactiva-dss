@@ -46,14 +46,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Main Title & Subtitle */}
         <div className="text-center max-w-3xl mx-auto mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/85 backdrop-blur-md border border-sky-200/80 text-blue-950 text-xs font-bold mb-4 rounded-full shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-            <HeartPulse className="w-3.5 h-3.5 text-blue-600" />
-            <span>¡Bienvenido al Portal del Afiliado DSS!</span>
-          </div>
-
           <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 text-slate-900">
-            Guía Interactiva para <span className="bg-gradient-to-r from-blue-950 via-blue-700 to-sky-600 bg-clip-text text-transparent">Afiliados</span>
+            Guía Interactiva para Afiliados
           </h1>
 
           <p className="text-slate-600 text-base sm:text-lg font-medium max-w-2xl mx-auto leading-relaxed">
