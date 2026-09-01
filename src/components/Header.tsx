@@ -94,7 +94,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
             rel="noopener noreferrer" 
             className="hover:text-emerald-300 flex items-center gap-1.5 transition-colors font-semibold leading-none"
           >
-            <div className="w-5 h-5 rounded-full bg-white shadow-2xs flex items-center justify-center shrink-0 border border-slate-100">
+            <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center shrink-0">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 0 24 24" 

@@ -53,7 +53,7 @@ export const Footer: React.FC = () => {
                 <span className="leading-snug pt-1">San Lorenzo 1849 – Santa Fe – Cámara I</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-full bg-white border border-slate-200/80 shadow-2xs flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center shrink-0">
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 24 24" 

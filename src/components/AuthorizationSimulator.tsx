@@ -97,7 +97,7 @@ export const AuthorizationSimulator: React.FC<AuthorizationSimulatorProps> = ({ 
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2.5 w-full px-4 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-2xl shadow-md transition-all active:scale-95 group"
           >
-            <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center shrink-0 shadow-2xs">
+            <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center shrink-0">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 0 24 24" 
