@@ -110,7 +110,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-            Coberturas y Planes
+            Prestaciones
           </h1>
 
           <p className="text-slate-200 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl">
