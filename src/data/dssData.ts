@@ -508,7 +508,7 @@ export const ACTION_MODULES: ActionModule[] = [
       highlights: [
         'Débito Automático en CBU (Banco Macro, Santa Fe, Nación, otros) o Tarjeta de Crédito. Para poder adherir el pago de las obligaciones mensuales al débito automático de su cuenta bancaria de la entidad financiera de la que usted sea cliente, deberá ingresar en el [Software Profesional](http://contadores.org.ar/php/login.php), opción Cuentas Corrientes / Débitos Automáticos y completar el formulario, indicando los conceptos que desea que se debiten. Luego debe imprimir, firmar, escanear y enviar el formulario a claudio@cpn.org.ar',
         'Pago de DSS por Home Banking / Red Link:\n\n• Ingresá a Pagos → Asociaciones y Clubes.\n• Seleccioná Caja Seg Social Prof Cs Es Santa Fe Camara Primera.\n• Ingresá tu Código de Pago Link: matrícula sin guion, anteponiendo los ceros correspondientes.\n  Ej.: matrícula 01-1234 → 010001234.\n• Luego Confirmá el pago.\n\nRed Banelco / Pago Mis Cuentas:\n\n• Rubro Clubes y Asociaciones → Caja CS Económicas SF → ingresá el mismo código matrícula sin guion, anteponiendo los ceros correspondientes.\n  Ej.: matrícula 01-1234 → 010001234.',
-        'Botón de Pago Web desde la Autogestión del Consejo.'
+        'Botón de Pago Web desde la Autogestión del Consejo: Ingresá en el [Software Profesional](http://contadores.org.ar/php/login.php), pestaña Cuentas Corrientes → Botón de Pago Integral.'
       ],
       steps: [
         { step: 1, title: 'Elegí el medio de pago', desc: 'Recomendamos adherir al Débito Automático para evitar vencimientos.' },
