@@ -4,7 +4,11 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { PLANES_COMPARATIVE_DATA, PlanComparisonItem } from '../data/dssData';
 import { ShieldCheck, Search, Filter, Sparkles, Clock, ArrowLeftRight, Table } from 'lucide-react';
 
-export const CoseguroTableInline: React.FC = () => {
+interface CoseguroTableInlineProps {
+  hideHeader?: boolean;
+}
+
+export const CoseguroTableInline: React.FC<CoseguroTableInlineProps> = ({ hideHeader = false }) => {
   const [data, setData] = useState<PlanComparisonItem[]>(PLANES_COMPARATIVE_DATA);
   const [loading, setLoading] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -51,17 +55,19 @@ export const CoseguroTableInline: React.FC = () => {
     <div id="tabla-coseguros-planes" className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden space-y-0 scroll-mt-20">
       
       {/* ── Section Header ── */}
-      <div className="bg-gradient-to-r from-blue-950 via-indigo-900 to-slate-900 px-5 sm:px-8 py-4.5 text-white">
-        <div className="flex items-center gap-2.5">
-          <Table className="w-5.5 h-5.5 text-blue-400 shrink-0" />
-          <h2 className="text-base sm:text-xl font-extrabold text-white leading-tight">
-            Tabla Comparativa de Cobertura y Coseguros
-          </h2>
+      {!hideHeader && (
+        <div className="bg-gradient-to-r from-blue-950 via-indigo-900 to-slate-900 px-5 sm:px-8 py-4.5 text-white">
+          <div className="flex items-center gap-2.5">
+            <Table className="w-5.5 h-5.5 text-blue-400 shrink-0" />
+            <h2 className="text-base sm:text-xl font-extrabold text-white leading-tight">
+              Tabla de Planes y Coseguros
+            </h2>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+            Consultá en tiempo real aranceles, coberturas y períodos de carencia entre el <strong className="text-white font-bold">Plan General</strong> y el <strong className="text-white font-bold">Plan Básico</strong>.
+          </p>
         </div>
-        <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
-          Consulta en tiempo real aranceles, coberturas y períodos de carencia entre el <strong className="text-white font-bold">Plan General</strong> y el <strong className="text-white font-bold">Plan Básico</strong>.
-        </p>
-      </div>
+      )}
 
       {/* ── Search & Filter Toolbar ── */}
       <div className="bg-slate-50 border-b border-slate-200 p-3.5 sm:p-4 space-y-2.5">
