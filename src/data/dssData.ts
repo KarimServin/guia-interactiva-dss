@@ -177,7 +177,7 @@ export const ACTION_MODULES: ActionModule[] = [
         { 
           step: 1, 
           title: 'Buscar un prestador', 
-          desc: 'Consultá la [Cartilla de Prestadores Online](https://dss.contadores.org.ar/cartilla) o comunicate por WhatsApp al (342) 510-5675.' 
+          desc: 'Consultá la [Cartilla de Prestadores Online](https://dss.contadores.org.ar/cartilla). Encontrá al profesional que buscás y solicitale un turno, o comunicate por WhatsApp al (342) 510-5675.' 
         },
         { 
           step: 2, 
