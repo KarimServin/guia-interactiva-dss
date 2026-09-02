@@ -317,13 +317,7 @@ export const ACTION_MODULES: ActionModule[] = [
     },
     details: {
       summary: 'Gestioná la autorización de tus estudios y prácticas presentando la prescripción médica oficial o la ficha correspondiente (Solicitud de Prescripción / Autorización Médica, Ficha Odontológica Oficial o Solicitud de Cobertura en Ortodoncia).',
-      highlights: [
-        'Formularios de Autorización:',
-        '• Solicitud de Prescripción / Autorización Médica (pmedica.pdf)',
-        '• Ficha Odontológica Oficial (Ficha odontologica.pdf)',
-        '• Solicitud de Cobertura en Ortodoncia (ortodoncia.pdf)',
-        'Canal Digital: Enviá la foto legible del formulario por WhatsApp al (342) 510-5675 (Lunes a viernes de 7 a 15 hs).'
-      ],
+      highlights: [],
       steps: [
         {
           step: 1,
