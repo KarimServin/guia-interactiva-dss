@@ -122,9 +122,7 @@ export const ACTION_MODULES: ActionModule[] = [
       faqs: [
         { q: '¿Cómo mantengo la cobertura de mi hijo estudiante mayor de 21 años?', a: 'Debés presentar anualmente en el mes de Abril el Certificado de Alumno Regular emitido por la institución universitaria o terciaria reconocida.' }
       ],
-      relatedFormIds: [],
-      quickActionLabel: 'Ir a Formularios de Grupo Familiar',
-      quickActionTarget: 'formularios'
+      relatedFormIds: []
     }
   },
   {
