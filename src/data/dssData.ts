@@ -576,9 +576,6 @@ export const ACTION_MODULES: ActionModule[] = [
         'Esquema de Planes: Consulta detallada según Plan General y Plan Básico.',
         'Acceso Directo: Accedé al detalle completo en la sección oficial de cuotas.'
       ],
-      faqs: [
-        { q: '¿Dónde puedo consultar la tabla completa de valores de cuota?', a: 'Ingresá directamente haciendo clic en el botón de abajo o visitando https://dss.contadores.org.ar/cuotas.' }
-      ],
       relatedFormIds: [],
       quickActionLabel: 'Consultá valores de cuota aquí',
       quickActionTarget: 'https://dss.contadores.org.ar/cuotas'
