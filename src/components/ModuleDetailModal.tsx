@@ -116,6 +116,70 @@ const renderTextWithLinks = (text: string) => {
   return parts;
 };
 
+const renderStructuredHighlight = (item: string) => {
+  if (!item.includes('\n')) {
+    return (
+      <span className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
+        {renderTextWithLinks(item)}
+      </span>
+    );
+  }
+
+  const blocks = item.split('\n\n');
+
+  return (
+    <div className="w-full space-y-3 my-0.5">
+      {blocks.map((block, bIdx) => {
+        const lines = block.split('\n').filter(l => l.trim().length > 0);
+        if (lines.length === 0) return null;
+
+        const firstLine = lines[0].trim();
+        const isHeader = firstLine.endsWith(':');
+        const headerTitle = isHeader ? firstLine.slice(0, -1) : null;
+        const contentLines = isHeader ? lines.slice(1) : lines;
+
+        return (
+          <div key={bIdx} className="bg-slate-50/90 border border-slate-200/90 rounded-2xl p-3.5 sm:p-4 space-y-2 shadow-2xs">
+            {headerTitle && (
+              <div className="flex items-center gap-2 border-b border-slate-200/80 pb-2 mb-2">
+                <div className="w-2 h-2 rounded-full bg-blue-600 shrink-0" />
+                <h5 className="font-extrabold text-blue-950 text-xs sm:text-sm tracking-tight">
+                  {headerTitle}
+                </h5>
+              </div>
+            )}
+            <div className="space-y-1.5 text-xs sm:text-sm text-slate-700 font-normal">
+              {contentLines.map((line, lIdx) => {
+                const trimmed = line.trim();
+                if (trimmed.startsWith('•')) {
+                  const bulletText = trimmed.substring(1).trim();
+                  return (
+                    <div key={lIdx} className="flex items-start gap-2 text-slate-800 font-medium pl-0.5">
+                      <span className="text-blue-600 font-bold shrink-0">•</span>
+                      <span className="leading-relaxed">{renderTextWithLinks(bulletText)}</span>
+                    </div>
+                  );
+                } else if (trimmed.startsWith('Ej.:') || trimmed.includes('Ej.:')) {
+                  return (
+                    <div key={lIdx} className="ml-4 my-1 inline-block bg-blue-100/70 border border-blue-200/80 text-blue-950 px-3 py-1.5 rounded-xl font-mono text-[11px] sm:text-xs">
+                      {renderTextWithLinks(trimmed)}
+                    </div>
+                  );
+                }
+                return (
+                  <p key={lIdx} className="leading-relaxed">
+                    {renderTextWithLinks(trimmed)}
+                  </p>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 /* ─────────────────────────────────────────
    Main Sheet component
 ───────────────────────────────────────── */
@@ -255,14 +319,15 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
               Aspectos Clave
             </h4>
             <div className="space-y-2.5">
-              {module.details.highlights.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
-                  <div className="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0" />
-                  <span className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed whitespace-pre-line">
-                    {renderTextWithLinks(item)}
-                  </span>
-                </div>
-              ))}
+              {module.details.highlights.map((item, idx) => {
+                const isMultiLine = item.includes('\n');
+                return (
+                  <div key={idx} className={`flex items-start gap-3 p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs ${isMultiLine ? 'flex-col items-stretch' : ''}`}>
+                    {!isMultiLine && <div className="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0" />}
+                    {renderStructuredHighlight(item)}
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
