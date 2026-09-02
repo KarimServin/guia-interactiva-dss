@@ -174,11 +174,7 @@ export const ACTION_MODULES: ActionModule[] = [
     },
     details: {
       summary: 'Accedé a atención médica buscando profesionales en nuestra cartilla digital y emitiendo previamente tu orden de consulta. Para requerimientos de prácticas y estudios, utilizá la Solicitud de Prescripción / Autorización Médica.',
-      highlights: [
-        'Formulario para Prácticas: Solicitud de Prescripción / Autorización Médica (pmedica.pdf).',
-        'Cartilla Digital: Búsqueda online de médicos y centros de salud por especialidad.',
-        'Orden de Consulta: Emisión directa a través del Software de Gestión Institucional.'
-      ],
+      highlights: [],
       steps: [
         { 
           step: 1, 
@@ -188,7 +184,7 @@ export const ACTION_MODULES: ActionModule[] = [
         { 
           step: 2, 
           title: 'Emitir la orden de consulta', 
-          desc: 'Ingresá al Software de Gestión y generá la orden de consulta.' 
+          desc: 'Ingresá al [Software de Gestión](https://contadores.org.ar/php/login.php) y generá la orden de consulta.' 
         },
         { 
           step: 3, 
