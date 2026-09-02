@@ -554,6 +554,35 @@ export const ACTION_MODULES: ActionModule[] = [
       quickActionLabel: 'Enviar WhatsApp de Contacto',
       quickActionTarget: 'https://wa.me/5493425105675'
     }
+  },
+  {
+    id: 'cuotas',
+    buttonNumber: 12,
+    title: 'Valores de cuota',
+    verbTitle: 'Consultar valores de cuota',
+    shortDesc: 'Consultá los valores actualizados de cuotas mensuales y coseguros del DSS.',
+    iconName: 'CreditCard',
+    colorClass: {
+      bg: 'bg-white',
+      border: 'border-slate-200',
+      text: 'text-blue-900',
+      hover: 'hover:border-sky-500 hover:shadow-md',
+      iconBg: 'bg-blue-600 text-white'
+    },
+    details: {
+      summary: 'Accedé a la tabla actualizada con los valores vigentes de la cuota mensual del Departamento de Servicios Sociales (DSS) para el Plan General y Plan Básico, así como el esquema de coseguros.',
+      highlights: [
+        'Valores Oficiales: Cuotas mensuales actualizadas para titulares y grupo familiar.',
+        'Esquema de Planes: Consulta detallada según Plan General y Plan Básico.',
+        'Acceso Directo: Accedé al detalle completo en la sección oficial de cuotas.'
+      ],
+      faqs: [
+        { q: '¿Dónde puedo consultar la tabla completa de valores de cuota?', a: 'Ingresá directamente haciendo clic en el botón de abajo o visitando https://dss.contadores.org.ar/cuotas.' }
+      ],
+      relatedFormIds: [],
+      quickActionLabel: 'Consultá valores de cuota aquí',
+      quickActionTarget: 'https://dss.contadores.org.ar/cuotas'
+    }
   }
 ];
 

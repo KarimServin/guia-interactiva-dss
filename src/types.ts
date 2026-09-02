@@ -9,7 +9,8 @@ export type ModuleCategory =
   | 'coseguros'
   | 'cobertura'
   | 'pagos'
-  | 'contacto';
+  | 'contacto'
+  | 'cuotas';
 
 export interface ActionModule {
   id: ModuleCategory;
