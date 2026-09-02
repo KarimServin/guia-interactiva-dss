@@ -60,7 +60,7 @@ export const CuotasValores: React.FC = () => {
             <span>Departamento de Servicios Sociales</span>
           </div>
           <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
-            Cuotas y Valores Afiliatorios
+            Valores de cuota
           </h1>
           <p className="text-slate-300 text-xs sm:text-sm max-w-3xl font-normal leading-relaxed">
             Consulta la estructura y los importes vigentes de cuotas mensuales según el plan y condición de matrícula.

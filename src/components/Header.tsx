@@ -32,8 +32,7 @@ const NAV_ITEMS = [
   { id: 'coberturas-planes', label: 'Coberturas y planes', icon: ShieldCheck },
   { id: 'cartilla', label: 'Cartilla Médica', icon: Users },
   { id: 'vademecum', label: 'Vademecum', icon: Pill },
-  { id: 'formularios', label: 'Formularios', icon: FileText },
-  { id: 'cuotas', label: 'Cuotas y Valores', icon: CreditCard }
+  { id: 'formularios', label: 'Formularios', icon: FileText }
 ];
 
 export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav }) => {
@@ -49,6 +48,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
     setIsMobileMenuOpen(false);
     if (subTabKey === 'tabla-coseguros') {
       router.push('/tabla-coseguros');
+      return;
+    }
+    if (subTabKey === 'cuotas') {
+      router.push('/cuotas');
       return;
     }
     if (onSelectNav) {
@@ -147,7 +150,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
             const isActive = isVademecum
               ? (activeTab.startsWith('vademecum') && activeTab !== 'vademecum-farmacias' && activeTab !== 'cobertura-farmacias')
               : isCoberturas
-                ? ['coberturas-planes', 'subsidio-sepelios', 'sepelios', 'cobertura-odontologia', 'odontologia', 'chequeo-preventivo', 'vademecum-farmacias', 'cobertura-farmacias', 'farmacia', 'materno', 'nutricion-celiacos', 'protesis'].includes(activeTab)
+                ? ['coberturas-planes', 'subsidio-sepelios', 'sepelios', 'cobertura-odontologia', 'odontologia', 'chequeo-preventivo', 'vademecum-farmacias', 'cobertura-farmacias', 'farmacia', 'materno', 'nutricion-celiacos', 'protesis', 'tabla-coseguros', 'cuotas'].includes(activeTab)
                 : activeTab === item.id;
 
             if (isCoberturas) {
@@ -192,6 +195,13 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />
                         Tabla de Planes y Coseguros
+                      </button>
+                      <button
+                        onClick={() => handleSubMenuClick('cuotas')}
+                        className="w-full text-left px-4 py-2 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors flex items-center gap-2 cursor-pointer"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-sky-600" />
+                        Valores de cuota
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('materno')}
@@ -342,7 +352,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
             const isActive = isVademecum
               ? (activeTab.startsWith('vademecum') && activeTab !== 'vademecum-farmacias')
               : isCoberturas
-                ? ['coberturas-planes', 'subsidio-sepelios', 'cobertura-odontologia', 'chequeo-preventivo', 'vademecum-farmacias', 'cobertura-farmacias', 'farmacia', 'materno', 'nutricion-celiacos', 'protesis'].includes(activeTab)
+                ? ['coberturas-planes', 'subsidio-sepelios', 'cobertura-odontologia', 'chequeo-preventivo', 'vademecum-farmacias', 'cobertura-farmacias', 'farmacia', 'materno', 'nutricion-celiacos', 'protesis', 'tabla-coseguros', 'cuotas'].includes(activeTab)
                 : activeTab === item.id;
 
             if (isCoberturas) {
@@ -382,6 +392,13 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-indigo-600 shrink-0" />
                         <span>Tabla de Planes y Coseguros</span>
+                      </button>
+                      <button
+                        onClick={() => handleSubMenuClick('cuotas')}
+                        className="w-full text-left px-3 py-2 text-xs sm:text-[13px] font-bold text-slate-700 hover:text-sky-700 hover:bg-sky-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-sky-600 shrink-0" />
+                        <span>Valores de cuota</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('materno')}
