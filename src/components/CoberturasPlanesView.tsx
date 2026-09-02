@@ -120,11 +120,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           {/* Quick CTAs */}
           <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <button
-              onClick={() => {
-                const elem = document.getElementById('tabla-coseguros-planes');
-                if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-                else if (onOpenCosegurosModal) onOpenCosegurosModal();
-              }}
+              onClick={() => router.push('/tabla-coseguros')}
               className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm h-11 border border-blue-500 shadow-md transition-all flex items-center justify-center gap-2.5 cursor-pointer"
             >
               <FileText className="w-4 h-4 shrink-0" />
@@ -806,8 +802,28 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
 
       </div>
 
-      {/* ── NÚCLEO DE LA LANDING: TABLA COMPARATIVA DE COSEGUROS Y PLANES INLINE ── */}
-      <CoseguroTableInline />
+      {/* ── BANNER ACCESO A TABLA DE PLANES Y COSEGUROS ── */}
+      <div className="bg-gradient-to-r from-blue-950 via-indigo-900 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-md border border-blue-800/40 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="space-y-2 text-center md:text-left">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-semibold backdrop-blur-sm">
+            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+            <span>Consulta Online</span>
+          </div>
+          <h3 className="text-lg sm:text-2xl font-extrabold text-white">
+            Tabla Comparativa de Cobertura y Coseguros
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+            Consultá en tiempo real aranceles, porcentajes de cobertura y períodos de carencia en nuestra landing dedicada.
+          </p>
+        </div>
+        <button
+          onClick={() => router.push('/tabla-coseguros')}
+          className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3.5 rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all shrink-0 flex items-center gap-2 cursor-pointer active:scale-95"
+        >
+          <span>Ir a la Tabla de Planes y Coseguros</span>
+          <ArrowRight className="w-4 h-4" />
+        </button>
+      </div>
 
     </div>
   );

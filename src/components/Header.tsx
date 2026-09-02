@@ -47,8 +47,14 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
   const handleSubMenuClick = (subTabKey: string) => {
     setIsCoberturasDropdownOpen(false);
     setIsMobileMenuOpen(false);
+    if (subTabKey === 'tabla-coseguros') {
+      router.push('/tabla-coseguros');
+      return;
+    }
     if (onSelectNav) {
       onSelectNav(subTabKey);
+    } else {
+      router.push('/?tab=' + subTabKey);
     }
 
     setTimeout(() => {
@@ -179,6 +185,13 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                         Ver coberturas y planes
+                      </button>
+                      <button
+                        onClick={() => handleSubMenuClick('tabla-coseguros')}
+                        className="w-full text-left px-4 py-2 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors flex items-center gap-2 cursor-pointer"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />
+                        Tabla de Planes y Coseguros
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('materno')}
@@ -362,6 +375,13 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
                         <span>Ver coberturas y planes</span>
+                      </button>
+                      <button
+                        onClick={() => handleSubMenuClick('tabla-coseguros')}
+                        className="w-full text-left px-3 py-2 text-xs sm:text-[13px] font-bold text-slate-700 hover:text-indigo-700 hover:bg-indigo-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-600 shrink-0" />
+                        <span>Tabla de Planes y Coseguros</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('materno')}

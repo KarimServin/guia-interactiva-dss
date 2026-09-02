@@ -48,7 +48,7 @@ export default function HomePage() {
     } else if (target === 'autorizador') {
       setShowAutorizadorModal(true);
     } else if (target === 'coseguro-tabla') {
-      setShowCoseguroModal(true);
+      router.push('/tabla-coseguros');
     }
   };
 
