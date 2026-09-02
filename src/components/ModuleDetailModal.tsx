@@ -389,12 +389,12 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
 
         {/* 6. APP MOBILE DOWNLOAD (SI APLICA) */}
         {module.details.appLinks && (
-          <div className="rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 p-5 text-white shadow-2xs space-y-3">
+          <div className="rounded-2xl bg-gradient-to-r from-sky-50 via-blue-50/90 to-sky-100/80 border border-sky-200/80 p-5 text-slate-800 shadow-2xs space-y-3">
             <div className="flex items-center gap-2">
-              <Smartphone className="w-5 h-5 text-sky-100 shrink-0" />
-              <p className="text-xs sm:text-sm font-bold text-white">Credencial Digital en tu Celular</p>
+              <Smartphone className="w-5 h-5 text-blue-600 shrink-0" />
+              <p className="text-xs sm:text-sm font-extrabold text-slate-900">Credencial Digital en tu Celular</p>
             </div>
-            <p className="text-xs text-sky-50 leading-relaxed">
+            <p className="text-xs text-slate-600 font-medium leading-relaxed">
               Descargá la app oficial para acceder a tu credencial digital y la de tu grupo familiar.
             </p>
             <div className="flex flex-col sm:flex-row gap-2.5 pt-1">
@@ -403,7 +403,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
                   href={module.details.appLinks.android}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all shadow-xs"
+                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all shadow-xs"
                 >
                   <Download className="w-3.5 h-3.5" />
                   Obtener para Android
@@ -414,7 +414,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
                   href={module.details.appLinks.ios}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-sky-50 text-blue-800 font-bold text-xs transition-all shadow-xs"
+                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-2xs font-bold text-xs transition-all"
                 >
                   <Download className="w-3.5 h-3.5 text-blue-600" />
                   Obtener para iOS
