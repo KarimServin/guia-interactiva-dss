@@ -493,7 +493,7 @@ export const ACTION_MODULES: ActionModule[] = [
     id: 'pagos',
     buttonNumber: 10,
     title: 'Medios de pago',
-    verbTitle: 'Quiero saber cómo pagar mi cuota',
+    verbTitle: '¿Cómo pagar mi cuota?',
     shortDesc: 'Información sobre cuotas, débito automático, homebanking, botón de pago y subsidios.',
     iconName: 'CreditCard',
     colorClass: {
