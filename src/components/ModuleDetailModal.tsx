@@ -258,7 +258,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
               {module.details.highlights.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
                   <div className="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0" />
-                  <span className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
+                  <span className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed whitespace-pre-line">
                     {renderTextWithLinks(item)}
                   </span>
                 </div>
