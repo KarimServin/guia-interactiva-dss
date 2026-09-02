@@ -117,6 +117,20 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const dragControls = useDragControls();
+  const [fetchedCarencias, setFetchedCarencias] = useState<{ prestacion: string; carencia: string }[] | null>(null);
+
+  useEffect(() => {
+    if (module?.id === 'grupofamiliar' || module?.details?.carenciasTable) {
+      fetch('/api/carencias')
+        .then(res => res.json())
+        .then(resData => {
+          if (resData.success && Array.isArray(resData.data)) {
+            setFetchedCarencias(resData.data);
+          }
+        })
+        .catch(err => console.error('Error fetching /api/carencias:', err));
+    }
+  }, [module?.id]);
 
   useEffect(() => {
     if (module && scrollRef.current) {
@@ -144,6 +158,10 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
   }, [module]);
 
   if (!module) return null;
+
+  const carenciasToDisplay = (module.id === 'grupofamiliar' && fetchedCarencias)
+    ? fetchedCarencias
+    : module.details.carenciasTable;
 
   const hasSteps = !!(module.details.steps && module.details.steps.length > 0);
   const hasFaqs = !!(module.details.faqs && module.details.faqs.length > 0);
@@ -268,14 +286,14 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
         )}
 
         {/* 4. PERÍODOS DE CARENCIA */}
-        {module.details.carenciasTable && module.details.carenciasTable.length > 0 && (
+        {carenciasToDisplay && carenciasToDisplay.length > 0 && (
           <div className="space-y-3 pt-2">
             <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-2">
               <Clock className="w-4 h-4 text-blue-600 shrink-0" />
               Períodos de Carencia (Grupo Familiar)
             </h4>
             <div className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs divide-y divide-slate-100 overflow-hidden">
-              {module.details.carenciasTable.map((item, idx) => (
+              {carenciasToDisplay.map((item, idx) => (
                 <div key={idx} className="p-3.5 flex items-center justify-between gap-3 hover:bg-slate-50/70 transition-colors">
                   <span className="text-xs font-semibold text-slate-800 leading-snug">
                     {item.prestacion}
