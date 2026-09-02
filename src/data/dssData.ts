@@ -506,7 +506,6 @@ export const ACTION_MODULES: ActionModule[] = [
     details: {
       summary: 'Conocé las alternativas de pago de tu cuota de afiliación y coseguros. Además, para tramitar reintegros especiales o guarderías, utilizá la Solicitud de Subsidio por Guardería.',
       highlights: [
-        'Subsidios y Reintegros: Solicitud de Subsidio por Guardería (guarderia.pdf).',
         'Débito Automático en CBU (Banco Macro, Santa Fe, Nación, otros) o Tarjeta de Crédito.',
         'Pago Mis Cuentas / Red Link buscando "CPCE Santa Fe - Cámara I".',
         'Botón de Pago Web desde la Autogestión del Consejo.'
