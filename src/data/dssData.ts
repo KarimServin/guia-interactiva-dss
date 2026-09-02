@@ -214,28 +214,28 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-sky-600 text-white'
     },
     details: {
-      summary: 'Obtené una cobertura del 60% en medicamentos presentando tu credencial y receta en farmacias adheridas de la 1.ª Circunscripción. Para medicamentos oncológicos o auditorías especiales, utilizá la Solicitud de Cobertura Oncológica.',
+      summary: 'Obtené una cobertura del 60% en medicamentos generales aprobados en farmacias adheridas con tu receta y N° de Matrícula/DNI. Además, podés registrar la Ficha de Tratamiento Prolongado (válida por 6 meses) para automatizar la dispensa habitual.',
       highlights: [
-        'Cobertura del 60%: Adquisición en farmacias adheridas con carnet y prescripción médica.',
-        'Medicamentos Oncológicos: Trámite especial mediante la Solicitud de Cobertura Oncológica (oncologia.pdf).',
-        'Prescripciones Médicas: Formulario oficial de Solicitud de Prescripción / Autorización Médica (pmedica.pdf).',
+        'Modalidad de Compra en Mostrador: Presentá en cualquier farmacia adherida tu Receta Médica (física o digital) y acreditá identidad con tu N° de Matrícula Profesional o DNI. La farmacia aplica el 60% de descuento directo sobre el precio de lista y abonás únicamente el 40% restante.',
+        'Tratamientos Prolongados / Crónicos: Para medicamentos de uso habitual o crónico, presentá la Ficha de Tratamiento Prolongado en la secretaría del DSS. Cuenta con una validez de 6 meses y automatiza el expendio directo en farmacia sin trámites adicionales.',
+        'Vademécum Oficial: Incluye las principales monodrogas y presentaciones comerciales aprobadas.',
         'Doble Cobertura Complementaria: Sumá descuentos si contás con otra obra social o prepaga.'
       ],
       steps: [
         { 
           step: 1, 
           title: 'Prescripción Médica', 
-          desc: 'Pedí a tu médico la receta o completá la Solicitud de Prescripción Médica oficial.' 
+          desc: 'Obtené la Receta Médica (física o digital) emitida por tu profesional de salud.' 
         },
         { 
           step: 2, 
-          title: 'Farmacia Adherida (1.ª Circunscripción)', 
-          desc: 'Presentá tu credencial y prescripción en una farmacia adherida para obtener el 60% de descuento directo.' 
+          title: 'Compra en Mostrador (60% Descuento)', 
+          desc: 'Acreditá tu identidad en cualquier farmacia adherida con tu N° de Matrícula Profesional o DNI para aplicar el 60% de descuento directo (abonás el 40% restante).' 
         },
         { 
           step: 3, 
-          title: 'Casos Especiales / Oncología', 
-          desc: 'Para tratamientos oncológicos, presentá la Solicitud de Cobertura Oncológica en el DSS.' 
+          title: 'Tratamientos Prolongados / Crónicos', 
+          desc: 'Presentá en la secretaría del DSS la Ficha de Tratamiento Prolongado (validez de 6 meses) para automatizar el expendio directo sin trámites adicionales.' 
         }
       ],
       faqs: [
