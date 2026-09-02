@@ -25,6 +25,7 @@ import {
   CheckCircle2,
   Leaf
 } from 'lucide-react';
+import { CoseguroTableInline } from './CoseguroTableInline';
 
 interface CoberturasPlanesViewProps {
   initialSubTab?: string;
@@ -119,7 +120,11 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           {/* Quick CTAs */}
           <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <button
-              onClick={() => onOpenCosegurosModal && onOpenCosegurosModal()}
+              onClick={() => {
+                const elem = document.getElementById('tabla-coseguros-planes');
+                if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+                else if (onOpenCosegurosModal) onOpenCosegurosModal();
+              }}
               className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm h-11 border border-blue-500 shadow-md transition-all flex items-center justify-center gap-2.5 cursor-pointer"
             >
               <FileText className="w-4 h-4 shrink-0" />
@@ -800,6 +805,9 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
         )}
 
       </div>
+
+      {/* ── NÚCLEO DE LA LANDING: TABLA COMPARATIVA DE COSEGUROS Y PLANES INLINE ── */}
+      <CoseguroTableInline />
 
     </div>
   );
