@@ -29,6 +29,7 @@ export interface ActionModule {
   };
   details: {
     summary: string;
+    highlightsTitle?: string;
     highlights: string[];
     carenciasTable?: { prestacion: string; carencia: string }[];
     coberturaTable?: {

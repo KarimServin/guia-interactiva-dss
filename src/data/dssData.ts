@@ -504,23 +504,14 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-blue-900 text-white'
     },
     details: {
-      summary: 'Conocé las alternativas de pago de tu cuota de afiliación y coseguros. Además, para tramitar reintegros especiales o guarderías, utilizá la Solicitud de Subsidio por Guardería.',
+      summary: '',
+      highlightsTitle: 'Se disponen las siguientes alternativas:',
       highlights: [
         'Débito Automático en CBU (Banco Macro, Santa Fe, Nación, otros) o Tarjeta de Crédito. Para poder adherir el pago de las obligaciones mensuales al débito automático de su cuenta bancaria de la entidad financiera de la que usted sea cliente, deberá ingresar en el [Software Profesional](http://contadores.org.ar/php/login.php), opción Cuentas Corrientes / Débitos Automáticos y completar el formulario, indicando los conceptos que desea que se debiten. Luego debe imprimir, firmar, escanear y enviar el formulario a claudio@cpn.org.ar',
         'Pago de DSS por Home Banking / Red Link:\n\n• Ingresá a Pagos → Asociaciones y Clubes.\n• Seleccioná Caja Seg Social Prof Cs Es Santa Fe Camara Primera.\n• Ingresá tu Código de Pago Link: matrícula sin guion, anteponiendo los ceros correspondientes.\n  Ej.: matrícula 01-1234 → 010001234.\n• Luego Confirmá el pago.\n\nRed Banelco / Pago Mis Cuentas:\n\n• Rubro Clubes y Asociaciones → Caja CS Económicas SF → ingresá el mismo código matrícula sin guion, anteponiendo los ceros correspondientes.\n  Ej.: matrícula 01-1234 → 010001234.',
         'Botón de Pago Web desde la Autogestión del Consejo: Ingresá en el [Software Profesional](http://contadores.org.ar/php/login.php), pestaña Cuentas Corrientes → Botón de Pago Integral.'
       ],
-      steps: [
-        { step: 1, title: 'Elegí el medio de pago', desc: 'Recomendamos adherir al Débito Automático para evitar vencimientos.' },
-        { step: 2, title: 'Tramitar Subsidios', desc: 'Para subsidio por guardería, completá la Solicitud de Subsidio por Guardería y adjuntá la factura correspondiente.' },
-        { step: 3, title: 'Comprobante de Pago', desc: 'Obtené el comprobante apto para deducción en Impuesto a las Ganancias.' }
-      ],
-      faqs: [
-        { q: '¿Puedo deducir las aportaciones del DSS en Impuesto a las Ganancias?', a: 'Sí, la cuota del DSS es computable como gasto médico deducción cuota obra social/prepaga conforme a la normativa de AFIP/ARCA.' }
-      ],
-      relatedFormIds: [],
-      quickActionLabel: 'Ir al Centro de Formularios',
-      quickActionTarget: 'formularios'
+      relatedFormIds: []
     }
   },
   {

@@ -298,7 +298,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
           <div className="space-y-3">
             <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              Aspectos Clave
+              {module.details.highlightsTitle || 'Aspectos Clave'}
             </h4>
             <div className="space-y-2.5">
               {module.details.highlights.map((item, idx) => (
