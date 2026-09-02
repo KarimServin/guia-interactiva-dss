@@ -98,9 +98,11 @@ export const AffiliationLanding: React.FC<AffiliationLandingProps> = ({ onGoToFo
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-white">
                 <img 
-                  src="/images/affiliation-hero.png" 
+                  src="/images/affiliation-hero.webp" 
                   alt="Familia profesional de ciencias económicas" 
                   className="w-full h-64 sm:h-80 object-cover"
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -114,9 +116,11 @@ export const AffiliationLanding: React.FC<AffiliationLandingProps> = ({ onGoToFo
           <div className="bg-slate-50/70 rounded-2xl border border-slate-200/80 overflow-hidden flex flex-col sm:flex-row items-stretch">
             <div className="sm:w-2/5 relative h-48 sm:h-auto shrink-0">
               <img 
-                src="/images/affiliation-care.png" 
+                src="/images/affiliation-care.webp" 
                 alt="Consulta médica profesional" 
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="p-6 sm:w-3/5 space-y-3 flex flex-col justify-center">
@@ -137,9 +141,11 @@ export const AffiliationLanding: React.FC<AffiliationLandingProps> = ({ onGoToFo
           <div className="bg-slate-50/70 rounded-2xl border border-slate-200/80 overflow-hidden flex flex-col sm:flex-row items-stretch">
             <div className="sm:w-2/5 relative h-48 sm:h-auto shrink-0">
               <img 
-                src="/images/affiliation-wellbeing.png" 
+                src="/images/affiliation-wellbeing.webp" 
                 alt="Bienestar y respaldo profesional" 
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="p-6 sm:w-3/5 space-y-3 flex flex-col justify-center">
