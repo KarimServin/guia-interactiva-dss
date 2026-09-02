@@ -33,7 +33,7 @@ interface ModuleDetailModalProps {
    Link renderer helpers
 ───────────────────────────────────────── */
 const parsePlainUrls = (text: string): (string | React.ReactNode)[] => {
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const urlRegex = /(https?:\/\/[^\s]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g;
   const rawParts = text.split(urlRegex);
 
   return rawParts.map((part, index) => {
@@ -63,6 +63,16 @@ const parsePlainUrls = (text: string): (string | React.ReactNode)[] => {
           {trailingPunct}
         </React.Fragment>
       );
+    } else if (part.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+      return (
+        <a
+          key={index}
+          href={`mailto:${part}`}
+          className="text-blue-600 hover:text-blue-800 underline font-semibold transition-colors mx-0.5"
+        >
+          {part}
+        </a>
+      );
     }
     return part;
   });
@@ -70,7 +80,7 @@ const parsePlainUrls = (text: string): (string | React.ReactNode)[] => {
 
 const renderTextWithLinks = (text: string) => {
   if (!text) return null;
-  const mdLinkRegex = /\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g;
+  const mdLinkRegex = /\[([^\]]+)\]\((https?:\/\/[^\)]+|mailto:[^\)]+)\)/g;
   const parts: (string | React.ReactNode)[] = [];
   let lastIndex = 0;
   let match;
