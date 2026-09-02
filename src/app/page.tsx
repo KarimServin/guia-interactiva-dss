@@ -35,6 +35,10 @@ export default function HomePage() {
 
   // Quick Action Handler inside Module Modal
   const handleQuickAction = (target: string) => {
+    if (target.includes('tabla-coseguros')) {
+      router.push('/tabla-coseguros');
+      return;
+    }
     if (target.startsWith('http')) {
       window.open(target, '_blank', 'noopener,noreferrer');
       return;
