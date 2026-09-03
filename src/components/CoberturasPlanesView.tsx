@@ -100,17 +100,17 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
     <div id="coberturas-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-in fade-in duration-300">
       
       {/* HERO BANNER */}
-      <div className="relative bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl overflow-hidden border border-blue-800/40">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative bg-gradient-to-r from-sky-100/90 via-blue-50 to-sky-100/80 rounded-3xl p-6 sm:p-8 shadow-sm overflow-hidden border border-sky-200/80">
+        <div className="absolute right-0 top-0 w-96 h-96 bg-sky-300/20 rounded-full blur-3xl pointer-events-none" />
         
-        <div className="relative z-10 max-w-4xl space-y-4">
+        <div className="relative z-10 max-w-4xl space-y-3">
 
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
             Prestaciones
           </h1>
 
-          <p className="text-slate-200 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl">
-            El DSS ofrece dos modalidades de cobertura: el <strong className="text-white font-bold">Plan General</strong> y el <strong className="text-white font-bold">Plan Básico</strong>, respaldados por una amplia red de prestadores médicos en toda la provincia.
+          <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl">
+            El DSS ofrece dos modalidades de cobertura: el <strong className="text-slate-900 font-bold">Plan General</strong> y el <strong className="text-slate-900 font-bold">Plan Básico</strong>, respaldados por una amplia red de prestadores médicos en toda la provincia.
           </p>
         </div>
       </div>
