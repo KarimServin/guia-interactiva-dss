@@ -116,24 +116,6 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           <p className="text-slate-200 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl">
             El Departamento de Servicios Sociales ofrece a sus profesionales dos modalidades de cobertura: el <strong className="text-white font-bold">Plan General</strong> y el <strong className="text-white font-bold">Plan Básico</strong>, respaldados por una amplia red de prestadores médicos e institucionales en toda la provincia.
           </p>
-
-          {/* Quick CTAs */}
-          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-            <button
-              onClick={() => router.push('/tabla-coseguros')}
-              className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm h-11 border border-blue-500 shadow-md transition-all flex items-center justify-center gap-2.5 cursor-pointer"
-            >
-              <FileText className="w-4 h-4 shrink-0" />
-              <span>Ver Tabla Comparativa de Coseguros y Planes</span>
-            </button>
-            <button
-              onClick={() => handleTabClick('farmacia', true)}
-              className="bg-white/10 hover:bg-white/20 text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm h-11 border border-white/20 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
-            >
-              <Pill className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Ver Cobertura en Farmacias</span>
-            </button>
-          </div>
         </div>
       </div>
 
