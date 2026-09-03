@@ -110,7 +110,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           </h1>
 
           <p className="text-slate-200 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl">
-            El Departamento de Servicios Sociales ofrece a sus profesionales dos modalidades de cobertura: el <strong className="text-white font-bold">Plan General</strong> y el <strong className="text-white font-bold">Plan Básico</strong>, respaldados por una amplia red de prestadores médicos e institucionales en toda la provincia.
+            El DSS ofrece dos modalidades de cobertura: el <strong className="text-white font-bold">Plan General</strong> y el <strong className="text-white font-bold">Plan Básico</strong>, respaldados por una amplia red de prestadores médicos en toda la provincia.
           </p>
         </div>
       </div>
