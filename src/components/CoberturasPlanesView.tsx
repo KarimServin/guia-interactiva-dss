@@ -104,10 +104,6 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
         <div className="absolute right-0 top-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
         
         <div className="relative z-10 max-w-4xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-semibold backdrop-blur-sm">
-            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-            <span>Departamento de Servicios Sociales</span>
-          </div>
 
           <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
             Prestaciones
