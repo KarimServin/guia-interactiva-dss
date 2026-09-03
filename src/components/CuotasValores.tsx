@@ -51,18 +51,15 @@ export const CuotasValores: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
       {/* Header Banner */}
-      <div className="bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-950 rounded-2xl p-5 sm:p-8 text-white shadow-lg relative overflow-hidden border border-blue-800/40">
-        <div className="absolute top-0 right-0 -mt-10 -mr-10 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative bg-gradient-to-r from-sky-100/90 via-blue-50/60 to-orange-100/60 rounded-3xl p-6 sm:p-8 shadow-sm overflow-hidden border border-slate-200/80">
+        <div className="absolute right-0 top-0 w-96 h-96 bg-orange-200/25 rounded-full blur-3xl pointer-events-none" />
         
-        <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-1.5 bg-blue-500/20 backdrop-blur-md border border-blue-400/20 px-3 py-1 rounded-full text-[11px] font-bold text-sky-200">
-            <CreditCard className="w-3.5 h-3.5 text-sky-400" />
-            <span>Departamento de Servicios Sociales</span>
-          </div>
-          <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
-            Valores de cuota
+        <div className="relative z-10 max-w-4xl space-y-2">
+          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight flex items-center gap-3">
+            <CreditCard className="w-7 h-7 sm:w-8 sm:h-8 text-blue-600 shrink-0" />
+            <span>Valores de cuota</span>
           </h1>
-          <p className="text-slate-300 text-xs sm:text-sm max-w-3xl font-normal leading-relaxed">
+          <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl pt-1">
             Consulta la estructura y los importes vigentes de cuotas mensuales según el plan y condición de matrícula.
           </p>
         </div>
