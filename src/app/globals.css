@@ -22,6 +22,12 @@ html {
   padding-top: env(safe-area-inset-top);
 }
 
+@media (max-width: 640px) {
+  html {
+    font-size: 17px;
+  }
+}
+
 body {
   font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;

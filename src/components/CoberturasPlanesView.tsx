@@ -144,7 +144,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
               </div>
 
               <div className="min-w-0 flex-1">
-                <h4 className="text-xs sm:text-sm font-bold leading-tight">
+                <h4 className="text-sm sm:text-base font-bold leading-tight">
                   {tab.title}
                 </h4>
               </div>
