@@ -87,6 +87,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
       return;
     } else if (id === 'cuotas') {
       router.push('/cuotas');
+    } else if (id === 'formularios') {
+      router.push('/formularios');
     }
 
     if (onSelectNav) {
