@@ -139,17 +139,21 @@ export default function HomePage() {
             {/* If Search Query is Active: Search Results Overlay Panel */}
             {searchQuery.trim() !== '' && (
               <section id="search-results" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 scroll-mt-20">
-                <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
-                  <h3 className="font-extrabold text-slate-900 text-lg flex items-center gap-2">
-                    <Search className="w-5 h-5 text-orange-500" />
-                    Resultados de búsqueda para &quot;{searchQuery}&quot;
-                  </h3>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200/80 pb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
+                      <Search className="w-4 h-4 text-blue-500" />
+                    </div>
+                    <h3 className="font-heading font-bold text-slate-800 text-base sm:text-lg leading-tight line-clamp-2">
+                      Resultados para <span className="text-blue-600">&quot;{searchQuery}&quot;</span>
+                    </h3>
+                  </div>
                   <button
                     onClick={() => setSearchQuery('')}
-                    className="text-xs text-orange-600 font-bold hover:underline flex items-center gap-1"
+                    className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full text-xs font-semibold transition-colors shrink-0"
                   >
-                    <X className="w-4 h-4" />
-                    Limpiar Búsqueda
+                    <X className="w-3.5 h-3.5" />
+                    Borrar filtro
                   </button>
                 </div>
 
