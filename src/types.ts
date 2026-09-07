@@ -8,7 +8,6 @@ export type ModuleCategory =
   | 'cartilla-vademecum'
   | 'autorizaciones'
   | 'coseguros'
-  | 'cobertura'
   | 'pagos'
   | 'contacto'
   | 'cuotas';

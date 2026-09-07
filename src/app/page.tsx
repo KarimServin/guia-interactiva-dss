@@ -59,7 +59,7 @@ export default function HomePage() {
   // Card click in Hero Section
   const handleSelectCard = (cardId: string) => {
     if (cardId === 'que-es') {
-      const mod = ACTION_MODULES.find(m => m.id === 'cobertura');
+      const mod = ACTION_MODULES.find(m => m.id === 'afiliacion');
       if (mod) setSelectedModule(mod);
     } else if (cardId === 'soy-afiliado') {
       setShowCredentialModal(true);

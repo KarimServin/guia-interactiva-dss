@@ -394,48 +394,6 @@ export const ACTION_MODULES: ActionModule[] = [
     }
   },
   {
-    id: 'cobertura',
-    buttonNumber: 9,
-    title: 'Prácticas y medicamentos',
-    verbTitle: 'Consultas sobre mi cobertura',
-    shortDesc: 'Planes General (70% prácticas / 100% internación) y Básico (60% prácticas / 80% internación), Vademécum 60%.',
-    iconName: 'ShieldCheck',
-    colorClass: {
-      bg: 'bg-white',
-      border: 'border-slate-200',
-      text: 'text-blue-900',
-      hover: 'hover:border-sky-500 hover:shadow-md',
-      iconBg: 'bg-blue-900 text-white'
-    },
-    details: {
-      summary: 'El DSS ofrece esquemas de cobertura diferenciados según tu plan (General o Básico). Para solicitar el cambio entre planes, utilizá el formulario de Solicitud de Cambio de Plan de Cobertura.',
-      highlights: [
-        'Formulario de Cambio de Plan: Solicitud de Cambio de Plan de Cobertura (Cambio de Plan.pdf).',
-        'Plan General: Cobertura del 70% en prácticas médicas y 100% en internación.',
-        'Plan Básico: Cobertura del 60% en prácticas médicas y 80% en internación.',
-        'Medicamentos: Cobertura del 60% en ambos planes para Vademécum.'
-      ],
-      steps: [
-        { 
-          step: 1, 
-          title: 'Verificar Plan Activo', 
-          desc: 'Consultá tu plan de cobertura activo con la administración del DSS.' 
-        },
-        { 
-          step: 2, 
-          title: 'Cambio de Plan', 
-          desc: 'Si deseás modificar tu plan, descargá y completá la Solicitud de Cambio de Plan de Cobertura en la sección Formularios.' 
-        }
-      ],
-      faqs: [
-        { q: '¿Cómo sé a qué plan estoy adherido?', a: 'Podés consultar tu plan activo poniéndote en contacto con la administración del DSS o revisándolo en tus recibos de aportes.' }
-      ],
-      relatedFormIds: [],
-      quickActionLabel: 'Preguntar al Asistente Virtual',
-      quickActionTarget: 'asistente'
-    }
-  },
-  {
     id: 'pagos',
     buttonNumber: 10,
     title: 'Medios de pago',
