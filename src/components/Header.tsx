@@ -349,21 +349,21 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                     <div className="ml-5 pl-3 border-l-2 border-slate-100 py-1 space-y-0.5 animate-in fade-in duration-200">
                       <button
                         onClick={() => handleSubMenuClick('prestaciones')}
-                        className="w-full text-left px-3 py-2 text-[13px] sm:text-sm font-bold text-slate-700 hover:text-blue-700 hover:bg-blue-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
+                        className="w-full text-left px-3 py-2 text-sm sm:text-base font-bold text-slate-700 hover:text-blue-700 hover:bg-blue-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
                         <span>Prestaciones</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('tabla-coseguros')}
-                        className="w-full text-left px-3 py-2 text-[13px] sm:text-sm font-bold text-slate-700 hover:text-indigo-700 hover:bg-indigo-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
+                        className="w-full text-left px-3 py-2 text-sm sm:text-base font-bold text-slate-700 hover:text-indigo-700 hover:bg-indigo-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-indigo-600 shrink-0" />
                         <span>Tabla de Planes y Coseguros</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('cuotas')}
-                        className="w-full text-left px-3 py-2 text-[13px] sm:text-sm font-bold text-slate-700 hover:text-sky-700 hover:bg-sky-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
+                        className="w-full text-left px-3 py-2 text-sm sm:text-base font-bold text-slate-700 hover:text-sky-700 hover:bg-sky-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-sky-600 shrink-0" />
                         <span>Valores de cuota</span>
@@ -403,7 +403,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                           router.push('/vademecum/basico');
                           setIsMobileMenuOpen(false);
                         }}
-                        className="w-full text-left px-3 py-2 text-[13px] sm:text-sm font-bold text-slate-700 hover:text-blue-700 hover:bg-blue-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
+                        className="w-full text-left px-3 py-2 text-sm sm:text-base font-bold text-slate-700 hover:text-blue-700 hover:bg-blue-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
                         <span>Vademécum Básico</span>
@@ -413,7 +413,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                           router.push('/vademecum/anticonceptivos');
                           setIsMobileMenuOpen(false);
                         }}
-                        className="w-full text-left px-3 py-2 text-[13px] sm:text-sm font-bold text-slate-700 hover:text-rose-700 hover:bg-rose-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
+                        className="w-full text-left px-3 py-2 text-sm sm:text-base font-bold text-slate-700 hover:text-rose-700 hover:bg-rose-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0" />
                         <span>Anticonceptivos</span>
