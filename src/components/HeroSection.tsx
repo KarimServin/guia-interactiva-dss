@@ -25,7 +25,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   ];
 
   return (
-    <div className="relative overflow-hidden py-14 sm:py-20 px-4 sm:px-6 lg:px-8 z-10 bg-gradient-to-b from-sky-50/90 via-blue-50/50 to-slate-50">
+    <div className="relative overflow-hidden pt-14 pb-8 sm:pt-20 sm:pb-12 px-4 sm:px-6 lg:px-8 z-10 bg-gradient-to-b from-sky-50/90 via-blue-50/50 to-slate-50">
       {/* Background Hero Image with Soft Dual Overlay */}
       <div 
         className="absolute inset-0 z-0 opacity-25 bg-cover bg-center bg-no-repeat pointer-events-none mix-blend-multiply"
@@ -109,7 +109,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* Minimalist Double Scroll Arrow */}
-          <div className="flex justify-center pt-16 sm:pt-24 pb-4 -mb-6">
+          <div className="flex justify-center pt-8 sm:pt-12 pb-2 -mb-8">
             <button
               onClick={() => {
                 const el = document.getElementById('servicios');

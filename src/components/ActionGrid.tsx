@@ -68,7 +68,7 @@ export const ActionGrid: React.FC<ActionGridProps> = ({
   filteredModuleId,
 }) => {
   return (
-    <section id="servicios" className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
+    <section id="servicios" className="pt-4 pb-12 sm:pt-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       {/* Central Separator Section */}
       <div className="text-center mb-10">
         <span className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 uppercase tracking-wider bg-blue-50 border border-blue-100 px-3 py-1 rounded-full">
