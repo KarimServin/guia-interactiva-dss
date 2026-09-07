@@ -370,76 +370,79 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
         )}
 
         {/* 5. TABLA DE COBERTURAS */}
-        {module.details.coberturaTable && module.details.coberturaTable.length > 0 && (
-          <div className="space-y-3 pt-2">
-            <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-2">
-              <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
-              Tabla de Coberturas
-            </h4>
-            
-            {/* Mobile View: Fluid Cards */}
-            <div className="sm:hidden space-y-2.5">
-              {module.details.coberturaTable.map((item, idx) => {
-                if (item.isHeader) {
+        {module.details.coberturaTable && module.details.coberturaTable.length > 0 && (() => {
+          const hasDescColumn = module.details.coberturaTable.some(item => !!item.descripcion);
+          return (
+            <div className="space-y-3 pt-2">
+              <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-200 pb-2">
+                <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                Tabla de Coberturas
+              </h4>
+              
+              {/* Mobile View: Fluid Cards */}
+              <div className="sm:hidden space-y-2.5">
+                {module.details.coberturaTable.map((item, idx) => {
+                  if (item.isHeader) {
+                    return (
+                      <div key={idx} className="bg-slate-800 text-white px-3 py-1.5 rounded-xl font-bold text-[10px] uppercase tracking-wider mt-3">
+                        {item.prestacion}
+                      </div>
+                    );
+                  }
                   return (
-                    <div key={idx} className="bg-slate-800 text-white px-3 py-1.5 rounded-xl font-bold text-[10px] uppercase tracking-wider mt-3">
-                      {item.prestacion}
+                    <div key={idx} className="p-3.5 bg-white rounded-xl border border-slate-200 shadow-2xs space-y-1.5">
+                      <div className="flex items-start justify-between gap-2">
+                        <span className="text-xs font-bold text-slate-900">{item.prestacion}</span>
+                      </div>
+                      {item.descripcion && (
+                        <p className="text-[11px] text-slate-500 leading-snug">{item.descripcion}</p>
+                      )}
+                      <div className="flex items-center justify-between pt-1 border-t border-slate-100 text-xs">
+                        <span className="text-[11px] text-slate-500">Plan General: <strong className="text-blue-700 font-bold">{item.general || '—'}</strong></span>
+                        <span className="text-[11px] text-slate-500">Plan Básico: <strong className="text-indigo-700 font-bold">{item.basico || '—'}</strong></span>
+                      </div>
                     </div>
                   );
-                }
-                return (
-                  <div key={idx} className="p-3.5 bg-white rounded-xl border border-slate-200 shadow-2xs space-y-1.5">
-                    <div className="flex items-start justify-between gap-2">
-                      <span className="text-xs font-bold text-slate-900">{item.prestacion}</span>
-                    </div>
-                    {item.descripcion && (
-                      <p className="text-[11px] text-slate-500 leading-snug">{item.descripcion}</p>
-                    )}
-                    <div className="flex items-center justify-between pt-1 border-t border-slate-100 text-xs">
-                      <span className="text-[11px] text-slate-500">Plan General: <strong className="text-blue-700 font-bold">{item.general || '—'}</strong></span>
-                      <span className="text-[11px] text-slate-500">Plan Básico: <strong className="text-indigo-700 font-bold">{item.basico || '—'}</strong></span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                })}
+              </div>
 
-            {/* Desktop View: Table */}
-            <div className="hidden sm:block overflow-x-auto rounded-2xl border border-slate-200 shadow-2xs">
-              <table className="w-full text-xs border-collapse min-w-[460px]">
-                <thead className="bg-slate-800 text-white font-bold">
-                  <tr>
-                    <th className="py-2.5 px-3 text-left">Prestación</th>
-                    <th className="py-2.5 px-3 text-left">Descripción</th>
-                    <th className="py-2.5 px-3 text-right">General</th>
-                    <th className="py-2.5 px-3 text-right">Básico</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 bg-white">
-                  {module.details.coberturaTable.map((item, idx) => {
-                    if (item.isHeader) {
+              {/* Desktop View: Table */}
+              <div className="hidden sm:block overflow-x-auto rounded-2xl border border-slate-200 shadow-2xs">
+                <table className="w-full text-xs border-collapse min-w-[460px]">
+                  <thead className="bg-slate-800 text-white font-bold">
+                    <tr>
+                      <th className="py-2.5 px-3 text-left">Prestación</th>
+                      {hasDescColumn && <th className="py-2.5 px-3 text-left">Descripción</th>}
+                      <th className="py-2.5 px-3 text-right">General</th>
+                      <th className="py-2.5 px-3 text-right">Básico</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 bg-white">
+                    {module.details.coberturaTable.map((item, idx) => {
+                      if (item.isHeader) {
+                        return (
+                          <tr key={idx} className="bg-slate-100">
+                            <td colSpan={hasDescColumn ? 4 : 3} className="py-2 px-3 font-bold text-slate-600 text-[10px] uppercase tracking-wider">
+                              {item.prestacion}
+                            </td>
+                          </tr>
+                        );
+                      }
                       return (
-                        <tr key={idx} className="bg-slate-100">
-                          <td colSpan={4} className="py-2 px-3 font-bold text-slate-600 text-[10px] uppercase tracking-wider">
-                            {item.prestacion}
-                          </td>
+                        <tr key={idx} className="hover:bg-slate-50">
+                          <td className="py-2.5 px-3 font-semibold text-slate-800">{item.prestacion}</td>
+                          {hasDescColumn && <td className="py-2.5 px-3 text-slate-500">{item.descripcion || '—'}</td>}
+                          <td className="py-2.5 px-3 text-right font-bold text-blue-700">{item.general || '—'}</td>
+                          <td className="py-2.5 px-3 text-right font-bold text-indigo-700">{item.basico || '—'}</td>
                         </tr>
                       );
-                    }
-                    return (
-                      <tr key={idx} className="hover:bg-slate-50">
-                        <td className="py-2.5 px-3 font-semibold text-slate-800">{item.prestacion}</td>
-                        <td className="py-2.5 px-3 text-slate-500">{item.descripcion || '—'}</td>
-                        <td className="py-2.5 px-3 text-right font-bold text-blue-700">{item.general || '—'}</td>
-                        <td className="py-2.5 px-3 text-right font-bold text-indigo-700">{item.basico || '—'}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                    })}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
-        )}
+          );
+        })()}
 
         {/* 6. APP MOBILE DOWNLOAD (SI APLICA) */}
         {module.details.appLinks && (

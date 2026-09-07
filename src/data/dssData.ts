@@ -490,7 +490,7 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-indigo-600 text-white'
     },
     details: {
-      summary: 'Planes de cobertura:',
+      summary: '',
       coberturaTable: [
         {
           prestacion: 'Consultas y prácticas ambulatorias',
