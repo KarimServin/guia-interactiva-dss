@@ -58,6 +58,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
   const handleTabClick = (tabId: string, shouldScroll = true) => {
     const targetId = getSubTabId(tabId);
     setActiveTab(targetId);
+    router.push(`/prestaciones/${targetId}`, { scroll: false });
 
     if (shouldScroll) {
       setTimeout(() => {
@@ -85,38 +86,62 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
   }, [initialSubTab]);
 
   const TABS = [
-    { id: 'planes', title: 'Planes y Ámbito', icon: ShieldCheck },
-    { id: 'medica', title: 'Asistencia Médica', icon: Stethoscope },
-    { id: 'materno', title: 'Plan Materno Infantil', icon: Baby },
-    { id: 'internaciones', title: 'Internaciones', icon: BedDouble },
-    { id: 'farmacia', title: 'Farmacia y Anticonceptivos', icon: Pill },
-    { id: 'odontologia', title: 'Odontología', icon: Smile },
-    { id: 'nutricion-celiacos', title: 'Nutrición y Celíacos', icon: Apple },
-    { id: 'protesis', title: 'Prótesis y Órtesis', icon: Bone },
-    { id: 'sepelios', title: 'Subsidio Sepelios', icon: HeartHandshake },
+    { id: 'planes', title: 'Planes y Ámbito', desc: 'Plan General, Plan Básico y territorialidad', icon: ShieldCheck },
+    { id: 'medica', title: 'Asistencia Médica', desc: 'Consultas, guardia y chequeras de salud', icon: Stethoscope },
+    { id: 'materno', title: 'Plan Materno Infantil', desc: '100% de cobertura para madre y recién nacido', icon: Baby },
+    { id: 'internaciones', title: 'Internaciones', desc: 'Cobertura clínica, quirúrgica y sanatorial', icon: BedDouble },
+    { id: 'farmacia', title: 'Farmacia y Anticonceptivos', desc: 'Descuentos en medicamentos y anticonceptivos', icon: Pill },
+    { id: 'odontologia', title: 'Odontología', desc: 'Autorización previa y sistema de reintegro', icon: Smile },
+    { id: 'nutricion-celiacos', title: 'Nutrición y Celíacos', desc: 'Asistencia nutricional y subsidio sin TACC', icon: Apple },
+    { id: 'protesis', title: 'Prótesis y Órtesis', desc: 'Cobertura de prótesis y órtesis médicas', icon: Bone },
+    { id: 'sepelios', title: 'Subsidio Sepelios', desc: 'Subsidio por fallecimiento y reintegros', icon: HeartHandshake },
   ];
+
+  const currentActiveTabInfo = TABS.find(t => t.id === activeTab);
 
   return (
     <div id="coberturas-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-in fade-in duration-300">
       
+      {/* BREADCRUMB NAV */}
+      <nav className="flex items-center gap-2 text-xs text-slate-500 font-medium">
+        <button 
+          onClick={() => router.push('/')}
+          className="hover:text-blue-600 transition-colors"
+        >
+          Inicio
+        </button>
+        <span className="text-slate-300">/</span>
+        <button 
+          onClick={() => router.push('/prestaciones')}
+          className={activeTab === 'planes' ? "text-slate-900 font-bold" : "hover:text-blue-600 transition-colors"}
+        >
+          Prestaciones
+        </button>
+        {activeTab !== 'planes' && currentActiveTabInfo && (
+          <>
+            <span className="text-slate-300">/</span>
+            <span className="text-slate-900 font-bold">{currentActiveTabInfo.title}</span>
+          </>
+        )}
+      </nav>
+
       {/* HERO BANNER */}
       <div className="relative bg-gradient-to-r from-sky-100/90 via-blue-50 to-sky-100/80 rounded-3xl p-6 sm:p-8 shadow-sm overflow-hidden border border-sky-200/80">
         <div className="absolute right-0 top-0 w-96 h-96 bg-sky-300/20 rounded-full blur-3xl pointer-events-none" />
         
         <div className="relative z-10 max-w-4xl space-y-3">
-
           <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Prestaciones
+            Guía de Prestaciones y Coberturas
           </h1>
 
           <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl">
-            El DSS ofrece dos modalidades de cobertura: el <strong className="text-slate-900 font-bold">Plan General</strong> y el <strong className="text-slate-900 font-bold">Plan Básico</strong>, respaldados por una amplia red de prestadores médicos en toda la provincia.
+            El DSS ofrece dos modalidades de cobertura: el <strong className="text-slate-900 font-bold">Plan General</strong> y el <strong className="text-slate-900 font-bold">Plan Básico</strong>, respaldados por una amplia red de prestadores médicos en toda la provincia. Seleccioná una prestación para consultar sus detalles.
           </p>
         </div>
       </div>
 
-      {/* RESPONSIVE 3x3 CATEGORY SELECTOR GRID (DESKTOP: 3 COLS, MOBILE: 2 COLS) */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3">
+      {/* RESPONSIVE RICH HUB CARDS GRID */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {TABS.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -124,10 +149,10 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
             <button
               key={tab.id}
               onClick={() => handleTabClick(tab.id, true)}
-              className={`group flex items-center gap-3.5 text-left p-4 rounded-2xl border transition-all cursor-pointer relative overflow-hidden ${
+              className={`group flex items-start gap-4 text-left p-5 rounded-2xl border transition-all cursor-pointer relative overflow-hidden ${
                 isActive
                   ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white border-blue-600 shadow-md shadow-blue-600/25 ring-2 ring-blue-400/40 scale-[1.01]'
-                  : 'bg-white text-slate-700 border-slate-200/90 hover:border-blue-300 hover:bg-blue-50/50 hover:text-slate-900 shadow-2xs'
+                  : 'bg-white text-slate-700 border-slate-200/90 hover:border-blue-300 hover:bg-blue-50/50 hover:text-slate-900 shadow-2xs hover:shadow-md'
               }`}
             >
               {/* Top Accent line when active */}
@@ -135,18 +160,28 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
                 <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-sky-300 rounded-l-full" />
               )}
               
-              <div className={`p-2.5 rounded-xl shrink-0 transition-transform group-hover:scale-110 ${
+              <div className={`p-3 rounded-2xl shrink-0 transition-transform group-hover:scale-110 ${
                 isActive 
                   ? 'bg-white/15 text-white' 
                   : 'bg-blue-50 text-blue-600 group-hover:bg-blue-100'
               }`}>
-                <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                <Icon className="w-6 h-6" />
               </div>
 
-              <div className="min-w-0 flex-1">
-                <h4 className="text-sm sm:text-base font-bold leading-tight">
-                  {tab.title}
-                </h4>
+              <div className="min-w-0 flex-1 space-y-1">
+                <div className="flex items-center justify-between gap-2">
+                  <h4 className="text-base font-bold leading-snug">
+                    {tab.title}
+                  </h4>
+                  <ArrowRight className={`w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1 ${
+                    isActive ? 'text-white/80' : 'text-slate-400 group-hover:text-blue-600'
+                  }`} />
+                </div>
+                <p className={`text-xs leading-relaxed ${
+                  isActive ? 'text-blue-100' : 'text-slate-500'
+                }`}>
+                  {tab.desc}
+                </p>
               </div>
             </button>
           );
