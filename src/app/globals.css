@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-heading: var(--font-heading), 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-heading), 'Figtree', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-sans: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-montserrat: var(--font-montserrat), 'Montserrat', system-ui, -apple-system, sans-serif;
 }
 
 :root {

@@ -63,7 +63,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-blue-600 mb-3">
             Bienvenido al Portal DSS
           </p>
-          <h1 className="font-montserrat text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] mb-5 text-slate-900">
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] mb-5 text-slate-900">
             Guía Interactiva <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-sky-500">para Afiliados</span>
           </h1>
 
