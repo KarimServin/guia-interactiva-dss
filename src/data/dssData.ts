@@ -479,7 +479,7 @@ export const ACTION_MODULES: ActionModule[] = [
     id: 'comparativa-planes',
     buttonNumber: 13,
     title: 'Comparativa de Planes',
-    verbTitle: 'Comparativa de Planes',
+    verbTitle: 'Planes ofrecidos y cobertura',
     shortDesc: 'Conocé las diferencias entre Plan General y Plan Básico: prácticas, internación y medicamentos.',
     iconName: 'Scale',
     colorClass: {
