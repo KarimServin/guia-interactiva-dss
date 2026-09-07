@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Search, HeartPulse, Sparkles, ChevronRight, ShieldCheck, Stethoscope, Pill, FileText, CreditCard } from 'lucide-react';
+import { ACTION_MODULES } from '@/data/dssData';
 
 interface HeroSectionProps {
   searchQuery: string;
@@ -68,20 +69,54 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  setTimeout(() => {
+                    const el = document.getElementById('search-results');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }, 50);
+                }
+              }}
               placeholder="Buscar trámite, especialidad, coseguro o medicamento..."
-              className="w-full pl-12 pr-28 py-4 bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-900 placeholder-slate-400 text-sm font-semibold rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 shadow-lg shadow-blue-950/5 transition-all"
+              className="w-full pl-12 pr-4 py-4 bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-900 placeholder-slate-400 text-sm font-semibold rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 shadow-lg shadow-blue-950/5 transition-all"
             />
-            {searchQuery ? (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute inset-y-2.5 right-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs rounded-xl font-bold transition-colors cursor-pointer"
-              >
-                Limpiar
-              </button>
-            ) : (
-              <span className="absolute inset-y-2 right-2 px-4 py-2 bg-gradient-to-r from-blue-700 to-sky-600 hover:from-blue-800 hover:to-sky-700 text-white text-xs rounded-xl font-bold flex items-center shadow-md pointer-events-none transition-all">
-                Buscar
-              </span>
+            
+            {/* Auto-suggestions Dropdown */}
+            {searchQuery.trim() !== '' && (
+              <div className="absolute top-full mt-2 left-0 right-0 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-xl shadow-xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
+                {ACTION_MODULES.filter(m => 
+                  m.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                  m.verbTitle.toLowerCase().includes(searchQuery.toLowerCase())
+                ).slice(0, 4).map((mod) => (
+                  <button
+                    key={mod.id}
+                    onClick={() => {
+                      setSearchQuery(mod.title);
+                      setTimeout(() => {
+                        const el = document.getElementById('search-results');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      }, 50);
+                    }}
+                    className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center justify-between border-b border-slate-100 last:border-0"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Search className="w-4 h-4 text-slate-400" />
+                      <span>{mod.verbTitle}</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-slate-300" />
+                  </button>
+                ))}
+                
+                <button
+                  onClick={() => {
+                    const el = document.getElementById('search-results');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="w-full text-center px-4 py-3 text-xs font-bold text-blue-600 hover:bg-blue-50 transition-colors border-t border-slate-100"
+                >
+                  Presioná Enter para ver todos los resultados
+                </button>
+              </div>
             )}
           </div>
 
