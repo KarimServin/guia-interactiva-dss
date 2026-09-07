@@ -17,13 +17,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenCredential,
   onSelectCard,
 }) => {
-  const quickFilters = [
-    { label: 'Cartilla Médica', query: 'cartilla', icon: Stethoscope },
-    { label: 'Autorizaciones', query: 'autorizar', icon: ShieldCheck },
-    { label: 'Medicamentos y Farmacias', query: 'farmacia', icon: Pill },
-    { label: 'Coseguros', query: 'coseguro', icon: CreditCard },
-    { label: 'Reintegros', query: 'reembolso', icon: FileText },
-  ];
+
 
   return (
     <div className="relative overflow-hidden pt-14 pb-8 sm:pt-20 sm:pb-12 px-4 sm:px-6 lg:px-8 z-10 bg-gradient-to-b from-sky-50/90 via-blue-50/50 to-slate-50">
@@ -120,28 +114,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             )}
           </div>
 
-          {/* Quick Suggestion Chips */}
-          <div className="flex flex-wrap items-center justify-center gap-2 text-xs mb-4">
-            <span className="text-slate-500 font-bold text-[11px] mr-1">Consultas frecuentes:</span>
-            {quickFilters.map((chip) => {
-              const ChipIcon = chip.icon;
-              const isSelected = searchQuery === chip.query;
-              return (
-                <button
-                  key={chip.query}
-                  onClick={() => setSearchQuery(chip.query)}
-                  className={`px-3 py-1.5 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
-                    isSelected
-                      ? 'bg-blue-700 text-white shadow-sm scale-105'
-                      : 'bg-white/85 hover:bg-white text-slate-700 hover:text-blue-800 border border-slate-200/80 shadow-2xs hover:shadow-xs'
-                  }`}
-                >
-                  <ChipIcon className={`w-3.5 h-3.5 ${isSelected ? 'text-white' : 'text-blue-600'}`} />
-                  <span>{chip.label}</span>
-                </button>
-              );
-            })}
-          </div>
+
 
           {/* Minimalist Double Scroll Arrow */}
           <div className="flex justify-center pt-8 sm:pt-12 pb-2 -mb-8">
