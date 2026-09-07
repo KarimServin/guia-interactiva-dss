@@ -498,13 +498,13 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
 
       </div>
 
-      {/* ── FOOTER CTA (BOTONES DE ACCIÓN) ── */}
+      {/* ── FOOTER CTA (BOTONES DE ACCIÓN APILADOS) ── */}
       {(module.details.quickActionLabel || module.details.secondaryQuickActionLabel) && (
-        <div className="shrink-0 p-4 bg-white border-t border-slate-200/80 shadow-md flex flex-col sm:flex-row gap-2.5">
+        <div className="shrink-0 p-4 bg-white border-t border-slate-200/80 shadow-md flex flex-col gap-2.5">
           {module.details.quickActionLabel && module.details.quickActionTarget && (
             <button
               onClick={() => { onClose(); onQuickAction(module.details.quickActionTarget!); }}
-              className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-sky-600 hover:from-sky-600 hover:to-blue-700 text-white text-xs sm:text-sm font-bold transition-all shadow-2xs active:scale-[0.98] cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-sky-600 hover:from-sky-600 hover:to-blue-700 text-white text-xs sm:text-sm font-bold transition-all shadow-2xs active:scale-[0.98] cursor-pointer"
             >
               <span>{module.details.quickActionLabel}</span>
               <ArrowRight className="w-4 h-4 shrink-0" />
@@ -513,7 +513,7 @@ export const ModuleDetailModal: React.FC<ModuleDetailModalProps> = ({
           {module.details.secondaryQuickActionLabel && module.details.secondaryQuickActionTarget && (
             <button
               onClick={() => { onClose(); onQuickAction(module.details.secondaryQuickActionTarget!); }}
-              className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs sm:text-sm font-bold transition-all shadow-2xs active:scale-[0.98] cursor-pointer border border-slate-700"
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs sm:text-sm font-bold transition-all shadow-2xs active:scale-[0.98] cursor-pointer border border-slate-700"
             >
               <span>{module.details.secondaryQuickActionLabel}</span>
               <ArrowRight className="w-4 h-4 shrink-0" />
