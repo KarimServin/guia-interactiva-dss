@@ -490,14 +490,28 @@ export const ACTION_MODULES: ActionModule[] = [
       iconBg: 'bg-indigo-600 text-white'
     },
     details: {
-      summary: 'Planes de cobertura',
-      highlightsTitle: 'Cobertura por tipo de prestación:',
-      highlights: [
-        'Consultas y prácticas ambulatorias: Plan General 70% — Plan Básico 60%',
-        'Internación: Plan General 100% — Plan Básico 80%',
-        'Medicamentos: Plan General 60% — Plan Básico 60% (vademécum)'
+      summary: 'Planes de cobertura:',
+      coberturaTable: [
+        {
+          prestacion: 'Consultas y prácticas ambulatorias',
+          general: '70%',
+          basico: '60%'
+        },
+        {
+          prestacion: 'Internación',
+          general: '100%',
+          basico: '80%'
+        },
+        {
+          prestacion: 'Medicamentos (vademécum)',
+          general: '60%',
+          basico: '60%'
+        }
       ],
-      relatedFormIds: []
+      highlights: [],
+      relatedFormIds: [],
+      quickActionLabel: 'Ver Tabla de Coseguros',
+      quickActionTarget: 'https://dss.contadores.org.ar/tabla-coseguros'
     }
   }
 ];
