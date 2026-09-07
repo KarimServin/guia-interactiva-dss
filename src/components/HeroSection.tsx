@@ -42,10 +42,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <div className="relative overflow-hidden pt-14 pb-8 sm:pt-20 sm:pb-12 px-4 sm:px-6 lg:px-8 z-10 bg-gradient-to-b from-sky-50/90 via-blue-50/50 to-slate-50">
       {/* Background Hero Image with Soft Dual Overlay */}
       <div 
-        className="absolute inset-0 z-0 opacity-25 bg-cover bg-center bg-no-repeat pointer-events-none mix-blend-multiply"
+        className="absolute inset-0 z-0 bg-cover bg-no-repeat pointer-events-none mix-blend-multiply"
         style={{ 
           backgroundImage: "url('/hero-bg.webp')", 
-          backgroundPosition: "center 30%",
+          backgroundPosition: "85% 30%",
+          opacity: 0.45,
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, transparent 15%, black 75%, transparent 100%)",
+          maskImage: "linear-gradient(to right, transparent 0%, transparent 15%, black 75%, transparent 100%)",
         }}
       />
       
