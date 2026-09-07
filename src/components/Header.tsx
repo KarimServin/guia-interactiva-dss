@@ -197,7 +197,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                           className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2.5 cursor-pointer"
                         >
                           <Activity className="w-4 h-4 text-blue-600 shrink-0" />
-                          <span>Prestaciones</span>
+                          <span>Listado de Prestaciones</span>
                         </button>
                         <button
                           onClick={() => handleSubMenuClick('tabla-coseguros')}
@@ -355,7 +355,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                         className="w-full text-left px-3 py-2 text-sm sm:text-base font-bold text-slate-700 hover:text-blue-700 hover:bg-blue-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
                         <Activity className="w-4 h-4 text-blue-600 shrink-0" />
-                        <span>Prestaciones</span>
+                        <span>Listado de Prestaciones</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('tabla-coseguros')}
