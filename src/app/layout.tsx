@@ -94,7 +94,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${plusJakartaSans.variable} ${outfit.variable} scroll-smooth`} suppressHydrationWarning>
-      <body className="bg-white text-slate-900 min-h-dvh flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white" suppressHydrationWarning>
+      <body className="bg-white text-slate-900 min-h-dvh flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white overflow-x-hidden" suppressHydrationWarning>
         {children}
       </body>
     </html>

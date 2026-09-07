@@ -112,7 +112,7 @@ export default function HomePage() {
 
   return (
     <div 
-      className="min-h-screen text-slate-900 font-sans flex flex-col antialiased selection:bg-blue-600 selection:text-white relative bg-white"
+      className="min-h-screen text-slate-900 font-sans flex flex-col antialiased selection:bg-blue-600 selection:text-white relative bg-white overflow-x-hidden"
     >
 
       {/* Header */}
