@@ -2,22 +2,23 @@
 
 import React from 'react';
 import { ActionModule } from '../types';
-import { 
-  Headphones, 
-  Stethoscope, 
-  Pill, 
-  ClipboardCheck, 
-  DollarSign, 
-  ShieldCheck, 
-  Users, 
-  CreditCard, 
+import {
+  Headphones,
+  Stethoscope,
+  Pill,
+  ClipboardCheck,
+  DollarSign,
+  ShieldCheck,
+  Users,
+  CreditCard,
   ChevronRight,
   Sparkles,
   UserCheck,
   Baby,
   HeartPulse,
   Smile,
-  BookOpen
+  BookOpen,
+  Scale
 } from 'lucide-react';
 
 interface ActionGridProps {
@@ -40,6 +41,7 @@ const getIconComponent = (iconName: string) => {
     case 'HeartPulse': return HeartPulse;
     case 'Smile': return Smile;
     case 'BookOpen': return BookOpen;
+    case 'Scale': return Scale;
     case 'Headphones': default: return Headphones;
   }
 };
@@ -92,9 +94,8 @@ export const ActionGrid: React.FC<ActionGridProps> = ({
             <div
               key={mod.id}
               onClick={() => onSelectModule(mod)}
-              className={`group bg-white p-6 rounded-2xl border border-slate-200/80 shadow-2xs hover:shadow-md hover:border-blue-400 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center justify-between text-center min-h-[200px] cursor-pointer ${
-                isHighlighted ? 'ring-2 ring-blue-500 border-blue-500 bg-blue-50/20' : ''
-              }`}
+              className={`group bg-white p-6 rounded-2xl border border-slate-200/80 shadow-2xs hover:shadow-md hover:border-blue-400 hover:-translate-y-0.5 transition-all duration-200 flex flex-col items-center justify-between text-center min-h-[200px] cursor-pointer ${isHighlighted ? 'ring-2 ring-blue-500 border-blue-500 bg-blue-50/20' : ''
+                }`}
             >
               <div className="flex flex-col items-center text-center w-full">
                 {/* Centered Icon Logo */}

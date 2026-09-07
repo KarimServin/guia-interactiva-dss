@@ -174,20 +174,20 @@ export const ACTION_MODULES: ActionModule[] = [
       summary: 'Accedé a atención médica buscando profesionales en nuestra cartilla digital y emitiendo previamente tu orden de consulta. Para requerimientos de prácticas y estudios, utilizá la Solicitud de Prescripción / Autorización Médica.',
       highlights: [],
       steps: [
-        { 
-          step: 1, 
-          title: 'Buscar un prestador', 
-          desc: 'Consultá la [Cartilla de Prestadores Online](https://dss.contadores.org.ar/cartilla). Encontrá al profesional que buscás y solicitale un turno.' 
+        {
+          step: 1,
+          title: 'Buscar un prestador',
+          desc: 'Consultá la [Cartilla de Prestadores Online](https://dss.contadores.org.ar/cartilla). Encontrá al profesional que buscás y solicitale un turno.'
         },
-        { 
-          step: 2, 
-          title: 'Emitir la orden de consulta', 
-          desc: 'Ingresá al [Software de Gestión](https://contadores.org.ar/php/login.php) y generá la orden de consulta.' 
+        {
+          step: 2,
+          title: 'Emitir la orden de consulta',
+          desc: 'Ingresá al [Software de Gestión](https://contadores.org.ar/php/login.php) y generá la orden de consulta.'
         },
-        { 
-          step: 3, 
-          title: 'Asistir al turno', 
-          desc: 'Presentate con tu DNI y la Orden de consulta emitida. Si requerís autorizar estudios, adjuntá la Solicitud de Prescripción Médica.' 
+        {
+          step: 3,
+          title: 'Asistir al turno',
+          desc: 'Presentate con tu DNI y la Orden de consulta emitida. Si requerís autorizar estudios, adjuntá la Solicitud de Prescripción Médica.'
         }
       ],
       faqs: [
@@ -222,20 +222,20 @@ export const ACTION_MODULES: ActionModule[] = [
         'Doble Cobertura Complementaria: Sumá descuentos si contás con otra obra social o prepaga.'
       ],
       steps: [
-        { 
-          step: 1, 
-          title: 'Prescripción Médica', 
-          desc: 'Obtené la Receta Médica (física o digital) emitida por tu profesional de salud.' 
+        {
+          step: 1,
+          title: 'Prescripción Médica',
+          desc: 'Obtené la Receta Médica (física o digital) emitida por tu profesional de salud.'
         },
-        { 
-          step: 2, 
-          title: 'Compra en Mostrador (60% Descuento)', 
-          desc: 'Acreditá tu identidad en cualquier farmacia adherida con tu N° de Matrícula Profesional o DNI para aplicar el 60% de descuento directo (abonás el 40% restante).' 
+        {
+          step: 2,
+          title: 'Compra en Mostrador (60% Descuento)',
+          desc: 'Acreditá tu identidad en cualquier farmacia adherida con tu N° de Matrícula Profesional o DNI para aplicar el 60% de descuento directo (abonás el 40% restante).'
         },
-        { 
-          step: 3, 
-          title: 'Tratamientos Prolongados / Crónicos', 
-          desc: 'Presentá en la secretaría del DSS la Ficha de Tratamiento Prolongado (validez de 6 meses) para automatizar el expendio directo sin trámites adicionales.' 
+        {
+          step: 3,
+          title: 'Tratamientos Prolongados / Crónicos',
+          desc: 'Presentá en la secretaría del DSS la Ficha de Tratamiento Prolongado (validez de 6 meses) para automatizar el expendio directo sin trámites adicionales.'
         }
       ],
       faqs: [
@@ -270,20 +270,20 @@ export const ACTION_MODULES: ActionModule[] = [
         'Importante: La cobertura del 100% requiere que la ficha electrónica haya sido previamente confeccionada, aprobada y se encuentre vigente.'
       ],
       steps: [
-        { 
-          step: 1, 
-          title: 'Con Receta Médica (60%)', 
-          desc: 'Presentá tu receta médica en farmacias convenidas para acceder a la cobertura del 60% de los medicamentos incluidos.' 
+        {
+          step: 1,
+          title: 'Con Receta Médica (60%)',
+          desc: 'Presentá tu receta médica en farmacias convenidas para acceder a la cobertura del 60% de los medicamentos incluidos.'
         },
-        { 
-          step: 2, 
-          title: 'Con Ficha Electrónica (100%)', 
-          desc: 'Solicitá a tu médico/a ginecólogo/a la confección de la ficha electrónica de anticoncepción para su evaluación y aprobación previa por la Obra Social.' 
+        {
+          step: 2,
+          title: 'Con Ficha Electrónica (100%)',
+          desc: 'Solicitá a tu médico/a ginecólogo/a la confección de la ficha electrónica de anticoncepción para su evaluación y aprobación previa por la Obra Social.'
         },
-        { 
-          step: 3, 
-          title: 'Retiro con Ficha Vigente', 
-          desc: 'Con la ficha aprobada y vigente, el anticonceptivo indicado contará con 100% de cobertura sin requerir recetas adicionales para cada dispensa.' 
+        {
+          step: 3,
+          title: 'Retiro con Ficha Vigente',
+          desc: 'Con la ficha aprobada y vigente, el anticonceptivo indicado contará con 100% de cobertura sin requerir recetas adicionales para cada dispensa.'
         }
       ],
       faqs: [
@@ -473,6 +473,31 @@ export const ACTION_MODULES: ActionModule[] = [
       relatedFormIds: [],
       quickActionLabel: 'Consultá valores de cuota aquí',
       quickActionTarget: 'https://dss.contadores.org.ar/cuotas'
+    }
+  },
+  {
+    id: 'comparativa-planes',
+    buttonNumber: 13,
+    title: 'Comparativa de Planes',
+    verbTitle: 'Comparativa de Planes',
+    shortDesc: 'Conocé las diferencias entre Plan General y Plan Básico: prácticas, internación y medicamentos.',
+    iconName: 'Scale',
+    colorClass: {
+      bg: 'bg-white',
+      border: 'border-indigo-100',
+      text: 'text-indigo-900',
+      hover: 'hover:border-indigo-400 hover:shadow-xl',
+      iconBg: 'bg-indigo-600 text-white'
+    },
+    details: {
+      summary: 'Planes de cobertura',
+      highlightsTitle: 'Cobertura por tipo de prestación:',
+      highlights: [
+        'Consultas y prácticas ambulatorias: Plan General 70% — Plan Básico 60%',
+        'Internación: Plan General 100% — Plan Básico 80%',
+        'Medicamentos: Plan General 60% — Plan Básico 60% (vademécum)'
+      ],
+      relatedFormIds: []
     }
   }
 ];
