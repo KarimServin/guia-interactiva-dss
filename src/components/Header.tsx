@@ -187,28 +187,30 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
 
                   {/* Dropdown Card */}
                   {isCoberturasDropdownOpen && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                      <button
-                        onClick={() => handleSubMenuClick('prestaciones')}
-                        className="w-full text-left px-4 py-2 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                        Prestaciones
-                      </button>
-                      <button
-                        onClick={() => handleSubMenuClick('tabla-coseguros')}
-                        className="w-full text-left px-4 py-2 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors flex items-center gap-2 cursor-pointer"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />
-                        Tabla de Planes y Coseguros
-                      </button>
-                      <button
-                        onClick={() => handleSubMenuClick('cuotas')}
-                        className="w-full text-left px-4 py-2 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors flex items-center gap-2 cursor-pointer"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-sky-600" />
-                        Valores de cuota
-                      </button>
+                    <div className="absolute top-full left-0 pt-1.5 w-64 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                      <div className="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2">
+                        <button
+                          onClick={() => handleSubMenuClick('prestaciones')}
+                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                          Prestaciones
+                        </button>
+                        <button
+                          onClick={() => handleSubMenuClick('tabla-coseguros')}
+                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors flex items-center gap-2 cursor-pointer"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />
+                          Tabla de Planes y Coseguros
+                        </button>
+                        <button
+                          onClick={() => handleSubMenuClick('cuotas')}
+                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors flex items-center gap-2 cursor-pointer"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-sky-600" />
+                          Valores de cuota
+                        </button>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -242,27 +244,29 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
 
                   {/* Dropdown Card */}
                   {isVademecumDropdownOpen && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-56 bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                      <button
-                        onClick={() => {
-                          router.push('/vademecum/basico');
-                          setIsVademecumDropdownOpen(false);
-                        }}
-                        className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                        Vademécum Básico
-                      </button>
-                      <button
-                        onClick={() => {
-                          router.push('/vademecum/anticonceptivos');
-                          setIsVademecumDropdownOpen(false);
-                        }}
-                        className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                        Anticonceptivos
-                      </button>
+                    <div className="absolute top-full left-0 pt-1.5 w-56 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                      <div className="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2">
+                        <button
+                          onClick={() => {
+                            router.push('/vademecum/basico');
+                            setIsVademecumDropdownOpen(false);
+                          }}
+                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                          Vademécum Básico
+                        </button>
+                        <button
+                          onClick={() => {
+                            router.push('/vademecum/anticonceptivos');
+                            setIsVademecumDropdownOpen(false);
+                          }}
+                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                          Anticonceptivos
+                        </button>
+                      </div>
                     </div>
                   )}
                 </div>
