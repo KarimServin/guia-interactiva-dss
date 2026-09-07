@@ -45,10 +45,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         className="absolute inset-0 z-0 bg-cover bg-no-repeat pointer-events-none mix-blend-multiply"
         style={{ 
           backgroundImage: "url('/hero-bg.webp')", 
-          backgroundPosition: "85% 30%",
-          opacity: 0.45,
-          WebkitMaskImage: "linear-gradient(to right, transparent 0%, transparent 15%, black 75%, transparent 100%)",
-          maskImage: "linear-gradient(to right, transparent 0%, transparent 15%, black 75%, transparent 100%)",
+          backgroundPosition: "100% 30%",
+          opacity: 0.20,
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, transparent 40%, black 95%, transparent 100%)",
+          maskImage: "linear-gradient(to right, transparent 0%, transparent 40%, black 95%, transparent 100%)",
         }}
       />
       
