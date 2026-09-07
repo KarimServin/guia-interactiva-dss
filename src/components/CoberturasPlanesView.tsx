@@ -621,16 +621,6 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
                 <li>• <strong className="text-slate-900">Tope Anual:</strong> Definido por el DSS por año aniversario según categoría y grupo familiar.</li>
               </ul>
             </div>
-
-            <div className="pt-2">
-              <button
-                onClick={() => onOpenCosegurosModal && onOpenCosegurosModal()}
-                className="inline-flex items-center gap-2 text-xs font-bold text-cyan-900 bg-cyan-50 hover:bg-cyan-100 px-4 py-2.5 rounded-xl border border-cyan-200 transition-all cursor-pointer"
-              >
-                <FileText className="w-4 h-4 text-cyan-700" />
-                Ver Tabla Comparativa de Coseguros / Planes
-              </button>
-            </div>
           </div>
         )}
 
