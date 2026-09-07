@@ -17,7 +17,7 @@ import { CuotasValores } from '@/components/CuotasValores';
 import { CoberturasPlanesView } from '@/components/CoberturasPlanesView';
 import { Footer } from '@/components/Footer';
 
-import { ACTION_MODULES, FORMS_DATA } from '@/data/dssData';
+import { ACTION_MODULES, FORMS_DATA, PRESTACIONES_TABS } from '@/data/dssData';
 import { ActionModule } from '@/types';
 import { Search, FileText, ClipboardCheck, ArrowRight, X, Headphones } from 'lucide-react';
 
@@ -73,18 +73,32 @@ export default function HomePage() {
     }
   };
 
-  // Global search match check
-  const searchResultsModules = searchQuery.trim() ? ACTION_MODULES.filter(m => 
-    m.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    m.verbTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    m.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    m.details.summary.toLowerCase().includes(searchQuery.toLowerCase())
+  // Normalized search logic for better matching (ignores accents and case)
+  const normalizeStr = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const searchWords = normalizeStr(searchQuery).split(/\s+/).filter(Boolean);
+
+  const matchesSearch = (text: string) => {
+    if (!text) return false;
+    const normText = normalizeStr(text);
+    return searchWords.every(word => normText.includes(word));
+  };
+
+  const searchResultsModules = searchWords.length > 0 ? ACTION_MODULES.filter(m => 
+    matchesSearch(m.title) ||
+    matchesSearch(m.verbTitle) ||
+    matchesSearch(m.shortDesc) ||
+    matchesSearch(m.details.summary)
   ) : [];
 
-  const searchResultsForms = searchQuery.trim() ? FORMS_DATA.filter(f => 
-    f.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    f.code.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    f.description.toLowerCase().includes(searchQuery.toLowerCase())
+  const searchResultsForms = searchWords.length > 0 ? FORMS_DATA.filter(f => 
+    matchesSearch(f.title) ||
+    matchesSearch(f.code) ||
+    matchesSearch(f.description)
+  ) : [];
+
+  const searchResultsPrestaciones = searchWords.length > 0 ? PRESTACIONES_TABS.filter(p => 
+    matchesSearch(p.title) ||
+    matchesSearch(p.desc)
   ) : [];
 
   const handleNavSelect = (navId: string) => {
@@ -212,7 +226,40 @@ export default function HomePage() {
                   </div>
                 )}
 
-                {searchResultsModules.length === 0 && searchResultsForms.length === 0 && (
+                {searchResultsPrestaciones.length > 0 && (
+                  <div>
+                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-3">
+                      Listado de Prestaciones ({searchResultsPrestaciones.length})
+                    </h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                      {searchResultsPrestaciones.map(p => (
+                        <div
+                          key={p.id}
+                          onClick={() => {
+                            setSearchQuery(''); // clear search to close overlay
+                            router.push(`/prestaciones`);
+                            setTimeout(() => {
+                              // We could pass query param, but for now just navigate to prestaciones
+                              window.location.href = `/prestaciones?sub=${p.id}`;
+                            }, 50);
+                          }}
+                          className="p-4 bg-white rounded-2xl border border-slate-200/80 shadow-2xs hover:shadow-md cursor-pointer transition-all flex items-center justify-between group"
+                        >
+                          <div>
+                            <span className="text-[10px] font-bold text-teal-700 uppercase bg-teal-50 border border-teal-100 px-2 py-0.5 rounded-md">
+                              Prestación
+                            </span>
+                            <h5 className="font-bold text-slate-900 text-sm mt-1">{p.title}</h5>
+                            <p className="text-xs text-slate-600">{p.desc}</p>
+                          </div>
+                          <ArrowRight className="w-4 h-4 text-teal-600 shrink-0 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {searchResultsModules.length === 0 && searchResultsForms.length === 0 && searchResultsPrestaciones.length === 0 && (
                   <div className="p-8 bg-white rounded-2xl text-center border border-slate-200/80 shadow-2xs">
                     <p className="text-slate-600 text-xs font-medium">
                       No encontramos coincidencias exactas para &quot;{searchQuery}&quot;.

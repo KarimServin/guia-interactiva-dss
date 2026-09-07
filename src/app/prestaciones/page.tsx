@@ -1,9 +1,17 @@
 'use client';
 
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { CoberturasPlanesView } from '@/components/CoberturasPlanesView';
+
+function PrestacionesContent() {
+  const searchParams = useSearchParams();
+  const subTab = searchParams.get('sub') || 'ambito';
+  
+  return <CoberturasPlanesView initialSubTab={subTab} />;
+}
 
 export default function PrestacionesPage() {
   const [activeTab, setActiveTab] = useState<string>('coberturas-planes');
@@ -13,7 +21,7 @@ export default function PrestacionesPage() {
       <Header activeTab={activeTab} onSelectNav={setActiveTab} />
       <main className="flex-grow pt-8 pb-16">
         <Suspense fallback={<div className="p-8 text-center text-slate-500">Cargando prestaciones...</div>}>
-          <CoberturasPlanesView initialSubTab="ambito" />
+          <PrestacionesContent />
         </Suspense>
       </main>
       <Footer />

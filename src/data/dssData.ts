@@ -30,6 +30,17 @@ export const INSTITUTIONAL_INFO = {
   ]
 };
 
+export const PRESTACIONES_TABS = [
+  { id: 'ambito', title: 'Planes y Ámbito Geográfico', desc: 'Plan General, Plan Básico y territorialidad' },
+  { id: 'medica', title: 'Asistencia Médica Ambulatoria', desc: 'Consultas, guardia y chequeras de salud' },
+  { id: 'materno', title: 'Plan Materno Infantil', desc: '100% de cobertura para madre y recién nacido' },
+  { id: 'internaciones', title: 'Prácticas en Internación', desc: 'Cobertura clínica, quirúrgica y sanatorial' },
+  { id: 'farmacia', title: 'Farmacia y Anticonceptivos (Vademécum)', desc: 'Descuentos en medicamentos y anticonceptivos' },
+  { id: 'odontologia', title: 'Cobertura Odontológica', desc: 'Autorización previa y sistema de reintegro' },
+  { id: 'nutricion-celiacos', title: 'Nutrición y Celíacos', desc: 'Asistencia nutricional y subsidio sin TACC' },
+  { id: 'protesis', title: 'Prótesis y Órtesis', desc: 'Cobertura de prótesis y órtesis médicas' },
+  { id: 'sepelios', title: 'Subsidio por Sepelios', desc: 'Subsidio por fallecimiento y reintegros' },
+];
 export const ACTION_MODULES: ActionModule[] = [
   {
     id: 'afiliacion',
