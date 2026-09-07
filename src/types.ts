@@ -1,5 +1,4 @@
 export type ModuleCategory = 
-  | 'que-es-dss'
   | 'afiliacion'
   | 'grupofamiliar'
   | 'identificacion'
