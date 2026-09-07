@@ -296,6 +296,58 @@ export const ACTION_MODULES: ActionModule[] = [
     }
   },
   {
+    id: 'maternoinfantil',
+    buttonNumber: 7,
+    title: 'Plan Materno Infantil',
+    verbTitle: 'Plan Materno Infantil (Art. 20)',
+    shortDesc: 'Cobertura integral sin coseguro para la mamá y el recién nacido.',
+    iconName: 'Baby',
+    colorClass: {
+      bg: 'bg-white',
+      border: 'border-pink-100',
+      text: 'text-pink-900',
+      hover: 'hover:border-pink-400 hover:shadow-xl',
+      iconBg: 'bg-pink-600 text-white'
+    },
+    details: {
+      summary: 'Cobertura integral sin coseguro para la mamá y el recién nacido.',
+      highlightsTitle: 'Detalle de Coberturas y Requisitos:',
+      highlights: [
+        'Cobertura para la Embarazada: Cubre desde la confirmación del embarazo hasta 30 días post-parto sin cosecha de coseguro en todas las prestaciones vinculadas: consultas médicas, ecografías, estudios de laboratorio e internación para el parto o cesárea.',
+        'Requisito: Presentar en el DSS el certificado médico estampillado que indique la Fecha Probable de Parto (FPP).',
+        'Cobertura para el Recién Nacido: Cubre desde el nacimiento hasta los 12 meses de vida sin coseguro (consultas de pediatría, vacunas y estudios).',
+        'Leches Maternizadas o Enteras: Cobertura por un período de 3 meses.',
+        'Leches Medicamentosas: Se reconocen al porcentaje de medicamentos con Historia Clínica y prescripción médica justificada.'
+      ],
+      steps: [
+        { 
+          step: 1, 
+          title: 'Certificado Médico Estampillado', 
+          desc: 'Solicitá a tu profesional de salud el certificado médico estampillado indicando la Fecha Probable de Parto (FPP).' 
+        },
+        { 
+          step: 2, 
+          title: 'Presentación en el DSS', 
+          desc: 'Presentá el certificado en la secretaría del DSS o envialo a dss@cpn.org.ar para activar la cobertura al 100% sin coseguro.' 
+        },
+        { 
+          step: 3, 
+          title: 'Cobertura del Recién Nacido', 
+          desc: 'El recién nacido cuenta con cobertura sin coseguro en pediatría, vacunas y estudios hasta los 12 meses de vida.' 
+        }
+      ],
+      faqs: [
+        { q: '¿Qué abarca la cobertura para la embarazada?', a: 'Cubre desde la confirmación del embarazo hasta 30 días post-parto sin cosecha de coseguro en todas las prestaciones vinculadas: consultas médicas, ecografías, estudios de laboratorio e internación para el parto o cesárea.' },
+        { q: '¿Cuál es el requisito indispensable?', a: 'Presentar en el DSS el certificado médico estampillado que indique la Fecha Probable de Parto (FPP).' },
+        { q: '¿Qué cubre para el recién nacido?', a: 'Cubre desde el nacimiento hasta los 12 meses de vida sin coseguro (consultas de pediatría, vacunas y estudios).' },
+        { q: '¿Cómo es la cobertura de leches?', a: 'Leches Maternizadas o Enteras: Cobertura por un período de 3 meses. Leches Medicamentosas: Se reconocen al porcentaje de medicamentos con Historia Clínica y prescripción médica justificada.' }
+      ],
+      relatedFormIds: [],
+      quickActionLabel: 'Ver Prestaciones',
+      quickActionTarget: 'https://dss.contadores.org.ar/prestaciones'
+    }
+  },
+  {
     id: 'autorizaciones',
     buttonNumber: 7,
     title: 'Autorizaciones',
