@@ -511,7 +511,9 @@ export const ACTION_MODULES: ActionModule[] = [
       highlights: [],
       relatedFormIds: [],
       quickActionLabel: 'Ver Tabla de Coseguros',
-      quickActionTarget: 'https://dss.contadores.org.ar/tabla-coseguros'
+      quickActionTarget: 'https://dss.contadores.org.ar/tabla-coseguros',
+      secondaryQuickActionLabel: 'Consultar listado de prestaciones',
+      secondaryQuickActionTarget: 'https://dss.contadores.org.ar/prestaciones'
     }
   }
 ];

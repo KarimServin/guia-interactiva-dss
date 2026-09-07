@@ -8,7 +8,8 @@ import { CoberturasPlanesView } from '@/components/CoberturasPlanesView';
 
 export default function PrestacionDetailPage() {
   const params = useParams();
-  const slug = (params?.slug as string) || 'planes';
+  const rawSlug = (params?.slug as string) || 'ambito';
+  const slug = rawSlug === 'planes' ? 'ambito' : rawSlug;
   const [activeTab, setActiveTab] = useState<string>('coberturas-planes');
 
   return (

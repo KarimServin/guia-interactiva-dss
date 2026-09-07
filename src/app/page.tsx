@@ -39,6 +39,10 @@ export default function HomePage() {
       router.push('/tabla-coseguros');
       return;
     }
+    if (target.includes('/prestaciones')) {
+      router.push('/prestaciones');
+      return;
+    }
     if (target.startsWith('http')) {
       window.open(target, '_blank', 'noopener,noreferrer');
       return;

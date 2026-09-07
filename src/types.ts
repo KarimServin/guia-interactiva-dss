@@ -49,6 +49,8 @@ export interface ActionModule {
     relatedFormIds?: string[];
     quickActionLabel?: string;
     quickActionTarget?: string;
+    secondaryQuickActionLabel?: string;
+    secondaryQuickActionTarget?: string;
   };
 }
 

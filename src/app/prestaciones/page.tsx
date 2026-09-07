@@ -13,7 +13,7 @@ export default function PrestacionesPage() {
       <Header activeTab={activeTab} onSelectNav={setActiveTab} />
       <main className="flex-grow pt-8 pb-16">
         <Suspense fallback={<div className="p-8 text-center text-slate-500">Cargando prestaciones...</div>}>
-          <CoberturasPlanesView initialSubTab="planes" />
+          <CoberturasPlanesView initialSubTab="ambito" />
         </Suspense>
       </main>
       <Footer />

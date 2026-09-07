@@ -34,7 +34,7 @@ interface CoberturasPlanesViewProps {
 }
 
 export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
-  initialSubTab = 'planes',
+  initialSubTab = 'ambito',
   onOpenCosegurosModal,
   onGoToFormularios
 }) => {
@@ -50,7 +50,8 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
     if (key === 'materno' || key === 'plan-materno') return 'materno';
     if (key === 'nutricion-celiacos' || key === 'celiacos' || key === 'nutricion') return 'nutricion-celiacos';
     if (key === 'protesis' || key === 'ortesis') return 'protesis';
-    return 'planes';
+    if (key === 'planes' || key === 'ambito') return 'ambito';
+    return 'ambito';
   };
 
   const [activeTab, setActiveTab] = useState<string>(getSubTabId(initialSubTab));
@@ -74,7 +75,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
     if (initialSubTab) {
       const subId = getSubTabId(initialSubTab);
       setActiveTab(subId);
-      if (initialSubTab !== 'planes') {
+      if (initialSubTab !== 'ambito' && initialSubTab !== 'planes') {
         setTimeout(() => {
           const elem = document.getElementById('coberturas-tab-content');
           if (elem) {
@@ -86,7 +87,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
   }, [initialSubTab]);
 
   const TABS = [
-    { id: 'planes', title: 'Planes y Ámbito', desc: 'Plan General, Plan Básico y territorialidad', icon: ShieldCheck },
+    { id: 'ambito', title: 'Planes y Ámbito', desc: 'Plan General, Plan Básico y territorialidad', icon: ShieldCheck },
     { id: 'medica', title: 'Asistencia Médica', desc: 'Consultas, guardia y chequeras de salud', icon: Stethoscope },
     { id: 'materno', title: 'Plan Materno Infantil', desc: '100% de cobertura para madre y recién nacido', icon: Baby },
     { id: 'internaciones', title: 'Internaciones', desc: 'Cobertura clínica, quirúrgica y sanatorial', icon: BedDouble },
@@ -113,11 +114,11 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
         <span className="text-slate-300">/</span>
         <button 
           onClick={() => router.push('/prestaciones')}
-          className={activeTab === 'planes' ? "text-slate-900 font-bold" : "hover:text-blue-600 transition-colors"}
+          className={activeTab === 'ambito' ? "text-slate-900 font-bold" : "hover:text-blue-600 transition-colors"}
         >
           Prestaciones
         </button>
-        {activeTab !== 'planes' && currentActiveTabInfo && (
+        {activeTab !== 'ambito' && currentActiveTabInfo && (
           <>
             <span className="text-slate-300">/</span>
             <span className="text-slate-900 font-bold">{currentActiveTabInfo.title}</span>
@@ -192,7 +193,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
       <div id="coberturas-tab-content" className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm min-h-[420px] transition-all scroll-mt-24">
 
         {/* 1. PLANES Y ÁMBITO GEOGRÁFICO */}
-        {activeTab === 'planes' && (
+        {activeTab === 'ambito' && (
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
               <div className="p-2.5 rounded-2xl bg-blue-100 text-blue-700 font-bold">
@@ -227,19 +228,6 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
                   La misma metodología se aplica a aquellos afiliados que se atiendan en el <strong className="text-slate-900">Hospital Italiano de la Ciudad de Buenos Aires</strong>, donde la derivación se aprueba cuando la complejidad no puede ser resuelta a nivel local.
                 </p>
               </div>
-            </div>
-
-            <div className="bg-blue-50/80 p-4 rounded-2xl border border-blue-100 flex items-center justify-between flex-wrap gap-3">
-              <span className="text-xs text-blue-900 font-medium">
-                ¿Querés consultar la tabla detallada de aranceles y diferencias por cada plan?
-              </span>
-              <button
-                onClick={() => onOpenCosegurosModal && onOpenCosegurosModal()}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-xs cursor-pointer flex items-center gap-1.5"
-              >
-                <FileText className="w-4 h-4" />
-                <span>Ver Tabla Comparativa de Coseguros / Planes</span>
-              </button>
             </div>
           </div>
         )}
@@ -803,29 +791,6 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
           </div>
         )}
 
-      </div>
-
-      {/* ── BANNER ACCESO A TABLA DE PLANES Y COSEGUROS ── */}
-      <div className="bg-gradient-to-r from-blue-950 via-indigo-900 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-md border border-blue-800/40 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="space-y-2 text-center md:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-semibold backdrop-blur-sm">
-            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-            <span>Consulta Online</span>
-          </div>
-          <h3 className="text-lg sm:text-2xl font-extrabold text-white">
-            Tabla Comparativa de Cobertura y Coseguros
-          </h3>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
-            Consultá en tiempo real aranceles, porcentajes de cobertura y períodos de carencia en nuestra landing dedicada.
-          </p>
-        </div>
-        <button
-          onClick={() => router.push('/tabla-coseguros')}
-          className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3.5 rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all shrink-0 flex items-center gap-2 cursor-pointer active:scale-95"
-        >
-          <span>Ir a la Tabla de Planes y Coseguros</span>
-          <ArrowRight className="w-4 h-4" />
-        </button>
       </div>
 
     </div>
