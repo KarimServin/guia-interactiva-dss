@@ -16,7 +16,10 @@ import {
   FileText,
   CreditCard,
   Home,
-  ShieldCheck
+  ShieldCheck,
+  Activity,
+  Layers,
+  Heart
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -191,24 +194,24 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                       <div className="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-xl py-2">
                         <button
                           onClick={() => handleSubMenuClick('prestaciones')}
-                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
+                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2.5 cursor-pointer"
                         >
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                          Prestaciones
+                          <Activity className="w-4 h-4 text-blue-600 shrink-0" />
+                          <span>Prestaciones</span>
                         </button>
                         <button
                           onClick={() => handleSubMenuClick('tabla-coseguros')}
-                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors flex items-center gap-2 cursor-pointer"
+                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-indigo-50 hover:text-indigo-700 transition-colors flex items-center gap-2.5 cursor-pointer"
                         >
-                          <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />
-                          Tabla de Planes y Coseguros
+                          <Layers className="w-4 h-4 text-indigo-600 shrink-0" />
+                          <span>Tabla de Planes y Coseguros</span>
                         </button>
                         <button
                           onClick={() => handleSubMenuClick('cuotas')}
-                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors flex items-center gap-2 cursor-pointer"
+                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors flex items-center gap-2.5 cursor-pointer"
                         >
-                          <div className="w-1.5 h-1.5 rounded-full bg-sky-600" />
-                          Valores de cuota
+                          <CreditCard className="w-4 h-4 text-sky-600 shrink-0" />
+                          <span>Valores de cuota</span>
                         </button>
                       </div>
                     </div>
@@ -251,20 +254,20 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                             router.push('/vademecum/basico');
                             setIsVademecumDropdownOpen(false);
                           }}
-                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
+                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2.5 cursor-pointer"
                         >
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                          Vademécum Básico
+                          <Pill className="w-4 h-4 text-blue-600 shrink-0" />
+                          <span>Vademécum Básico</span>
                         </button>
                         <button
                           onClick={() => {
                             router.push('/vademecum/anticonceptivos');
                             setIsVademecumDropdownOpen(false);
                           }}
-                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center gap-2 cursor-pointer"
+                          className="w-full text-left px-4 py-2.5 text-xs lg:text-[13px] font-bold text-slate-800 hover:bg-rose-50 hover:text-rose-700 transition-colors flex items-center gap-2.5 cursor-pointer"
                         >
-                          <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                          Anticonceptivos
+                          <Heart className="w-4 h-4 text-rose-500 shrink-0" />
+                          <span>Anticonceptivos</span>
                         </button>
                       </div>
                     </div>
@@ -351,21 +354,21 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                         onClick={() => handleSubMenuClick('prestaciones')}
                         className="w-full text-left px-3 py-2 text-sm sm:text-base font-bold text-slate-700 hover:text-blue-700 hover:bg-blue-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                        <Activity className="w-4 h-4 text-blue-600 shrink-0" />
                         <span>Prestaciones</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('tabla-coseguros')}
                         className="w-full text-left px-3 py-2 text-sm sm:text-base font-bold text-slate-700 hover:text-indigo-700 hover:bg-indigo-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-600 shrink-0" />
+                        <Layers className="w-4 h-4 text-indigo-600 shrink-0" />
                         <span>Tabla de Planes y Coseguros</span>
                       </button>
                       <button
                         onClick={() => handleSubMenuClick('cuotas')}
                         className="w-full text-left px-3 py-2 text-sm sm:text-base font-bold text-slate-700 hover:text-sky-700 hover:bg-sky-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-sky-600 shrink-0" />
+                        <CreditCard className="w-4 h-4 text-sky-600 shrink-0" />
                         <span>Valores de cuota</span>
                       </button>
                     </div>
@@ -405,7 +408,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                         }}
                         className="w-full text-left px-3 py-2 text-sm sm:text-base font-bold text-slate-700 hover:text-blue-700 hover:bg-blue-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                        <Pill className="w-4 h-4 text-blue-600 shrink-0" />
                         <span>Vademécum Básico</span>
                       </button>
                       <button
@@ -415,7 +418,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                         }}
                         className="w-full text-left px-3 py-2 text-sm sm:text-base font-bold text-slate-700 hover:text-rose-700 hover:bg-rose-50/70 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0" />
+                        <Heart className="w-4 h-4 text-rose-500 shrink-0" />
                         <span>Anticonceptivos</span>
                       </button>
                     </div>
