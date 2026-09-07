@@ -56,9 +56,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Global Search Bar with Glassmorphism */}
         <div className="max-w-2xl mx-auto mb-10">
           <div className="relative group mb-4">
-            <div className="absolute inset-y-0 left-0 pl-4.5 flex items-center pointer-events-none">
-              <Search className="w-5 h-5 text-slate-400 group-focus-within:text-blue-600 transition-colors" />
-            </div>
             <input
               type="text"
               value={searchQuery}
@@ -72,8 +69,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 }
               }}
               placeholder="Buscar trámite, especialidad, coseguro o medicamento..."
-              className="w-full pl-12 pr-4 py-4 bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-900 placeholder-slate-400 text-sm font-semibold rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 shadow-lg shadow-blue-950/5 transition-all"
+              className="w-full pl-6 pr-16 py-4 bg-white/90 backdrop-blur-xl border border-slate-200/90 text-slate-900 placeholder-slate-400 text-sm font-semibold rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-500 shadow-lg shadow-blue-950/5 transition-all"
             />
+            <button
+              onClick={() => {
+                const el = document.getElementById('search-results');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="absolute inset-y-1.5 right-1.5 w-12 flex items-center justify-center bg-blue-50/50 hover:bg-blue-100/60 backdrop-blur-md border border-blue-100/50 text-blue-600 rounded-xl transition-all cursor-pointer shadow-sm"
+              aria-label="Buscar"
+            >
+              <Search className="w-5 h-5" />
+            </button>
             
             {/* Auto-suggestions Dropdown */}
             {searchQuery.trim() !== '' && (
