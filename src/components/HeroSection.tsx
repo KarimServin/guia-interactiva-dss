@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Search, HeartPulse, Sparkles, ChevronRight, ShieldCheck, Stethoscope, Pill, FileText, CreditCard } from 'lucide-react';
-import { ACTION_MODULES } from '@/data/dssData';
+import { ACTION_MODULES, PRESTACIONES_TABS } from '@/data/dssData';
 
 interface HeroSectionProps {
   searchQuery: string;
@@ -17,6 +17,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenCredential,
   onSelectCard,
 }) => {
+  // Normalized search logic for better matching
+  const normalizeStr = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const searchWords = normalizeStr(searchQuery).split(/\s+/).filter(Boolean);
+
+  const matchesSearch = (text: string) => {
+    if (!text) return false;
+    const normText = normalizeStr(text);
+    return searchWords.every(word => normText.includes(word));
+  };
+
+  const matchingModules = searchWords.length > 0 ? ACTION_MODULES.filter(m => 
+    matchesSearch(m.title) || matchesSearch(m.verbTitle) || matchesSearch(m.shortDesc)
+  ).map(m => ({ id: m.id, type: 'module', label: m.verbTitle, query: m.title })) : [];
+
+  const matchingPrestaciones = searchWords.length > 0 ? PRESTACIONES_TABS.filter(p => 
+    matchesSearch(p.title) || matchesSearch(p.desc)
+  ).map(p => ({ id: `prest-${p.id}`, type: 'prestacion', label: `Prestación: ${p.title}`, query: p.title })) : [];
+
+  const combinedSuggestions = [...matchingModules, ...matchingPrestaciones].slice(0, 5);
 
 
   return (
@@ -85,14 +104,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Auto-suggestions Dropdown */}
             {searchQuery.trim() !== '' && (
               <div className="absolute top-full mt-2 left-0 right-0 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-xl shadow-xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
-                {ACTION_MODULES.filter(m => 
-                  m.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                  m.verbTitle.toLowerCase().includes(searchQuery.toLowerCase())
-                ).slice(0, 4).map((mod) => (
+                {combinedSuggestions.map((suggestion) => (
                   <button
-                    key={mod.id}
+                    key={suggestion.id}
                     onClick={() => {
-                      setSearchQuery(mod.title);
+                      setSearchQuery(suggestion.query);
                       setTimeout(() => {
                         const el = document.getElementById('search-results');
                         if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -101,8 +117,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center justify-between border-b border-slate-100 last:border-0"
                   >
                     <div className="flex items-center gap-3">
-                      <Search className="w-4 h-4 text-slate-400" />
-                      <span>{mod.verbTitle}</span>
+                      <Search className={`w-4 h-4 ${suggestion.type === 'prestacion' ? 'text-teal-400' : 'text-slate-400'}`} />
+                      <span className={suggestion.type === 'prestacion' ? 'text-teal-700' : ''}>{suggestion.label}</span>
                     </div>
                     <ChevronRight className="w-4 h-4 text-slate-300" />
                   </button>
