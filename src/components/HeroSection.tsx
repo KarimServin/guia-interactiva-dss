@@ -37,21 +37,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       />
       
       {/* Rich Institutional Color Overlays for Depth & Elegance */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-tr from-blue-900/10 via-sky-500/5 to-amber-500/10 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-tr from-blue-900/10 via-indigo-500/5 to-sky-400/10 pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none" />
 
       {/* Decorative Ambient Light Orbs */}
-      <div className="pointer-events-none absolute -top-20 -left-20 w-96 h-96 rounded-full bg-sky-300/30 blur-3xl" />
-      <div className="pointer-events-none absolute top-10 right-0 w-80 h-80 rounded-full bg-orange-300/25 blur-3xl" />
+      <div className="pointer-events-none absolute -top-20 -left-20 w-96 h-96 rounded-full bg-blue-400/20 blur-3xl" />
+      <div className="pointer-events-none absolute top-10 right-0 w-80 h-80 rounded-full bg-sky-300/20 blur-3xl" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Main Title & Subtitle */}
         <div className="text-center max-w-3xl mx-auto mb-8">
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-sky-700/90 mb-2">
+          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-blue-600 mb-3">
             Bienvenido al Portal DSS
           </p>
-          <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 text-slate-900">
-            Guía Interactiva para Afiliados
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] mb-5 text-slate-900">
+            Guía Interactiva <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-sky-500">para Afiliados</span>
           </h1>
 
           <p className="text-slate-600 text-base sm:text-lg font-medium max-w-2xl mx-auto leading-relaxed">
