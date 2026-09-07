@@ -5,8 +5,6 @@ export type ModuleCategory =
   | 'medicos'
   | 'medicamentos'
   | 'anticonceptivas'
-  | 'maternoinfantil'
-  | 'odontologia'
   | 'autorizaciones'
   | 'coseguros'
   | 'cobertura'
