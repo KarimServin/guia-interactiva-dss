@@ -317,29 +317,7 @@ export const ACTION_MODULES: ActionModule[] = [
         'Podés consultar vadémecum de medicamentos [aquí](https://dss.contadores.org.ar/vademecum/basico)',
         'Podés consultar vadémecum de anticonceptivos [aquí](https://dss.contadores.org.ar/vademecum/anticonceptivos)'
       ],
-      steps: [
-        { 
-          step: 1, 
-          title: 'Cartilla Médica', 
-          desc: 'Podés consultar la cartilla médica [aquí](https://dss.contadores.org.ar/cartilla)' 
-        },
-        { 
-          step: 2, 
-          title: 'Vadémecum de Medicamentos', 
-          desc: 'Podés consultar vadémecum de medicamentos [aquí](https://dss.contadores.org.ar/vademecum/basico)' 
-        },
-        { 
-          step: 3, 
-          title: 'Vadémecum de Anticonceptivos', 
-          desc: 'Podés consultar vadémecum de anticonceptivos [aquí](https://dss.contadores.org.ar/vademecum/anticonceptivos)' 
-        }
-      ],
-      faqs: [
-        { q: '¿Dónde puedo consultar la cartilla médica y vadémecums del DSS?', a: 'Podés consultar la cartilla médica [aquí](https://dss.contadores.org.ar/cartilla), el vadémecum de medicamentos [aquí](https://dss.contadores.org.ar/vademecum/basico) y el vadémecum de anticonceptivos [aquí](https://dss.contadores.org.ar/vademecum/anticonceptivos).' }
-      ],
-      relatedFormIds: [],
-      quickActionLabel: 'Ver Cartilla Médica',
-      quickActionTarget: 'https://dss.contadores.org.ar/cartilla'
+      relatedFormIds: []
     }
   },
   {
