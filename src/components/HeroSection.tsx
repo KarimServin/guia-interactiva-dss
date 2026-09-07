@@ -37,12 +37,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       />
       
       {/* Rich Institutional Color Overlays for Depth & Elegance */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-tr from-blue-900/10 via-indigo-500/5 to-sky-400/10 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-tr from-sky-300/15 via-blue-100/10 to-orange-200/15 pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none" />
 
       {/* Decorative Ambient Light Orbs */}
-      <div className="pointer-events-none absolute -top-20 -left-20 w-96 h-96 rounded-full bg-blue-400/20 blur-3xl" />
-      <div className="pointer-events-none absolute top-10 right-0 w-80 h-80 rounded-full bg-sky-300/20 blur-3xl" />
+      <div className="pointer-events-none absolute -top-20 -left-20 w-96 h-96 rounded-full bg-sky-200/40 blur-3xl" />
+      <div className="pointer-events-none absolute top-10 right-0 w-80 h-80 rounded-full bg-orange-200/25 blur-3xl" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Main Title & Subtitle */}
