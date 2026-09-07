@@ -16,7 +16,8 @@ import {
   UserCheck,
   Baby,
   HeartPulse,
-  Smile
+  Smile,
+  BookOpen
 } from 'lucide-react';
 
 interface ActionGridProps {
@@ -38,6 +39,7 @@ const getIconComponent = (iconName: string) => {
     case 'Baby': return Baby;
     case 'HeartPulse': return HeartPulse;
     case 'Smile': return Smile;
+    case 'BookOpen': return BookOpen;
     case 'Headphones': default: return Headphones;
   }
 };

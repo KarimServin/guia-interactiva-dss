@@ -296,6 +296,53 @@ export const ACTION_MODULES: ActionModule[] = [
     }
   },
   {
+    id: 'cartilla-vademecum',
+    buttonNumber: 7,
+    title: 'Consultar cartilla médica y vadémecum',
+    verbTitle: 'Consultar cartilla médica y vadémecum',
+    shortDesc: 'Accedé directamente a la cartilla médica de prestadores y a los vadémecums oficiales del DSS.',
+    iconName: 'BookOpen',
+    colorClass: {
+      bg: 'bg-white',
+      border: 'border-blue-100',
+      text: 'text-blue-900',
+      hover: 'hover:border-blue-500 hover:shadow-xl',
+      iconBg: 'bg-blue-600 text-white'
+    },
+    details: {
+      summary: 'Accedé fácilmente a las consultas de cartilla médica y listados de vadémecums del DSS.',
+      highlightsTitle: 'Enlaces de consulta:',
+      highlights: [
+        'Podés consultar la cartilla médica [aquí](https://dss.contadores.org.ar/cartilla)',
+        'Podés consultar vadémecum de medicamentos [aquí](https://dss.contadores.org.ar/vademecum/basico)',
+        'Podés consultar vadémecum de anticonceptivos [aquí](https://dss.contadores.org.ar/vademecum/anticonceptivos)'
+      ],
+      steps: [
+        { 
+          step: 1, 
+          title: 'Cartilla Médica', 
+          desc: 'Podés consultar la cartilla médica [aquí](https://dss.contadores.org.ar/cartilla)' 
+        },
+        { 
+          step: 2, 
+          title: 'Vadémecum de Medicamentos', 
+          desc: 'Podés consultar vadémecum de medicamentos [aquí](https://dss.contadores.org.ar/vademecum/basico)' 
+        },
+        { 
+          step: 3, 
+          title: 'Vadémecum de Anticonceptivos', 
+          desc: 'Podés consultar vadémecum de anticonceptivos [aquí](https://dss.contadores.org.ar/vademecum/anticonceptivos)' 
+        }
+      ],
+      faqs: [
+        { q: '¿Dónde puedo consultar la cartilla médica y vadémecums del DSS?', a: 'Podés consultar la cartilla médica [aquí](https://dss.contadores.org.ar/cartilla), el vadémecum de medicamentos [aquí](https://dss.contadores.org.ar/vademecum/basico) y el vadémecum de anticonceptivos [aquí](https://dss.contadores.org.ar/vademecum/anticonceptivos).' }
+      ],
+      relatedFormIds: [],
+      quickActionLabel: 'Ver Cartilla Médica',
+      quickActionTarget: 'https://dss.contadores.org.ar/cartilla'
+    }
+  },
+  {
     id: 'autorizaciones',
     buttonNumber: 7,
     title: 'Autorizaciones',
