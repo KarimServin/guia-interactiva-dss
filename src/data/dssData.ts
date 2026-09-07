@@ -32,6 +32,30 @@ export const INSTITUTIONAL_INFO = {
 
 export const ACTION_MODULES: ActionModule[] = [
   {
+    id: 'que-es-dss',
+    buttonNumber: 1,
+    title: '¿Qué es el DSS?',
+    verbTitle: '¿Qué es el DSS?',
+    shortDesc: 'El Departamento de Servicios Sociales (DSS) es el sistema solidario de cobertura médica de las Ciencias Económicas.',
+    iconName: 'ShieldCheck',
+    colorClass: {
+      bg: 'bg-white',
+      border: 'border-blue-100',
+      text: 'text-blue-900',
+      hover: 'hover:border-blue-500 hover:shadow-xl',
+      iconBg: 'bg-blue-600 text-white'
+    },
+    details: {
+      summary: 'El Departamento de Servicios Sociales (DSS) es el sistema solidario de cobertura médica creado y sostenido por los profesionales matriculados en el Consejo Profesional de Ciencias Económicas.\n\n• Alta automática con tu matrícula profesional (hasta 50 años)\n• Sin períodos de carencia ni preexistencias para el titular\n• Cobertura extensible a cónyuge e hijos',
+      highlightsTitle: 'Beneficios y Alcance:',
+      highlights: [
+        'Red Médica y Sanatorios:\nAcceso directo a prestadores de primer nivel, clínicas y sanatorios de la región sin trámites engorrosos.',
+        'Tranquilidad y Bienestar:\nCobertura pensada para protegerte en cada etapa de tu ejercicio profesional y la de tus seres queridos.\n\nOfrecemos plan Materno Infantil y coseguros respaldados'
+      ],
+      relatedFormIds: []
+    }
+  },
+  {
     id: 'afiliacion',
     buttonNumber: 1,
     title: 'Afiliación',
