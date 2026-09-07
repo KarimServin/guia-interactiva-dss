@@ -6,6 +6,7 @@ export type ModuleCategory =
   | 'medicamentos'
   | 'anticonceptivas'
   | 'maternoinfantil'
+  | 'odontologia'
   | 'autorizaciones'
   | 'coseguros'
   | 'cobertura'

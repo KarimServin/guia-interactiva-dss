@@ -15,7 +15,8 @@ import {
   Sparkles,
   UserCheck,
   Baby,
-  HeartPulse
+  HeartPulse,
+  Smile
 } from 'lucide-react';
 
 interface ActionGridProps {
@@ -36,6 +37,7 @@ const getIconComponent = (iconName: string) => {
     case 'CreditCard': return CreditCard;
     case 'Baby': return Baby;
     case 'HeartPulse': return HeartPulse;
+    case 'Smile': return Smile;
     case 'Headphones': default: return Headphones;
   }
 };
@@ -49,8 +51,9 @@ const getModuleBadgeStyle = (num: number) => {
     case 5: return { bg: 'bg-teal-50 text-teal-700 border-teal-100', iconBg: 'bg-teal-100 text-teal-700' };
     case 6: return { bg: 'bg-amber-50 text-amber-800 border-amber-100', iconBg: 'bg-amber-100 text-amber-800' };
     case 7: return { bg: 'bg-violet-50 text-violet-700 border-violet-100', iconBg: 'bg-violet-100 text-violet-700' };
-    case 8: return { bg: 'bg-rose-50 text-rose-700 border-rose-100', iconBg: 'bg-rose-100 text-rose-700' };
-    case 9: return { bg: 'bg-pink-50 text-pink-700 border-pink-100', iconBg: 'bg-pink-100 text-pink-700' };
+    case 8: return { bg: 'bg-cyan-50 text-cyan-700 border-cyan-100', iconBg: 'bg-cyan-100 text-cyan-700' };
+    case 9: return { bg: 'bg-rose-50 text-rose-700 border-rose-100', iconBg: 'bg-rose-100 text-rose-700' };
+    case 10: return { bg: 'bg-pink-50 text-pink-700 border-pink-100', iconBg: 'bg-pink-100 text-pink-700' };
     default: return { bg: 'bg-blue-50 text-blue-700 border-blue-100', iconBg: 'bg-blue-100 text-blue-700' };
   }
 };

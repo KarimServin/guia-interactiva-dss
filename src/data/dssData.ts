@@ -348,6 +348,50 @@ export const ACTION_MODULES: ActionModule[] = [
     }
   },
   {
+    id: 'odontologia',
+    buttonNumber: 8,
+    title: 'Cobertura en Odontología',
+    verbTitle: 'Cobertura en Odontología',
+    shortDesc: 'Sistemas de autorización previa, reintegro, reglas y carencias de cobertura (Arts. 26 a 28).',
+    iconName: 'Smile',
+    colorClass: {
+      bg: 'bg-white',
+      border: 'border-cyan-100',
+      text: 'text-cyan-900',
+      hover: 'hover:border-cyan-400 hover:shadow-xl',
+      iconBg: 'bg-cyan-600 text-white'
+    },
+    details: {
+      summary: 'La Asistencia Odontológica se brinda a través de dos sistemas alternativos a opción de los afiliados: 1. Sistema de autorización previa o 2. Sistema de reintegro.',
+      highlightsTitle: 'Modalidades y Reglas de Cobertura Odontológica:',
+      highlights: [
+        'b.1) Sistema de Autorización Previa (Art. 26):\n• Seleccionar odontólogo convenido y solicitar la "Ficha Odontológica".\n• El odontólogo completa la ficha detallando las prestaciones a realizar.\n• Presentar la ficha en el DSS para arancelamiento por Auditoría Odontológica.\n• Abonar el coseguro correspondiente y entregar la ficha autorizada al odontólogo antes de iniciar.\n• Al finalizar, conformar la ficha con su firma. Estampillado provincial a cargo del afiliado.',
+        'b.2) Sistema de Reintegro (Art. 27):\n• Abonar el tratamiento al odontólogo al finalizar la atención.\n• Presentar en el DSS: Recibo oficial de pago impositivo, Ficha Odontológica codificada estampillada y Solicitud de Reintegro.\n• Plazo de presentación: dentro del mes de realizada la prestación o los 5 meses inmediatamente siguientes.',
+        'b.3) Reglas y Carencias de Cobertura (Art. 28):\n• Consultas: Se reconoce solamente 1 consulta por afiliado por año aniversario desde la última autorizada.\n• Operatoria Dental y Preventiva: Restauraciones (amalgamas, composites, sellantes y periodoncia) no se repiten dentro de los 24 meses (12 meses si es menor de 8 años). Topicación con fluor cada 6 meses hasta los 12 años. Sellantes hasta los 18 años.\n• Prótesis: Removibles sin repetición dentro de 60 meses; fijas sin repetición dentro de 84 meses (con Rx pre y post). No se cubren cerámicas/porcelanas puras sobre metal (se reconoce equivalente a coronas coladas con frente estético de acrílico). No se reconocen prótesis provisorias.\n• Endodoncias: 1 vez por pieza por afiliado. Requiere Rx pre, conductometría y post. No cubierto en dientes temporarios en período de recambio.\n• Ortodoncia y Ortopedia Funcional: Se brinda 1 sola vez de 9 a 14 años inclusive (en 3 etapas: inicio, mitad y finalización). Menores de 9 años según patología previa por Auditoría.\n• Implantes: Se reconocen las piezas correspondientes a una prótesis fija convencional (Rx pre y post).\n• Examen Bucal de Ingreso: Obligatorio al afiliarse. Carencia por preexistencia: 24 meses para odontología general y 36 meses para ortodoncia y prótesis por piezas faltantes.\n• Tope Anual: Definido por el DSS por año aniversario según categoría y grupo familiar.'
+      ],
+      steps: [
+        { 
+          step: 1, 
+          title: 'Sistema de Autorización Previa (Art. 26)', 
+          desc: 'Seleccionar odontólogo convenido, solicitar Ficha Odontológica y presentarla en el DSS para arancelamiento por Auditoría previo al tratamiento.' 
+        },
+        { 
+          step: 2, 
+          title: 'Sistema de Reintegro (Art. 27)', 
+          desc: 'Abonar la atención, presentar Recibo oficial de pago impositivo, Ficha Odontológica codificada estampillada y Solicitud de Reintegro dentro de los 5 meses siguientes.' 
+        }
+      ],
+      faqs: [
+        { q: '¿Cuáles son los dos sistemas de atención odontológica?', a: 'La Asistencia Odontológica se brinda a través de dos sistemas alternativos a opción de los afiliados: 1. Sistema de autorización previa o 2. Sistema de reintegro.' },
+        { q: '¿Cuál es el plazo de presentación en el Sistema de Reintegro?', a: 'Dentro del mes de realizada la prestación o los 5 meses inmediatamente siguientes.' },
+        { q: '¿Cuántas consultas odontológicas se reconocen?', a: 'Se reconoce solamente 1 consulta por afiliado por año aniversario desde la última autorizada.' }
+      ],
+      relatedFormIds: [],
+      quickActionLabel: 'Ver Prestaciones',
+      quickActionTarget: 'https://dss.contadores.org.ar/prestaciones'
+    }
+  },
+  {
     id: 'autorizaciones',
     buttonNumber: 7,
     title: 'Autorizaciones',
