@@ -95,15 +95,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
             </svg>
             <span>(342) 510-5675</span>
           </a>
-          <span className="hidden sm:flex items-center gap-1.5 text-slate-300">
+          <span className="hidden sm:flex items-center gap-1.5 text-slate-300 font-semibold">
             <MapPin className="w-3.5 h-3.5 text-sky-400" />
             <span>San Lorenzo 1849 – Santa Fe</span>
           </span>
-          <a href="https://cpcesfe1.org.ar" target="_blank" rel="noopener noreferrer"
-            className="hidden lg:flex items-center gap-1.5 text-sky-300 hover:text-white transition-colors">
-            <Globe className="w-3.5 h-3.5 text-sky-400" />
-            <span>cpcesfe1.org.ar</span>
-          </a>
         </div>
       </div>
 

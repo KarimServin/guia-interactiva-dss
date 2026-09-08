@@ -55,7 +55,7 @@ export const AffiliationLanding: React.FC<AffiliationLandingProps> = ({ onGoToFo
   ];
 
   return (
-    <div className="bg-white min-h-screen py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-white min-h-screen pt-28 sm:pt-32 pb-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-10">
 
         {/* HERO INSTITUCIONAL LIMPIO Y NATURAL */}

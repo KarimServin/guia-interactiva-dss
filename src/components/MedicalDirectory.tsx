@@ -338,7 +338,7 @@ export const MedicalDirectory: React.FC = () => {
   }, [searchName, searchSpecialty, searchLocality]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 animate-fadeIn">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-12 space-y-6 animate-fadeIn">
       {/* Unified Search Panel */}
       <div className="bg-white rounded-3xl shadow-lg border border-slate-200/80">
         {/* Header Section (Dark Blue Gradient) */}

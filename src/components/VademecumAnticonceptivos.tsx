@@ -94,7 +94,7 @@ export const VademecumAnticonceptivos: React.FC = () => {
   }, [filteredItems, visibleCount]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-in fade-in duration-300">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-12 space-y-8 animate-in fade-in duration-300">
       
       {/* Banner & Search Combined */}
       <div className="bg-gradient-to-r from-rose-900 via-pink-900 to-rose-950 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden flex flex-col gap-6">

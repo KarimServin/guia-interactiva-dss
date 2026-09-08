@@ -19,7 +19,7 @@ export default function PrestacionesPage() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
       <Header activeTab={activeTab} onSelectNav={setActiveTab} />
-      <main className="flex-grow pt-8 pb-16">
+      <main className="flex-grow pt-28 sm:pt-32 pb-16">
         <Suspense fallback={<div className="p-8 text-center text-slate-500">Cargando prestaciones...</div>}>
           <PrestacionesContent />
         </Suspense>

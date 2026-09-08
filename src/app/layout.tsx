@@ -101,6 +101,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${plusJakartaSans.variable} ${figtree.variable} ${montserrat.variable} scroll-smooth`} suppressHydrationWarning>
+      <head>
+        <link rel="preload" href="/hero-bg.webp" as="image" type="image/webp" fetchPriority="high" />
+      </head>
       <body className="bg-white text-slate-900 min-h-dvh flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white overflow-x-hidden" suppressHydrationWarning>
         {children}
       </body>
