@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Figtree, Montserrat } from "next/font/google";
+import { Plus_Jakarta_Sans, Figtree } from "next/font/google";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -7,21 +7,17 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
+  preload: true,
 });
 
 const figtree = Figtree({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["600", "700", "800", "900"],
   variable: "--font-heading",
   display: "swap",
+  preload: false,
 });
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["600", "700", "800", "900"],
-  variable: "--font-hero-title",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "DSS CPCE Santa Fe Cámara I - Guía Interactiva de Autogestión y Cobertura Médica",
@@ -100,9 +96,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${plusJakartaSans.variable} ${figtree.variable} ${montserrat.variable} scroll-smooth`} suppressHydrationWarning>
+    <html lang="es" className={`${plusJakartaSans.variable} ${figtree.variable} scroll-smooth`} suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/hero-bg.webp" as="image" type="image/webp" fetchPriority="high" />
+        {/* Preload hero image only on non-mobile — mobile hero image is hidden */}
+        <link rel="preload" href="/hero-bg.webp" as="image" type="image/webp" fetchPriority="high" media="(min-width: 641px)" />
       </head>
       <body className="bg-white text-slate-900 min-h-dvh flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white overflow-x-hidden" suppressHydrationWarning>
         {children}

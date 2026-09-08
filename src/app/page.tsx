@@ -10,8 +10,11 @@ import { HeroSection } from '@/components/HeroSection';
 import { ActionGrid } from '@/components/ActionGrid';
 import { Footer } from '@/components/Footer';
 
-// Modal always mounted but hidden — keep eager for instant open
-import { ModuleDetailModal } from '@/components/ModuleDetailModal';
+// Modal always mounted but hidden — lazy since it only activates on click
+const ModuleDetailModal = dynamic(() =>
+  import('@/components/ModuleDetailModal').then(m => ({ default: m.ModuleDetailModal })),
+  { ssr: false }
+);
 
 // Heavy components — lazy loaded only when tab is activated
 const DigitalCredential = dynamic(() =>
