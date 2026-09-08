@@ -1,26 +1,61 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
+
+// Always-visible on initial load — keep eager
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
 import { ActionGrid } from '@/components/ActionGrid';
-import { ModuleDetailModal } from '@/components/ModuleDetailModal';
-import { DigitalCredential } from '@/components/DigitalCredential';
-import { MedicalDirectory } from '@/components/MedicalDirectory';
-import { PharmacyDirectory } from '@/components/PharmacyDirectory';
-import { FormsCenter } from '@/components/FormsCenter';
-import { CoseguroTableModal } from '@/components/CoseguroTableModal';
-import { AuthorizationSimulator } from '@/components/AuthorizationSimulator';
-import { AffiliationLanding } from '@/components/AffiliationLanding';
-import { CuotasValores } from '@/components/CuotasValores';
-import { CoberturasPlanesView } from '@/components/CoberturasPlanesView';
 import { Footer } from '@/components/Footer';
+
+// Modal always mounted but hidden — keep eager for instant open
+import { ModuleDetailModal } from '@/components/ModuleDetailModal';
+
+// Heavy components — lazy loaded only when tab is activated
+const DigitalCredential = dynamic(() =>
+  import('@/components/DigitalCredential').then(m => ({ default: m.DigitalCredential })),
+  { ssr: false }
+);
+const MedicalDirectory = dynamic(() =>
+  import('@/components/MedicalDirectory').then(m => ({ default: m.MedicalDirectory })),
+  { ssr: false }
+);
+const PharmacyDirectory = dynamic(() =>
+  import('@/components/PharmacyDirectory').then(m => ({ default: m.PharmacyDirectory })),
+  { ssr: false }
+);
+const FormsCenter = dynamic(() =>
+  import('@/components/FormsCenter').then(m => ({ default: m.FormsCenter })),
+  { ssr: false }
+);
+const CoseguroTableModal = dynamic(() =>
+  import('@/components/CoseguroTableModal').then(m => ({ default: m.CoseguroTableModal })),
+  { ssr: false }
+);
+const AuthorizationSimulator = dynamic(() =>
+  import('@/components/AuthorizationSimulator').then(m => ({ default: m.AuthorizationSimulator })),
+  { ssr: false }
+);
+const AffiliationLanding = dynamic(() =>
+  import('@/components/AffiliationLanding').then(m => ({ default: m.AffiliationLanding })),
+  { ssr: false }
+);
+const CuotasValores = dynamic(() =>
+  import('@/components/CuotasValores').then(m => ({ default: m.CuotasValores })),
+  { ssr: false }
+);
+const CoberturasPlanesView = dynamic(() =>
+  import('@/components/CoberturasPlanesView').then(m => ({ default: m.CoberturasPlanesView })),
+  { ssr: false }
+);
 
 import { ACTION_MODULES, FORMS_DATA, PRESTACIONES_TABS } from '@/data/dssData';
 import { ActionModule } from '@/types';
 import { Search, FileText, ClipboardCheck, ArrowRight, X, Headphones } from 'lucide-react';
 import { normalizeStr, parseSearchTerms } from '@/lib/utils';
+
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<string>('guia');
