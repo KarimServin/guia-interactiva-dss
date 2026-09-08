@@ -102,7 +102,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* ─────────── CONTENT ─────────── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-36 sm:pt-36 lg:pt-36 pb-12 sm:pb-16 lg:pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 lg:pb-20">
         <div className="max-w-xl mx-auto lg:mx-0 lg:max-w-[54%] text-center lg:text-left flex flex-col items-center lg:items-start">
 
           {/* Headline — Plus Jakarta Sans 800 */}
