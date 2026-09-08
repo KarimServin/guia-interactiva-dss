@@ -101,7 +101,7 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
   const currentActiveTabInfo = TABS.find(t => t.id === activeTab);
 
   return (
-    <div id="coberturas-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-12 space-y-8 animate-in fade-in duration-300">
+    <div id="coberturas-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 sm:pt-32 pb-12 space-y-8 animate-in fade-in duration-300">
       
       {/* BREADCRUMB NAV */}
       <nav className="flex items-center gap-2 text-xs text-slate-500 font-medium">
