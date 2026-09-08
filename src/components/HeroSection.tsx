@@ -59,9 +59,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <section className="relative overflow-hidden bg-white">
       {/* ─────────── BACKGROUND LAYER: Luxurious Editorial Mesh ─────────── */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50/80 to-blue-50/30" />
-      {/* Ultra-soft ambient luminous glows */}
-      <div className="pointer-events-none absolute -top-44 -left-32 w-[650px] h-[650px] rounded-full bg-blue-100/50 blur-[140px]" />
-      <div className="pointer-events-none absolute top-1/4 left-1/3 w-[480px] h-[480px] rounded-full bg-sky-200/35 blur-[130px]" />
+      {/* Ultra-soft ambient luminous glows (Optimized for mobile: radial gradients instead of expensive CSS blur filters) */}
+      <div className="pointer-events-none absolute -top-44 -left-32 w-[650px] h-[650px] rounded-full bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-blue-100/60 to-transparent" />
+      <div className="pointer-events-none absolute top-1/4 left-1/3 w-[480px] h-[480px] rounded-full bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-sky-200/40 to-transparent" />
       {/* Subtle organic SVG accent line */}
       <svg className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.15]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
         <path fill="none" stroke="url(#hero-gradient-stroke)" strokeWidth="1.5" d="M0,160 Q360,260 720,160 T1440,160" />
@@ -88,10 +88,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           src="/hero-bg.webp"
           alt="Familia DSS"
           fill
-          priority
-          fetchPriority="high"
-          sizes="(min-width: 1024px) 52vw, 100vw"
-          className="object-cover object-center scale-105"
+          sizes="(min-width: 1024px) 52vw, 0px"
+          className="object-cover object-center"
           style={{
             filter: 'contrast(1.01) saturate(0.98) brightness(0.99)'
           }}

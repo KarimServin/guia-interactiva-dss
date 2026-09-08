@@ -69,11 +69,11 @@ export const ActionGrid: React.FC<ActionGridProps> = ({
 }) => {
   return (
     <section id="servicios" className="relative pt-8 pb-16 sm:pt-10 sm:pb-20 scroll-mt-28 sm:scroll-mt-32 overflow-hidden bg-slate-50/60">
-      {/* ─────────── BACKGROUND LAYER: Very Light Background + Subtle Blobs + Large Blur ─────────── */}
+      {/* ─────────── BACKGROUND LAYER: Very Light Background + Subtle Blobs (Optimized with radial gradients) ─────────── */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50/80 to-blue-50/30 pointer-events-none" />
-      <div className="pointer-events-none absolute -top-28 left-1/6 w-[500px] h-[500px] rounded-full bg-blue-200/35 blur-[140px]" />
-      <div className="pointer-events-none absolute top-1/3 right-10 w-[450px] h-[450px] rounded-full bg-sky-200/30 blur-[130px]" />
-      <div className="pointer-events-none absolute -bottom-20 left-1/3 w-[400px] h-[400px] rounded-full bg-indigo-100/30 blur-[120px]" />
+      <div className="pointer-events-none absolute -top-28 left-1/6 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-blue-200/40 to-transparent" />
+      <div className="pointer-events-none absolute top-1/3 right-10 w-[450px] h-[450px] rounded-full bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-sky-200/40 to-transparent" />
+      <div className="pointer-events-none absolute -bottom-20 left-1/3 w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-indigo-100/40 to-transparent" />
 
       <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Central Separator Section */}
