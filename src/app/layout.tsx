@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Figtree } from "next/font/google";
+import { Plus_Jakarta_Sans, Figtree, Montserrat } from "next/font/google";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -13,6 +13,13 @@ const figtree = Figtree({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-heading",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["600", "700", "800", "900"],
+  variable: "--font-hero-title",
   display: "swap",
 });
 
@@ -93,7 +100,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${plusJakartaSans.variable} ${figtree.variable} scroll-smooth`} suppressHydrationWarning>
+    <html lang="es" className={`${plusJakartaSans.variable} ${figtree.variable} ${montserrat.variable} scroll-smooth`} suppressHydrationWarning>
       <body className="bg-white text-slate-900 min-h-dvh flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white overflow-x-hidden" suppressHydrationWarning>
         {children}
       </body>
