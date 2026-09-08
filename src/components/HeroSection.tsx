@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Search, ChevronRight, ArrowRight, ChevronsDown } from 'lucide-react';
+import { Search, ChevronRight, ArrowRight } from 'lucide-react';
 import { ACTION_MODULES, PRESTACIONES_TABS } from '@/data/dssData';
+import { normalizeStr, parseSearchTerms } from '@/lib/utils';
 
 interface HeroSectionProps {
   searchQuery: string;
@@ -24,10 +25,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   setSearchQuery,
   onSelectCard,
 }) => {
-  const normalizeStr = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-  const searchWords = normalizeStr(searchQuery).split(/\s+/).filter(Boolean);
+  const searchWords = parseSearchTerms(searchQuery);
 
-  const matchesSearch = (text: string) => {
+  const matchesSearch = (text: string): boolean => {
     if (!text) return false;
     const normText = normalizeStr(text);
     return searchWords.every(word => normText.includes(word));
@@ -44,10 +44,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const combinedSuggestions = [...matchingModules, ...matchingPrestaciones].slice(0, 5);
 
   const scrollToResults = () => {
-    setTimeout(() => {
-      const el = document.getElementById('search-results');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 50);
+    const el = document.getElementById('search-results');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToHelp = () => {

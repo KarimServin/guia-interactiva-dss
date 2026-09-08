@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { 
   MapPin, 
-  Globe, 
   Menu, 
   X, 
   ChevronDown,

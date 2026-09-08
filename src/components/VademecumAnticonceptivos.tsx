@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { Pill, Search, X, Loader2, Sparkles, Filter, Database, Info } from 'lucide-react';
+import { Pill, Search, X, Loader2, Database, Info } from 'lucide-react';
+import { normalizeStr, parseSearchTerms } from '@/lib/utils';
 
 interface AnticonceptivoItem {
   producto: string;
@@ -73,18 +74,13 @@ export const VademecumAnticonceptivos: React.FC = () => {
     setVisibleCount(60);
   };
 
-  // Accent-insensitive normalization
-  const normalize = (str: string) => 
-    str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
-
   // Filter items matching search terms in any field
   const filteredItems = useMemo(() => {
     if (!searchQuery.trim()) return items;
-    const normalizedQuery = normalize(searchQuery);
-    const terms = normalizedQuery.split(/\s+/).filter(Boolean);
+    const terms = parseSearchTerms(searchQuery);
 
     return items.filter(item => {
-      const combinedText = normalize(`${item.producto} ${item.laboratorio} ${item.troquel} ${item.drogas} ${item.acciones}`);
+      const combinedText = normalizeStr(`${item.producto} ${item.laboratorio} ${item.troquel} ${item.drogas} ${item.acciones}`);
       return terms.every(term => combinedText.includes(term));
     });
   }, [items, searchQuery]);

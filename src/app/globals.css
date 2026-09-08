@@ -9,6 +9,9 @@
 :root {
   font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   color-scheme: light;
+  /* Navbar height: top-bar (~36px) + main-nav (72px mobile / 78px desktop) */
+  --navbar-height-mobile: 108px;
+  --navbar-height-desktop: 114px;
 }
 
 /* 
@@ -41,8 +44,8 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* GPU acceleration for sticky header — prevents jank on iOS scroll */
-header[class*="sticky"] {
+/* GPU acceleration for fixed header — prevents jank on iOS scroll */
+header[class*="fixed"] {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   will-change: transform;
@@ -59,3 +62,4 @@ header[class*="sticky"] {
   font-family: var(--font-hero-title), 'Montserrat', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   letter-spacing: -0.035em;
 }
+

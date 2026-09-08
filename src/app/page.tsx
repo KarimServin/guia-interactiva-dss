@@ -20,6 +20,7 @@ import { Footer } from '@/components/Footer';
 import { ACTION_MODULES, FORMS_DATA, PRESTACIONES_TABS } from '@/data/dssData';
 import { ActionModule } from '@/types';
 import { Search, FileText, ClipboardCheck, ArrowRight, X, Headphones } from 'lucide-react';
+import { normalizeStr, parseSearchTerms } from '@/lib/utils';
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<string>('guia');
@@ -74,10 +75,9 @@ export default function HomePage() {
   };
 
   // Normalized search logic for better matching (ignores accents and case)
-  const normalizeStr = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-  const searchWords = normalizeStr(searchQuery).split(/\s+/).filter(Boolean);
+  const searchWords = parseSearchTerms(searchQuery);
 
-  const matchesSearch = (text: string) => {
+  const matchesSearch = (text: string): boolean => {
     if (!text) return false;
     const normText = normalizeStr(text);
     return searchWords.every(word => normText.includes(word));
@@ -236,12 +236,8 @@ export default function HomePage() {
                         <div
                           key={p.id}
                           onClick={() => {
-                            setSearchQuery(''); // clear search to close overlay
-                            router.push(`/prestaciones`);
-                            setTimeout(() => {
-                              // We could pass query param, but for now just navigate to prestaciones
-                              window.location.href = `/prestaciones?sub=${p.id}`;
-                            }, 50);
+                            router.push(`/prestaciones?sub=${p.id}`);
+                            setSearchQuery('');
                           }}
                           className="p-4 bg-white rounded-2xl border border-slate-200/80 shadow-2xs hover:shadow-md cursor-pointer transition-all flex items-center justify-between group"
                         >
