@@ -16,8 +16,7 @@ import {
   ShieldCheck,
   Activity,
   Layers,
-  Heart,
-  Phone
+  Heart
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -224,101 +223,94 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      <div className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-        isMobileMenuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+      {/* Mobile Drawer (GPU-accelerated Grid transition for instantaneous 60fps response) */}
+      <div className={`md:hidden grid transition-[grid-template-rows,opacity] duration-200 ease-out ${
+        isMobileMenuOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0 pointer-events-none'
       }`}>
-        <div className="bg-white/60 backdrop-blur-2xl border-b border-slate-200/60 shadow-2xl px-3 py-3 space-y-0.5">
-          {NAV_ITEMS.map((item) => {
-            const Icon = item.icon;
-            const isVademecum = item.id === 'vademecum';
-            const isCoberturas = item.id === 'coberturas-planes';
-            const isActive = isVademecum
-              ? activeTab.startsWith('vademecum') && activeTab !== 'vademecum-farmacias'
-              : isCoberturas
-                ? ['coberturas-planes','subsidio-sepelios','cobertura-odontologia','chequeo-preventivo','vademecum-farmacias','cobertura-farmacias','farmacia','materno','nutricion-celiacos','protesis','tabla-coseguros','cuotas'].includes(activeTab)
-                : activeTab === item.id;
+        <div className="overflow-hidden">
+          <div className="bg-white/95 backdrop-blur-md border-b border-slate-200/70 shadow-xl px-3 py-3 space-y-0.5">
+            {NAV_ITEMS.map((item) => {
+              const Icon = item.icon;
+              const isVademecum = item.id === 'vademecum';
+              const isCoberturas = item.id === 'coberturas-planes';
+              const isActive = isVademecum
+                ? activeTab.startsWith('vademecum') && activeTab !== 'vademecum-farmacias'
+                : isCoberturas
+                  ? ['coberturas-planes','subsidio-sepelios','cobertura-odontologia','chequeo-preventivo','vademecum-farmacias','cobertura-farmacias','farmacia','materno','nutricion-celiacos','protesis','tabla-coseguros','cuotas'].includes(activeTab)
+                  : activeTab === item.id;
 
-            const mobileBase = `w-full flex items-center justify-between px-4 py-3 text-sm font-semibold rounded-xl transition-all cursor-pointer`;
-            const mobileActive = 'bg-blue-50 text-blue-700';
-            const mobileInactive = 'text-slate-700 hover:bg-slate-50 hover:text-slate-900';
+              const mobileBase = `w-full flex items-center justify-between px-4 py-3 text-sm font-semibold rounded-xl transition-all cursor-pointer`;
+              const mobileActive = 'bg-blue-50 text-blue-700';
+              const mobileInactive = 'text-slate-700 hover:bg-slate-50 hover:text-slate-900';
 
-            if (isCoberturas) return (
-              <div key={item.id}>
-                <button onClick={() => setIsMobileCoberturasOpen(!isMobileCoberturasOpen)}
-                  className={`${mobileBase} ${isActive ? mobileActive : mobileInactive}`}>
-                  <div className="flex items-center gap-3">
-                    <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${isActive ? 'bg-blue-100' : 'bg-slate-100'}`}>
-                      <Icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : 'text-slate-500'}`} />
+              if (isCoberturas) return (
+                <div key={item.id}>
+                  <button onClick={() => setIsMobileCoberturasOpen(!isMobileCoberturasOpen)}
+                    className={`${mobileBase} ${isActive ? mobileActive : mobileInactive}`}>
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${isActive ? 'bg-blue-100' : 'bg-slate-100'}`}>
+                        <Icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : 'text-slate-500'}`} />
+                      </div>
+                      <span>{item.label}</span>
                     </div>
-                    <span>{item.label}</span>
-                  </div>
-                  <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isMobileCoberturasOpen ? 'rotate-180' : ''}`} />
-                </button>
-                {isMobileCoberturasOpen && (
-                  <div className="ml-11 mt-0.5 mb-1 space-y-0.5 animate-in fade-in duration-200">
-                    {[
-                      { key: 'prestaciones', icon: Activity, label: 'Listado de Prestaciones', color: 'text-blue-600' },
-                      { key: 'tabla-coseguros', icon: Layers, label: 'Planes y Coseguros', color: 'text-indigo-600' },
-                      { key: 'cuotas', icon: CreditCard, label: 'Valores de cuota', color: 'text-sky-600' },
-                    ].map(({ key, icon: DI, label, color }) => (
-                      <button key={key} onClick={() => handleSubMenuClick(key)}
-                        className="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer">
-                        <DI className={`w-4 h-4 shrink-0 ${color}`} /><span>{label}</span>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            );
-
-            if (isVademecum) return (
-              <div key={item.id}>
-                <button onClick={() => setIsMobileVademecumOpen(!isMobileVademecumOpen)}
-                  className={`${mobileBase} ${isActive ? mobileActive : mobileInactive}`}>
-                  <div className="flex items-center gap-3">
-                    <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${isActive ? 'bg-blue-100' : 'bg-slate-100'}`}>
-                      <Icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : 'text-slate-500'}`} />
+                    <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isMobileCoberturasOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {isMobileCoberturasOpen && (
+                    <div className="ml-11 mt-0.5 mb-1 space-y-0.5 animate-in fade-in duration-200">
+                      {[
+                        { key: 'prestaciones', icon: Activity, label: 'Listado de Prestaciones', color: 'text-blue-600' },
+                        { key: 'tabla-coseguros', icon: Layers, label: 'Planes y Coseguros', color: 'text-indigo-600' },
+                        { key: 'cuotas', icon: CreditCard, label: 'Valores de cuota', color: 'text-sky-600' },
+                      ].map(({ key, icon: DI, label, color }) => (
+                        <button key={key} onClick={() => handleSubMenuClick(key)}
+                          className="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer">
+                          <DI className={`w-4 h-4 shrink-0 ${color}`} /><span>{label}</span>
+                        </button>
+                      ))}
                     </div>
-                    <span>{item.label}</span>
-                  </div>
-                  <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isMobileVademecumOpen ? 'rotate-180' : ''}`} />
-                </button>
-                {isMobileVademecumOpen && (
-                  <div className="ml-11 mt-0.5 mb-1 space-y-0.5 animate-in fade-in duration-200">
-                    <button onClick={() => { router.push('/vademecum/basico'); setIsMobileMenuOpen(false); }}
-                      className="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer">
-                      <Pill className="w-4 h-4 text-blue-600 shrink-0" /><span>Vademécum Básico</span>
-                    </button>
-                    <button onClick={() => { router.push('/vademecum/anticonceptivos'); setIsMobileMenuOpen(false); }}
-                      className="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-600 hover:text-rose-700 hover:bg-rose-50 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer">
-                      <Heart className="w-4 h-4 text-rose-500 shrink-0" /><span>Anticonceptivos</span>
-                    </button>
-                  </div>
-                )}
-              </div>
-            );
-
-            return (
-              <button key={item.id} onClick={() => handleNavClick(item.id)}
-                className={`${mobileBase} ${isActive ? mobileActive : mobileInactive}`}>
-                <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${isActive ? 'bg-blue-100' : 'bg-slate-100'}`}>
-                    <Icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : 'text-slate-500'}`} />
-                  </div>
-                  <span>{item.label}</span>
+                  )}
                 </div>
-              </button>
-            );
-          })}
+              );
 
-          {/* Mobile contact CTA */}
-          <div className="pt-2 mt-2 border-t border-slate-100">
-            <a href="tel:+5493425105675"
-              className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-bold rounded-xl shadow-lg shadow-blue-200">
-              <Phone className="w-4 h-4" />
-              <span>(342) 510-5675 · Llamar ahora</span>
-            </a>
+              if (isVademecum) return (
+                <div key={item.id}>
+                  <button onClick={() => setIsMobileVademecumOpen(!isMobileVademecumOpen)}
+                    className={`${mobileBase} ${isActive ? mobileActive : mobileInactive}`}>
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${isActive ? 'bg-blue-100' : 'bg-slate-100'}`}>
+                        <Icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : 'text-slate-500'}`} />
+                      </div>
+                      <span>{item.label}</span>
+                    </div>
+                    <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isMobileVademecumOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {isMobileVademecumOpen && (
+                    <div className="ml-11 mt-0.5 mb-1 space-y-0.5 animate-in fade-in duration-200">
+                      <button onClick={() => { router.push('/vademecum/basico'); setIsMobileMenuOpen(false); }}
+                        className="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer">
+                        <Pill className="w-4 h-4 text-blue-600 shrink-0" /><span>Vademécum Básico</span>
+                      </button>
+                      <button onClick={() => { router.push('/vademecum/anticonceptivos'); setIsMobileMenuOpen(false); }}
+                        className="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-600 hover:text-rose-700 hover:bg-rose-50 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer">
+                        <Heart className="w-4 h-4 text-rose-500 shrink-0" /><span>Anticonceptivos</span>
+                      </button>
+                    </div>
+                  )}
+                </div>
+              );
+
+              return (
+                <button key={item.id} onClick={() => handleNavClick(item.id)}
+                  className={`${mobileBase} ${isActive ? mobileActive : mobileInactive}`}>
+                  <div className="flex items-center gap-3">
+                    <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${isActive ? 'bg-blue-100' : 'bg-slate-100'}`}>
+                      <Icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : 'text-slate-500'}`} />
+                    </div>
+                    <span>{item.label}</span>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
