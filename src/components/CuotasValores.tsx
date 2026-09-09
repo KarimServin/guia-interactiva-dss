@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { CreditCard, RefreshCw, Table, Info, ChevronRight } from 'lucide-react';
+import { PageHeader } from './PageHeader';
 
 interface CuotaRow {
   categoria: string;
@@ -49,21 +50,20 @@ export const CuotasValores: React.FC = () => {
   }, [fetchCuotasData]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-12 space-y-6">
-      {/* Header Banner */}
-      <div className="relative bg-gradient-to-r from-sky-100/90 via-blue-50 to-sky-100/80 rounded-3xl p-6 sm:p-8 shadow-sm overflow-hidden border border-sky-200/80">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-sky-300/20 rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="relative z-10 max-w-4xl space-y-2">
-          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight flex items-center gap-3">
-            <CreditCard className="w-7 h-7 sm:w-8 sm:h-8 text-blue-600 shrink-0" />
-            <span>Valores de cuota</span>
-          </h1>
-          <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl pt-1">
-            Consulta la estructura y los importes vigentes de cuotas mensuales según el plan y condición de matrícula.
-          </p>
-        </div>
-      </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 space-y-6">
+      {/* Header */}
+      <PageHeader
+        badgeIcon={CreditCard}
+        badgeText="DSS • Aranceles Mensuales"
+        titlePrefix="Valores de "
+        titleHighlight="Cuota"
+        description="Consultá la estructura y los importes vigentes de cuotas mensuales según el plan y condición de matrícula."
+        breadcrumbs={[
+          { label: 'Inicio', href: '/' },
+          { label: 'Coberturas', href: '/prestaciones' },
+          { label: 'Valores de cuota' },
+        ]}
+      />
 
       {/* Filter Controls & Mobile View Selector */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">

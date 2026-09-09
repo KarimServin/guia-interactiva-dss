@@ -10,8 +10,10 @@ import {
   AlertTriangle, 
   CheckCircle2, 
   Hash, 
-  ChevronDown 
+  ChevronDown,
+  Users
 } from 'lucide-react';
+import { PageHeader } from './PageHeader';
 
 // Spanish search stop words to exclude from semantic matching
 const STOP_WORDS = new Set(['de', 'el', 'la', 'los', 'las', 'o', 'y', 'en', 'un', 'una', 'del', 'al', 'con', 'para', 'por', 'a', 'e', 'u']);
@@ -338,27 +340,23 @@ export const MedicalDirectory: React.FC = () => {
   }, [searchName, searchSpecialty, searchLocality]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-12 space-y-6 animate-fadeIn">
-      {/* Unified Search Panel */}
-      <div className="bg-white rounded-3xl shadow-lg border border-slate-200/80">
-        {/* Header Section (Dark Blue Gradient) */}
-        <div className="bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 text-white p-6 sm:p-8 relative overflow-hidden rounded-t-[22px]">
-          <div className="absolute right-0 top-0 w-96 h-96 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -left-10 -bottom-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-          
-          <div className="relative z-10 space-y-2">
-            <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white leading-tight">
-              Padrón de Profesionales y Centros Médicos
-            </h2>
-            <p className="text-sky-200/95 text-xs sm:text-sm max-w-3xl leading-relaxed">
-              Accedé en tiempo real a la cartilla completa de profesionales del DSS. Identificate en la consulta presentando únicamente tu número de Matrícula y DNI.
-            </p>
-          </div>
-        </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 space-y-6 animate-fadeIn">
+      {/* Header */}
+      <PageHeader
+        badgeIcon={Users}
+        badgeText="DSS • Padrón Médico Oficial"
+        titlePrefix="Cartilla Médica y "
+        titleHighlight="Profesionales"
+        description="Accedé en tiempo real a la cartilla completa de profesionales del DSS. Identificate en la consulta presentando únicamente tu número de Matrícula y DNI."
+        breadcrumbs={[
+          { label: 'Inicio', href: '/' },
+          { label: 'Cartilla Médica' },
+        ]}
+      />
 
-        {/* Filter Form Section */}
-        <div className="p-5 sm:p-6 space-y-4">
-          {/* Form Inputs Grid */}
+      {/* Unified Search Panel */}
+      <div className="bg-white rounded-3xl shadow-sm border border-slate-200/80 p-5 sm:p-6 space-y-4">
+        {/* Form Inputs Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* 1. Name Input */}
             <div className="space-y-1.5">
@@ -481,7 +479,6 @@ export const MedicalDirectory: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
 
       {/* Results Header */}
       {!loading && !error && (

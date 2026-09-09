@@ -4,6 +4,7 @@ import React from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { CoseguroTableInline } from '@/components/CoseguroTableInline';
+import { PageHeader } from '@/components/PageHeader';
 import { Table } from 'lucide-react';
 
 export default function TablaCosegurosPage() {
@@ -11,27 +12,28 @@ export default function TablaCosegurosPage() {
     <div className="min-h-screen text-slate-900 font-sans flex flex-col antialiased selection:bg-blue-600 selection:text-white relative bg-slate-50/60">
       <Header activeTab="coberturas-planes" />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-12 space-y-6 animate-in fade-in duration-300">
-        
-        {/* UNIFIED HERO HEADER */}
-        <div className="relative bg-gradient-to-r from-sky-100/90 via-blue-50 to-sky-100/80 rounded-3xl p-6 sm:p-8 shadow-sm overflow-hidden border border-sky-200/80">
-          <div className="absolute right-0 top-0 w-96 h-96 bg-sky-300/20 rounded-full blur-3xl pointer-events-none" />
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-12 space-y-6">
+        <PageHeader
+          badgeIcon={Table}
+          badgeText="DSS • Aranceles y Planes"
+          titlePrefix="Tabla de Planes y "
+          titleHighlight="Coseguros"
+          description={
+            <>
+              Consultá en tiempo real aranceles, porcentajes de cobertura y períodos de carencia comparativos entre el{' '}
+              <strong className="text-slate-900 font-bold">Plan General</strong> y el{' '}
+              <strong className="text-slate-900 font-bold">Plan Básico</strong> del DSS.
+            </>
+          }
+          breadcrumbs={[
+            { label: 'Inicio', href: '/' },
+            { label: 'Coberturas', href: '/prestaciones' },
+            { label: 'Planes y Coseguros' },
+          ]}
+        />
 
-          <div className="relative z-10 max-w-4xl space-y-2">
-            <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight flex items-center gap-3">
-              <Table className="w-7 h-7 sm:w-8 sm:h-8 text-blue-600 shrink-0" />
-              <span>Tabla de Planes y Coseguros</span>
-            </h1>
-
-            <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl pt-1">
-              Consultá en tiempo real aranceles, porcentajes de cobertura y períodos de carencia comparativos entre el <strong className="text-slate-900 font-bold">Plan General</strong> y el <strong className="text-slate-900 font-bold">Plan Básico</strong> del DSS.
-            </p>
-          </div>
-        </div>
-
-        {/* Dynamic Coseguro Comparative Table (Header hidden to prevent duplication) */}
+        {/* Dynamic Coseguro Comparative Table */}
         <CoseguroTableInline hideHeader={true} />
-
       </main>
 
       <Footer />

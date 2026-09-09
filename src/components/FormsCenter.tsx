@@ -10,6 +10,7 @@ import {
   AlertCircle, 
   Filter
 } from 'lucide-react';
+import { PageHeader } from './PageHeader';
 
 interface FormsCenterProps {
   initialFormId?: string | null;
@@ -30,21 +31,24 @@ export const FormsCenter: React.FC<FormsCenterProps> = () => {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-12 space-y-8 animate-fadeIn">
-      {/* Header Banner */}
-      <div className="relative bg-gradient-to-r from-sky-100/90 via-blue-50 to-sky-100/80 rounded-3xl p-6 sm:p-8 shadow-sm overflow-hidden border border-sky-200/80">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-sky-300/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative z-10 max-w-3xl space-y-2">
-          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight flex items-center gap-3">
-            <FileText className="w-7 h-7 sm:w-8 sm:h-8 text-blue-600 shrink-0" />
-            <span>Formularios y Solicitudes Oficiales</span>
-          </h2>
-          <p className="text-xs sm:text-sm md:text-base text-slate-600 leading-relaxed font-normal pt-1">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 space-y-6 animate-fadeIn">
+      {/* Header */}
+      <PageHeader
+        badgeIcon={FileText}
+        badgeText="DSS • Trámites y Descargas"
+        titlePrefix="Formularios y Solicitudes "
+        titleHighlight="Oficiales"
+        description={
+          <>
             Descargá los formularios en formato PDF oficial para presentar en el Departamento de Servicios Sociales. 
             Podés completarlos en forma impresa o digitalmente y enviarlos por correo electrónico a <strong className="text-slate-900 font-bold">dss@cpn.org.ar</strong>.
-          </p>
-        </div>
-      </div>
+          </>
+        }
+        breadcrumbs={[
+          { label: 'Inicio', href: '/' },
+          { label: 'Formularios Oficiales' },
+        ]}
+      />
 
       {/* Filter and Search Bar */}
       <div className="bg-white rounded-3xl p-4 sm:p-6 border border-slate-100 shadow-sm space-y-4">

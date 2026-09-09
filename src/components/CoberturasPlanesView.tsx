@@ -26,6 +26,7 @@ import {
   Leaf
 } from 'lucide-react';
 import { CoseguroTableInline } from './CoseguroTableInline';
+import { PageHeader } from './PageHeader';
 
 interface CoberturasPlanesViewProps {
   initialSubTab?: string;
@@ -101,45 +102,23 @@ export const CoberturasPlanesView: React.FC<CoberturasPlanesViewProps> = ({
   const currentActiveTabInfo = TABS.find(t => t.id === activeTab);
 
   return (
-    <div id="coberturas-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-12 space-y-8 animate-in fade-in duration-300">
-      
-      {/* BREADCRUMB NAV */}
-      <nav className="flex items-center gap-2 text-xs text-slate-500 font-medium">
-        <button 
-          onClick={() => router.push('/')}
-          className="hover:text-blue-600 transition-colors"
-        >
-          Inicio
-        </button>
-        <span className="text-slate-300">/</span>
-        <button 
-          onClick={() => router.push('/prestaciones')}
-          className={activeTab === 'ambito' ? "text-slate-900 font-bold" : "hover:text-blue-600 transition-colors"}
-        >
-          Prestaciones
-        </button>
-        {activeTab !== 'ambito' && currentActiveTabInfo && (
+    <div id="coberturas-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 space-y-6 animate-in fade-in duration-300">
+      <PageHeader
+        badgeIcon={ShieldCheck}
+        badgeText="DSS • Coberturas y Prestaciones"
+        titlePrefix="Guía de Prestaciones y "
+        titleHighlight="Coberturas"
+        description={
           <>
-            <span className="text-slate-300">/</span>
-            <span className="text-slate-900 font-bold">{currentActiveTabInfo.title}</span>
-          </>
-        )}
-      </nav>
-
-      {/* HERO BANNER */}
-      <div className="relative bg-gradient-to-r from-sky-100/90 via-blue-50 to-sky-100/80 rounded-3xl p-6 sm:p-8 shadow-sm overflow-hidden border border-sky-200/80">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-sky-300/20 rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="relative z-10 max-w-4xl space-y-3">
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Guía de Prestaciones y Coberturas
-          </h1>
-
-          <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl">
             El DSS ofrece dos modalidades de cobertura: el <strong className="text-slate-900 font-bold">Plan General</strong> y el <strong className="text-slate-900 font-bold">Plan Básico</strong>, respaldados por una amplia red de prestadores médicos en toda la provincia. Seleccioná una prestación para consultar sus detalles.
-          </p>
-        </div>
-      </div>
+          </>
+        }
+        breadcrumbs={[
+          { label: 'Inicio', href: '/' },
+          { label: 'Prestaciones', href: '/prestaciones' },
+          ...(activeTab !== 'ambito' && currentActiveTabInfo ? [{ label: currentActiveTabInfo.title }] : []),
+        ]}
+      />
 
       {/* RESPONSIVE RICH HUB CARDS GRID */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

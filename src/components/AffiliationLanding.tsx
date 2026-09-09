@@ -17,6 +17,7 @@ import {
   HeartHandshake
 } from 'lucide-react';
 import { FORMS_DATA } from '@/data/dssData';
+import { PageHeader } from './PageHeader';
 
 interface AffiliationLandingProps {
   onGoToFormularios?: (formId?: string) => void;
@@ -55,58 +56,59 @@ export const AffiliationLanding: React.FC<AffiliationLandingProps> = ({ onGoToFo
   ];
 
   return (
-    <div className="bg-white min-h-screen pt-28 sm:pt-32 lg:pt-36 pb-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-white min-h-screen pb-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-10">
 
-        {/* HERO INSTITUCIONAL LIMPIO Y NATURAL */}
-        <div className="bg-gradient-to-r from-sky-50/90 via-blue-50/50 to-slate-50 rounded-3xl p-6 sm:p-10 border border-sky-100 shadow-2xs">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            {/* Contenido Principal */}
-            <div className="lg:col-span-7 space-y-5">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100/80 text-blue-800 text-xs font-bold tracking-wide">
-                <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
-                CPCE Santa Fe • Cámara I
+        {/* OPEN EDITORIAL HEADER */}
+        <PageHeader
+          badgeIcon={UserCheck}
+          badgeText="DSS • Afiliación e Incorporación"
+          badgeVariant="emerald"
+          titlePrefix="Tu salud y la de tu familia, respaldadas "
+          titleHighlight="desde el primer día"
+          description="El Departamento de Servicios Sociales (DSS) es el sistema solidario de cobertura médica creado y sostenido por los profesionales matriculados en el Consejo Profesional de Ciencias Económicas de Santa Fe."
+          breadcrumbs={[
+            { label: 'Inicio', href: '/' },
+            { label: '¿Cómo afiliarme?' },
+          ]}
+        />
+
+        {/* CONTENIDO HERO ABIERTO */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-1">
+          {/* Columna de Beneficios Inmediatos */}
+          <div className="lg:col-span-7 space-y-5">
+            <div className="bg-slate-50/80 rounded-2xl p-6 sm:p-7 border border-slate-200/80 shadow-2xs space-y-4">
+              <span className="text-xs font-bold text-slate-500 tracking-wider uppercase block">
+                Condiciones de alta inmediata
               </span>
-
-              <h1 className="font-heading text-2xl sm:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
-                Tu salud y la de tu familia, respaldadas desde el primer día
-              </h1>
-
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl font-normal">
-                El Departamento de Servicios Sociales (DSS) es el sistema solidario de cobertura médica creado y sostenido por los profesionales matriculados en el Consejo Profesional de Ciencias Económicas.
-              </p>
-
-              {/* Beneficios directos */}
-              <div className="space-y-2.5 pt-1">
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-800">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Alta automática con tu matrícula profesional (hasta 50 años)</span>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3 text-sm sm:text-base font-semibold text-slate-800">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span>Alta automática con tu matrícula profesional en el CPCE (hasta 50 años)</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-800">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Sin períodos de carencia ni preexistencias para el titular</span>
+                <div className="flex items-start gap-3 text-sm sm:text-base font-semibold text-slate-800">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span>Sin períodos de carencia ni restricciones por preexistencias para el titular</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-800">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Cobertura extensible a cónyuge e hijos</span>
+                <div className="flex items-start gap-3 text-sm sm:text-base font-semibold text-slate-800">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span>Cobertura médica integral extensible a cónyuge e hijos</span>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Fotografía limpia y natural sin sobrecargas de IA */}
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-white">
-                <img 
-                  src="/images/affiliation-hero.webp" 
-                  alt="Familia profesional de ciencias económicas" 
-                  className="w-full h-64 sm:h-80 object-cover"
-                  loading="eager"
-                  decoding="async"
-                />
-              </div>
+          {/* Fotografía limpia y natural */}
+          <div className="lg:col-span-5">
+            <div className="rounded-2xl overflow-hidden border border-slate-200/90 shadow-md bg-white">
+              <img 
+                src="/images/affiliation-hero.webp" 
+                alt="Familia profesional de ciencias económicas" 
+                className="w-full h-64 sm:h-72 object-cover"
+                loading="eager"
+                decoding="async"
+              />
             </div>
-
           </div>
         </div>
 
