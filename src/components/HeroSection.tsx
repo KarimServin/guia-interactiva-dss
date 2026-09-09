@@ -48,12 +48,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const scrollToHelp = () => {
-    const el = document.getElementById('servicios');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section className="relative overflow-hidden bg-white">
@@ -178,26 +172,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
       </div>
 
-      {/* ─────────── DOUBLE DOWN ARROW SCROLL INDICATOR ─────────── */}
-      <div className="hidden sm:flex absolute bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 z-20 items-center justify-center">
-        <button
-          onClick={scrollToHelp}
-          aria-label="Desplazarse a servicios"
-          className="group p-1.5 bg-transparent border-0 outline-none cursor-pointer animate-bounce transition-all">
-          <svg
-            className="w-14 h-7 sm:w-16 sm:h-8 text-[#2454B8]/40 group-hover:text-[#2454B8] transition-colors"
-            viewBox="0 0 48 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="4 4 24 13 44 4" />
-            <polyline points="4 11 24 20 44 11" />
-          </svg>
-        </button>
-      </div>
     </section>
   );
 };
