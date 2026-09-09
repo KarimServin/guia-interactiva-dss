@@ -105,8 +105,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
       <div
         className={`transition-all duration-300 ease-in-out ${
           isPastHero
-            ? 'bg-white/45 md:bg-white/98 backdrop-blur-md md:backdrop-blur-xl border-b border-slate-200/50 md:border-slate-200/80 shadow-xs md:shadow-md'
-            : 'bg-white/25 md:bg-transparent backdrop-blur-md border-b border-transparent shadow-none'
+            ? 'bg-white/45 md:bg-white/98 backdrop-blur-xs md:backdrop-blur-xl border-b border-slate-200/50 md:border-slate-200/80 shadow-xs md:shadow-md'
+            : 'bg-white/25 md:bg-transparent backdrop-blur-xs md:backdrop-blur-md border-b border-transparent shadow-none'
         }`}
         style={
           !isPastHero

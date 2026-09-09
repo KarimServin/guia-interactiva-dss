@@ -57,16 +57,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   return (
     <section className="relative overflow-hidden bg-white">
-      {/* ─────────── BACKGROUND LAYER: Luxurious Editorial Mesh ─────────── */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50/80 to-blue-50/30" />
-      {/*
-        GPU Downscaling Trick (Technique by Chrome Perf Team):
-        blur-[18px] on a 120px element scaled 5x = visually identical to blur-[90px] on 600px.
-        GPU computes on 120×120=14,400px² instead of 600×600=360,000px² → 25x less fill-rate.
-        origin-top-left keeps visual bounding box identical to the original.
-      */}
-      <div className="pointer-events-none absolute -top-44 -left-32 w-[120px] sm:w-[130px] h-[120px] sm:h-[130px] rounded-full bg-blue-100/60 blur-[18px] sm:blur-[28px] scale-[5] origin-top-left transform-gpu" />
-      <div className="pointer-events-none absolute top-1/4 left-1/3 w-[84px] sm:w-[96px] h-[84px] sm:h-[96px] rounded-full bg-sky-200/50 blur-[16px] sm:blur-[26px] scale-[5] origin-top-left transform-gpu" />
+      {/* ─────────── BACKGROUND LAYER: Pure CSS Ambient Mesh (Apple / Stripe style — 0ms GPU math) ─────────── */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(ellipse 65% 55% at 5% 0%, rgba(219, 234, 254, 0.65) 0%, transparent 70%),
+            radial-gradient(ellipse 50% 45% at 50% 25%, rgba(224, 242, 254, 0.45) 0%, transparent 65%),
+            radial-gradient(ellipse 45% 40% at 85% 10%, rgba(238, 242, 255, 0.35) 0%, transparent 60%),
+            linear-gradient(135deg, #ffffff 0%, rgba(248, 250, 252, 0.8) 50%, rgba(239, 246, 255, 0.3) 100%)
+          `
+        }}
+      />
       {/* Subtle organic SVG accent line */}
       <svg className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.15]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
         <path fill="none" stroke="url(#hero-gradient-stroke)" strokeWidth="1.5" d="M0,160 Q360,260 720,160 T1440,160" />

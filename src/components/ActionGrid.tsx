@@ -69,11 +69,18 @@ export const ActionGrid: React.FC<ActionGridProps> = ({
 }) => {
   return (
     <section id="servicios" className="relative pt-8 pb-16 sm:pt-10 sm:pb-20 scroll-mt-28 sm:scroll-mt-32 overflow-hidden bg-slate-50/60">
-      {/* ─────────── BACKGROUND LAYER: Very Light Background + Ambient Glows (GPU accelerated) ─────────── */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50/80 to-blue-50/30 pointer-events-none" />
-      <div className="pointer-events-none absolute -top-28 left-1/6 w-[90px] sm:w-[100px] h-[90px] sm:h-[100px] rounded-full bg-blue-200/40 blur-[18px] sm:blur-[28px] scale-[5] origin-top-left transform-gpu" />
-      <div className="pointer-events-none absolute top-1/3 right-10 w-[80px] sm:w-[90px] h-[80px] sm:h-[90px] rounded-full bg-sky-200/35 blur-[16px] sm:blur-[26px] scale-[5] origin-top-left transform-gpu" />
-      <div className="pointer-events-none absolute -bottom-20 left-1/3 w-[70px] sm:w-[80px] h-[70px] sm:h-[80px] rounded-full bg-indigo-100/35 blur-[16px] sm:blur-[24px] scale-[5] origin-top-left transform-gpu" />
+      {/* ─────────── BACKGROUND LAYER: Pure CSS Ambient Mesh (Apple / Stripe style — 0ms GPU math) ─────────── */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(ellipse 60% 50% at 20% 0%, rgba(219, 234, 254, 0.45) 0%, transparent 65%),
+            radial-gradient(ellipse 55% 45% at 85% 35%, rgba(224, 242, 254, 0.4) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 50% at 30% 90%, rgba(238, 242, 255, 0.35) 0%, transparent 60%),
+            linear-gradient(180deg, #ffffff 0%, rgba(248, 250, 252, 0.8) 40%, rgba(239, 246, 255, 0.25) 100%)
+          `
+        }}
+      />
 
       <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Central Separator Section */}
