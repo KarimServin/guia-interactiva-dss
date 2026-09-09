@@ -109,11 +109,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="max-w-xl mx-auto lg:mx-0 lg:max-w-[54%] text-center lg:text-left flex flex-col items-center lg:items-start">
 
           {/* Mobile-only prominent Logo on Inicio */}
-          <div className="md:hidden mb-6 flex justify-center">
+          <div className="md:hidden mb-4 flex justify-center">
             <img 
               src="/dss-logo.png" 
               alt="DSS - Departamento de Servicios Sociales" 
-              className="h-16 sm:h-18 w-auto object-contain drop-shadow-sm" 
+              className="h-12 sm:h-14 w-auto object-contain drop-shadow-xs" 
             />
           </div>
 
