@@ -111,18 +111,16 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
         </div>
       </div>
 
-      {/* Main navbar — elegant light-blue gradient glass */}
+      {/* Main navbar — matching top bar dark slate-blue gradient */}
       <div
-        className={`transition-all duration-300 ease-in-out ${
+        className={`transition-all duration-300 ease-in-out backdrop-blur-md border-b shadow-md ${
           isPastHero
-            ? 'bg-gradient-to-r from-sky-200/75 via-blue-200/70 to-sky-200/75 md:from-sky-100/95 md:via-blue-100/95 md:to-sky-100/95 backdrop-blur-xs md:backdrop-blur-xl border-b border-blue-300/70 md:border-blue-300/80 shadow-xs md:shadow-md'
-            : 'bg-gradient-to-b from-sky-300/60 via-blue-200/45 to-transparent md:bg-transparent backdrop-blur-xs md:backdrop-blur-md border-b border-transparent shadow-none'
+            ? 'border-blue-800/60 shadow-lg'
+            : 'border-blue-900/40'
         }`}
-        style={
-          !isPastHero
-            ? { background: 'linear-gradient(180deg, rgba(147, 197, 253, 0.65) 0%, rgba(186, 230, 253, 0.45) 60%, rgba(255, 255, 255, 0) 100%)' }
-            : undefined
-        }>
+        style={{
+          background: 'linear-gradient(90deg, rgba(30, 58, 102, 0.96) 0%, rgba(41, 74, 126, 0.93) 45%, rgba(48, 86, 142, 0.90) 75%, rgba(33, 62, 108, 0.96) 100%)'
+        }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] sm:h-[78px] flex items-center justify-between gap-4">
           
           {/* Logo */}
@@ -145,12 +143,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
 
               const baseBtn = `relative flex items-center gap-2 px-3.5 lg:px-4 py-2.5 text-sm lg:text-[15px] font-bold rounded-xl transition-all duration-200 cursor-pointer group`;
               
-              // Styles for Hero (semi-transparent white) vs Scrolled (solid white)
-              const activeStyle = 'text-blue-700 bg-blue-50 border border-blue-200/80 shadow-xs';
-
-              const inactiveStyle = isPastHero
-                ? 'text-slate-700 hover:text-blue-700 hover:bg-slate-100/80'
-                : 'text-slate-800 hover:text-blue-700 hover:bg-white/90';
+              // High-contrast styles for dark slate-blue background
+              const activeStyle = 'text-white bg-white/20 border border-white/30 shadow-xs';
+              const inactiveStyle = 'text-blue-100/90 hover:text-white hover:bg-white/10';
 
               if (isCoberturas) {
                 return (
@@ -160,7 +155,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                     <button id="nav-coberturas-trigger"
                       onClick={() => handleNavClick(item.id)}
                       className={`${baseBtn} ${isActive ? activeStyle : inactiveStyle}`}>
-                      <Icon className={`w-4 h-4 shrink-0 ${isActive ? (isPastHero ? 'text-blue-600' : 'text-white') : 'text-blue-600'}`} />
+                      <Icon className="w-4 h-4 shrink-0 text-sky-300" />
                       <span>{item.label}</span>
                       <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isCoberturasDropdownOpen ? 'rotate-180' : ''}`} />
                     </button>
@@ -192,7 +187,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                     onMouseLeave={() => setIsVademecumDropdownOpen(false)}>
                     <button id="nav-vademecum-trigger"
                       className={`${baseBtn} ${isActive ? activeStyle : inactiveStyle}`}>
-                      <Icon className={`w-4 h-4 shrink-0 ${isActive ? (isPastHero ? 'text-blue-600' : 'text-white') : 'text-blue-600'}`} />
+                      <Icon className="w-4 h-4 shrink-0 text-sky-300" />
                       <span>{item.label}</span>
                       <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isVademecumDropdownOpen ? 'rotate-180' : ''}`} />
                     </button>
@@ -217,7 +212,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
               return (
                 <button key={item.id} onClick={() => handleNavClick(item.id)}
                   className={`${baseBtn} ${isActive ? activeStyle : inactiveStyle}`}>
-                  <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? (isPastHero ? 'text-blue-600' : 'text-white') : 'text-blue-600'}`} />
+                  <Icon className="w-3.5 h-3.5 shrink-0 text-sky-300" />
                   <span>{item.label}</span>
                 </button>
               );
@@ -227,9 +222,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
           {/* Hamburger */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-xl hover:bg-slate-100 text-slate-600 transition-colors cursor-pointer"
+            className="md:hidden p-2 rounded-xl hover:bg-white/10 text-white transition-colors cursor-pointer"
             aria-label="Toggle Menu">
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isMobileMenuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
           </button>
         </div>
       </div>
