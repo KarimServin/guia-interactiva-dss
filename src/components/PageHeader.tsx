@@ -111,15 +111,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           </nav>
         )}
 
-        {/* Micro-badge temático */}
-        {badgeText && (
-          <div>
-            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] sm:text-xs font-bold tracking-wider uppercase select-none ${BADGE_VARIANTS[badgeVariant] || BADGE_VARIANTS.blue}`}>
-              {BadgeIcon && <BadgeIcon className={`w-3.5 h-3.5 shrink-0 ${ICON_VARIANTS[badgeVariant] || ICON_VARIANTS.blue}`} />}
-              <span>{badgeText}</span>
-            </span>
-          </div>
-        )}
+        {/* Espacio reservado que ocupaban los micro-badges */}
+        <div className="h-6 sm:h-7" aria-hidden="true" />
 
         {/* Main Title */}
         <div>
