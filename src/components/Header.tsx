@@ -239,7 +239,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
         isMobileMenuOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0 pointer-events-none'
       }`}>
         <div className="overflow-hidden">
-          <div className="bg-[#f2f7fc]/88 backdrop-blur-xs border-b border-blue-200/80 shadow-2xl px-3 py-3 space-y-1">
+          <div className="bg-[#f8fafc]/97 backdrop-blur-md border-b border-slate-200/90 shadow-2xl px-3 py-3 space-y-1">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon;
               const isVademecum = item.id === 'vademecum';
