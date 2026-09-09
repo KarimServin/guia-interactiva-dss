@@ -126,7 +126,15 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] sm:h-[78px] flex items-center justify-between gap-4">
           
           {/* Logo */}
-          <button onClick={() => handleNavClick('guia')} className="shrink-0 cursor-pointer focus:outline-none">
+          <button 
+            onClick={() => handleNavClick('guia')} 
+            className={`shrink-0 cursor-pointer focus:outline-none transition-all duration-200 ${
+              activeTab === 'guia' && !isScrolled
+                ? 'max-md:opacity-0 max-md:pointer-events-none max-md:scale-95'
+                : 'opacity-100 scale-100'
+            }`}
+            aria-label="Ir a Inicio"
+          >
             <img src="/dss-logo.png" alt="DSS - Departamento de Servicios Sociales"
               className="h-11 sm:h-12 md:h-14 lg:h-[54px] w-auto object-contain block transition-all" />
           </button>
