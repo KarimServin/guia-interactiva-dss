@@ -108,15 +108,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-36 sm:pt-40 lg:pt-44 pb-12 sm:pb-16 lg:pb-20">
         <div className="max-w-xl mx-auto lg:mx-0 lg:max-w-[54%] text-center lg:text-left flex flex-col items-center lg:items-start">
 
-          {/* Mobile-only prominent Logo on Inicio */}
-          <div className="md:hidden mb-4 flex justify-center">
-            <img 
-              src="/dss-logo.png" 
-              alt="DSS - Departamento de Servicios Sociales" 
-              className="h-12 sm:h-14 w-auto object-contain drop-shadow-xs" 
-            />
-          </div>
-
           {/* Headline — Plus Jakarta Sans 800 */}
           <h1 className="font-sans text-[40px] sm:text-[46px] lg:text-[60px] xl:text-[64px] font-extrabold leading-[1.0] tracking-[-0.035em] text-[#101A35] mb-5 sm:mb-6">
             Guía interactiva <br className="hidden sm:block" />
