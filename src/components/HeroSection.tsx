@@ -59,9 +59,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <section className="relative overflow-hidden bg-white">
       {/* ─────────── BACKGROUND LAYER: Luxurious Editorial Mesh ─────────── */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50/80 to-blue-50/30" />
-      {/* Ultra-soft ambient luminous glows (Optimized for mobile: radial gradients instead of expensive CSS blur filters) */}
-      <div className="pointer-events-none absolute -top-44 -left-32 w-[650px] h-[650px] rounded-full bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-blue-100/60 to-transparent" />
-      <div className="pointer-events-none absolute top-1/4 left-1/3 w-[480px] h-[480px] rounded-full bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-sky-200/40 to-transparent" />
+      {/* Ultra-soft ambient luminous glows (GPU accelerated composited layers for 60fps mobile performance) */}
+      <div className="pointer-events-none absolute -top-44 -left-32 w-[600px] sm:w-[650px] h-[600px] sm:h-[650px] rounded-full bg-blue-100/60 blur-[90px] sm:blur-[140px] transform-gpu will-change-transform translate-z-0" />
+      <div className="pointer-events-none absolute top-1/4 left-1/3 w-[420px] sm:w-[480px] h-[420px] sm:h-[480px] rounded-full bg-sky-200/50 blur-[80px] sm:blur-[130px] transform-gpu will-change-transform translate-z-0" />
       {/* Subtle organic SVG accent line */}
       <svg className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.15]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
         <path fill="none" stroke="url(#hero-gradient-stroke)" strokeWidth="1.5" d="M0,160 Q360,260 720,160 T1440,160" />

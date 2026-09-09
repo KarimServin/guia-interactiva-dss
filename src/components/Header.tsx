@@ -101,16 +101,16 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
         </div>
       </div>
 
-      {/* Main navbar — frosted gradient glass in Hero, semi-transparent glass on mobile, solid white on desktop when scrolled */}
+      {/* Main navbar — frosted gradient glass in Hero, high transparency glass on mobile, solid white on desktop when scrolled */}
       <div
         className={`transition-all duration-300 ease-in-out ${
           isPastHero
-            ? 'bg-white/75 md:bg-white/98 backdrop-blur-xl border-b border-slate-200/80 shadow-md shadow-slate-200/40'
-            : 'bg-white/60 md:bg-transparent backdrop-blur-md border-b border-transparent shadow-none'
+            ? 'bg-white/45 md:bg-white/98 backdrop-blur-md md:backdrop-blur-xl border-b border-slate-200/50 md:border-slate-200/80 shadow-xs md:shadow-md'
+            : 'bg-white/25 md:bg-transparent backdrop-blur-md border-b border-transparent shadow-none'
         }`}
         style={
           !isPastHero
-            ? { background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 70%, rgba(255, 255, 255, 0) 100%)' }
+            ? { background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.08) 70%, rgba(255, 255, 255, 0) 100%)' }
             : undefined
         }>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] sm:h-[78px] flex items-center justify-between gap-4">
@@ -228,7 +228,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
       <div className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
         isMobileMenuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
       }`}>
-        <div className="bg-white/80 backdrop-blur-2xl border-b border-slate-100 shadow-2xl px-3 py-3 space-y-0.5">
+        <div className="bg-white/60 backdrop-blur-2xl border-b border-slate-200/60 shadow-2xl px-3 py-3 space-y-0.5">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isVademecum = item.id === 'vademecum';
