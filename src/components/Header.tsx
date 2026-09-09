@@ -27,12 +27,12 @@ interface HeaderProps {
 }
 
 const NAV_ITEMS = [
-  { id: 'guia', label: 'Inicio', icon: Home },
-  { id: 'afiliacion', label: '¿Cómo afiliarme?', icon: UserCheck },
-  { id: 'coberturas-planes', label: 'Coberturas', icon: ShieldCheck },
-  { id: 'cartilla', label: 'Cartilla Médica', icon: Users },
-  { id: 'vademecum', label: 'Vademecum', icon: Pill },
-  { id: 'formularios', label: 'Formularios', icon: FileText }
+  { id: 'guia', label: 'Inicio', icon: Home, iconColor: 'text-blue-600', iconBg: 'bg-blue-100/90' },
+  { id: 'afiliacion', label: '¿Cómo afiliarme?', icon: UserCheck, iconColor: 'text-emerald-600', iconBg: 'bg-emerald-100/90' },
+  { id: 'coberturas-planes', label: 'Coberturas', icon: ShieldCheck, iconColor: 'text-indigo-600', iconBg: 'bg-indigo-100/90' },
+  { id: 'cartilla', label: 'Cartilla Médica', icon: Users, iconColor: 'text-cyan-600', iconBg: 'bg-cyan-100/90' },
+  { id: 'vademecum', label: 'Vademecum', icon: Pill, iconColor: 'text-purple-600', iconBg: 'bg-purple-100/90' },
+  { id: 'formularios', label: 'Formularios', icon: FileText, iconColor: 'text-amber-600', iconBg: 'bg-amber-100/90' }
 ];
 
 export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav }) => {
@@ -250,32 +250,35 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                   ? ['coberturas-planes','subsidio-sepelios','cobertura-odontologia','chequeo-preventivo','vademecum-farmacias','cobertura-farmacias','farmacia','materno','nutricion-celiacos','protesis','tabla-coseguros','cuotas'].includes(activeTab)
                   : activeTab === item.id;
 
-              const mobileBase = `w-full flex items-center justify-between px-4 py-3 text-sm font-semibold rounded-xl transition-all cursor-pointer`;
-              const mobileActive = 'bg-blue-50 text-blue-700';
-              const mobileInactive = 'text-slate-700 hover:bg-slate-50 hover:text-slate-900';
+              const mobileBase = `w-full flex items-center justify-between px-3.5 py-3 text-[15px] font-bold rounded-xl transition-all cursor-pointer`;
+              const mobileActive = 'bg-blue-600/10 text-blue-900 border-l-4 border-blue-600 font-extrabold shadow-xs';
+              const mobileInactive = 'text-slate-800 hover:bg-blue-50/60 hover:text-blue-950 border-l-4 border-transparent';
 
               if (isCoberturas) return (
                 <div key={item.id}>
                   <button onClick={() => setIsMobileCoberturasOpen(!isMobileCoberturasOpen)}
                     className={`${mobileBase} ${isActive ? mobileActive : mobileInactive}`}>
                     <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${isActive ? 'bg-blue-100' : 'bg-slate-100'}`}>
-                        <Icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : 'text-slate-500'}`} />
+                      <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 shadow-2xs ${isActive ? 'bg-indigo-600 text-white' : `${item.iconBg} ${item.iconColor}`}`}>
+                        <Icon className="w-5 h-5" />
                       </div>
-                      <span>{item.label}</span>
+                      <span className="text-[15px] tracking-tight">{item.label}</span>
                     </div>
-                    <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isMobileCoberturasOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-4 h-4 text-slate-500 transition-transform duration-200 ${isMobileCoberturasOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {isMobileCoberturasOpen && (
-                    <div className="ml-11 mt-0.5 mb-1 space-y-0.5 animate-in fade-in duration-200">
+                    <div className="ml-11 mt-1 mb-1.5 space-y-1 border-l-2 border-indigo-200 pl-2 animate-in fade-in duration-200">
                       {[
-                        { key: 'prestaciones', icon: Activity, label: 'Listado de Prestaciones', color: 'text-blue-600' },
-                        { key: 'tabla-coseguros', icon: Layers, label: 'Planes y Coseguros', color: 'text-indigo-600' },
-                        { key: 'cuotas', icon: CreditCard, label: 'Valores de cuota', color: 'text-sky-600' },
-                      ].map(({ key, icon: DI, label, color }) => (
+                        { key: 'prestaciones', icon: Activity, label: 'Listado de Prestaciones', color: 'text-blue-600', bg: 'bg-blue-100' },
+                        { key: 'tabla-coseguros', icon: Layers, label: 'Planes y Coseguros', color: 'text-indigo-600', bg: 'bg-indigo-100' },
+                        { key: 'cuotas', icon: CreditCard, label: 'Valores de cuota', color: 'text-sky-600', bg: 'bg-sky-100' },
+                      ].map(({ key, icon: DI, label, color, bg }) => (
                         <button key={key} onClick={() => handleSubMenuClick(key)}
-                          className="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer">
-                          <DI className={`w-4 h-4 shrink-0 ${color}`} /><span>{label}</span>
+                          className="w-full text-left px-3 py-2 text-sm font-bold text-slate-700 hover:text-blue-900 hover:bg-blue-50/80 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer">
+                          <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${bg}`}>
+                            <DI className={`w-4 h-4 ${color}`} />
+                          </div>
+                          <span>{label}</span>
                         </button>
                       ))}
                     </div>
@@ -288,22 +291,28 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                   <button onClick={() => setIsMobileVademecumOpen(!isMobileVademecumOpen)}
                     className={`${mobileBase} ${isActive ? mobileActive : mobileInactive}`}>
                     <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${isActive ? 'bg-blue-100' : 'bg-slate-100'}`}>
-                        <Icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : 'text-slate-500'}`} />
+                      <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 shadow-2xs ${isActive ? 'bg-purple-600 text-white' : `${item.iconBg} ${item.iconColor}`}`}>
+                        <Icon className="w-5 h-5" />
                       </div>
-                      <span>{item.label}</span>
+                      <span className="text-[15px] tracking-tight">{item.label}</span>
                     </div>
-                    <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isMobileVademecumOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-4 h-4 text-slate-500 transition-transform duration-200 ${isMobileVademecumOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {isMobileVademecumOpen && (
-                    <div className="ml-11 mt-0.5 mb-1 space-y-0.5 animate-in fade-in duration-200">
+                    <div className="ml-11 mt-1 mb-1.5 space-y-1 border-l-2 border-purple-200 pl-2 animate-in fade-in duration-200">
                       <button onClick={() => { router.push('/vademecum/basico'); setIsMobileMenuOpen(false); }}
-                        className="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer">
-                        <Pill className="w-4 h-4 text-blue-600 shrink-0" /><span>Vademécum Básico</span>
+                        className="w-full text-left px-3 py-2 text-sm font-bold text-slate-700 hover:text-blue-900 hover:bg-blue-50/80 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer">
+                        <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 bg-blue-100">
+                          <Pill className="w-4 h-4 text-blue-600" />
+                        </div>
+                        <span>Vademécum Básico</span>
                       </button>
                       <button onClick={() => { router.push('/vademecum/anticonceptivos'); setIsMobileMenuOpen(false); }}
-                        className="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-600 hover:text-rose-700 hover:bg-rose-50 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer">
-                        <Heart className="w-4 h-4 text-rose-500 shrink-0" /><span>Anticonceptivos</span>
+                        className="w-full text-left px-3 py-2 text-sm font-bold text-slate-700 hover:text-rose-900 hover:bg-rose-50/80 rounded-lg transition-colors flex items-center gap-2.5 cursor-pointer">
+                        <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 bg-rose-100">
+                          <Heart className="w-4 h-4 text-rose-600" />
+                        </div>
+                        <span>Anticonceptivos</span>
                       </button>
                     </div>
                   )}
@@ -314,10 +323,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                 <button key={item.id} onClick={() => handleNavClick(item.id)}
                   className={`${mobileBase} ${isActive ? mobileActive : mobileInactive}`}>
                   <div className="flex items-center gap-3">
-                    <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${isActive ? 'bg-blue-100' : 'bg-slate-100'}`}>
-                      <Icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : 'text-slate-500'}`} />
+                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 shadow-2xs ${isActive ? 'bg-blue-600 text-white' : `${item.iconBg} ${item.iconColor}`}`}>
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <span>{item.label}</span>
+                    <span className="text-[15px] tracking-tight">{item.label}</span>
                   </div>
                 </button>
               );
