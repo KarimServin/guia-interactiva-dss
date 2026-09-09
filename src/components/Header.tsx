@@ -100,16 +100,16 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
         </div>
       </div>
 
-      {/* Main navbar — frosted gradient glass in Hero, high transparency glass on mobile, solid white on desktop when scrolled */}
+      {/* Main navbar — subtle bluish gradient glass, extra transparent on mobile */}
       <div
         className={`transition-all duration-300 ease-in-out ${
           isPastHero
-            ? 'bg-white/45 md:bg-white/98 backdrop-blur-xs md:backdrop-blur-xl border-b border-slate-200/50 md:border-slate-200/80 shadow-xs md:shadow-md'
-            : 'bg-white/25 md:bg-transparent backdrop-blur-xs md:backdrop-blur-md border-b border-transparent shadow-none'
+            ? 'bg-gradient-to-r from-white/30 via-blue-50/35 to-sky-50/25 md:from-white/95 md:via-blue-50/90 md:to-white/95 backdrop-blur-xs md:backdrop-blur-xl border-b border-blue-200/40 md:border-blue-100/80 shadow-xs md:shadow-md'
+            : 'bg-gradient-to-b from-blue-50/25 via-sky-50/15 to-transparent md:bg-transparent backdrop-blur-xs md:backdrop-blur-md border-b border-transparent shadow-none'
         }`}
         style={
           !isPastHero
-            ? { background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.08) 70%, rgba(255, 255, 255, 0) 100%)' }
+            ? { background: 'linear-gradient(180deg, rgba(238, 246, 255, 0.35) 0%, rgba(224, 238, 255, 0.12) 70%, rgba(255, 255, 255, 0) 100%)' }
             : undefined
         }>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] sm:h-[78px] flex items-center justify-between gap-4">
@@ -228,7 +228,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
         isMobileMenuOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0 pointer-events-none'
       }`}>
         <div className="overflow-hidden">
-          <div className="bg-white/75 backdrop-blur-md border-b border-slate-200/70 shadow-xl px-3 py-3 space-y-0.5">
+          <div className="bg-gradient-to-b from-white/65 via-blue-50/65 to-sky-50/60 backdrop-blur-md border-b border-blue-200/50 shadow-xl px-3 py-3 space-y-0.5">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon;
               const isVademecum = item.id === 'vademecum';
