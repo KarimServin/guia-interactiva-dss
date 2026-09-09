@@ -111,16 +111,16 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
         </div>
       </div>
 
-      {/* Main navbar — elegant soft light-blue gradient glass */}
+      {/* Main navbar — elegant light-blue gradient glass */}
       <div
         className={`transition-all duration-300 ease-in-out ${
           isPastHero
-            ? 'bg-gradient-to-r from-sky-100/60 via-blue-100/55 to-sky-100/60 md:from-sky-50/95 md:via-blue-100/90 md:to-sky-50/95 backdrop-blur-xs md:backdrop-blur-xl border-b border-blue-200/60 md:border-blue-200/80 shadow-xs md:shadow-md'
-            : 'bg-gradient-to-b from-sky-200/50 via-blue-100/35 to-transparent md:bg-transparent backdrop-blur-xs md:backdrop-blur-md border-b border-transparent shadow-none'
+            ? 'bg-gradient-to-r from-sky-200/75 via-blue-200/70 to-sky-200/75 md:from-sky-100/95 md:via-blue-100/95 md:to-sky-100/95 backdrop-blur-xs md:backdrop-blur-xl border-b border-blue-300/70 md:border-blue-300/80 shadow-xs md:shadow-md'
+            : 'bg-gradient-to-b from-sky-300/60 via-blue-200/45 to-transparent md:bg-transparent backdrop-blur-xs md:backdrop-blur-md border-b border-transparent shadow-none'
         }`}
         style={
           !isPastHero
-            ? { background: 'linear-gradient(180deg, rgba(186, 230, 253, 0.55) 0%, rgba(219, 234, 254, 0.35) 60%, rgba(255, 255, 255, 0) 100%)' }
+            ? { background: 'linear-gradient(180deg, rgba(147, 197, 253, 0.65) 0%, rgba(186, 230, 253, 0.45) 60%, rgba(255, 255, 255, 0) 100%)' }
             : undefined
         }>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] sm:h-[78px] flex items-center justify-between gap-4">
