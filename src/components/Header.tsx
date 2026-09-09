@@ -235,11 +235,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
       </div>
 
       {/* Mobile Drawer (GPU-accelerated Grid transition for instantaneous 60fps response) */}
-      <div className={`md:hidden grid transition-[grid-template-rows,opacity] duration-200 ease-out ${
+      <div className={`md:hidden grid transition-[grid-template-rows,opacity] duration-150 ease-out transform-gpu will-change-[grid-template-rows,opacity] ${
         isMobileMenuOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0 pointer-events-none'
       }`}>
         <div className="overflow-hidden">
-          <div className="bg-gradient-to-b from-blue-50/70 via-sky-50/70 to-blue-50/65 backdrop-blur-md border-b border-blue-200/60 shadow-xl px-3 py-3 space-y-0.5">
+          <div className="bg-[#f0f6fc]/95 border-b border-blue-200/80 shadow-2xl px-3 py-3 space-y-1">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon;
               const isVademecum = item.id === 'vademecum';
