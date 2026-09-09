@@ -43,6 +43,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   const combinedSuggestions = [...matchingModules, ...matchingPrestaciones].slice(0, 5);
 
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 15) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToResults = () => {
     const el = document.getElementById('search-results');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -173,29 +188,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* ─────────── MOBILE-ONLY SLEEK SCROLL INDICATOR ─────────── */}
-      <div className="flex sm:hidden justify-center pb-6 pt-1">
-        <button
-          onClick={() => {
-            const el = document.getElementById('servicios');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
-          aria-label="Ver servicios y accesos rápidos"
-          className="group inline-flex flex-col items-center gap-1 text-[#2454B8]/60 active:text-[#2454B8] transition-colors cursor-pointer py-1 px-3">
-          <span className="text-[11px] font-semibold tracking-wider uppercase text-slate-400">Descubrir servicios</span>
-          <div className="w-8 h-8 rounded-full bg-blue-50/80 border border-blue-200/60 flex items-center justify-center shadow-xs animate-bounce">
-            <svg
-              className="w-4 h-4 text-[#2454B8]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </div>
-        </button>
+      <div 
+        className={`flex sm:hidden justify-center pb-5 pt-1 transition-all duration-200 pointer-events-none ${
+          hasScrolled ? 'opacity-0 scale-90 translate-y-2' : 'opacity-100 scale-100 translate-y-0'
+        }`}
+        aria-hidden={hasScrolled}
+      >
+        <div className="flex flex-col items-center animate-bounce">
+          <svg
+            className="w-10 h-3 text-[#2454B8]/40"
+            viewBox="0 0 36 12"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="3 3 18 10 33 3" />
+          </svg>
+        </div>
       </div>
 
     </section>
