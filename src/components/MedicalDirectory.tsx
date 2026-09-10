@@ -361,7 +361,7 @@ export const MedicalDirectory: React.FC = () => {
             {/* 1. Name Input */}
             <div className="space-y-1.5">
               <label className="text-xs font-extrabold text-slate-700 block pl-1">
-                Nombre del Médico / Centro
+                Nombre del Profesional / Centro
               </label>
               <div className="relative">
                 <Search className="w-4 h-4 text-slate-400 absolute left-4 top-3.5" />
