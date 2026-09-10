@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     default: "DSS CPCE Santa Fe Cámara I - Guía Interactiva de Cobertura Médica",
     template: "%s | DSS CPCE Santa Fe"
   },
-  description: "Guía interactiva oficial del Departamento de Servicios Sociales (DSS) del CPCE Santa Fe - Cámara I. Cartilla médica, buscador de farmacias, credencial digital, coseguros, formularios y trámites.",
+  description: "Tu cobertura, mucho más simple. Toda la información que necesitás sobre tu cobertura, trámites y servicios médicos, en un solo lugar.",
   keywords: [
     "DSS Santa Fe",
     "CPCE Santa Fe",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "DSS CPCE Santa Fe Cámara I - Guía Interactiva",
-    description: "Autogestión de servicios sociales, cartilla médica, credencial digital y trámites para profesionales matriculados.",
+    description: "Tu cobertura, mucho más simple. Toda la información que necesitás sobre tu cobertura, trámites y servicios médicos, en un solo lugar.",
     url: "https://dss.contadores.org.ar",
     siteName: "DSS CPCE Santa Fe - Cámara I",
     locale: "es_AR",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "DSS CPCE Santa Fe Cámara I - Guía Interactiva",
-    description: "Servicios sociales y sistema solidario de salud para profesionales matriculados.",
+    description: "Tu cobertura, mucho más simple. Toda la información que necesitás sobre tu cobertura, trámites y servicios médicos, en un solo lugar.",
     images: ["/og-image.png"],
   },
   robots: {
