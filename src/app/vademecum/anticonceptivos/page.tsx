@@ -1,9 +1,16 @@
-"use client";
-
+import type { Metadata } from 'next';
 import React from 'react';
 import { Header } from '@/components/Header';
 import { VademecumAnticonceptivos } from '@/components/VademecumAnticonceptivos';
 import { Footer } from '@/components/Footer';
+
+export const metadata: Metadata = {
+  title: 'Vademécum de Anticonceptivos',
+  description: 'Listado oficial de anticonceptivos orales e inyectables con cobertura del Departamento de Servicios Sociales (DSS) CPCE Santa Fe.',
+  alternates: {
+    canonical: 'https://dss.contadores.org.ar/vademecum/anticonceptivos',
+  },
+};
 
 export default function VademecumAnticonceptivosPage() {
   return (

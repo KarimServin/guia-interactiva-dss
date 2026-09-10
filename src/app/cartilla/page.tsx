@@ -1,9 +1,16 @@
-"use client";
-
+import type { Metadata } from 'next';
 import React from 'react';
 import { Header } from '@/components/Header';
 import { MedicalDirectory } from '@/components/MedicalDirectory';
 import { Footer } from '@/components/Footer';
+
+export const metadata: Metadata = {
+  title: 'Cartilla Médica y Prestadores',
+  description: 'Buscador interactivo y listado completo de médicos, especialistas, sanatorios y centros de diagnóstico con cobertura del DSS CPCE Santa Fe.',
+  alternates: {
+    canonical: 'https://dss.contadores.org.ar/cartilla',
+  },
+};
 
 export default function CartillaPage() {
   return (

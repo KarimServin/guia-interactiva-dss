@@ -1,9 +1,16 @@
-"use client";
-
+import type { Metadata } from 'next';
 import React from 'react';
 import { Header } from '@/components/Header';
 import { VademecumBasico } from '@/components/VademecumBasico';
 import { Footer } from '@/components/Footer';
+
+export const metadata: Metadata = {
+  title: 'Vademécum Básico de Medicamentos',
+  description: 'Buscador oficial de medicamentos, monodrogas y porcentajes de cobertura del DSS CPCE Santa Fe para farmacias adheridas.',
+  alternates: {
+    canonical: 'https://dss.contadores.org.ar/vademecum/basico',
+  },
+};
 
 export default function VademecumBasicoPage() {
   return (

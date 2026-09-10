@@ -1,9 +1,16 @@
-"use client";
-
+import type { Metadata } from 'next';
 import React from 'react';
 import { Header } from '@/components/Header';
 import { CuotasValores } from '@/components/CuotasValores';
 import { Footer } from '@/components/Footer';
+
+export const metadata: Metadata = {
+  title: 'Valores de Cuota y Aranceles',
+  description: 'Tabla oficial y actualizada de valores de cuota mensual por categoría y adherentes del grupo familiar en el DSS CPCE Santa Fe.',
+  alternates: {
+    canonical: 'https://dss.contadores.org.ar/cuotas',
+  },
+};
 
 export default function CuotasPage() {
   return (

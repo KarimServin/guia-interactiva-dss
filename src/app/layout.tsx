@@ -20,8 +20,11 @@ const figtree = Figtree({
 
 
 export const metadata: Metadata = {
-  title: "DSS CPCE Santa Fe Cámara I - Guía Interactiva de Autogestión y Cobertura Médica",
-  description: "Guía interactiva oficial del Departamento de Servicios Sociales (DSS) del CPCE Santa Fe - Cámara I. Cartilla médica, buscador de farmacias, credencial digital, coseguros, formularios y simulador de autorizaciones.",
+  title: {
+    default: "DSS CPCE Santa Fe Cámara I - Guía Interactiva de Cobertura Médica",
+    template: "%s | DSS CPCE Santa Fe"
+  },
+  description: "Guía interactiva oficial del Departamento de Servicios Sociales (DSS) del CPCE Santa Fe - Cámara I. Cartilla médica, buscador de farmacias, credencial digital, coseguros, formularios y trámites.",
   keywords: [
     "DSS Santa Fe",
     "CPCE Santa Fe",
@@ -31,19 +34,24 @@ export const metadata: Metadata = {
     "Cobertura en Farmacias DSS",
     "Credencial Digital DSS",
     "Coseguros CPCE",
-    "Ciencias Económicas Santa Fe"
+    "Ciencias Económicas Santa Fe",
+    "Vademecum DSS",
+    "Valores de Cuota DSS"
   ],
   authors: [{ name: "Área de Sistemas - CPCE Santa Fe Cámara I" }],
   creator: "Consejo Profesional de Ciencias Económicas de Santa Fe Cámara I",
   publisher: "CPCE Santa Fe Cámara I",
   metadataBase: new URL("https://dss.contadores.org.ar"),
+  alternates: {
+    canonical: "https://dss.contadores.org.ar",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "DSS CPCE Santa Fe",
   },
   openGraph: {
-    title: "DSS CPCE Santa Fe Cámara I - Guía Interactiva de Cobertura Médica",
+    title: "DSS CPCE Santa Fe Cámara I - Guía Interactiva",
     description: "Autogestión de servicios sociales, cartilla médica, credencial digital y trámites para profesionales matriculados.",
     url: "https://dss.contadores.org.ar",
     siteName: "DSS CPCE Santa Fe - Cámara I",
@@ -54,7 +62,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "DSS CPCE Santa Fe Cámara I - Guía Interactiva de Autogestión y Cobertura Médica",
+        alt: "DSS - Departamento de Servicios Sociales - Guía interactiva",
         type: "image/png",
       },
     ],
@@ -90,6 +98,42 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalOrganization",
+      "@id": "https://dss.contadores.org.ar/#organization",
+      "name": "Departamento de Servicios Sociales - CPCE Santa Fe Cámara I",
+      "alternateName": "DSS Santa Fe",
+      "url": "https://dss.contadores.org.ar",
+      "logo": "https://dss.contadores.org.ar/dss-logo.png",
+      "image": "https://dss.contadores.org.ar/og-image.png",
+      "telephone": "+54-342-510-5675",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "San Lorenzo 1849",
+        "addressLocality": "Santa Fe",
+        "addressRegion": "Santa Fe",
+        "postalCode": "S3000",
+        "addressCountry": "AR"
+      },
+      "areaServed": "Santa Fe, Argentina",
+      "description": "Sistema solidario de cobertura médica y servicios sociales para profesionales en ciencias económicas matriculados en la Cámara I."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://dss.contadores.org.ar/#website",
+      "url": "https://dss.contadores.org.ar",
+      "name": "Guía Interactiva DSS",
+      "publisher": {
+        "@id": "https://dss.contadores.org.ar/#organization"
+      },
+      "inLanguage": "es-AR"
+    }
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -100,6 +144,10 @@ export default function RootLayout({
       <head>
         {/* Preload hero image only on non-mobile — mobile hero image is hidden */}
         <link rel="preload" href="/hero-bg.webp" as="image" type="image/webp" fetchPriority="high" media="(min-width: 641px)" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="bg-white text-slate-900 min-h-dvh flex flex-col font-sans antialiased selection:bg-blue-600 selection:text-white overflow-x-hidden" suppressHydrationWarning>
         {children}
