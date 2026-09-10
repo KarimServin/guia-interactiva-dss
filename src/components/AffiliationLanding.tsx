@@ -178,10 +178,28 @@ export const AffiliationLanding: React.FC<AffiliationLandingProps> = ({ onGoToFo
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 Afiliación Titular
               </h3>
-              <ul className="space-y-2 text-slate-600 text-xs">
-                <li>• <strong>Alta Automática:</strong> Se formaliza junto con el trámite de matriculación en la Cámara I para profesionales de hasta 50 años.</li>
-                <li>• <strong>Cobertura Inmediata:</strong> El titular no requiere cumplimentar carencias ni presenta restricciones por enfermedades preexistentes.</li>
-                <li>• <strong>Identificación:</strong> Se efectúa mediante el número de Matrícula Profesional, sin necesidad de credencial física.</li>
+              <ul className="space-y-2.5 text-slate-600 text-xs sm:text-[13px] leading-relaxed">
+                <li className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
+                  <span>
+                    <strong className="text-slate-900 font-semibold">Alta Automática:</strong>{' '}
+                    Se formaliza junto con el trámite de matriculación en la Cámara I para profesionales de hasta 50 años.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
+                  <span>
+                    <strong className="text-slate-900 font-semibold">Cobertura Inmediata:</strong>{' '}
+                    El titular no requiere cumplimentar carencias ni presenta restricciones por enfermedades preexistentes.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
+                  <span>
+                    <strong className="text-slate-900 font-semibold">Identificación:</strong>{' '}
+                    Se efectúa mediante el número de Matrícula Profesional, sin necesidad de credencial física.
+                  </span>
+                </li>
               </ul>
             </div>
 
@@ -190,10 +208,28 @@ export const AffiliationLanding: React.FC<AffiliationLandingProps> = ({ onGoToFo
                 <Shield className="w-4 h-4 text-sky-600" />
                 Adhesión del Grupo Familiar
               </h3>
-              <ul className="space-y-2 text-slate-600 text-xs">
-                <li>• <strong>Integrantes Elegibles:</strong> Cónyuge/Conviviente e Hijos.</li>
-                <li>• <strong>Códigos de Extensión:</strong> Cónyuge (Matrícula + 01), Hijos (Matrícula + 11, 12, 13, etc.).</li>
-                <li>• <strong>Carencias Progresivas:</strong> Los integrantes adheridos cuentan con carencias de entre 3 y 12 meses según el tipo de prestación.</li>
+              <ul className="space-y-2.5 text-slate-600 text-xs sm:text-[13px] leading-relaxed">
+                <li className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-1.5 shrink-0" />
+                  <span>
+                    <strong className="text-slate-900 font-semibold">Integrantes Elegibles:</strong>{' '}
+                    Cónyuge/Conviviente e Hijos.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-1.5 shrink-0" />
+                  <span>
+                    <strong className="text-slate-900 font-semibold">Códigos de Extensión:</strong>{' '}
+                    Cónyuge (Matrícula + 01), Hijos (Matrícula + 11, 12, 13, etc.).
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-1.5 shrink-0" />
+                  <span>
+                    <strong className="text-slate-900 font-semibold">Carencias Progresivas:</strong>{' '}
+                    Los integrantes adheridos cuentan con carencias de entre 3 y 12 meses según el tipo de prestación.
+                  </span>
+                </li>
               </ul>
             </div>
           </div>
