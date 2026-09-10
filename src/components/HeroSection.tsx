@@ -65,7 +65,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
 
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-white lg:min-h-[86vh] xl:min-h-[90vh] 2xl:min-h-[92vh] flex flex-col justify-center">
       {/* ─────────── BACKGROUND LAYER: Pure CSS Ambient Mesh (Apple / Stripe style — 0ms GPU math) ─────────── */}
       <div 
         className="absolute inset-0 pointer-events-none"
@@ -92,10 +92,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       {/* ─────────── RIGHT IMAGE: Full-bleed desktop ─────────── */}
       <div 
-        className="hidden lg:block absolute inset-y-0 right-0 w-[50%] xl:w-[52%] pointer-events-none select-none z-0 overflow-hidden"
+        className="hidden lg:block absolute inset-y-0 right-0 w-[50%] xl:w-[52%] 2xl:w-[50%] pointer-events-none select-none z-0 overflow-hidden"
         style={{
-          WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.02) 18%, rgba(0,0,0,0.2) 38%, rgba(0,0,0,0.6) 65%, rgba(0,0,0,0.9) 85%, black 100%), linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
-          maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.02) 18%, rgba(0,0,0,0.2) 38%, rgba(0,0,0,0.6) 65%, rgba(0,0,0,0.9) 85%, black 100%), linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.02) 16%, rgba(0,0,0,0.2) 36%, rgba(0,0,0,0.6) 65%, rgba(0,0,0,0.9) 85%, black 100%), linear-gradient(to bottom, transparent 0%, black 8%, black 90%, transparent 100%)",
+          maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.02) 16%, rgba(0,0,0,0.2) 36%, rgba(0,0,0,0.6) 65%, rgba(0,0,0,0.9) 85%, black 100%), linear-gradient(to bottom, transparent 0%, black 8%, black 90%, transparent 100%)",
           WebkitMaskComposite: "source-in",
           maskComposite: "intersect",
         }}
@@ -105,7 +105,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           alt="Familia DSS"
           fill
           sizes="(min-width: 1024px) 52vw, 0px"
-          className="object-cover object-center"
+          className="object-cover object-[center_18%] xl:object-[center_15%]"
+          priority
           style={{
             filter: 'contrast(1.01) saturate(0.98) brightness(0.99)'
           }}
@@ -114,22 +115,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* ─────────── CONTENT ─────────── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-36 sm:pt-40 lg:pt-44 pb-12 sm:pb-16 lg:pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-36 sm:pt-40 lg:pt-44 xl:pt-48 pb-16 sm:pb-20 lg:pb-24 xl:pb-28 w-full">
         <div className="max-w-xl mx-auto lg:mx-0 lg:max-w-[54%] text-center lg:text-left flex flex-col items-center lg:items-start">
 
           {/* Headline — Plus Jakarta Sans 800 */}
-          <h1 className="font-sans text-[40px] sm:text-[46px] lg:text-[60px] xl:text-[64px] font-extrabold leading-[1.0] tracking-[-0.035em] text-[#101A35] mb-5 sm:mb-6">
+          <h1 className="font-sans text-[40px] sm:text-[46px] lg:text-[56px] xl:text-[62px] 2xl:text-[68px] font-extrabold leading-[1.04] tracking-[-0.035em] text-[#101A35] mb-5 sm:mb-6">
             Guía interactiva <br className="hidden sm:block" />
             para <span className="text-[#2454B8]">Afiliados</span>
           </h1>
 
           {/* Sub-headline */}
-          <p className="text-[#526987] text-base sm:text-[18px] font-normal leading-[1.55] max-w-[480px] mx-auto lg:mx-0 mb-8 sm:mb-9">
+          <p className="text-[#526987] text-base sm:text-[18px] xl:text-[19px] font-normal leading-[1.55] max-w-[480px] xl:max-w-[520px] mx-auto lg:mx-0 mb-8 sm:mb-9 xl:mb-10">
             Toda la información que necesitás sobre tu cobertura, trámites y servicios médicos, en un solo lugar.
           </p>
 
           {/* Search bar */}
-          <div className="relative group mb-6 sm:mb-7 w-full text-left" style={{ zIndex: 20 }}>
+          <div className="relative group mb-6 sm:mb-7 xl:mb-8 w-full max-w-xl text-left" style={{ zIndex: 20 }}>
             <div className="relative flex items-center">
               <Search className="absolute left-4 w-5 h-5 text-[#8EA1BD] pointer-events-none z-10" />
               <input
