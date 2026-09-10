@@ -18,7 +18,7 @@ const QUICK_LINKS = [
   { label: 'Cartilla Médica', href: '/cartilla' },
   { label: 'Tabla de coberturas', href: '/tabla-coseguros' },
   { label: 'Valores de cuota', href: '/cuotas' },
-  { label: 'Vademecum', href: '/vademecum/basico' },
+  { label: 'Vademécum', href: '/vademecum/basico' },
 ];
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
