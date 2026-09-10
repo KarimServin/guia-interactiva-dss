@@ -268,13 +268,10 @@ export const AffiliationLanding: React.FC<AffiliationLandingProps> = ({ onGoToFo
 
         {/* CONTACTO DIRECTO INSTITUCIONAL */}
         <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md border border-slate-800">
-          <div className="space-y-1 text-center sm:text-left">
+          <div className="text-center sm:text-left">
             <h3 className="font-heading font-bold text-base text-white">
               ¿Tenés dudas sobre el trámite de afiliación?
             </h3>
-            <p className="text-xs text-slate-300">
-              Secretaría del DSS • San Lorenzo 1849 – Santa Fe • Lunes a viernes de 7 a 15 hs.
-            </p>
           </div>
           <a
             href="https://wa.me/5493425105675"
