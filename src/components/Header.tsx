@@ -123,7 +123,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
             ? { background: 'linear-gradient(180deg, rgba(219, 234, 254, 0.55) 0%, rgba(224, 242, 254, 0.30) 65%, rgba(255, 255, 255, 0) 100%)' }
             : undefined
         }>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] sm:h-[78px] lg:h-[82px] flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] sm:h-[78px] flex items-center justify-between gap-4">
           
           {/* Logo */}
           <button onClick={() => handleNavClick('guia')} className="shrink-0 cursor-pointer focus:outline-none" aria-label="Ir a Inicio">
@@ -132,7 +132,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
           </button>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1.5 lg:gap-2.5 ml-auto">
+          <nav className="hidden md:flex items-center gap-1.5 ml-auto">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon;
               const isVademecum = item.id === 'vademecum';
@@ -143,7 +143,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                   ? ['coberturas-planes','subsidio-sepelios','sepelios','cobertura-odontologia','odontologia','chequeo-preventivo','vademecum-farmacias','cobertura-farmacias','farmacia','materno','nutricion-celiacos','protesis','tabla-coseguros','cuotas'].includes(activeTab)
                   : activeTab === item.id;
 
-              const baseBtn = `relative flex items-center gap-2 lg:gap-2.5 px-3.5 lg:px-4.5 xl:px-5 py-2.5 lg:py-3 text-sm lg:text-base font-bold rounded-xl transition-all duration-200 cursor-pointer group`;
+              const baseBtn = `relative flex items-center gap-2 px-3.5 lg:px-4 py-2.5 text-sm lg:text-[15px] font-bold rounded-xl transition-all duration-200 cursor-pointer group`;
               
               const activeStyle = 'text-blue-700 bg-white/90 border border-blue-200/80 shadow-xs';
               const inactiveStyle = 'text-slate-800 hover:text-blue-700 hover:bg-white/80';
@@ -156,9 +156,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                     <button id="nav-coberturas-trigger"
                       onClick={() => handleNavClick(item.id)}
                       className={`${baseBtn} ${isActive ? activeStyle : inactiveStyle}`}>
-                      <Icon className="w-4 h-4 lg:w-[18px] lg:h-[18px] shrink-0 text-blue-600" />
+                      <Icon className="w-4 h-4 shrink-0 text-blue-600" />
                       <span>{item.label}</span>
-                      <ChevronDown className={`w-3.5 h-3.5 lg:w-4 lg:h-4 transition-transform duration-200 ${isCoberturasDropdownOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isCoberturasDropdownOpen ? 'rotate-180' : ''}`} />
                     </button>
                     {isCoberturasDropdownOpen && (
                       <div className="absolute top-full left-0 pt-2 w-64 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
@@ -188,9 +188,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
                     onMouseLeave={() => setIsVademecumDropdownOpen(false)}>
                     <button id="nav-vademecum-trigger"
                       className={`${baseBtn} ${isActive ? activeStyle : inactiveStyle}`}>
-                      <Icon className="w-4 h-4 lg:w-[18px] lg:h-[18px] shrink-0 text-blue-600" />
+                      <Icon className="w-4 h-4 shrink-0 text-blue-600" />
                       <span>{item.label}</span>
-                      <ChevronDown className={`w-3.5 h-3.5 lg:w-4 lg:h-4 transition-transform duration-200 ${isVademecumDropdownOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isVademecumDropdownOpen ? 'rotate-180' : ''}`} />
                     </button>
                     {isVademecumDropdownOpen && (
                       <div className="absolute top-full left-0 pt-2 w-56 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
@@ -213,7 +213,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab = 'guia', onSelectNav 
               return (
                 <button key={item.id} onClick={() => handleNavClick(item.id)}
                   className={`${baseBtn} ${isActive ? activeStyle : inactiveStyle}`}>
-                  <Icon className="w-4 h-4 lg:w-[18px] lg:h-[18px] shrink-0 text-blue-600" />
+                  <Icon className="w-3.5 h-3.5 shrink-0 text-blue-600" />
                   <span>{item.label}</span>
                 </button>
               );
