@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Search, ChevronRight, ArrowRight } from 'lucide-react';
 import { ACTION_MODULES, PRESTACIONES_TABS } from '@/data/dssData';
 import { normalizeStr, parseSearchTerms } from '@/lib/utils';
@@ -14,10 +15,10 @@ interface HeroSectionProps {
 }
 
 const QUICK_LINKS = [
-  { label: 'Cartilla Médica', id: 'cartilla' },
-  { label: 'Autorizaciones', id: 'autorizaciones' },
-  { label: 'Vademécum', id: 'vademecum' },
-  { label: 'Coseguros', id: 'tabla-coseguros' },
+  { label: 'Cartilla Médica', href: '/cartilla' },
+  { label: 'Tabla de coberturas', href: '/tabla-coseguros' },
+  { label: 'Valores de cuota', href: '/cuotas' },
+  { label: 'Vademecum', href: '/vademecum/basico' },
 ];
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -176,12 +177,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Quick access chips */}
           <div className="flex flex-wrap justify-center lg:justify-start gap-2.5">
             {QUICK_LINKS.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => setSearchQuery(link.label)}
+              <Link
+                key={link.href}
+                href={link.href}
                 className="flex items-center gap-1.5 px-4 py-2 bg-white border border-[#DCE5F2] hover:border-[#93C5FD] hover:bg-[#EFF7FF] text-[#425875] hover:text-[#2454B8] text-[14px] font-medium rounded-[999px] transition-all duration-200 shadow-[0_2px_8px_rgba(16,26,53,0.04)] cursor-pointer">
                 {link.label}
-              </button>
+              </Link>
             ))}
           </div>
 
