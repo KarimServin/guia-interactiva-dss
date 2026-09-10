@@ -89,6 +89,9 @@ export const metadata: Metadata = {
     shortcut: "/dss-icon.png",
     apple: "/dss-icon.png",
   },
+  verification: {
+    google: "Nj7rSltVHTtm8JthOsBYnP-PL3rD9vH15UnwNZP-l2w",
+  },
 };
 
 export const viewport: Viewport = {
